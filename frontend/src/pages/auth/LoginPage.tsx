@@ -47,7 +47,11 @@ export const LoginPage: React.FC = () => {
     try {
       const user = await login({ email: demoEmail, password: 'Supermarket@2026' })
       success(`Logged in as ${roleName}`, `Welcome ${user.name}`)
-      navigate('/')
+      if (roleName === 'Cashier') {
+        navigate('/pos')
+      } else {
+        navigate('/')
+      }
     } catch (err: any) {
       setErrorMsg(err.message)
     } finally {
@@ -133,14 +137,14 @@ export const LoginPage: React.FC = () => {
             <p className="text-[11px] font-semibold text-slate-400 uppercase tracking-wider text-center mb-3">
               One-Click Role Demonstration
             </p>
-            <div className="grid grid-cols-2 gap-2 text-xs">
+            <div className="grid grid-cols-2 sm:grid-cols-3 gap-2 text-xs">
               <button
                 type="button"
                 onClick={() => handleQuickLogin('admin@supermarket.so', 'Super Admin')}
                 className="p-2 text-left rounded-lg border border-slate-200 dark:border-slate-800 hover:border-blue-500 dark:hover:border-blue-500 bg-slate-50 dark:bg-slate-800/40 text-slate-700 dark:text-slate-300 transition"
               >
-                <div className="font-semibold text-blue-600 dark:text-blue-400">Super Admin</div>
-                <div className="text-[10px] text-slate-400">All permissions</div>
+                <div className="font-semibold text-purple-600 dark:text-purple-400">Super Admin</div>
+                <div className="text-[10px] text-slate-400">All access</div>
               </button>
               <button
                 type="button"
@@ -148,14 +152,14 @@ export const LoginPage: React.FC = () => {
                 className="p-2 text-left rounded-lg border border-slate-200 dark:border-slate-800 hover:border-blue-500 dark:hover:border-blue-500 bg-slate-50 dark:bg-slate-800/40 text-slate-700 dark:text-slate-300 transition"
               >
                 <div className="font-semibold text-blue-600 dark:text-blue-400">Manager</div>
-                <div className="text-[10px] text-slate-400">Approvals & POS</div>
+                <div className="text-[10px] text-slate-400">Ops & Approvals</div>
               </button>
               <button
                 type="button"
                 onClick={() => handleQuickLogin('hassan.cashier@supermarket.so', 'Cashier')}
                 className="p-2 text-left rounded-lg border border-slate-200 dark:border-slate-800 hover:border-blue-500 dark:hover:border-blue-500 bg-slate-50 dark:bg-slate-800/40 text-slate-700 dark:text-slate-300 transition"
               >
-                <div className="font-semibold text-blue-600 dark:text-blue-400">Cashier</div>
+                <div className="font-semibold text-emerald-600 dark:text-emerald-400">Cashier</div>
                 <div className="text-[10px] text-slate-400">POS checkout</div>
               </button>
               <button
@@ -163,8 +167,24 @@ export const LoginPage: React.FC = () => {
                 onClick={() => handleQuickLogin('khadija.inv@supermarket.so', 'Inventory Manager')}
                 className="p-2 text-left rounded-lg border border-slate-200 dark:border-slate-800 hover:border-blue-500 dark:hover:border-blue-500 bg-slate-50 dark:bg-slate-800/40 text-slate-700 dark:text-slate-300 transition"
               >
-                <div className="font-semibold text-blue-600 dark:text-blue-400">Inventory Mgr</div>
+                <div className="font-semibold text-amber-600 dark:text-amber-400">Inventory Mgr</div>
                 <div className="text-[10px] text-slate-400">Stock & Batches</div>
+              </button>
+              <button
+                type="button"
+                onClick={() => handleQuickLogin('jama.acc@supermarket.so', 'Accountant')}
+                className="p-2 text-left rounded-lg border border-slate-200 dark:border-slate-800 hover:border-blue-500 dark:hover:border-blue-500 bg-slate-50 dark:bg-slate-800/40 text-slate-700 dark:text-slate-300 transition"
+              >
+                <div className="font-semibold text-cyan-600 dark:text-cyan-400">Accountant</div>
+                <div className="text-[10px] text-slate-400">Finance & P&L</div>
+              </button>
+              <button
+                type="button"
+                onClick={() => handleQuickLogin('sahra.audit@supermarket.so', 'Auditor')}
+                className="p-2 text-left rounded-lg border border-slate-200 dark:border-slate-800 hover:border-blue-500 dark:hover:border-blue-500 bg-slate-50 dark:bg-slate-800/40 text-slate-700 dark:text-slate-300 transition"
+              >
+                <div className="font-semibold text-rose-600 dark:text-rose-400">Auditor</div>
+                <div className="text-[10px] text-slate-400">Audit trail & Logs</div>
               </button>
             </div>
           </div>

@@ -24,61 +24,219 @@ import {
   Settings,
   PlusCircle,
 } from 'lucide-react'
+import type { Role } from '@/types'
+import { useAuthStore } from '@/stores/authStore'
 
 interface CommandPaletteProps {
   open: boolean
   onClose: () => void
 }
 
-const COMMAND_ITEMS = [
-  { name: 'Dashboard', path: '/', icon: LayoutDashboard, category: 'Pages' },
-  { name: 'Point of Sale (POS)', path: '/pos', icon: ShoppingCart, category: 'Pages' },
-  { name: 'Products Catalog', path: '/products', icon: Package, category: 'Pages' },
-  { name: 'Categories & Brands', path: '/categories', icon: Layers, category: 'Pages' },
-  { name: 'Store Inventory', path: '/inventory', icon: Boxes, category: 'Pages' },
-  { name: 'Batches & Expiry Dates', path: '/batches', icon: CalendarClock, category: 'Pages' },
-  { name: 'Stock Counts & Adjustments', path: '/stock-counts', icon: ClipboardCheck, category: 'Pages' },
-  { name: 'Suppliers Directory', path: '/suppliers', icon: Truck, category: 'Pages' },
-  { name: 'Purchase Orders', path: '/purchases', icon: FileSpreadsheet, category: 'Pages' },
-  { name: 'Sales & Transactions', path: '/sales', icon: Receipt, category: 'Pages' },
-  { name: 'Returns & Refunds', path: '/returns', icon: RotateCcw, category: 'Pages' },
-  { name: 'Customers & Loyalty', path: '/customers', icon: Users, category: 'Pages' },
-  { name: 'Cashier Shifts', path: '/shifts', icon: Clock, category: 'Pages' },
-  { name: 'Store Expenses', path: '/expenses', icon: Wallet, category: 'Pages' },
-  { name: 'Employees & Permissions', path: '/employees', icon: ShieldCheck, category: 'Pages' },
-  { name: 'Promotions & Coupons', path: '/promotions', icon: Tag, category: 'Pages' },
-  { name: 'Reports & Analytics', path: '/reports', icon: BarChart3, category: 'Pages' },
-  { name: 'Notifications', path: '/notifications', icon: Bell, category: 'Pages' },
-  { name: 'Activity Logs', path: '/activity-logs', icon: History, category: 'Pages' },
-  { name: 'Store Settings', path: '/settings', icon: Settings, category: 'Pages' },
-  { name: 'Add New Product', path: '/products?action=new', icon: PlusCircle, category: 'Actions' },
-  { name: 'Record Operating Expense', path: '/expenses?action=new', icon: PlusCircle, category: 'Actions' },
-  { name: 'New Purchase Order', path: '/purchases?action=new', icon: PlusCircle, category: 'Actions' },
+interface CommandItem {
+  name: string
+  path: string
+  icon: React.ElementType
+  category: 'Pages' | 'Actions'
+  roles?: Role[]
+}
+
+const COMMAND_ITEMS: CommandItem[] = [
+  {
+    name: 'Dashboard',
+    path: '/',
+    icon: LayoutDashboard,
+    category: 'Pages',
+    roles: ['Super Admin', 'Manager', 'Inventory Manager', 'Accountant', 'Auditor'],
+  },
+  {
+    name: 'Point of Sale (POS)',
+    path: '/pos',
+    icon: ShoppingCart,
+    category: 'Pages',
+    roles: ['Super Admin', 'Manager', 'Cashier'],
+  },
+  {
+    name: 'Products Catalog',
+    path: '/products',
+    icon: Package,
+    category: 'Pages',
+    roles: ['Super Admin', 'Manager', 'Inventory Manager'],
+  },
+  {
+    name: 'Categories & Brands',
+    path: '/categories',
+    icon: Layers,
+    category: 'Pages',
+    roles: ['Super Admin', 'Manager', 'Inventory Manager'],
+  },
+  {
+    name: 'Store Inventory',
+    path: '/inventory',
+    icon: Boxes,
+    category: 'Pages',
+    roles: ['Super Admin', 'Manager', 'Inventory Manager', 'Auditor'],
+  },
+  {
+    name: 'Batches & Expiry Dates',
+    path: '/batches',
+    icon: CalendarClock,
+    category: 'Pages',
+    roles: ['Super Admin', 'Manager', 'Inventory Manager', 'Auditor'],
+  },
+  {
+    name: 'Stock Counts & Adjustments',
+    path: '/stock-counts',
+    icon: ClipboardCheck,
+    category: 'Pages',
+    roles: ['Super Admin', 'Manager', 'Inventory Manager', 'Auditor'],
+  },
+  {
+    name: 'Suppliers Directory',
+    path: '/suppliers',
+    icon: Truck,
+    category: 'Pages',
+    roles: ['Super Admin', 'Manager', 'Inventory Manager', 'Accountant'],
+  },
+  {
+    name: 'Purchase Orders',
+    path: '/purchases',
+    icon: FileSpreadsheet,
+    category: 'Pages',
+    roles: ['Super Admin', 'Manager', 'Inventory Manager', 'Accountant'],
+  },
+  {
+    name: 'Sales & Transactions',
+    path: '/sales',
+    icon: Receipt,
+    category: 'Pages',
+    roles: ['Super Admin', 'Manager', 'Cashier', 'Accountant', 'Auditor'],
+  },
+  {
+    name: 'Returns & Refunds',
+    path: '/returns',
+    icon: RotateCcw,
+    category: 'Pages',
+    roles: ['Super Admin', 'Manager', 'Cashier', 'Accountant'],
+  },
+  {
+    name: 'Customers & Loyalty',
+    path: '/customers',
+    icon: Users,
+    category: 'Pages',
+    roles: ['Super Admin', 'Manager', 'Cashier'],
+  },
+  {
+    name: 'Cashier Shifts',
+    path: '/shifts',
+    icon: Clock,
+    category: 'Pages',
+    roles: ['Super Admin', 'Manager', 'Cashier', 'Accountant'],
+  },
+  {
+    name: 'Store Expenses',
+    path: '/expenses',
+    icon: Wallet,
+    category: 'Pages',
+    roles: ['Super Admin', 'Manager', 'Accountant'],
+  },
+  {
+    name: 'Employees & Permissions',
+    path: '/employees',
+    icon: ShieldCheck,
+    category: 'Pages',
+    roles: ['Super Admin'],
+  },
+  {
+    name: 'Promotions & Coupons',
+    path: '/promotions',
+    icon: Tag,
+    category: 'Pages',
+    roles: ['Super Admin', 'Manager'],
+  },
+  {
+    name: 'Reports & Analytics',
+    path: '/reports',
+    icon: BarChart3,
+    category: 'Pages',
+    roles: ['Super Admin', 'Manager', 'Accountant', 'Auditor'],
+  },
+  {
+    name: 'Notifications',
+    path: '/notifications',
+    icon: Bell,
+    category: 'Pages',
+    roles: ['Super Admin', 'Manager', 'Inventory Manager', 'Cashier', 'Accountant', 'Auditor'],
+  },
+  {
+    name: 'Activity Logs',
+    path: '/activity-logs',
+    icon: History,
+    category: 'Pages',
+    roles: ['Super Admin', 'Manager', 'Auditor'],
+  },
+  {
+    name: 'Store Settings',
+    path: '/settings',
+    icon: Settings,
+    category: 'Pages',
+    roles: ['Super Admin'],
+  },
+  {
+    name: 'Add New Product',
+    path: '/products?action=new',
+    icon: PlusCircle,
+    category: 'Actions',
+    roles: ['Super Admin', 'Manager', 'Inventory Manager'],
+  },
+  {
+    name: 'Record Operating Expense',
+    path: '/expenses?action=new',
+    icon: PlusCircle,
+    category: 'Actions',
+    roles: ['Super Admin', 'Manager', 'Accountant'],
+  },
+  {
+    name: 'New Purchase Order',
+    path: '/purchases?action=new',
+    icon: PlusCircle,
+    category: 'Actions',
+    roles: ['Super Admin', 'Manager', 'Inventory Manager', 'Accountant'],
+  },
 ]
 
 export const CommandPalette: React.FC<CommandPaletteProps> = ({ open, onClose }) => {
   const [query, setQuery] = React.useState('')
   const navigate = useNavigate()
+  const { user } = useAuthStore()
 
   React.useEffect(() => {
     const handleKeyDown = (e: KeyboardEvent) => {
-      if ((e.metaKey || e.ctrlKey) && e.key === 'k') {
+      if ((e.ctrlKey || e.metaKey) && e.key === 'k') {
         e.preventDefault()
-        onClose() // toggle
+        onClose()
       }
-      if (e.key === 'Escape') {
+      if (e.key === 'Escape' && open) {
         onClose()
       }
     }
     window.addEventListener('keydown', handleKeyDown)
     return () => window.removeEventListener('keydown', handleKeyDown)
-  }, [onClose])
+  }, [open, onClose])
 
   if (!open) return null
 
-  const filtered = COMMAND_ITEMS.filter((item) =>
-    item.name.toLowerCase().includes(query.toLowerCase())
-  )
+  const currentRole: Role = user?.role || 'Super Admin'
+
+  const filteredItems = COMMAND_ITEMS.filter((item) => {
+    // Role check
+    if (item.roles && !item.roles.includes(currentRole)) return false
+    // Search query check
+    if (!query) return true
+    return item.name.toLowerCase().includes(query.toLowerCase())
+  })
+
+  const pages = filteredItems.filter((i) => i.category === 'Pages')
+  const actions = filteredItems.filter((i) => i.category === 'Actions')
 
   const handleSelect = (path: string) => {
     navigate(path)
@@ -86,47 +244,85 @@ export const CommandPalette: React.FC<CommandPaletteProps> = ({ open, onClose })
   }
 
   return (
-    <div className="fixed inset-0 z-50 flex items-start justify-center pt-24 p-4">
+    <div className="fixed inset-0 z-50 flex items-start justify-center pt-20 p-4">
       {/* Backdrop */}
-      <div className="fixed inset-0 bg-slate-900/60 backdrop-blur-xs" onClick={onClose} />
-      {/* Search box */}
-      <div className="relative w-full max-w-xl rounded-xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 shadow-2xl overflow-hidden z-10 animate-in zoom-in-95 duration-150">
+      <div
+        className="fixed inset-0 bg-slate-900/50 backdrop-blur-xs transition-opacity"
+        onClick={onClose}
+      />
+
+      {/* Modal Dialog */}
+      <div className="relative w-full max-w-lg rounded-2xl bg-white dark:bg-slate-900 shadow-2xl border border-slate-200 dark:border-slate-800 overflow-hidden animate-in zoom-in-95 duration-100">
+        {/* Search Input Bar */}
         <div className="flex items-center px-4 border-b border-slate-200 dark:border-slate-800">
-          <Search className="h-5 w-5 text-slate-400 mr-3" />
+          <Search className="h-4 w-4 text-slate-400 shrink-0 mr-2" />
           <input
             type="text"
-            autoFocus
+            placeholder="Raadi shaqo, bog ama ficil..."
             value={query}
             onChange={(e) => setQuery(e.target.value)}
-            placeholder="Type a command or jump to page..."
-            className="w-full py-3.5 bg-transparent text-sm text-slate-900 dark:text-slate-100 placeholder:text-slate-400 focus:outline-none"
+            autoFocus
+            className="w-full py-3.5 text-sm bg-transparent border-0 focus:outline-none text-slate-900 dark:text-slate-100 placeholder:text-slate-400"
           />
-          <kbd className="rounded bg-slate-100 dark:bg-slate-800 px-2 py-0.5 text-[10px] font-mono text-slate-500">
+          <kbd className="hidden sm:inline-block rounded bg-slate-100 dark:bg-slate-800 px-1.5 py-0.5 text-[10px] font-mono text-slate-500">
             ESC
           </kbd>
         </div>
-        <div className="max-h-80 overflow-y-auto p-2 space-y-1">
-          {filtered.length === 0 ? (
-            <p className="p-4 text-center text-xs text-slate-400">No matching pages or actions found.</p>
+
+        {/* Results List */}
+        <div className="max-h-80 overflow-y-auto p-2 space-y-4">
+          {filteredItems.length === 0 ? (
+            <div className="py-8 text-center text-xs text-slate-400">
+              Wax natiijo ah lama helin &quot;{query}&quot; doorkaaga {currentRole}.
+            </div>
           ) : (
-            filtered.map((item) => {
-              const Icon = item.icon
-              return (
-                <button
-                  key={item.name}
-                  onClick={() => handleSelect(item.path)}
-                  className="flex w-full items-center justify-between rounded-lg px-3 py-2 text-xs text-slate-700 dark:text-slate-300 hover:bg-blue-50 dark:hover:bg-blue-950/40 hover:text-blue-600 dark:hover:text-blue-400 transition text-left cursor-pointer"
-                >
-                  <div className="flex items-center gap-3">
-                    <Icon className="h-4 w-4 text-slate-400 group-hover:text-blue-600" />
-                    <span>{item.name}</span>
+            <>
+              {actions.length > 0 && (
+                <div>
+                  <h4 className="px-2 text-[10px] font-bold uppercase tracking-wider text-slate-400 mb-1">
+                    Ficillo Degdeg Ah (Actions)
+                  </h4>
+                  <div className="space-y-0.5">
+                    {actions.map((item) => {
+                      const Icon = item.icon
+                      return (
+                        <button
+                          key={item.name}
+                          onClick={() => handleSelect(item.path)}
+                          className="w-full flex items-center gap-3 px-3 py-2 rounded-lg text-xs font-medium text-slate-700 dark:text-slate-300 hover:bg-blue-50 dark:hover:bg-slate-800 hover:text-blue-600 dark:hover:text-blue-400 transition text-left"
+                        >
+                          <Icon className="h-4 w-4 text-blue-500 shrink-0" />
+                          <span>{item.name}</span>
+                        </button>
+                      )
+                    })}
                   </div>
-                  <span className="text-[10px] font-medium text-slate-400 bg-slate-100 dark:bg-slate-800 px-2 py-0.5 rounded">
-                    {item.category}
-                  </span>
-                </button>
-              )
-            })
+                </div>
+              )}
+
+              {pages.length > 0 && (
+                <div>
+                  <h4 className="px-2 text-[10px] font-bold uppercase tracking-wider text-slate-400 mb-1">
+                    Boggaga Laguu Oggol Yahay ({currentRole})
+                  </h4>
+                  <div className="space-y-0.5">
+                    {pages.map((item) => {
+                      const Icon = item.icon
+                      return (
+                        <button
+                          key={item.name}
+                          onClick={() => handleSelect(item.path)}
+                          className="w-full flex items-center gap-3 px-3 py-2 rounded-lg text-xs font-medium text-slate-700 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-800 transition text-left"
+                        >
+                          <Icon className="h-4 w-4 text-slate-400 shrink-0" />
+                          <span>{item.name}</span>
+                        </button>
+                      )
+                    })}
+                  </div>
+                </div>
+              )}
+            </>
           )}
         </div>
       </div>

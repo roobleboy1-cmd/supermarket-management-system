@@ -9,6 +9,8 @@ import { formatDate } from '@/utils/formatters'
 
 export const ActivityLogsPage: React.FC = () => {
   const [selectedModule, setSelectedModule] = React.useState('all')
+  const [selectedRole, setSelectedRole] = React.useState('all')
+  const [selectedActor, setSelectedActor] = React.useState('all')
   const [search, setSearch] = React.useState('')
 
   const { data: logs, isLoading } = useQuery({
@@ -16,17 +18,31 @@ export const ActivityLogsPage: React.FC = () => {
     queryFn: () => notificationService.getAuditLogs(selectedModule),
   })
 
+  const uniqueActors = React.useMemo(() => {
+    if (!logs) return []
+    const set = new Set<string>()
+    logs.forEach((l) => set.add(l.actorName))
+    return Array.from(set)
+  }, [logs])
+
   const filtered = React.useMemo(() => {
     if (!logs) return []
-    if (!search.trim()) return logs
-    const q = search.toLowerCase()
-    return logs.filter(
-      (l) =>
+    return logs.filter((l) => {
+      // Role filter
+      if (selectedRole !== 'all' && l.role !== selectedRole) return false
+      // Actor filter
+      if (selectedActor !== 'all' && l.actorName !== selectedActor) return false
+      // Search term
+      if (!search.trim()) return true
+      const q = search.toLowerCase()
+      return (
         l.actorName.toLowerCase().includes(q) ||
         l.action.toLowerCase().includes(q) ||
-        l.details.toLowerCase().includes(q)
-    )
-  }, [logs, search])
+        l.details.toLowerCase().includes(q) ||
+        l.role.toLowerCase().includes(q)
+      )
+    })
+  }, [logs, search, selectedRole, selectedActor])
 
   return (
     <div className="space-y-6">
@@ -37,24 +53,53 @@ export const ActivityLogsPage: React.FC = () => {
 
       <Card>
         <CardContent className="p-4">
-          <div className="flex flex-col sm:flex-row gap-3">
-            <div className="flex-1 relative">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3">
+            <div className="relative">
               <Search className="absolute left-3 top-2.5 h-4 w-4 text-slate-400" />
               <input
                 type="text"
-                placeholder="Search actor name, action, or details..."
+                placeholder="Raadi staff, action, or record..."
                 value={search}
                 onChange={(e) => setSearch(e.target.value)}
                 className="w-full pl-9 pr-3 py-2 text-xs rounded-lg border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900"
               />
             </div>
-            <div className="w-full sm:w-52">
+            <div>
+              <select
+                value={selectedActor}
+                onChange={(e) => setSelectedActor(e.target.value)}
+                className="w-full text-xs px-3 py-2 rounded-lg border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900"
+              >
+                <option value="all">Dhammaan Shaqaalaha (All Users)</option>
+                {uniqueActors.map((actor) => (
+                  <option key={actor} value={actor}>
+                    User: {actor}
+                  </option>
+                ))}
+              </select>
+            </div>
+            <div>
+              <select
+                value={selectedRole}
+                onChange={(e) => setSelectedRole(e.target.value)}
+                className="w-full text-xs px-3 py-2 rounded-lg border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900"
+              >
+                <option value="all">Dhammaan Doorarka (All Roles)</option>
+                <option value="Super Admin">Super Admin</option>
+                <option value="Manager">Manager</option>
+                <option value="Cashier">Cashier</option>
+                <option value="Inventory Manager">Inventory Manager</option>
+                <option value="Accountant">Accountant</option>
+                <option value="Auditor">Auditor</option>
+              </select>
+            </div>
+            <div>
               <select
                 value={selectedModule}
                 onChange={(e) => setSelectedModule(e.target.value)}
                 className="w-full text-xs px-3 py-2 rounded-lg border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900"
               >
-                <option value="all">All Modules</option>
+                <option value="all">Dhammaan Qaybaha (All Modules)</option>
                 <option value="POS">Point of Sale (POS)</option>
                 <option value="Products">Products Catalog</option>
                 <option value="Inventory">Inventory Adjustments</option>

@@ -3,6 +3,7 @@ import { Outlet } from 'react-router-dom'
 import { Sidebar } from '@/components/common/Sidebar'
 import { Header } from '@/components/common/Header'
 import { CommandPalette } from '@/components/common/CommandPalette'
+import { RoleGuard } from '@/components/common/RoleGuard'
 import { useOfflineStore } from '@/stores/offlineStore'
 
 export const AppLayout: React.FC = () => {
@@ -32,7 +33,9 @@ export const AppLayout: React.FC = () => {
           onToggleMobileMenu={() => setMobileMenuOpen(true)}
         />
         <main className="flex-1 p-4 sm:p-6 lg:p-8 max-w-7xl w-full mx-auto animate-in fade-in duration-150">
-          <Outlet />
+          <RoleGuard>
+            <Outlet />
+          </RoleGuard>
         </main>
       </div>
 
