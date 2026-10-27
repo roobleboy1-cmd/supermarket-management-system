@@ -164,7 +164,7 @@ export const ReportsPage: React.FC = () => {
         <CardHeader>
           <CardTitle>Formal Profit & Loss Statement ({pnl?.period})</CardTitle>
         </CardHeader>
-        <CardContent className="p-0">
+        <CardContent className="p-0 overflow-x-auto">
           <table className="w-full text-left text-xs">
             <tbody className="divide-y divide-slate-100 dark:divide-slate-800">
               <tr className="bg-slate-50 dark:bg-slate-900/60 font-bold text-slate-800 dark:text-slate-200">

@@ -246,7 +246,7 @@ export const SalesHistoryPage: React.FC = () => {
               </div>
             </div>
 
-            <div className="border border-slate-200 dark:border-slate-800 rounded-lg overflow-hidden">
+            <div className="border border-slate-200 dark:border-slate-800 rounded-lg overflow-x-auto">
               <table className="w-full text-left">
                 <thead className="bg-slate-50 dark:bg-slate-900 text-slate-500 uppercase text-[10px]">
                   <tr>

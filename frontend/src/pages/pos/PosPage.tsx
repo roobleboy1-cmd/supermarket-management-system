@@ -89,6 +89,7 @@ export const PosPage: React.FC = () => {
   const [splitAmount, setSplitAmount] = React.useState('')
 
   const barcodeInputRef = React.useRef<HTMLInputElement | null>(null)
+  const [mobileView, setMobileView] = React.useState<'products' | 'cart'>('products')
 
   // Queries
   const { data: productsData } = useQuery({
@@ -261,8 +262,43 @@ export const PosPage: React.FC = () => {
 
   return (
     <div className="h-[calc(100vh-6rem)] flex flex-col lg:flex-row gap-4 overflow-hidden select-none">
+      {/* Mobile Tab Switcher */}
+      <div className="flex lg:hidden border-b border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 rounded-t-2xl overflow-hidden shrink-0">
+        <button
+          onClick={() => setMobileView('products')}
+          className={`flex-1 px-4 py-2.5 text-sm font-semibold flex items-center justify-center gap-2 transition ${
+            mobileView === 'products'
+              ? 'bg-blue-600 text-white'
+              : 'text-slate-600 dark:text-slate-400 hover:bg-slate-100 dark:hover:bg-slate-800'
+          }`}
+        >
+          <Layers className="h-4 w-4" />
+          Products
+        </button>
+        <button
+          onClick={() => setMobileView('cart')}
+          className={`flex-1 px-4 py-2.5 text-sm font-semibold flex items-center justify-center gap-2 transition relative ${
+            mobileView === 'cart'
+              ? 'bg-blue-600 text-white'
+              : 'text-slate-600 dark:text-slate-400 hover:bg-slate-100 dark:hover:bg-slate-800'
+          }`}
+        >
+          <ShoppingCart className="h-4 w-4" />
+          Cart
+          {getTotalItemCount() > 0 && (
+            <span className={`text-[10px] px-1.5 py-0.5 rounded-full font-bold ${
+              mobileView === 'cart'
+                ? 'bg-white text-blue-600'
+                : 'bg-blue-600 text-white'
+            }`}>
+              {getTotalItemCount()}
+            </span>
+          )}
+        </button>
+      </div>
+
       {/* LEFT: Product Catalog & Touch Selector */}
-      <div className="flex-1 flex flex-col min-w-0 bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-2xl shadow-xs overflow-hidden">
+      <div className={`flex-1 flex flex-col min-w-0 bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-2xl shadow-xs overflow-hidden ${mobileView !== 'products' ? 'hidden lg:flex' : ''}`}>
         {/* Top Scan & Search Bar */}
         <div className="p-4 border-b border-slate-200 dark:border-slate-800 bg-slate-50/50 dark:bg-slate-950/40 space-y-3">
           <div className="flex flex-col sm:flex-row gap-2">
@@ -339,7 +375,10 @@ export const PosPage: React.FC = () => {
                 <button
                   key={product.id}
                   disabled={!inStock}
-                  onClick={() => addItem(product, 1)}
+                  onClick={() => {
+                    addItem(product, 1)
+                    // On mobile, show a brief indication the item was added
+                  }}
                   className={`group flex flex-col justify-between p-3 rounded-xl border text-left transition duration-150 active:scale-98 cursor-pointer ${
                     inStock
                       ? 'bg-white dark:bg-slate-900 border-slate-200 dark:border-slate-800 hover:border-blue-500 hover:shadow-md'
@@ -377,7 +416,7 @@ export const PosPage: React.FC = () => {
       </div>
 
       {/* RIGHT: Active Cart, Totals & Checkout */}
-      <div className="w-full lg:w-96 flex flex-col bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-2xl shadow-md overflow-hidden shrink-0">
+      <div className={`w-full lg:w-96 flex flex-col bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-2xl shadow-md overflow-hidden shrink-0 ${mobileView !== 'cart' ? 'hidden lg:flex' : ''}`}>
         {/* Cart Top Bar */}
         <div className="p-4 border-b border-slate-200 dark:border-slate-800 bg-slate-50/50 dark:bg-slate-950/40 flex items-center justify-between">
           <div className="flex items-center gap-2">

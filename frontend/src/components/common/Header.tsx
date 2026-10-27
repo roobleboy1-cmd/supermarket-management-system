@@ -13,6 +13,7 @@ import {
   Command,
   Plus,
   RefreshCw,
+  Menu,
 } from 'lucide-react'
 import { useAuthStore } from '@/stores/authStore'
 import { useThemeStore } from '@/stores/themeStore'
@@ -22,7 +23,8 @@ import { cn } from '@/utils/cn'
 
 export const Header: React.FC<{
   onOpenCommandPalette: () => void
-}> = ({ onOpenCommandPalette }) => {
+  onToggleMobileMenu: () => void
+}> = ({ onOpenCommandPalette, onToggleMobileMenu }) => {
   const { user, logout } = useAuthStore()
   const { theme, setTheme } = useThemeStore()
   const { isOnline, queuedTransactions, isSyncing, syncTransactions } = useOfflineStore()
@@ -40,16 +42,26 @@ export const Header: React.FC<{
   }
 
   return (
-    <header className="h-16 border-b border-slate-200 dark:border-slate-800 bg-white/80 dark:bg-slate-950/80 backdrop-blur-md sticky top-0 z-20 px-6 flex items-center justify-between gap-4">
-      {/* Global Search Bar & Command Palette Button */}
-      <div className="flex-1 max-w-md">
+    <header className="h-16 border-b border-slate-200 dark:border-slate-800 bg-white/80 dark:bg-slate-950/80 backdrop-blur-md sticky top-0 z-20 px-3 sm:px-6 flex items-center justify-between gap-2 sm:gap-4">
+      {/* Left: Mobile Hamburger Toggle Button + Search Bar */}
+      <div className="flex items-center gap-2 flex-1 max-w-md">
+        <button
+          onClick={onToggleMobileMenu}
+          className="p-2 rounded-lg text-slate-500 hover:text-slate-800 dark:text-slate-400 dark:hover:text-slate-100 hover:bg-slate-100 dark:hover:bg-slate-800 md:hidden shrink-0 transition"
+          title="Open Navigation Menu"
+        >
+          <Menu className="h-5 w-5" />
+        </button>
+
+        {/* Global Search Bar & Command Palette Button */}
         <button
           onClick={onOpenCommandPalette}
-          className="w-full flex items-center justify-between rounded-lg border border-slate-200 dark:border-slate-800 bg-slate-50 dark:bg-slate-900/50 px-3.5 py-2 text-xs text-slate-400 hover:text-slate-600 dark:hover:text-slate-300 hover:border-slate-300 dark:hover:border-slate-700 transition"
+          className="w-full flex items-center justify-between rounded-lg border border-slate-200 dark:border-slate-800 bg-slate-50 dark:bg-slate-900/50 px-3 py-1.5 sm:py-2 text-xs text-slate-400 hover:text-slate-600 dark:hover:text-slate-300 hover:border-slate-300 dark:hover:border-slate-700 transition"
         >
-          <div className="flex items-center gap-2">
-            <Search className="h-4 w-4 text-slate-400" />
-            <span>Search products, invoices, customers...</span>
+          <div className="flex items-center gap-2 truncate">
+            <Search className="h-4 w-4 text-slate-400 shrink-0" />
+            <span className="truncate hidden sm:inline">Search products, invoices, customers...</span>
+            <span className="truncate sm:hidden">Search...</span>
           </div>
           <kbd className="hidden sm:inline-flex items-center gap-1 rounded bg-slate-200 dark:bg-slate-800 px-1.5 py-0.5 text-[10px] font-mono text-slate-600 dark:text-slate-400">
             <Command className="h-3 w-3" /> K
@@ -58,13 +70,13 @@ export const Header: React.FC<{
       </div>
 
       {/* Right Controls */}
-      <div className="flex items-center gap-3">
+      <div className="flex items-center gap-1.5 sm:gap-3">
         {/* Offline / Online Sync Indicator */}
         <div className="flex items-center">
           {isOnline ? (
-            <div className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full text-[11px] font-medium bg-emerald-50 text-emerald-700 dark:bg-emerald-950/50 dark:text-emerald-400 border border-emerald-200 dark:border-emerald-800">
+            <div className="inline-flex items-center gap-1 sm:gap-1.5 px-2 sm:px-2.5 py-1 rounded-full text-[10px] sm:text-[11px] font-medium bg-emerald-50 text-emerald-700 dark:bg-emerald-950/50 dark:text-emerald-400 border border-emerald-200 dark:border-emerald-800">
               <span className="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse" />
-              <Wifi className="h-3 w-3" />
+              <Wifi className="h-3 w-3 hidden sm:inline" />
               <span className="hidden sm:inline">Online</span>
               {queuedTransactions.length > 0 && (
                 <button
@@ -78,10 +90,10 @@ export const Header: React.FC<{
               )}
             </div>
           ) : (
-            <div className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full text-[11px] font-medium bg-amber-50 text-amber-700 dark:bg-amber-950/50 dark:text-amber-400 border border-amber-200 dark:border-amber-800">
+            <div className="inline-flex items-center gap-1.5 px-2 sm:px-2.5 py-1 rounded-full text-[10px] sm:text-[11px] font-medium bg-amber-50 text-amber-700 dark:bg-amber-950/50 dark:text-amber-400 border border-amber-200 dark:border-amber-800">
               <span className="w-1.5 h-1.5 rounded-full bg-amber-500" />
               <WifiOff className="h-3 w-3" />
-              <span>Offline ({queuedTransactions.length} pending)</span>
+              <span className="hidden sm:inline">Offline</span> ({queuedTransactions.length})
             </div>
           )}
         </div>
@@ -98,21 +110,21 @@ export const Header: React.FC<{
         {/* Quick Launch POS Button */}
         <Link
           to="/pos"
-          className="hidden sm:inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-xs font-semibold bg-blue-600 hover:bg-blue-700 text-white shadow-xs transition"
+          className="hidden sm:inline-flex items-center gap-1.5 px-2.5 sm:px-3 py-1.5 rounded-lg text-xs font-semibold bg-blue-600 hover:bg-blue-700 text-white shadow-xs transition"
         >
           <ShoppingCart className="h-3.5 w-3.5" />
-          <span>Open POS</span>
+          <span className="hidden md:inline">Open POS</span>
         </Link>
 
         {/* Notifications Icon */}
         <Link
           to="/notifications"
-          className="relative p-2 rounded-lg text-slate-500 hover:text-slate-800 dark:text-slate-400 dark:hover:text-slate-100 hover:bg-slate-100 dark:hover:bg-slate-800 transition"
+          className="relative p-1.5 sm:p-2 rounded-lg text-slate-500 hover:text-slate-800 dark:text-slate-400 dark:hover:text-slate-100 hover:bg-slate-100 dark:hover:bg-slate-800 transition"
           title="Notifications"
         >
           <Bell className="h-4 w-4" />
           {unreadNotificationsCount > 0 && (
-            <span className="absolute top-1.5 right-1.5 flex h-4 w-4 items-center justify-center rounded-full bg-red-600 text-[10px] font-bold text-white ring-2 ring-white dark:ring-slate-950">
+            <span className="absolute top-1 right-1 flex h-3.5 w-3.5 sm:h-4 sm:w-4 items-center justify-center rounded-full bg-red-600 text-[9px] sm:text-[10px] font-bold text-white ring-2 ring-white dark:ring-slate-950">
               {unreadNotificationsCount}
             </span>
           )}
@@ -122,7 +134,7 @@ export const Header: React.FC<{
         <div className="relative">
           <button
             onClick={() => setThemeMenuOpen(!themeMenuOpen)}
-            className="p-2 rounded-lg text-slate-500 hover:text-slate-800 dark:text-slate-400 dark:hover:text-slate-100 hover:bg-slate-100 dark:hover:bg-slate-800 transition"
+            className="p-1.5 sm:p-2 rounded-lg text-slate-500 hover:text-slate-800 dark:text-slate-400 dark:hover:text-slate-100 hover:bg-slate-100 dark:hover:bg-slate-800 transition"
             title="Theme Selection"
           >
             {theme === 'dark' ? <Moon className="h-4 w-4" /> : theme === 'light' ? <Sun className="h-4 w-4" /> : <Laptop className="h-4 w-4" />}
@@ -158,9 +170,9 @@ export const Header: React.FC<{
         <div className="relative">
           <button
             onClick={() => setProfileOpen(!profileOpen)}
-            className="flex items-center gap-2 p-1 rounded-full hover:ring-2 hover:ring-blue-500/50 transition cursor-pointer"
+            className="flex items-center gap-2 p-0.5 rounded-full hover:ring-2 hover:ring-blue-500/50 transition cursor-pointer"
           >
-            <div className="flex h-8 w-8 items-center justify-center rounded-full bg-blue-600 text-white font-semibold text-xs shadow-xs">
+            <div className="flex h-7 w-7 sm:h-8 sm:w-8 items-center justify-center rounded-full bg-blue-600 text-white font-semibold text-xs shadow-xs">
               {user?.name ? user.name.slice(0, 2).toUpperCase() : 'AD'}
             </div>
           </button>

@@ -395,7 +395,7 @@ export const StockCountsPage: React.FC = () => {
         maxWidth="4xl"
       >
         <div className="space-y-4">
-          <div className="max-h-96 overflow-y-auto border border-slate-200 dark:border-slate-800 rounded-lg">
+          <div className="max-h-96 overflow-auto border border-slate-200 dark:border-slate-800 rounded-lg">
             <table className="w-full text-left text-xs">
               <thead className="bg-slate-50 dark:bg-slate-950 text-slate-500 uppercase font-semibold text-[11px] sticky top-0">
                 <tr>
