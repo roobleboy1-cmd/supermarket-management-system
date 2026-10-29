@@ -19,7 +19,7 @@ export const Badge: React.FC<BadgeProps> = ({
     primary:
       'bg-indigo-50 text-indigo-700 dark:bg-indigo-950/60 dark:text-indigo-300 border-indigo-200 dark:border-indigo-800/80',
     secondary:
-      'bg-slate-100 text-slate-800 dark:bg-slate-800 dark:text-slate-300 border-slate-200 dark:border-slate-700',
+      'bg-[#F1F5F9] text-[#1E293B] dark:bg-[#172338] dark:text-[#94A3B8] border-[#E2E8F0] dark:border-[#263449]',
     success:
       'bg-emerald-50 text-emerald-700 dark:bg-emerald-950/60 dark:text-emerald-300 border-emerald-200 dark:border-emerald-800/80',
     warning:
@@ -31,7 +31,7 @@ export const Badge: React.FC<BadgeProps> = ({
     purple:
       'bg-purple-50 text-purple-700 dark:bg-purple-950/60 dark:text-purple-300 border-purple-200 dark:border-purple-800/80',
     outline:
-      'border border-slate-200 dark:border-slate-800 text-slate-700 dark:text-slate-300 bg-transparent',
+      'border border-[#E2E8F0] dark:border-[#263449] text-[#334155] dark:text-[#94A3B8] bg-transparent',
   }
 
   const dotColors = {

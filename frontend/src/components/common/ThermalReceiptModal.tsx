@@ -72,16 +72,16 @@ export const ThermalReceiptModal: React.FC<ThermalReceiptModalProps> = ({ sale, 
         {/* Scrollable Receipt Body */}
         <div className="overflow-y-auto py-4 flex justify-center bg-[#F1F5F9] dark:bg-[#0B1220] rounded-xl my-3 p-4 border border-[#E2E8F0] dark:border-[#263449]">
           <div
-            className={`printable-receipt-area bg-white text-slate-900 p-4 font-mono text-[11px] leading-relaxed shadow-md border border-slate-200 ${
+            className={`printable-receipt-area bg-white text-[#0F172A] p-4 font-mono text-[11px] leading-relaxed shadow-md border border-[#E2E8F0] ${
               paperWidth === '58mm' ? 'w-[240px]' : 'w-[320px]'
             }`}
           >
             {/* Header */}
             <div className="text-center pb-2 border-b border-dashed border-slate-400">
               <h2 className="text-sm font-bold uppercase tracking-wider">{settings.storeName}</h2>
-              <p className="text-[10px] text-slate-600">{settings.address}</p>
-              <p className="text-[10px] text-slate-600">Tel: {settings.phone}</p>
-              <p className="text-[10px] text-slate-600">Tax/VAT No: {settings.taxNumber}</p>
+              <p className="text-[10px] text-[#64748B]">{settings.address}</p>
+              <p className="text-[10px] text-[#64748B]">Tel: {settings.phone}</p>
+              <p className="text-[10px] text-[#64748B]">Tax/VAT No: {settings.taxNumber}</p>
               <p className="mt-1 text-[10px] whitespace-pre-line">{settings.receiptHeader}</p>
             </div>
 
@@ -120,7 +120,7 @@ export const ThermalReceiptModal: React.FC<ThermalReceiptModalProps> = ({ sale, 
                 </thead>
                 <tbody>
                   {sale.items.map((item, idx) => (
-                    <tr key={idx} className="border-b border-slate-100">
+                    <tr key={idx} className="border-b border-[#E2E8F0]">
                       <td className="py-1 truncate max-w-[110px]" title={item.name}>
                         {item.name}
                       </td>
@@ -183,10 +183,10 @@ export const ThermalReceiptModal: React.FC<ThermalReceiptModalProps> = ({ sale, 
 
             {/* Barcode representation */}
             <div className="pt-3 text-center">
-              <div className="inline-block tracking-widest font-mono text-[11px] border border-slate-800 px-3 py-1 bg-slate-50 font-bold">
+              <div className="inline-block tracking-widest font-mono text-[11px] border border-slate-800 px-3 py-1 bg-[#F5F7FC] font-bold">
                 *{sale.invoiceNumber}*
               </div>
-              <p className="mt-2 text-[9px] text-slate-500 whitespace-pre-line leading-tight">
+              <p className="mt-2 text-[9px] text-[#64748B] whitespace-pre-line leading-tight">
                 {settings.receiptFooter}
               </p>
             </div>

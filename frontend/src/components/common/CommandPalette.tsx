@@ -249,24 +249,24 @@ export const CommandPalette: React.FC<CommandPaletteProps> = ({ open, onClose })
     <div className="fixed inset-0 z-50 flex items-start justify-center pt-20 p-4">
       {/* Backdrop */}
       <div
-        className="fixed inset-0 bg-slate-900/50 backdrop-blur-xs transition-opacity"
+        className="fixed inset-0 bg-[#0B1220]/50 backdrop-blur-xs transition-opacity"
         onClick={onClose}
       />
 
       {/* Modal Dialog */}
-      <div className="relative w-full max-w-lg rounded-2xl bg-white dark:bg-slate-900 shadow-2xl border border-slate-200 dark:border-slate-800 overflow-hidden animate-in zoom-in-95 duration-100">
+      <div className="relative w-full max-w-lg rounded-2xl bg-white dark:bg-[#111C31] shadow-2xl border border-[#E2E8F0] dark:border-[#263449] overflow-hidden animate-in zoom-in-95 duration-100">
         {/* Search Input Bar */}
-        <div className="flex items-center px-4 border-b border-slate-200 dark:border-slate-800">
-          <Search className="h-4 w-4 text-slate-400 shrink-0 mr-2" />
+        <div className="flex items-center px-4 border-b border-[#E2E8F0] dark:border-[#263449]">
+          <Search className="h-4 w-4 text-[#94A3B8] shrink-0 mr-2" />
           <input
             type="text"
             placeholder={language === 'so' ? 'Raadi shaqo, bog ama ficil...' : 'Search page, task, or action...'}
             value={query}
             onChange={(e) => setQuery(e.target.value)}
             autoFocus
-            className="w-full py-3.5 text-sm bg-transparent border-0 focus:outline-none text-slate-900 dark:text-slate-100 placeholder:text-slate-400"
+            className="w-full py-3.5 text-sm bg-transparent border-0 focus:outline-none text-[#0F172A] dark:text-[#F8FAFC] placeholder:text-[#94A3B8]"
           />
-          <kbd className="hidden sm:inline-block rounded-md bg-slate-100 dark:bg-slate-800 px-2 py-0.5 text-[10px] font-mono text-slate-500 font-bold">
+          <kbd className="hidden sm:inline-block rounded-md bg-[#F1F5F9] dark:bg-[#172338] px-2 py-0.5 text-[10px] font-mono text-[#64748B] font-bold">
             ESC
           </kbd>
         </div>
@@ -274,7 +274,7 @@ export const CommandPalette: React.FC<CommandPaletteProps> = ({ open, onClose })
         {/* Results List */}
         <div className="max-h-80 overflow-y-auto p-2 space-y-4">
           {filteredItems.length === 0 ? (
-            <div className="py-8 text-center text-xs text-slate-400">
+            <div className="py-8 text-center text-xs text-[#94A3B8]">
               {language === 'so'
                 ? `Wax natiijo ah lama helin "${query}" doorkaaga ${currentRole}.`
                 : `No results found for "${query}" matching role ${currentRole}.`}
@@ -283,7 +283,7 @@ export const CommandPalette: React.FC<CommandPaletteProps> = ({ open, onClose })
             <>
               {actions.length > 0 && (
                 <div>
-                  <h4 className="px-2 text-[10px] font-bold uppercase tracking-wider text-slate-400 mb-1">
+                  <h4 className="px-2 text-[10px] font-bold uppercase tracking-wider text-[#94A3B8] mb-1">
                     {language === 'so' ? 'Ficillo Degdeg Ah (Actions)' : 'Quick Actions'}
                   </h4>
                   <div className="space-y-0.5">
@@ -293,7 +293,7 @@ export const CommandPalette: React.FC<CommandPaletteProps> = ({ open, onClose })
                         <button
                           key={item.name}
                           onClick={() => handleSelect(item.path)}
-                          className="w-full flex items-center gap-3 px-3 py-2 rounded-xl text-xs font-semibold text-slate-700 dark:text-slate-300 hover:bg-indigo-50 dark:hover:bg-slate-800 hover:text-indigo-600 dark:hover:text-indigo-400 transition text-left cursor-pointer"
+                          className="w-full flex items-center gap-3 px-3 py-2 rounded-xl text-xs font-semibold text-[#334155] dark:text-[#94A3B8] hover:bg-indigo-50 dark:hover:bg-[#172338] hover:text-indigo-600 dark:hover:text-indigo-400 transition text-left cursor-pointer"
                         >
                           <Icon className="h-4 w-4 text-indigo-500 shrink-0" />
                           <span>{item.name}</span>
@@ -306,7 +306,7 @@ export const CommandPalette: React.FC<CommandPaletteProps> = ({ open, onClose })
 
               {pages.length > 0 && (
                 <div>
-                  <h4 className="px-2 text-[10px] font-bold uppercase tracking-wider text-slate-400 mb-1">
+                  <h4 className="px-2 text-[10px] font-bold uppercase tracking-wider text-[#94A3B8] mb-1">
                     {language === 'so'
                       ? `Boggaga Laguu Oggol Yahay (${currentRole})`
                       : `Permitted Pages (${currentRole})`}
@@ -318,9 +318,9 @@ export const CommandPalette: React.FC<CommandPaletteProps> = ({ open, onClose })
                         <button
                           key={item.name}
                           onClick={() => handleSelect(item.path)}
-                          className="w-full flex items-center gap-3 px-3 py-2 rounded-xl text-xs font-semibold text-slate-700 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-800 transition text-left cursor-pointer"
+                          className="w-full flex items-center gap-3 px-3 py-2 rounded-xl text-xs font-semibold text-[#334155] dark:text-[#94A3B8] hover:bg-[#F1F5F9] dark:hover:bg-[#172338] transition text-left cursor-pointer"
                         >
-                          <Icon className="h-4 w-4 text-slate-400 shrink-0" />
+                          <Icon className="h-4 w-4 text-[#94A3B8] shrink-0" />
                           <span>{item.name}</span>
                         </button>
                       )

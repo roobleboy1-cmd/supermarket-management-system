@@ -25,7 +25,7 @@ export const PageHeader: React.FC<PageHeaderProps> = ({
     >
       <div>
         {breadcrumbs && breadcrumbs.length > 0 && (
-          <nav className="flex items-center space-x-1.5 text-xs text-slate-400 dark:text-slate-500 mb-1.5">
+          <nav className="flex items-center space-x-1.5 text-xs text-[#94A3B8] dark:text-[#64748B] mb-1.5">
             {breadcrumbs.map((crumb, idx) => (
               <React.Fragment key={crumb.label}>
                 {idx > 0 && <span className="opacity-40">/</span>}
@@ -34,17 +34,17 @@ export const PageHeader: React.FC<PageHeaderProps> = ({
                     {crumb.label}
                   </a>
                 ) : (
-                  <span className="text-slate-600 dark:text-slate-300 font-semibold">{crumb.label}</span>
+                  <span className="text-[#64748B] dark:text-[#94A3B8] font-semibold">{crumb.label}</span>
                 )}
               </React.Fragment>
             ))}
           </nav>
         )}
-        <h1 className="text-2xl sm:text-3xl font-extrabold tracking-tight text-slate-900 dark:text-slate-50">
+        <h1 className="text-2xl sm:text-3xl font-extrabold tracking-tight text-[#0F172A] dark:text-slate-50">
           {title}
         </h1>
         {description && (
-          <p className="text-xs sm:text-sm text-slate-500 dark:text-slate-400 mt-1 font-medium max-w-3xl">
+          <p className="text-xs sm:text-sm text-[#64748B] dark:text-[#94A3B8] mt-1 font-medium max-w-3xl">
             {description}
           </p>
         )}

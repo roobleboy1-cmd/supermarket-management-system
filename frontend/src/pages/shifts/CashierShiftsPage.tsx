@@ -166,10 +166,10 @@ export const CashierShiftsPage: React.FC = () => {
             <div className="flex items-center gap-2.5">
               <span className="flex h-3 w-3 rounded-full bg-emerald-500 animate-pulse" />
               <div>
-                <CardTitle className="text-base font-bold text-slate-900 dark:text-slate-100">
+                <CardTitle className="text-base font-bold text-[#0F172A] dark:text-[#F8FAFC]">
                   Active Cashier Shift: {currentShift.shiftNumber}
                 </CardTitle>
-                <p className="text-xs text-slate-500">
+                <p className="text-xs text-[#64748B]">
                   Cashier: <strong>{currentShift.cashierName}</strong> • Opened:{' '}
                   {formatDate(currentShift.openingTime, true)}
                 </p>
@@ -179,21 +179,21 @@ export const CashierShiftsPage: React.FC = () => {
           </CardHeader>
           <CardContent className="space-y-4">
             <div className="grid grid-cols-2 sm:grid-cols-4 gap-3 text-xs">
-              <div className="p-3 rounded-xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800">
-                <span className="text-slate-400 block text-[11px]">Opening Cash Float</span>
-                <span className="text-base font-bold text-slate-900 dark:text-slate-100">
+              <div className="p-3 rounded-xl bg-white dark:bg-[#111C31] border border-[#E2E8F0] dark:border-[#263449]">
+                <span className="text-[#94A3B8] block text-[11px]">Opening Cash Float</span>
+                <span className="text-base font-bold text-[#0F172A] dark:text-[#F8FAFC]">
                   {formatCurrency(currentShift.openingCash)}
                 </span>
               </div>
-              <div className="p-3 rounded-xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800">
-                <span className="text-slate-400 block text-[11px]">Cash Sales Taken</span>
+              <div className="p-3 rounded-xl bg-white dark:bg-[#111C31] border border-[#E2E8F0] dark:border-[#263449]">
+                <span className="text-[#94A3B8] block text-[11px]">Cash Sales Taken</span>
                 <span className="text-base font-bold text-emerald-600 dark:text-emerald-400">
                   {formatCurrency(currentShift.cashSales)}
                 </span>
               </div>
-              <div className="p-3 rounded-xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800">
-                <span className="text-slate-400 block text-[11px]">EVC / Mobile / Card</span>
-                <span className="text-base font-bold text-blue-600 dark:text-blue-400">
+              <div className="p-3 rounded-xl bg-white dark:bg-[#111C31] border border-[#E2E8F0] dark:border-[#263449]">
+                <span className="text-[#94A3B8] block text-[11px]">EVC / Mobile / Card</span>
+                <span className="text-base font-bold text-[#3B82F6] dark:text-[#06B6D4]">
                   {formatCurrency(currentShift.mobileSales + currentShift.cardSales)}
                 </span>
               </div>
@@ -209,11 +209,11 @@ export const CashierShiftsPage: React.FC = () => {
 
             {/* Shift Cash Movements */}
             {currentShift.movements && currentShift.movements.length > 0 && (
-              <div className="border border-slate-200 dark:border-slate-800 rounded-lg p-3 space-y-1.5 text-xs bg-white dark:bg-slate-900">
-                <h5 className="font-semibold text-slate-700 dark:text-slate-300">
+              <div className="border border-[#E2E8F0] dark:border-[#263449] rounded-lg p-3 space-y-1.5 text-xs bg-white dark:bg-[#111C31]">
+                <h5 className="font-semibold text-[#334155] dark:text-[#94A3B8]">
                   Cash In / Drop Movements Log
                 </h5>
-                <div className="divide-y divide-slate-100 dark:divide-slate-800">
+                <div className="divide-y divide-[#E2E8F0] dark:divide-[#263449]">
                   {currentShift.movements.map((m) => (
                     <div key={m.id} className="py-2 flex items-center justify-between">
                       <div className="flex items-center gap-2">
@@ -222,7 +222,7 @@ export const CashierShiftsPage: React.FC = () => {
                         ) : m.type === 'drop_out' ? (
                           <ArrowDownCircle className="h-4 w-4 text-red-600" />
                         ) : (
-                          <DollarSign className="h-4 w-4 text-blue-600" />
+                          <DollarSign className="h-4 w-4 text-[#3B82F6]" />
                         )}
                         <span>{m.reason}</span>
                       </div>
@@ -237,12 +237,12 @@ export const CashierShiftsPage: React.FC = () => {
           </CardContent>
         </Card>
       ) : (
-        <Card className="p-8 text-center bg-slate-50/50 dark:bg-slate-900/50 border-dashed">
-          <Clock className="h-10 w-10 text-slate-400 mx-auto mb-2" />
-          <h3 className="text-sm font-bold text-slate-900 dark:text-slate-100">
+        <Card className="p-8 text-center bg-[#F5F7FC]/50 dark:bg-[#111C31]/50 border-dashed">
+          <Clock className="h-10 w-10 text-[#94A3B8] mx-auto mb-2" />
+          <h3 className="text-sm font-bold text-[#0F172A] dark:text-[#F8FAFC]">
             No Cashier Shift Currently Active
           </h3>
-          <p className="text-xs text-slate-500 max-w-sm mx-auto mt-1 mb-4">
+          <p className="text-xs text-[#64748B] max-w-sm mx-auto mt-1 mb-4">
             To begin processing sales at the checkout counter, initialize a shift drawer with the opening float.
           </p>
           <Button variant="primary" size="sm" onClick={() => setOpenShiftModal(true)}>
@@ -260,7 +260,7 @@ export const CashierShiftsPage: React.FC = () => {
         <CardContent className="p-0">
           <div className="overflow-x-auto">
             <table className="w-full text-left text-xs">
-              <thead className="bg-slate-50 dark:bg-slate-950/40 text-slate-500 border-b border-slate-200 dark:border-slate-800 uppercase font-semibold text-[11px]">
+              <thead className="bg-[#F5F7FC] dark:bg-[#0B1220]/40 text-[#64748B] border-b border-[#E2E8F0] dark:border-[#263449] uppercase font-semibold text-[11px]">
                 <tr>
                   <th className="py-3 px-4">Shift Ref</th>
                   <th className="py-3 px-4">Cashier</th>
@@ -273,20 +273,20 @@ export const CashierShiftsPage: React.FC = () => {
                   <th className="py-3 px-4 text-right">Manager Action</th>
                 </tr>
               </thead>
-              <tbody className="divide-y divide-slate-100 dark:divide-slate-800">
+              <tbody className="divide-y divide-[#E2E8F0] dark:divide-[#263449]">
                 {(shiftHistory || []).map((s) => (
-                  <tr key={s.id} className="hover:bg-slate-50 dark:hover:bg-slate-800/40">
-                    <td className="py-3 px-4 font-mono font-bold text-slate-900 dark:text-slate-100">
+                  <tr key={s.id} className="hover:bg-[#F8FAFC] dark:hover:bg-[#172338]/40">
+                    <td className="py-3 px-4 font-mono font-bold text-[#0F172A] dark:text-[#F8FAFC]">
                       {s.shiftNumber}
                     </td>
-                    <td className="py-3 px-4 font-semibold text-slate-800 dark:text-slate-200">
+                    <td className="py-3 px-4 font-semibold text-[#1E293B] dark:text-[#F8FAFC]">
                       {s.cashierName}
                     </td>
-                    <td className="py-3 px-4 text-slate-500">
+                    <td className="py-3 px-4 text-[#64748B]">
                       <div>{formatDate(s.openingTime, true)}</div>
-                      {s.closingTime && <div className="text-[10px] text-slate-400">Closed: {formatDate(s.closingTime, true)}</div>}
+                      {s.closingTime && <div className="text-[10px] text-[#94A3B8]">Closed: {formatDate(s.closingTime, true)}</div>}
                     </td>
-                    <td className="py-3 px-4 text-right font-bold text-slate-900 dark:text-slate-100">
+                    <td className="py-3 px-4 text-right font-bold text-[#0F172A] dark:text-[#F8FAFC]">
                       {formatCurrency(s.totalSales)}
                     </td>
                     <td className="py-3 px-4 text-right font-mono">
@@ -303,7 +303,7 @@ export const CashierShiftsPage: React.FC = () => {
                               ? 'text-emerald-600'
                               : s.discrepancy < 0
                               ? 'text-red-600'
-                              : 'text-blue-600'
+                              : 'text-[#3B82F6]'
                           }
                         >
                           {s.discrepancy > 0 ? `+${s.discrepancy.toFixed(2)}` : s.discrepancy.toFixed(2)}
@@ -437,12 +437,12 @@ export const CashierShiftsPage: React.FC = () => {
         <form onSubmit={handleCloseShift} className="space-y-4 text-xs">
           <div className="p-3 rounded-xl bg-blue-50 dark:bg-blue-950/40 border border-blue-200 dark:border-blue-900 space-y-1">
             <div className="flex justify-between">
-              <span className="text-slate-500">Expected Physical Cash in Drawer:</span>
-              <span className="font-bold text-slate-900 dark:text-slate-100">
+              <span className="text-[#64748B]">Expected Physical Cash in Drawer:</span>
+              <span className="font-bold text-[#0F172A] dark:text-[#F8FAFC]">
                 ${expectedCash.toFixed(2)}
               </span>
             </div>
-            <div className="flex justify-between text-[11px] text-slate-400">
+            <div className="flex justify-between text-[11px] text-[#94A3B8]">
               <span>Formula: Opening Float + Cash Sales + Pay-ins - Safe Drops</span>
             </div>
           </div>
@@ -459,8 +459,8 @@ export const CashierShiftsPage: React.FC = () => {
           />
 
           {countedCash !== '' && (
-            <div className="p-3 rounded-lg border border-slate-200 dark:border-slate-800 flex items-center justify-between">
-              <span className="font-medium text-slate-700 dark:text-slate-300">
+            <div className="p-3 rounded-lg border border-[#E2E8F0] dark:border-[#263449] flex items-center justify-between">
+              <span className="font-medium text-[#334155] dark:text-[#94A3B8]">
                 Calculated Drawer Discrepancy:
               </span>
               <span
@@ -469,7 +469,7 @@ export const CashierShiftsPage: React.FC = () => {
                     ? 'text-emerald-600'
                     : discrepancyPreview < 0
                     ? 'text-red-600'
-                    : 'text-blue-600'
+                    : 'text-[#3B82F6]'
                 }`}
               >
                 {discrepancyPreview >= 0
@@ -486,7 +486,7 @@ export const CashierShiftsPage: React.FC = () => {
             placeholder="e.g. Accurate drawer count conducted before evening shift handoff"
           />
 
-          <div className="flex justify-end gap-2 pt-2 border-t border-slate-100 dark:border-slate-800">
+          <div className="flex justify-end gap-2 pt-2 border-t border-[#E2E8F0] dark:border-[#263449]">
             <Button type="button" variant="outline" onClick={() => setCloseShiftModal(false)}>
               Cancel
             </Button>
@@ -506,7 +506,7 @@ export const CashierShiftsPage: React.FC = () => {
       >
         {selectedShiftForReport && (
           <div className="space-y-4 text-xs font-mono">
-            <div className="printable-receipt-area p-4 bg-white text-slate-900 border rounded-lg space-y-2 leading-relaxed">
+            <div className="printable-receipt-area p-4 bg-white text-[#0F172A] border rounded-lg space-y-2 leading-relaxed">
               <div className="text-center pb-2 border-b border-dashed border-slate-400">
                 <h3 className="text-sm font-bold uppercase">DAILY CASHIER SHIFT REPORT</h3>
                 <p className="text-[10px]">SomSupermarket Central</p>
@@ -547,7 +547,7 @@ export const CashierShiftsPage: React.FC = () => {
                   <span>Mobile (EVC/eDahab/ZAAD):</span>
                   <span>{formatCurrency(selectedShiftForReport.mobileSales)}</span>
                 </div>
-                <div className="flex justify-between font-bold border-t border-slate-300 pt-1">
+                <div className="flex justify-between font-bold border-t border-[#CBD5E1] pt-1">
                   <span>TOTAL SALES:</span>
                   <span>{formatCurrency(selectedShiftForReport.totalSales)}</span>
                 </div>
@@ -576,7 +576,7 @@ export const CashierShiftsPage: React.FC = () => {
                 </div>
               </div>
 
-              <div className="pt-2 text-[10px] text-slate-500">
+              <div className="pt-2 text-[10px] text-[#64748B]">
                 <p>Status: {selectedShiftForReport.status.toUpperCase()}</p>
                 {selectedShiftForReport.approvedBy && (
                   <p>Manager Sign-off: {selectedShiftForReport.approvedBy}</p>

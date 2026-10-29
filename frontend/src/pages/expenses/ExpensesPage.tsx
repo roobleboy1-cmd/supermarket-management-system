@@ -134,7 +134,7 @@ export const ExpensesPage: React.FC = () => {
           value="Tracked in P&L"
           description="Deducted from store gross profit"
           icon={Calendar}
-          iconColor="text-blue-600 bg-blue-100 dark:bg-blue-950 dark:text-blue-400"
+          iconColor="text-[#3B82F6] bg-blue-100 dark:bg-blue-950 dark:text-[#06B6D4]"
         />
       </div>
 
@@ -206,7 +206,7 @@ export const ExpensesPage: React.FC = () => {
                         </Badge>
                       </td>
                       <td className="py-3 px-4 text-[#64748B]">{formatDate(exp.expenseDate)}</td>
-                      <td className="py-3 px-4 font-medium text-slate-800 dark:text-slate-200">
+                      <td className="py-3 px-4 font-medium text-[#1E293B] dark:text-[#F8FAFC]">
                         {exp.paidTo}
                       </td>
                       <td className="py-3 px-4 text-right font-bold text-[#0F172A] dark:text-[#F8FAFC]">
@@ -313,7 +313,7 @@ export const ExpensesPage: React.FC = () => {
             placeholder="e.g. 150 Litres backup power for central freezer room"
           />
 
-          <div className="flex justify-end gap-2 pt-2 border-t border-slate-100 dark:border-slate-800">
+          <div className="flex justify-end gap-2 pt-2 border-t border-[#E2E8F0] dark:border-[#263449]">
             <Button type="button" variant="outline" onClick={() => setModalOpen(false)}>
               Cancel
             </Button>

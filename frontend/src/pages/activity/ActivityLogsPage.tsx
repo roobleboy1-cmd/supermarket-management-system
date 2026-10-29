@@ -55,20 +55,20 @@ export const ActivityLogsPage: React.FC = () => {
         <CardContent className="p-4">
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3">
             <div className="relative">
-              <Search className="absolute left-3 top-2.5 h-4 w-4 text-slate-400" />
+              <Search className="absolute left-3 top-2.5 h-4 w-4 text-[#94A3B8]" />
               <input
                 type="text"
                 placeholder="Raadi staff, action, or record..."
                 value={search}
                 onChange={(e) => setSearch(e.target.value)}
-                className="w-full pl-9 pr-3 py-2 text-xs rounded-lg border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900"
+                className="w-full pl-9 pr-3 py-2 text-xs rounded-lg border border-[#E2E8F0] dark:border-[#263449] bg-white dark:bg-[#111C31]"
               />
             </div>
             <div>
               <select
                 value={selectedActor}
                 onChange={(e) => setSelectedActor(e.target.value)}
-                className="w-full text-xs px-3 py-2 rounded-lg border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900"
+                className="w-full text-xs px-3 py-2 rounded-lg border border-[#E2E8F0] dark:border-[#263449] bg-white dark:bg-[#111C31]"
               >
                 <option value="all">Dhammaan Shaqaalaha (All Users)</option>
                 {uniqueActors.map((actor) => (
@@ -82,7 +82,7 @@ export const ActivityLogsPage: React.FC = () => {
               <select
                 value={selectedRole}
                 onChange={(e) => setSelectedRole(e.target.value)}
-                className="w-full text-xs px-3 py-2 rounded-lg border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900"
+                className="w-full text-xs px-3 py-2 rounded-lg border border-[#E2E8F0] dark:border-[#263449] bg-white dark:bg-[#111C31]"
               >
                 <option value="all">Dhammaan Doorarka (All Roles)</option>
                 <option value="Super Admin">Super Admin</option>
@@ -97,7 +97,7 @@ export const ActivityLogsPage: React.FC = () => {
               <select
                 value={selectedModule}
                 onChange={(e) => setSelectedModule(e.target.value)}
-                className="w-full text-xs px-3 py-2 rounded-lg border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900"
+                className="w-full text-xs px-3 py-2 rounded-lg border border-[#E2E8F0] dark:border-[#263449] bg-white dark:bg-[#111C31]"
               >
                 <option value="all">Dhammaan Qaybaha (All Modules)</option>
                 <option value="POS">Point of Sale (POS)</option>
@@ -118,7 +118,7 @@ export const ActivityLogsPage: React.FC = () => {
       <Card>
         <div className="overflow-x-auto">
           <table className="w-full text-left text-xs">
-            <thead className="bg-slate-50 dark:bg-slate-950/40 text-slate-500 border-b border-slate-200 dark:border-slate-800 uppercase font-semibold text-[11px]">
+            <thead className="bg-[#F5F7FC] dark:bg-[#0B1220]/40 text-[#64748B] border-b border-[#E2E8F0] dark:border-[#263449] uppercase font-semibold text-[11px]">
               <tr>
                 <th className="py-3 px-4">Timestamp</th>
                 <th className="py-3 px-4">Staff Actor</th>
@@ -128,26 +128,26 @@ export const ActivityLogsPage: React.FC = () => {
                 <th className="py-3 px-4">Details & Target Record</th>
               </tr>
             </thead>
-            <tbody className="divide-y divide-slate-100 dark:divide-slate-800">
+            <tbody className="divide-y divide-[#E2E8F0] dark:divide-[#263449]">
               {isLoading ? (
                 <tr>
-                  <td colSpan={6} className="py-12 text-center text-slate-400">
+                  <td colSpan={6} className="py-12 text-center text-[#94A3B8]">
                     Loading audit trail logs...
                   </td>
                 </tr>
               ) : filtered.length === 0 ? (
                 <tr>
-                  <td colSpan={6} className="py-12 text-center text-slate-400">
+                  <td colSpan={6} className="py-12 text-center text-[#94A3B8]">
                     No activity logs recorded matching this filter.
                   </td>
                 </tr>
               ) : (
                 filtered.map((log) => (
-                  <tr key={log.id} className="hover:bg-slate-50 dark:hover:bg-slate-800/40">
-                    <td className="py-3 px-4 text-slate-500 whitespace-nowrap">
+                  <tr key={log.id} className="hover:bg-[#F8FAFC] dark:hover:bg-[#172338]/40">
+                    <td className="py-3 px-4 text-[#64748B] whitespace-nowrap">
                       {formatDate(log.timestamp, true)}
                     </td>
-                    <td className="py-3 px-4 font-semibold text-slate-900 dark:text-slate-100">
+                    <td className="py-3 px-4 font-semibold text-[#0F172A] dark:text-[#F8FAFC]">
                       {log.actorName}
                     </td>
                     <td className="py-3 px-4">
@@ -155,13 +155,13 @@ export const ActivityLogsPage: React.FC = () => {
                         {log.role}
                       </Badge>
                     </td>
-                    <td className="py-3 px-4 font-medium text-blue-600 dark:text-blue-400">
+                    <td className="py-3 px-4 font-medium text-[#3B82F6] dark:text-[#06B6D4]">
                       {log.module}
                     </td>
-                    <td className="py-3 px-4 font-mono font-bold text-slate-800 dark:text-slate-200">
+                    <td className="py-3 px-4 font-mono font-bold text-[#1E293B] dark:text-[#F8FAFC]">
                       {log.action}
                     </td>
-                    <td className="py-3 px-4 text-slate-600 dark:text-slate-300">
+                    <td className="py-3 px-4 text-[#64748B] dark:text-[#94A3B8]">
                       {log.details}
                     </td>
                   </tr>

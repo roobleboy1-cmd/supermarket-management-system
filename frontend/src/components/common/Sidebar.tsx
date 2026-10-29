@@ -216,7 +216,7 @@ export const Sidebar: React.FC<{
               {language === 'so' ? `Shaqadaada: ${roleDesc?.title}` : `Role: ${currentRole}`}
             </span>
           </div>
-          <p className="text-[10px] text-slate-500 dark:text-slate-400 mt-0.5 line-clamp-2 leading-tight">
+          <p className="text-[10px] text-[#64748B] dark:text-[#94A3B8] mt-0.5 line-clamp-2 leading-tight">
             {language === 'so'
               ? 'Waxaa laguu soo saaray kaliya qaybaha aad awoodda u leedahay.'
               : 'Only workspace modules assigned to your role are visible.'}
@@ -234,7 +234,7 @@ export const Sidebar: React.FC<{
         return (
           <div key={section.titleKey} className="space-y-1">
             {(!collapsed || isMobileView) && (
-              <h4 className="px-3 text-[10px] font-extrabold uppercase tracking-widest text-slate-400 dark:text-slate-500 mb-2">
+              <h4 className="px-3 text-[10px] font-extrabold uppercase tracking-widest text-[#94A3B8] dark:text-[#64748B] mb-2">
                 {t(section.titleKey)}
               </h4>
             )}
@@ -259,14 +259,14 @@ export const Sidebar: React.FC<{
                     'group flex items-center gap-3 rounded-xl px-3 py-2.5 text-xs font-semibold transition-all duration-150',
                     isActive
                       ? 'bg-gradient-to-r from-indigo-600 via-blue-600 to-indigo-700 text-white shadow-sm shadow-indigo-500/25 font-bold'
-                      : 'text-slate-600 dark:text-slate-400 hover:bg-indigo-50/70 dark:hover:bg-slate-800/70 hover:text-indigo-600 dark:hover:text-indigo-400',
+                      : 'text-[#64748B] dark:text-[#94A3B8] hover:bg-indigo-50/70 dark:hover:bg-[#172338]/70 hover:text-indigo-600 dark:hover:text-indigo-400',
                     collapsed && !isMobileView && 'justify-center px-2'
                   )}
                 >
                   <Icon
                     className={cn(
                       'h-4 w-4 shrink-0 transition-transform duration-200 group-hover:scale-110',
-                      isActive ? 'text-white' : 'text-slate-400 group-hover:text-indigo-600 dark:group-hover:text-indigo-400'
+                      isActive ? 'text-white' : 'text-[#94A3B8] group-hover:text-indigo-600 dark:group-hover:text-indigo-400'
                     )}
                   />
                   {(!collapsed || isMobileView) && <span className="truncate flex-1">{label}</span>}
@@ -280,21 +280,21 @@ export const Sidebar: React.FC<{
   )
 
   const renderUserFooter = (isMobileView: boolean = false) => (
-    <div className="p-3 border-t border-slate-200/80 dark:border-slate-800/80 bg-slate-50/50 dark:bg-slate-900/40">
+    <div className="p-3 border-t border-[#E2E8F0] dark:border-[#263449] bg-[#F5F7FC]/50 dark:bg-[#111C31]/40">
       <div className={cn('flex items-center gap-2.5', collapsed && !isMobileView && 'justify-center')}>
-        <div className="flex h-9 w-9 shrink-0 items-center justify-center rounded-xl bg-gradient-to-tr from-indigo-600 to-blue-600 text-white font-extrabold text-xs shadow-xs">
+        <div className="flex h-9 w-9 shrink-0 items-center justify-center rounded-xl bg-gradient-to-tr from-[#3B82F6] to-[#8B5CF6] text-white font-extrabold text-xs shadow-xs">
           {user?.name ? user.name.slice(0, 2).toUpperCase() : 'AD'}
         </div>
         {(!collapsed || isMobileView) && (
           <div className="flex flex-col truncate flex-1 min-w-0">
-            <span className="text-xs font-bold text-slate-900 dark:text-slate-100 truncate">
+            <span className="text-xs font-bold text-[#0F172A] dark:text-[#F8FAFC] truncate">
               {user?.name || 'Administrator'}
             </span>
             <div className="flex items-center gap-1 mt-0.5">
               <span
                 className={cn(
                   'text-[10px] font-bold px-1.5 py-0.2 rounded-full border truncate',
-                  roleDesc?.bgBadge || 'bg-slate-100 text-slate-700 border-slate-200'
+                  roleDesc?.bgBadge || 'bg-[#F1F5F9] text-[#334155] border-[#E2E8F0]'
                 )}
               >
                 {currentRole}
@@ -311,14 +311,14 @@ export const Sidebar: React.FC<{
       {/* DESKTOP SIDEBAR (Visible on md and larger) */}
       <aside
         className={cn(
-          'hidden md:flex flex-col border-r border-slate-200/80 dark:border-slate-800/80 bg-white dark:bg-slate-950 transition-all duration-300 z-30 select-none shrink-0 h-screen sticky top-0 shadow-xs',
+          'hidden md:flex flex-col border-r border-[#E2E8F0] dark:border-[#263449] bg-white dark:bg-[#0B1220] transition-all duration-300 z-30 select-none shrink-0 h-screen sticky top-0 shadow-xs',
           collapsed ? 'w-20' : 'w-64'
         )}
       >
         {/* Brand Header */}
-        <div className="h-16 flex items-center justify-between px-4 border-b border-slate-200/80 dark:border-slate-800/80">
+        <div className="h-16 flex items-center justify-between px-4 border-b border-[#E2E8F0] dark:border-[#263449]">
           <div className="flex items-center gap-3 overflow-hidden">
-            <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-gradient-to-tr from-indigo-600 via-blue-600 to-cyan-500 text-white shadow-md shadow-indigo-500/25">
+            <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-gradient-to-tr from-[#3B82F6] via-[#8B5CF6] to-[#06B6D4] text-white shadow-md shadow-indigo-500/25">
               <Store className="h-5 w-5" />
             </div>
             {!collapsed && (
@@ -326,7 +326,7 @@ export const Sidebar: React.FC<{
                 <span className="text-sm font-extrabold tracking-tight bg-clip-text text-transparent bg-gradient-to-r from-indigo-600 via-blue-600 to-cyan-600 dark:from-indigo-400 dark:via-blue-400 dark:to-cyan-400 truncate">
                   {t('app.name')}
                 </span>
-                <span className="text-[10px] font-bold text-slate-400 dark:text-slate-500 truncate tracking-wide">
+                <span className="text-[10px] font-bold text-[#94A3B8] dark:text-[#64748B] truncate tracking-wide">
                   {t('app.singleStore')}
                 </span>
               </div>
@@ -334,7 +334,7 @@ export const Sidebar: React.FC<{
           </div>
           <button
             onClick={onToggleCollapse}
-            className="rounded-xl p-1.5 text-slate-400 hover:text-slate-700 dark:hover:text-slate-200 hover:bg-slate-100 dark:hover:bg-slate-800 transition"
+            className="rounded-xl p-1.5 text-[#94A3B8] hover:text-[#334155] dark:hover:text-slate-200 hover:bg-[#F1F5F9] dark:hover:bg-[#172338] transition"
             title={collapsed ? 'Expand sidebar' : 'Collapse sidebar'}
           >
             {collapsed ? <ChevronRight className="h-4 w-4" /> : <ChevronLeft className="h-4 w-4" />}
@@ -354,24 +354,24 @@ export const Sidebar: React.FC<{
             onClick={onCloseMobile}
           />
           {/* Drawer content */}
-          <div className="relative flex flex-col w-72 max-w-[85vw] bg-white dark:bg-slate-950 border-r border-slate-200 dark:border-slate-800 shadow-2xl z-10 animate-in slide-in-from-left duration-200">
-            <div className="h-16 flex items-center justify-between px-4 border-b border-slate-200 dark:border-slate-800">
+          <div className="relative flex flex-col w-72 max-w-[85vw] bg-white dark:bg-[#0B1220] border-r border-[#E2E8F0] dark:border-[#263449] shadow-2xl z-10 animate-in slide-in-from-left duration-200">
+            <div className="h-16 flex items-center justify-between px-4 border-b border-[#E2E8F0] dark:border-[#263449]">
               <div className="flex items-center gap-3">
-                <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-gradient-to-tr from-indigo-600 via-blue-600 to-cyan-500 text-white shadow-md shadow-indigo-500/25">
+                <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-gradient-to-tr from-[#3B82F6] via-[#8B5CF6] to-[#06B6D4] text-white shadow-md shadow-indigo-500/25">
                   <Store className="h-5 w-5" />
                 </div>
                 <div className="flex flex-col">
-                  <span className="text-sm font-extrabold tracking-tight bg-clip-text text-transparent bg-gradient-to-r from-indigo-600 to-blue-600 dark:from-indigo-400 dark:to-cyan-400">
+                  <span className="text-sm font-extrabold tracking-tight bg-clip-text text-transparent bg-gradient-to-r from-[#3B82F6] to-[#8B5CF6] dark:from-indigo-400 dark:to-cyan-400">
                     {t('app.name')}
                   </span>
-                  <span className="text-[10px] font-bold text-slate-400 dark:text-slate-500">
+                  <span className="text-[10px] font-bold text-[#94A3B8] dark:text-[#64748B]">
                     {t('app.singleStore')}
                   </span>
                 </div>
               </div>
               <button
                 onClick={onCloseMobile}
-                className="p-1.5 rounded-xl text-slate-400 hover:text-slate-700 dark:hover:text-slate-200"
+                className="p-1.5 rounded-xl text-[#94A3B8] hover:text-[#334155] dark:hover:text-slate-200"
               >
                 <X className="h-5 w-5" />
               </button>

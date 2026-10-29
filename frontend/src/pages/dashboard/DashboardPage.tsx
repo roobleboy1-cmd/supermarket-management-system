@@ -131,7 +131,7 @@ export const DashboardPage: React.FC = () => {
               }
               trend={{ value: '+14.2% vs shalay', isPositive: true }}
               icon={DollarSign}
-              iconColor="bg-gradient-to-br from-indigo-500 to-blue-600 text-white shadow-md shadow-indigo-500/25"
+              iconColor="bg-gradient-to-br from-[#3B82F6] to-[#8B5CF6] text-white shadow-md shadow-indigo-500/25"
             />
             <StatCard
               title={t('dash.grossProfit')}
@@ -234,7 +234,7 @@ export const DashboardPage: React.FC = () => {
           className="group flex items-center justify-between p-4 rounded-2xl border border-indigo-200/80 dark:border-indigo-900/50 bg-gradient-to-r from-indigo-50/70 to-blue-50/40 dark:from-indigo-950/20 dark:to-blue-950/10 hover:border-indigo-400 dark:hover:border-indigo-700 transition-all duration-200 shadow-2xs hover:shadow-xs"
         >
           <div className="flex items-center gap-3">
-            <div className="p-3 rounded-xl bg-indigo-500/15 text-indigo-600 dark:text-indigo-400 shrink-0 group-hover:scale-105 transition-transform">
+            <div className="p-3 rounded-xl bg-indigo-500/15 text-[#3B82F6] dark:text-[#06B6D4] shrink-0 group-hover:scale-105 transition-transform">
               <RotateCcw className="h-5 w-5" />
             </div>
             <div>
@@ -247,7 +247,7 @@ export const DashboardPage: React.FC = () => {
               </p>
             </div>
           </div>
-          <ArrowUpRight className="h-4 w-4 text-indigo-600 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" />
+          <ArrowUpRight className="h-4 w-4 text-[#3B82F6] group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" />
         </Link>
       </div>
 
@@ -258,21 +258,21 @@ export const DashboardPage: React.FC = () => {
           <CardHeader className="flex flex-row items-center justify-between pb-2">
             <div>
               <CardTitle>{t('dash.salesTrend')}</CardTitle>
-              <p className="text-xs text-slate-500 dark:text-slate-400 mt-0.5">
+              <p className="text-xs text-[#64748B] dark:text-[#94A3B8] mt-0.5">
                 {language === 'so'
                   ? 'Iibka dukaanka oo toos looga diiwaangeliyay nidaamka'
                   : 'Real-time transaction revenue & gross margins aggregated'}
               </p>
             </div>
-            <div className="inline-flex rounded-xl border border-slate-200/80 dark:border-slate-800 p-1 bg-slate-50 dark:bg-slate-900 text-xs">
+            <div className="inline-flex rounded-xl border border-[#E2E8F0]/80 dark:border-[#263449] p-1 bg-[#F5F7FC] dark:bg-[#111C31] text-xs">
               {(['7d', '30d', '90d'] as const).map((period) => (
                 <button
                   key={period}
                   onClick={() => setChartPeriod(period)}
                   className={`px-3 py-1 rounded-lg font-bold text-xs transition-all duration-150 cursor-pointer ${
                     chartPeriod === period
-                      ? 'bg-gradient-to-r from-indigo-600 to-blue-600 text-white shadow-2xs'
-                      : 'text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-slate-200'
+                      ? 'bg-gradient-to-r from-[#3B82F6] to-[#8B5CF6] text-white shadow-2xs'
+                      : 'text-[#64748B] dark:text-[#94A3B8] hover:text-[#0F172A] dark:hover:text-slate-200'
                   }`}
                 >
                   {period === '7d'
@@ -357,7 +357,7 @@ export const DashboardPage: React.FC = () => {
         <Card>
           <CardHeader>
             <CardTitle>{t('dash.salesByMethod')}</CardTitle>
-            <p className="text-xs text-slate-500 dark:text-slate-400 mt-0.5">
+            <p className="text-xs text-[#64748B] dark:text-[#94A3B8] mt-0.5">
               EVC Plus, eDahab, ZAAD, Card & Cash
             </p>
           </CardHeader>
@@ -401,15 +401,15 @@ export const DashboardPage: React.FC = () => {
                       className="w-2.5 h-2.5 rounded-full shrink-0"
                       style={{ backgroundColor: PALETTE[idx % PALETTE.length] }}
                     />
-                    <span className="text-slate-700 dark:text-slate-300 font-semibold">
+                    <span className="text-[#334155] dark:text-[#94A3B8] font-semibold">
                       {item.method}
                     </span>
                   </div>
                   <div className="flex items-center gap-2">
-                    <span className="font-extrabold text-slate-900 dark:text-slate-100">
+                    <span className="font-extrabold text-[#0F172A] dark:text-[#F8FAFC]">
                       ${item.total.toFixed(2)}
                     </span>
-                    <span className="text-slate-400 text-[11px] font-bold">
+                    <span className="text-[#94A3B8] text-[11px] font-bold">
                       ({item.percentage}%)
                     </span>
                   </div>
@@ -427,37 +427,37 @@ export const DashboardPage: React.FC = () => {
           <CardHeader className="flex flex-row items-center justify-between">
             <div>
               <CardTitle>{t('dash.recentSales')}</CardTitle>
-              <p className="text-xs text-slate-500 dark:text-slate-400 mt-0.5">
+              <p className="text-xs text-[#64748B] dark:text-[#94A3B8] mt-0.5">
                 {language === 'so' ? 'Rasiidhadhkii ugu dambeeyay ee dukaanka' : 'Latest completed checkout receipts'}
               </p>
             </div>
             <Link
               to="/sales"
-              className="text-xs font-bold text-indigo-600 dark:text-indigo-400 hover:underline inline-flex items-center gap-1"
+              className="text-xs font-bold text-[#3B82F6] dark:text-[#06B6D4] hover:underline inline-flex items-center gap-1"
             >
               {t('action.viewAll')}
               <ArrowUpRight className="h-3.5 w-3.5" />
             </Link>
           </CardHeader>
           <CardContent>
-            <div className="divide-y divide-slate-100 dark:divide-slate-800/80">
+            <div className="divide-y divide-[#E2E8F0] dark:divide-[#263449]/80">
               {(recentSales || []).map((sale) => (
                 <div key={sale.id} className="py-3 flex items-center justify-between">
                   <div className="flex items-center gap-3">
-                    <div className="p-2.5 rounded-xl bg-indigo-50 dark:bg-indigo-950/60 text-indigo-600 dark:text-indigo-400 shrink-0">
+                    <div className="p-2.5 rounded-xl bg-indigo-50 dark:bg-indigo-950/60 text-[#3B82F6] dark:text-[#06B6D4] shrink-0">
                       <Receipt className="h-4 w-4" />
                     </div>
                     <div>
-                      <p className="text-xs font-bold text-slate-900 dark:text-slate-100 font-mono">
+                      <p className="text-xs font-bold text-[#0F172A] dark:text-[#F8FAFC] font-mono">
                         {sale.invoiceNumber}
                       </p>
-                      <p className="text-[11px] text-slate-500 font-medium">
+                      <p className="text-[11px] text-[#64748B] font-medium">
                         {sale.cashierName} • {formatDate(sale.createdAt, true)}
                       </p>
                     </div>
                   </div>
                   <div className="text-right">
-                    <p className="text-xs font-extrabold text-slate-900 dark:text-slate-100">
+                    <p className="text-xs font-extrabold text-[#0F172A] dark:text-[#F8FAFC]">
                       ${sale.total.toFixed(2)}
                     </p>
                     <Badge variant="success" size="sm" dot className="mt-0.5">
@@ -475,33 +475,33 @@ export const DashboardPage: React.FC = () => {
           <CardHeader className="flex flex-row items-center justify-between">
             <div>
               <CardTitle>{t('dash.topProducts')}</CardTitle>
-              <p className="text-xs text-slate-500 dark:text-slate-400 mt-0.5">
+              <p className="text-xs text-[#64748B] dark:text-[#94A3B8] mt-0.5">
                 {language === 'so' ? 'Alaabta tirada ugu badan laga iibsaday' : 'Highest volume sold items'}
               </p>
             </div>
             <Link
               to="/products"
-              className="text-xs font-bold text-indigo-600 dark:text-indigo-400 hover:underline inline-flex items-center gap-1"
+              className="text-xs font-bold text-[#3B82F6] dark:text-[#06B6D4] hover:underline inline-flex items-center gap-1"
             >
               {t('nav.products')}
               <ArrowUpRight className="h-3.5 w-3.5" />
             </Link>
           </CardHeader>
           <CardContent>
-            <div className="divide-y divide-slate-100 dark:divide-slate-800/80">
+            <div className="divide-y divide-[#E2E8F0] dark:divide-[#263449]/80">
               {(topProducts || []).map((prod: any, idx: number) => (
                 <div key={prod.id} className="py-3 flex items-center justify-between">
                   <div className="flex items-center gap-3">
-                    <span className="flex h-7 w-7 items-center justify-center rounded-xl bg-gradient-to-tr from-indigo-500 to-blue-600 text-white text-xs font-extrabold shadow-2xs shrink-0">
+                    <span className="flex h-7 w-7 items-center justify-center rounded-xl bg-gradient-to-tr from-[#3B82F6] to-[#8B5CF6] text-white text-xs font-extrabold shadow-2xs shrink-0">
                       #{idx + 1}
                     </span>
                     <div>
-                      <p className="text-xs font-bold text-slate-900 dark:text-slate-100">{prod.name}</p>
-                      <p className="text-[11px] text-slate-500 font-medium">{prod.category}</p>
+                      <p className="text-xs font-bold text-[#0F172A] dark:text-[#F8FAFC]">{prod.name}</p>
+                      <p className="text-[11px] text-[#64748B] font-medium">{prod.category}</p>
                     </div>
                   </div>
                   <div className="text-right">
-                    <p className="text-xs font-extrabold text-slate-900 dark:text-slate-100">
+                    <p className="text-xs font-extrabold text-[#0F172A] dark:text-[#F8FAFC]">
                       {prod.unitsSold} {language === 'so' ? 'xabbad' : 'sold'}
                     </p>
                     <p className="text-[11px] font-bold text-emerald-600 dark:text-emerald-400 mt-0.5">

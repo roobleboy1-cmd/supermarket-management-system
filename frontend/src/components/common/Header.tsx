@@ -98,12 +98,12 @@ export const Header: React.FC<{
   }
 
   return (
-    <header className="h-16 border-b border-slate-200/80 dark:border-slate-800/80 bg-white/85 dark:bg-slate-950/85 backdrop-blur-xl sticky top-0 z-20 px-3 sm:px-6 flex items-center justify-between gap-2 sm:gap-4 transition-colors">
+    <header className="h-16 border-b border-[#E2E8F0] dark:border-[#263449] bg-white/85 dark:bg-[#0B1220]/85 backdrop-blur-xl sticky top-0 z-20 px-3 sm:px-6 flex items-center justify-between gap-2 sm:gap-4 transition-colors">
       {/* Left: Mobile Hamburger Toggle Button + Search Bar */}
       <div className="flex items-center gap-2 flex-1 max-w-md">
         <button
           onClick={onToggleMobileMenu}
-          className="p-2 rounded-xl text-slate-500 hover:text-slate-800 dark:text-slate-400 dark:hover:text-slate-100 hover:bg-slate-100 dark:hover:bg-slate-800 md:hidden shrink-0 transition"
+          className="p-2 rounded-xl text-[#64748B] hover:text-[#1E293B] dark:text-[#94A3B8] dark:hover:text-slate-100 hover:bg-[#F1F5F9] dark:hover:bg-[#172338] md:hidden shrink-0 transition"
           title="Open Navigation Menu"
         >
           <Menu className="h-5 w-5" />
@@ -112,14 +112,14 @@ export const Header: React.FC<{
         {/* Global Search Bar & Command Palette Button */}
         <button
           onClick={onOpenCommandPalette}
-          className="w-full flex items-center justify-between rounded-xl border border-slate-200/80 dark:border-slate-800 bg-slate-50/70 dark:bg-slate-900/60 px-3.5 py-2 text-xs text-slate-400 hover:text-slate-600 dark:hover:text-slate-300 hover:border-indigo-400/50 dark:hover:border-indigo-500/50 hover:bg-white dark:hover:bg-slate-900 transition-all duration-150 shadow-2xs"
+          className="w-full flex items-center justify-between rounded-xl border border-[#E2E8F0] dark:border-[#263449] bg-[#F5F7FC]/70 dark:bg-[#0B1220]/60 px-3.5 py-2 text-xs text-[#94A3B8] hover:text-[#64748B] dark:hover:text-slate-300 hover:border-indigo-400/50 dark:hover:border-indigo-500/50 hover:bg-white dark:hover:bg-slate-900 transition-all duration-150 shadow-2xs"
         >
           <div className="flex items-center gap-2.5 truncate">
             <Search className="h-4 w-4 text-indigo-500 shrink-0" />
             <span className="truncate hidden sm:inline">{t('header.search')}</span>
             <span className="truncate sm:hidden">{t('header.searchShort')}</span>
           </div>
-          <kbd className="hidden sm:inline-flex items-center gap-1 rounded-md bg-slate-200/80 dark:bg-slate-800 px-1.5 py-0.5 text-[10px] font-mono font-semibold text-slate-600 dark:text-slate-400 border border-slate-300/60 dark:border-slate-700/60">
+          <kbd className="hidden sm:inline-flex items-center gap-1 rounded-md bg-[#E2E8F0] dark:bg-[#172338] px-1.5 py-0.5 text-[10px] font-mono font-semibold text-[#64748B] dark:text-[#94A3B8] border border-slate-300/60 dark:border-[#263449]/60">
             <Command className="h-3 w-3" /> K
           </kbd>
         </button>
@@ -131,7 +131,7 @@ export const Header: React.FC<{
         <div className="relative">
           <button
             onClick={handleToggleLang}
-            className="flex items-center gap-1.5 px-2.5 py-1.5 rounded-xl border border-slate-200/80 dark:border-slate-800 bg-white/80 dark:bg-slate-900/80 hover:bg-indigo-50/80 dark:hover:bg-slate-800 text-slate-700 dark:text-slate-200 hover:border-indigo-300 dark:hover:border-indigo-700 transition font-bold text-xs shadow-2xs cursor-pointer group"
+            className="flex items-center gap-1.5 px-2.5 py-1.5 rounded-xl border border-[#E2E8F0] dark:border-[#263449] bg-white/80 dark:bg-[#111C31]/80 hover:bg-indigo-50/80 dark:hover:bg-[#172338] text-[#334155] dark:text-[#F8FAFC] hover:border-indigo-300 dark:hover:border-indigo-700 transition font-bold text-xs shadow-2xs cursor-pointer group"
             title={language === 'so' ? 'U Beddel English' : 'Switch to Somali'}
           >
             <Globe className="h-3.5 w-3.5 text-indigo-600 dark:text-indigo-400 group-hover:rotate-45 transition-transform duration-300" />
@@ -153,7 +153,7 @@ export const Header: React.FC<{
                 : (language === 'so' ? 'Muuqaalka cadceedda ayaa la shiday' : 'Switched to clean light mode')
             )
           }}
-          className="p-2 rounded-xl border border-slate-200/80 dark:border-slate-800 bg-white/80 dark:bg-slate-900/80 hover:bg-slate-100 dark:hover:bg-slate-800 transition text-slate-700 dark:text-slate-200 shadow-2xs group cursor-pointer hover:border-amber-300 dark:hover:border-indigo-500/50"
+          className="p-2 rounded-xl border border-[#E2E8F0] dark:border-[#263449] bg-white/80 dark:bg-[#111C31]/80 hover:bg-[#F1F5F9] dark:hover:bg-[#172338] transition text-[#334155] dark:text-[#F8FAFC] shadow-2xs group cursor-pointer hover:border-amber-300 dark:hover:border-indigo-500/50"
           title={
             resolvedTheme === 'dark'
               ? (language === 'so' ? 'Shid Iftiinka (Light Mode)' : 'Switch to Light Mode')
@@ -185,17 +185,17 @@ export const Header: React.FC<{
           </button>
 
           {roleSwitcherOpen && (
-            <div className="absolute right-0 mt-2 w-80 rounded-2xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 p-2.5 shadow-2xl z-50 animate-in zoom-in-95 text-xs">
-              <div className="px-3 py-2 border-b border-slate-100 dark:border-slate-800">
+            <div className="absolute right-0 mt-2 w-80 rounded-2xl border border-[#E2E8F0] dark:border-[#263449] bg-white dark:bg-[#111C31] p-2.5 shadow-2xl z-50 animate-in zoom-in-95 text-xs">
+              <div className="px-3 py-2 border-b border-[#E2E8F0] dark:border-[#263449]">
                 <div className="flex items-center justify-between">
-                  <p className="font-bold text-slate-900 dark:text-slate-100 text-xs">
+                  <p className="font-bold text-[#0F172A] dark:text-[#F8FAFC] text-xs">
                     {language === 'so' ? 'Shaqooyinka Supermarket-ka' : 'Supermarket Roles (RBAC)'}
                   </p>
                   <span className="text-[10px] font-bold px-1.5 py-0.5 rounded-full bg-indigo-100 dark:bg-indigo-950 text-indigo-700 dark:text-indigo-300">
                     6 Staff
                   </span>
                 </div>
-                <p className="text-[10px] text-slate-500 dark:text-slate-400 mt-0.5">
+                <p className="text-[10px] text-[#64748B] dark:text-[#94A3B8] mt-0.5">
                   {language === 'so'
                     ? 'Doorka aad dooratid shaqadiisa bas ayaa kuu soo baxaysa:'
                     : 'Select any role to view their restricted workspace:'}
@@ -216,12 +216,12 @@ export const Header: React.FC<{
                         'w-full text-left p-2.5 rounded-xl transition-all duration-150 flex items-start justify-between gap-2.5',
                         isCurrent
                           ? 'bg-gradient-to-r from-indigo-50 to-blue-50 dark:from-indigo-950/60 dark:to-blue-950/60 border border-indigo-200 dark:border-indigo-800/80 shadow-2xs'
-                          : 'hover:bg-slate-50 dark:hover:bg-slate-800/70 border border-transparent'
+                          : 'hover:bg-[#F8FAFC] dark:hover:bg-[#172338]/70 border border-transparent'
                       )}
                     >
                       <div className="min-w-0">
                         <div className="flex items-center gap-1.5">
-                          <span className="font-bold text-slate-900 dark:text-slate-100 text-xs">
+                          <span className="font-bold text-[#0F172A] dark:text-[#F8FAFC] text-xs">
                             {role}
                           </span>
                           {isCurrent && (
@@ -230,10 +230,10 @@ export const Header: React.FC<{
                             </span>
                           )}
                         </div>
-                        <p className="text-[11px] text-slate-700 dark:text-slate-300 font-semibold truncate mt-0.5">
+                        <p className="text-[11px] text-[#334155] dark:text-[#94A3B8] font-semibold truncate mt-0.5">
                           {matchedUser?.name || 'Staff Member'}
                         </p>
-                        <p className="text-[10px] text-slate-500 dark:text-slate-400 line-clamp-1 mt-0.5">
+                        <p className="text-[10px] text-[#64748B] dark:text-[#94A3B8] line-clamp-1 mt-0.5">
                           {info.job}
                         </p>
                       </div>
@@ -302,7 +302,7 @@ export const Header: React.FC<{
         {/* Notifications Icon */}
         <Link
           to="/notifications"
-          className="relative p-2 rounded-xl text-slate-500 hover:text-slate-800 dark:text-slate-400 dark:hover:text-slate-100 hover:bg-slate-100 dark:hover:bg-slate-800 transition"
+          className="relative p-2 rounded-xl text-[#64748B] hover:text-[#1E293B] dark:text-[#94A3B8] dark:hover:text-slate-100 hover:bg-[#F1F5F9] dark:hover:bg-[#172338] transition"
           title={t('nav.notifications')}
         >
           <Bell className="h-4 w-4" />
@@ -319,20 +319,20 @@ export const Header: React.FC<{
             onClick={() => setProfileOpen(!profileOpen)}
             className="flex items-center gap-2 p-0.5 rounded-xl hover:ring-2 hover:ring-indigo-500/40 transition cursor-pointer"
           >
-            <div className="flex h-8 w-8 items-center justify-center rounded-xl bg-gradient-to-tr from-indigo-600 to-blue-600 text-white font-extrabold text-xs shadow-xs">
+            <div className="flex h-8 w-8 items-center justify-center rounded-xl bg-gradient-to-tr from-[#3B82F6] to-[#8B5CF6] text-white font-extrabold text-xs shadow-xs">
               {user?.name ? user.name.slice(0, 2).toUpperCase() : 'AD'}
             </div>
           </button>
           {profileOpen && (
             <div
-              className="absolute right-0 mt-2 w-64 rounded-2xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 py-2 shadow-2xl z-50 text-xs animate-in zoom-in-95"
+              className="absolute right-0 mt-2 w-64 rounded-2xl border border-[#E2E8F0] dark:border-[#263449] bg-white dark:bg-[#111C31] py-2 shadow-2xl z-50 text-xs animate-in zoom-in-95"
               onClick={() => setProfileOpen(false)}
             >
-              <div className="px-4 py-3 border-b border-slate-100 dark:border-slate-800">
-                <p className="font-bold text-slate-900 dark:text-slate-100 truncate text-sm">
+              <div className="px-4 py-3 border-b border-[#E2E8F0] dark:border-[#263449]">
+                <p className="font-bold text-[#0F172A] dark:text-[#F8FAFC] truncate text-sm">
                   {user?.name || 'Administrator'}
                 </p>
-                <p className="text-[11px] text-slate-500 dark:text-slate-400 truncate mt-0.5">
+                <p className="text-[11px] text-[#64748B] dark:text-[#94A3B8] truncate mt-0.5">
                   {user?.email || 'admin@supermarket.so'}
                 </p>
                 <div className="mt-2 flex items-center gap-1.5">
@@ -350,7 +350,7 @@ export const Header: React.FC<{
               {currentRole === 'Super Admin' && (
                 <Link
                   to="/settings"
-                  className="flex items-center gap-2 px-4 py-2.5 text-slate-700 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-800 font-medium"
+                  className="flex items-center gap-2 px-4 py-2.5 text-[#334155] dark:text-[#94A3B8] hover:bg-[#F1F5F9] dark:hover:bg-[#172338] font-medium"
                 >
                   {t('header.storeSettings')}
                 </Link>
@@ -358,12 +358,12 @@ export const Header: React.FC<{
 
               <Link
                 to="/activity-logs"
-                className="flex items-center gap-2 px-4 py-2.5 text-slate-700 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-800 font-medium"
+                className="flex items-center gap-2 px-4 py-2.5 text-[#334155] dark:text-[#94A3B8] hover:bg-[#F1F5F9] dark:hover:bg-[#172338] font-medium"
               >
                 {t('header.activityLogs')}
               </Link>
 
-              <div className="border-t border-slate-100 dark:border-slate-800 my-1" />
+              <div className="border-t border-[#E2E8F0] dark:border-[#263449] my-1" />
               <button
                 onClick={handleLogout}
                 className="flex w-full items-center gap-2 px-4 py-2 text-left text-rose-600 hover:bg-rose-50 dark:hover:bg-rose-950/40 font-semibold"

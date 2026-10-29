@@ -123,7 +123,7 @@ export const StoreSettingsPage: React.FC = () => {
         <Card>
           <CardHeader>
             <div className="flex items-center gap-2">
-              <Store className="h-5 w-5 text-blue-600" />
+              <Store className="h-5 w-5 text-[#3B82F6]" />
               <CardTitle>Supermarket Identity & Contact Info</CardTitle>
             </div>
           </CardHeader>
@@ -228,7 +228,7 @@ export const StoreSettingsPage: React.FC = () => {
         <Card>
           <CardHeader>
             <div className="flex items-center gap-2">
-              <Printer className="h-5 w-5 text-indigo-600" />
+              <Printer className="h-5 w-5 text-[#3B82F6]" />
               <CardTitle>Thermal Receipt & Printer Configuration</CardTitle>
             </div>
           </CardHeader>
@@ -289,13 +289,13 @@ export const StoreSettingsPage: React.FC = () => {
                     className={`p-3 rounded-xl border flex items-center justify-between text-xs transition cursor-pointer ${
                       isEnabled
                         ? 'border-blue-500 bg-blue-50/60 dark:bg-blue-950/40 text-blue-900 dark:text-blue-300 font-bold'
-                        : 'border-slate-200 dark:border-slate-800 text-slate-500'
+                        : 'border-[#E2E8F0] dark:border-[#263449] text-[#64748B]'
                     }`}
                   >
                     <span>{method}</span>
                     <span
                       className={`h-4 w-4 rounded-full flex items-center justify-center text-[10px] ${
-                        isEnabled ? 'bg-blue-600 text-white' : 'border border-slate-300'
+                        isEnabled ? 'bg-[#3B82F6] text-white' : 'border border-[#CBD5E1]'
                       }`}
                     >
                       {isEnabled && '✓'}

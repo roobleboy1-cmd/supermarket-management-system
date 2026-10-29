@@ -294,7 +294,7 @@ export const ProductsPage: React.FC = () => {
         <CardContent className="p-4">
           <div className="flex flex-col md:flex-row gap-3">
             <div className="flex-1 relative">
-              <Search className="absolute left-3 top-2.5 h-4 w-4 text-slate-400" />
+              <Search className="absolute left-3 top-2.5 h-4 w-4 text-[#94A3B8]" />
               <input
                 type="text"
                 placeholder="Search products by title, SKU, barcode..."
@@ -303,7 +303,7 @@ export const ProductsPage: React.FC = () => {
                   setSearch(e.target.value)
                   setPage(1)
                 }}
-                className="w-full pl-9 pr-3 py-2 text-sm rounded-lg border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 focus:outline-none focus:ring-2 focus:ring-blue-500"
+                className="w-full pl-9 pr-3 py-2 text-sm rounded-lg border border-[#E2E8F0] dark:border-[#263449] bg-white dark:bg-[#111C31] focus:outline-none focus:ring-2 focus:ring-[#3B82F6]"
               />
             </div>
             <div className="w-full md:w-48">
@@ -313,7 +313,7 @@ export const ProductsPage: React.FC = () => {
                   setCategoryId(e.target.value)
                   setPage(1)
                 }}
-                className="w-full text-xs px-3 py-2 rounded-lg border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900"
+                className="w-full text-xs px-3 py-2 rounded-lg border border-[#E2E8F0] dark:border-[#263449] bg-white dark:bg-[#111C31]"
               >
                 <option value="all">All Categories</option>
                 {(categories || []).map((c) => (
@@ -330,7 +330,7 @@ export const ProductsPage: React.FC = () => {
                   setStatusFilter(e.target.value)
                   setPage(1)
                 }}
-                className="w-full text-xs px-3 py-2 rounded-lg border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900"
+                className="w-full text-xs px-3 py-2 rounded-lg border border-[#E2E8F0] dark:border-[#263449] bg-white dark:bg-[#111C31]"
               >
                 <option value="all">All Status</option>
                 <option value="active">Active</option>
@@ -346,7 +346,7 @@ export const ProductsPage: React.FC = () => {
       <Card>
         <div className="overflow-x-auto">
           <table className="w-full text-left text-xs">
-            <thead className="bg-slate-50 dark:bg-slate-950/40 text-slate-500 border-b border-slate-200 dark:border-slate-800 uppercase tracking-wider font-semibold text-[11px]">
+            <thead className="bg-[#F5F7FC] dark:bg-[#0B1220]/40 text-[#64748B] border-b border-[#E2E8F0] dark:border-[#263449] uppercase tracking-wider font-semibold text-[11px]">
               <tr>
                 <th className="py-3 px-4">Product Details</th>
                 <th className="py-3 px-4">Category / Brand</th>
@@ -357,16 +357,16 @@ export const ProductsPage: React.FC = () => {
                 <th className="py-3 px-4 text-right">Actions</th>
               </tr>
             </thead>
-            <tbody className="divide-y divide-slate-100 dark:divide-slate-800">
+            <tbody className="divide-y divide-[#E2E8F0] dark:divide-[#263449]">
               {isLoading ? (
                 <tr>
-                  <td colSpan={7} className="py-12 text-center text-slate-400">
+                  <td colSpan={7} className="py-12 text-center text-[#94A3B8]">
                     Loading products catalog...
                   </td>
                 </tr>
               ) : productsData?.items.length === 0 ? (
                 <tr>
-                  <td colSpan={7} className="py-12 text-center text-slate-400">
+                  <td colSpan={7} className="py-12 text-center text-[#94A3B8]">
                     No products matched your search filter.
                   </td>
                 </tr>
@@ -381,30 +381,30 @@ export const ProductsPage: React.FC = () => {
                   return (
                     <tr
                       key={prod.id}
-                      className="hover:bg-slate-50/70 dark:hover:bg-slate-800/40 transition"
+                      className="hover:bg-[#F5F7FC]/70 dark:hover:bg-[#172338]/40 transition"
                     >
                       <td className="py-3 px-4">
-                        <div className="font-semibold text-slate-900 dark:text-slate-100">
+                        <div className="font-semibold text-[#0F172A] dark:text-[#F8FAFC]">
                           {prod.name}
                         </div>
-                        <div className="text-[11px] font-mono text-slate-400">SKU: {prod.sku}</div>
+                        <div className="text-[11px] font-mono text-[#94A3B8]">SKU: {prod.sku}</div>
                       </td>
                       <td className="py-3 px-4">
-                        <div className="font-medium text-slate-800 dark:text-slate-200">
+                        <div className="font-medium text-[#1E293B] dark:text-[#F8FAFC]">
                           {prod.categoryName || 'General'}
                         </div>
-                        <div className="text-[11px] text-slate-400">{prod.brandName || '-'}</div>
+                        <div className="text-[11px] text-[#94A3B8]">{prod.brandName || '-'}</div>
                       </td>
                       <td className="py-3 px-4">
-                        <div className="font-bold text-slate-900 dark:text-slate-100">
+                        <div className="font-bold text-[#0F172A] dark:text-[#F8FAFC]">
                           ${prod.sellingPrice.toFixed(2)}
                         </div>
-                        <div className="text-[10px] text-slate-400">
+                        <div className="text-[10px] text-[#94A3B8]">
                           Cost: ${prod.costPrice.toFixed(2)} ({marginPct.toFixed(0)}% margin)
                         </div>
                       </td>
                       <td className="py-3 px-4 text-center">
-                        <div className="font-bold text-slate-900 dark:text-slate-100">
+                        <div className="font-bold text-[#0F172A] dark:text-[#F8FAFC]">
                           {prod.quantity} {prod.unit}
                         </div>
                         {isLow && (
@@ -413,7 +413,7 @@ export const ProductsPage: React.FC = () => {
                           </span>
                         )}
                       </td>
-                      <td className="py-3 px-4 font-mono text-slate-600 dark:text-slate-400">
+                      <td className="py-3 px-4 font-mono text-[#64748B] dark:text-[#94A3B8]">
                         {prod.barcode}
                       </td>
                       <td className="py-3 px-4 text-center">
@@ -434,28 +434,28 @@ export const ProductsPage: React.FC = () => {
                         <div className="inline-flex items-center gap-1">
                           <button
                             onClick={() => setBarcodeModalProduct(prod)}
-                            className="p-1.5 rounded-lg text-slate-400 hover:text-blue-600 hover:bg-slate-100 dark:hover:bg-slate-800"
+                            className="p-1.5 rounded-lg text-[#94A3B8] hover:text-[#3B82F6] hover:bg-[#F1F5F9] dark:hover:bg-[#172338]"
                             title="Generate & Print Barcode Label"
                           >
                             <Barcode className="h-4 w-4" />
                           </button>
                           <button
                             onClick={() => handleViewMovements(prod)}
-                            className="p-1.5 rounded-lg text-slate-400 hover:text-blue-600 hover:bg-slate-100 dark:hover:bg-slate-800"
+                            className="p-1.5 rounded-lg text-[#94A3B8] hover:text-[#3B82F6] hover:bg-[#F1F5F9] dark:hover:bg-[#172338]"
                             title="Stock Movement Ledger"
                           >
                             <History className="h-4 w-4" />
                           </button>
                           <button
                             onClick={() => handleOpenEdit(prod)}
-                            className="p-1.5 rounded-lg text-slate-400 hover:text-blue-600 hover:bg-slate-100 dark:hover:bg-slate-800"
+                            className="p-1.5 rounded-lg text-[#94A3B8] hover:text-[#3B82F6] hover:bg-[#F1F5F9] dark:hover:bg-[#172338]"
                             title="Edit Product"
                           >
                             <Edit className="h-4 w-4" />
                           </button>
                           <button
                             onClick={() => handleDeleteProduct(prod)}
-                            className="p-1.5 rounded-lg text-slate-400 hover:text-red-600 hover:bg-slate-100 dark:hover:bg-slate-800"
+                            className="p-1.5 rounded-lg text-[#94A3B8] hover:text-red-600 hover:bg-[#F1F5F9] dark:hover:bg-[#172338]"
                             title="Remove Product"
                           >
                             <Trash2 className="h-4 w-4" />
@@ -472,8 +472,8 @@ export const ProductsPage: React.FC = () => {
 
         {/* Server-Side Pagination Bar */}
         {productsData && productsData.totalPages > 1 && (
-          <div className="p-4 border-t border-slate-200 dark:border-slate-800 flex items-center justify-between text-xs">
-            <span className="text-slate-500">
+          <div className="p-4 border-t border-[#E2E8F0] dark:border-[#263449] flex items-center justify-between text-xs">
+            <span className="text-[#64748B]">
               Showing page {productsData.page} of {productsData.totalPages} ({productsData.total}{' '}
               total products)
             </span>
@@ -534,7 +534,7 @@ export const ProductsPage: React.FC = () => {
             />
 
             <div>
-              <label className="block text-xs font-semibold text-slate-700 dark:text-slate-300 mb-1.5">
+              <label className="block text-xs font-semibold text-[#334155] dark:text-[#94A3B8] mb-1.5">
                 Barcode
               </label>
               <div className="flex gap-2">
@@ -543,7 +543,7 @@ export const ProductsPage: React.FC = () => {
                   required
                   value={barcode}
                   onChange={(e) => setBarcode(e.target.value)}
-                  className="w-full text-xs px-3 py-2 rounded-lg border border-slate-300 dark:border-slate-700 bg-white dark:bg-slate-900 font-mono"
+                  className="w-full text-xs px-3 py-2 rounded-lg border border-[#CBD5E1] dark:border-[#263449] bg-white dark:bg-[#111C31] font-mono"
                   placeholder="Barcode..."
                 />
                 <Button
@@ -635,7 +635,7 @@ export const ProductsPage: React.FC = () => {
               <span className="font-semibold text-blue-900 dark:text-blue-300">
                 Gross Profit Margin Preview:
               </span>
-              <span className="font-bold text-sm text-blue-700 dark:text-blue-400">
+              <span className="font-bold text-sm text-blue-700 dark:text-[#06B6D4]">
                 {profitMargin.toFixed(1)}% (${(numPrice - numCost).toFixed(2)} per unit)
               </span>
             </div>
@@ -674,7 +674,7 @@ export const ProductsPage: React.FC = () => {
             </Select>
           </div>
 
-          <div className="flex items-center justify-end gap-3 pt-4 border-t border-slate-100 dark:border-slate-800">
+          <div className="flex items-center justify-end gap-3 pt-4 border-t border-[#E2E8F0] dark:border-[#263449]">
             <Button type="button" variant="outline" onClick={() => setIsFormOpen(false)}>
               Cancel
             </Button>
@@ -695,11 +695,11 @@ export const ProductsPage: React.FC = () => {
       >
         <div className="space-y-3">
           {movementsLoading ? (
-            <p className="py-8 text-center text-xs text-slate-400">Loading ledger movements...</p>
+            <p className="py-8 text-center text-xs text-[#94A3B8]">Loading ledger movements...</p>
           ) : movements.length === 0 ? (
-            <p className="py-8 text-center text-xs text-slate-400">No stock movements recorded yet for this item.</p>
+            <p className="py-8 text-center text-xs text-[#94A3B8]">No stock movements recorded yet for this item.</p>
           ) : (
-            <div className="divide-y divide-slate-100 dark:divide-slate-800 text-xs">
+            <div className="divide-y divide-[#E2E8F0] dark:divide-[#263449] text-xs">
               {movements.map((m) => (
                 <div key={m.id} className="py-2.5 flex items-center justify-between">
                   <div>
@@ -716,11 +716,11 @@ export const ProductsPage: React.FC = () => {
                       >
                         {m.type.toUpperCase()}
                       </Badge>
-                      <span className="font-semibold text-slate-900 dark:text-slate-100">
+                      <span className="font-semibold text-[#0F172A] dark:text-[#F8FAFC]">
                         {m.reason || m.referenceNo || 'Transaction'}
                       </span>
                     </div>
-                    <p className="text-[11px] text-slate-400 mt-0.5">
+                    <p className="text-[11px] text-[#94A3B8] mt-0.5">
                       By {m.performedBy} • {formatDate(m.createdAt, true)}
                     </p>
                   </div>
@@ -732,7 +732,7 @@ export const ProductsPage: React.FC = () => {
                     >
                       {m.quantityChange > 0 ? `+${m.quantityChange}` : m.quantityChange}
                     </span>
-                    <p className="text-[10px] text-slate-400">
+                    <p className="text-[10px] text-[#94A3B8]">
                       Balance: {m.newQty}
                     </p>
                   </div>

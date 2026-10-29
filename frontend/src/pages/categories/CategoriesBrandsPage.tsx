@@ -178,32 +178,32 @@ export const CategoriesBrandsPage: React.FC = () => {
                 <CardContent className="p-5 flex flex-col justify-between h-full">
                   <div>
                     <div className="flex items-center justify-between mb-2">
-                      <span className="text-xs font-mono font-bold px-2 py-0.5 rounded bg-blue-50 dark:bg-blue-950/60 text-blue-600 dark:text-blue-400">
+                      <span className="text-xs font-mono font-bold px-2 py-0.5 rounded bg-blue-50 dark:bg-blue-950/60 text-[#3B82F6] dark:text-[#06B6D4]">
                         {cat.code}
                       </span>
                       <div className="flex items-center gap-1">
                         <button
                           onClick={() => handleOpenCategoryEdit(cat)}
-                          className="p-1 rounded text-slate-400 hover:text-blue-600"
+                          className="p-1 rounded text-[#94A3B8] hover:text-[#3B82F6]"
                         >
                           <Edit className="h-3.5 w-3.5" />
                         </button>
                         <button
                           onClick={() => handleDeleteCategory(cat)}
-                          className="p-1 rounded text-slate-400 hover:text-red-600"
+                          className="p-1 rounded text-[#94A3B8] hover:text-red-600"
                         >
                           <Trash2 className="h-3.5 w-3.5" />
                         </button>
                       </div>
                     </div>
-                    <h3 className="text-sm font-bold text-slate-900 dark:text-slate-100">{cat.name}</h3>
-                    <p className="text-xs text-slate-500 dark:text-slate-400 mt-1 line-clamp-2">
+                    <h3 className="text-sm font-bold text-[#0F172A] dark:text-[#F8FAFC]">{cat.name}</h3>
+                    <p className="text-xs text-[#64748B] dark:text-[#94A3B8] mt-1 line-clamp-2">
                       {cat.description || 'No description provided'}
                     </p>
                   </div>
-                  <div className="mt-4 pt-3 border-t border-slate-100 dark:border-slate-800 flex items-center justify-between text-xs text-slate-400">
-                    <span className="flex items-center gap-1 font-medium text-slate-700 dark:text-slate-300">
-                      <Boxes className="h-3.5 w-3.5 text-blue-600" />
+                  <div className="mt-4 pt-3 border-t border-[#E2E8F0] dark:border-[#263449] flex items-center justify-between text-xs text-[#94A3B8]">
+                    <span className="flex items-center gap-1 font-medium text-[#334155] dark:text-[#94A3B8]">
+                      <Boxes className="h-3.5 w-3.5 text-[#3B82F6]" />
                       {cat.productCount} Products
                     </span>
                   </div>
@@ -234,25 +234,25 @@ export const CategoriesBrandsPage: React.FC = () => {
                       <div className="flex items-center gap-1">
                         <button
                           onClick={() => handleOpenBrandEdit(br)}
-                          className="p-1 rounded text-slate-400 hover:text-blue-600"
+                          className="p-1 rounded text-[#94A3B8] hover:text-[#3B82F6]"
                         >
                           <Edit className="h-3.5 w-3.5" />
                         </button>
                         <button
                           onClick={() => handleDeleteBrand(br)}
-                          className="p-1 rounded text-slate-400 hover:text-red-600"
+                          className="p-1 rounded text-[#94A3B8] hover:text-red-600"
                         >
                           <Trash2 className="h-3.5 w-3.5" />
                         </button>
                       </div>
                     </div>
-                    <h3 className="text-sm font-bold text-slate-900 dark:text-slate-100">{br.name}</h3>
-                    <p className="text-xs text-slate-500 dark:text-slate-400 mt-1 line-clamp-2">
+                    <h3 className="text-sm font-bold text-[#0F172A] dark:text-[#F8FAFC]">{br.name}</h3>
+                    <p className="text-xs text-[#64748B] dark:text-[#94A3B8] mt-1 line-clamp-2">
                       {br.description || 'Manufacturer & product line'}
                     </p>
                   </div>
-                  <div className="mt-4 pt-3 border-t border-slate-100 dark:border-slate-800 flex items-center justify-between text-xs text-slate-400">
-                    <span className="flex items-center gap-1 font-medium text-slate-700 dark:text-slate-300">
+                  <div className="mt-4 pt-3 border-t border-[#E2E8F0] dark:border-[#263449] flex items-center justify-between text-xs text-[#94A3B8]">
+                    <span className="flex items-center gap-1 font-medium text-[#334155] dark:text-[#94A3B8]">
                       <Tag className="h-3.5 w-3.5 text-emerald-600" />
                       {br.productCount} Linked Items
                     </span>
@@ -287,14 +287,14 @@ export const CategoriesBrandsPage: React.FC = () => {
             placeholder="e.g. PROD"
           />
           <div>
-            <label className="block text-xs font-semibold text-slate-700 dark:text-slate-300 mb-1.5">
+            <label className="block text-xs font-semibold text-[#334155] dark:text-[#94A3B8] mb-1.5">
               Description (Optional)
             </label>
             <textarea
               value={catDesc}
               onChange={(e) => setCatDesc(e.target.value)}
               rows={3}
-              className="w-full text-xs p-3 rounded-lg border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900"
+              className="w-full text-xs p-3 rounded-lg border border-[#E2E8F0] dark:border-[#263449] bg-white dark:bg-[#111C31]"
               placeholder="Merchandise aisle details..."
             />
           </div>
@@ -332,14 +332,14 @@ export const CategoriesBrandsPage: React.FC = () => {
             placeholder="e.g. ALM"
           />
           <div>
-            <label className="block text-xs font-semibold text-slate-700 dark:text-slate-300 mb-1.5">
+            <label className="block text-xs font-semibold text-[#334155] dark:text-[#94A3B8] mb-1.5">
               Description (Optional)
             </label>
             <textarea
               value={brandDesc}
               onChange={(e) => setBrandDesc(e.target.value)}
               rows={3}
-              className="w-full text-xs p-3 rounded-lg border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900"
+              className="w-full text-xs p-3 rounded-lg border border-[#E2E8F0] dark:border-[#263449] bg-white dark:bg-[#111C31]"
               placeholder="Brand provenance & manufacturer details..."
             />
           </div>

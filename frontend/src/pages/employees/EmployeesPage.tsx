@@ -128,24 +128,24 @@ export const EmployeesPage: React.FC = () => {
                     <th className="py-3 px-4 text-right">Actions</th>
                   </tr>
                 </thead>
-                <tbody className="divide-y divide-slate-100 dark:divide-slate-800">
+                <tbody className="divide-y divide-[#E2E8F0] dark:divide-[#263449]">
                   {isLoading ? (
                     <tr>
-                      <td colSpan={6} className="py-12 text-center text-slate-400">
+                      <td colSpan={6} className="py-12 text-center text-[#94A3B8]">
                         Loading employee roster...
                       </td>
                     </tr>
                   ) : (
                     employees?.map((emp) => (
-                      <tr key={emp.id} className="hover:bg-slate-50 dark:hover:bg-slate-800/40">
+                      <tr key={emp.id} className="hover:bg-[#F8FAFC] dark:hover:bg-[#172338]/40">
                         <td className="py-3 px-4">
-                          <div className="font-semibold text-slate-900 dark:text-slate-100 flex items-center gap-2">
+                          <div className="font-semibold text-[#0F172A] dark:text-[#F8FAFC] flex items-center gap-2">
                             <span className="flex h-7 w-7 items-center justify-center rounded-full bg-blue-100 text-blue-700 dark:bg-blue-950 dark:text-blue-300 font-bold text-[10px]">
                               {emp.name.slice(0, 2).toUpperCase()}
                             </span>
                             <span>{emp.name}</span>
                           </div>
-                          <div className="text-[11px] text-slate-400 pl-9">{emp.email}</div>
+                          <div className="text-[11px] text-[#94A3B8] pl-9">{emp.email}</div>
                         </td>
                         <td className="py-3 px-4">
                           <Badge
@@ -163,10 +163,10 @@ export const EmployeesPage: React.FC = () => {
                             {emp.role}
                           </Badge>
                         </td>
-                        <td className="py-3 px-4 font-mono text-slate-600 dark:text-slate-400">
+                        <td className="py-3 px-4 font-mono text-[#64748B] dark:text-[#94A3B8]">
                           {emp.phone || '-'}
                         </td>
-                        <td className="py-3 px-4 text-slate-500">
+                        <td className="py-3 px-4 text-[#64748B]">
                           {emp.lastLogin ? formatDate(emp.lastLogin, true) : 'Never logged in'}
                         </td>
                         <td className="py-3 px-4 text-center">
@@ -212,7 +212,7 @@ export const EmployeesPage: React.FC = () => {
           <Card>
             <CardHeader>
               <CardTitle>Role Access Matrix</CardTitle>
-              <p className="text-xs text-slate-500">
+              <p className="text-xs text-[#64748B]">
                 Front-end UI enforcement reflects backend RBAC permission boundaries
               </p>
             </CardHeader>
@@ -229,7 +229,7 @@ export const EmployeesPage: React.FC = () => {
                       ))}
                     </tr>
                   </thead>
-                  <tbody className="divide-y divide-slate-100 dark:divide-slate-800">
+                  <tbody className="divide-y divide-[#E2E8F0] dark:divide-[#263449]">
                     {[
                       { label: 'Access POS & Checkout', key: 'canAccessPos' },
                       { label: 'Manage Products & Pricing', key: 'canManageProducts' },
@@ -243,8 +243,8 @@ export const EmployeesPage: React.FC = () => {
                       { label: 'Manage Employees & Access', key: 'canManageEmployees' },
                       { label: 'Update Store Configuration', key: 'canManageSettings' },
                     ].map((row) => (
-                      <tr key={row.key} className="hover:bg-slate-50 dark:hover:bg-slate-800/40">
-                        <td className="py-2.5 px-4 font-semibold text-slate-800 dark:text-slate-200">
+                      <tr key={row.key} className="hover:bg-[#F8FAFC] dark:hover:bg-[#172338]/40">
+                        <td className="py-2.5 px-4 font-semibold text-[#1E293B] dark:text-[#F8FAFC]">
                           {row.label}
                         </td>
                         {ROLES.map((r) => {
@@ -254,7 +254,7 @@ export const EmployeesPage: React.FC = () => {
                               {allowed ? (
                                 <Check className="h-4 w-4 text-emerald-600 mx-auto" />
                               ) : (
-                                <X className="h-4 w-4 text-slate-300 dark:text-slate-700 mx-auto" />
+                                <X className="h-4 w-4 text-slate-300 dark:text-[#334155] mx-auto" />
                               )}
                             </td>
                           )
@@ -327,7 +327,7 @@ export const EmployeesPage: React.FC = () => {
             <option value="suspended">Suspended</option>
           </Select>
 
-          <div className="flex justify-end gap-2 pt-2 border-t border-slate-100 dark:border-slate-800">
+          <div className="flex justify-end gap-2 pt-2 border-t border-[#E2E8F0] dark:border-[#263449]">
             <Button type="button" variant="outline" onClick={() => setModalOpen(false)}>
               Cancel
             </Button>

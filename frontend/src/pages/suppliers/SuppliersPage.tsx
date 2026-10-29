@@ -163,7 +163,7 @@ export const SuppliersPage: React.FC = () => {
                   <div className="flex items-center gap-1">
                     <button
                       onClick={() => handleOpenEdit(sup)}
-                      className="p-1 rounded text-[#94A3B8] hover:text-blue-600"
+                      className="p-1 rounded text-[#94A3B8] hover:text-[#3B82F6]"
                     >
                       <Edit className="h-3.5 w-3.5" />
                     </button>

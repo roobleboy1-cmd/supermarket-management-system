@@ -118,7 +118,7 @@ export const PromotionsCouponsPage: React.FC = () => {
               <Card key={coup.id} className="hover:border-blue-500 transition-all">
                 <CardHeader className="pb-2">
                   <div className="flex items-center justify-between">
-                    <span className="font-mono text-base font-bold text-blue-600 dark:text-blue-400 bg-blue-50 dark:bg-blue-950 px-2.5 py-1 rounded-md border border-blue-200 dark:border-blue-900">
+                    <span className="font-mono text-base font-bold text-[#3B82F6] dark:text-[#06B6D4] bg-blue-50 dark:bg-blue-950 px-2.5 py-1 rounded-md border border-blue-200 dark:border-blue-900">
                       {coup.code}
                     </span>
                     <Badge variant={coup.status === 'active' ? 'success' : 'secondary'} size="sm">
@@ -126,28 +126,28 @@ export const PromotionsCouponsPage: React.FC = () => {
                     </Badge>
                   </div>
                 </CardHeader>
-                <CardContent className="space-y-2.5 text-xs text-slate-600 dark:text-slate-400">
+                <CardContent className="space-y-2.5 text-xs text-[#64748B] dark:text-[#94A3B8]">
                   <div className="flex justify-between items-baseline pt-2">
-                    <span className="text-slate-500">Discount:</span>
-                    <span className="text-sm font-bold text-slate-900 dark:text-slate-100">
+                    <span className="text-[#64748B]">Discount:</span>
+                    <span className="text-sm font-bold text-[#0F172A] dark:text-[#F8FAFC]">
                       {coup.discountType === 'percentage'
                         ? `${coup.discountValue}% OFF`
                         : `$${coup.discountValue.toFixed(2)} OFF`}
                     </span>
                   </div>
                   <div className="flex justify-between">
-                    <span className="text-slate-500">Min Order Spend:</span>
-                    <span className="font-semibold text-slate-800 dark:text-slate-200">
+                    <span className="text-[#64748B]">Min Order Spend:</span>
+                    <span className="font-semibold text-[#1E293B] dark:text-[#F8FAFC]">
                       ${coup.minSpend.toFixed(2)}
                     </span>
                   </div>
                   <div className="flex justify-between">
-                    <span className="text-slate-500">Redemptions:</span>
-                    <span className="font-semibold text-slate-800 dark:text-slate-200">
+                    <span className="text-[#64748B]">Redemptions:</span>
+                    <span className="font-semibold text-[#1E293B] dark:text-[#F8FAFC]">
                       {coup.timesUsed} / {coup.usageLimit} uses
                     </span>
                   </div>
-                  <div className="flex justify-between text-[11px] text-slate-400 border-t border-slate-100 dark:border-slate-800 pt-2">
+                  <div className="flex justify-between text-[11px] text-[#94A3B8] border-t border-[#E2E8F0] dark:border-[#263449] pt-2">
                     <span>Valid until:</span>
                     <span>{formatDate(coup.validTo)}</span>
                   </div>
@@ -175,7 +175,7 @@ export const PromotionsCouponsPage: React.FC = () => {
                     {promo.isActive ? 'ACTIVE' : 'INACTIVE'}
                   </Badge>
                 </CardHeader>
-                <CardContent className="space-y-2 text-xs text-slate-600 dark:text-slate-400">
+                <CardContent className="space-y-2 text-xs text-[#64748B] dark:text-[#94A3B8]">
                   <div className="flex justify-between">
                     <span>Benefit:</span>
                     <span className="font-bold text-emerald-600">
@@ -188,7 +188,7 @@ export const PromotionsCouponsPage: React.FC = () => {
                     <span>Min Basket Amount:</span>
                     <span className="font-semibold">${promo.minPurchaseAmount || 0}</span>
                   </div>
-                  <div className="flex justify-between text-[11px] text-slate-400 border-t border-slate-100 dark:border-slate-800 pt-2">
+                  <div className="flex justify-between text-[11px] text-[#94A3B8] border-t border-[#E2E8F0] dark:border-[#263449] pt-2">
                     <span>Active Period:</span>
                     <span>
                       {formatDate(promo.validFrom)} – {formatDate(promo.validTo)}
@@ -272,7 +272,7 @@ export const PromotionsCouponsPage: React.FC = () => {
             />
           </div>
 
-          <div className="flex justify-end gap-2 pt-2 border-t border-slate-100 dark:border-slate-800">
+          <div className="flex justify-end gap-2 pt-2 border-t border-[#E2E8F0] dark:border-[#263449]">
             <Button type="button" variant="outline" onClick={() => setCouponModalOpen(false)}>
               Cancel
             </Button>
@@ -343,7 +343,7 @@ export const PromotionsCouponsPage: React.FC = () => {
             />
           </div>
 
-          <div className="flex justify-end gap-2 pt-2 border-t border-slate-100 dark:border-slate-800">
+          <div className="flex justify-end gap-2 pt-2 border-t border-[#E2E8F0] dark:border-[#263449]">
             <Button type="button" variant="outline" onClick={() => setPromoModalOpen(false)}>
               Cancel
             </Button>

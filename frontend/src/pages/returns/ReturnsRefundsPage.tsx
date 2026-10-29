@@ -161,12 +161,12 @@ export const ReturnsRefundsPage: React.FC = () => {
 
       {/* Policy Card */}
       <div className="p-4 rounded-xl bg-blue-50 dark:bg-blue-950/40 border border-blue-200 dark:border-blue-900 text-xs flex items-start gap-3">
-        <RotateCcw className="h-5 w-5 text-blue-600 shrink-0 mt-0.5" />
+        <RotateCcw className="h-5 w-5 text-[#3B82F6] shrink-0 mt-0.5" />
         <div className="space-y-0.5">
           <p className="font-bold text-blue-900 dark:text-blue-300">
             Inspection Protocol Notice
           </p>
-          <p className="text-slate-600 dark:text-slate-300 leading-relaxed">
+          <p className="text-[#64748B] dark:text-[#94A3B8] leading-relaxed">
             Returned products do not automatically re-enter active sellable inventory. Only items
             verified as pristine and authorized by manager inspection are added back to stock;
             damaged/expired goods are quarantined.
@@ -181,7 +181,7 @@ export const ReturnsRefundsPage: React.FC = () => {
         <CardContent className="p-0">
           <div className="overflow-x-auto">
             <table className="w-full text-left text-xs">
-              <thead className="bg-slate-50 dark:bg-slate-950/40 text-slate-500 border-b border-slate-200 dark:border-slate-800 uppercase font-semibold text-[11px]">
+              <thead className="bg-[#F5F7FC] dark:bg-[#0B1220]/40 text-[#64748B] border-b border-[#E2E8F0] dark:border-[#263449] uppercase font-semibold text-[11px]">
                 <tr>
                   <th className="py-3 px-4">Return Ref</th>
                   <th className="py-3 px-4">Original Invoice</th>
@@ -192,36 +192,36 @@ export const ReturnsRefundsPage: React.FC = () => {
                   <th className="py-3 px-4 text-right">Manager Action</th>
                 </tr>
               </thead>
-              <tbody className="divide-y divide-slate-100 dark:divide-slate-800">
+              <tbody className="divide-y divide-[#E2E8F0] dark:divide-[#263449]">
                 {isLoading ? (
                   <tr>
-                    <td colSpan={7} className="py-12 text-center text-slate-400">
+                    <td colSpan={7} className="py-12 text-center text-[#94A3B8]">
                       Loading return requests...
                     </td>
                   </tr>
                 ) : returns?.length === 0 ? (
                   <tr>
-                    <td colSpan={7} className="py-12 text-center text-slate-400">
+                    <td colSpan={7} className="py-12 text-center text-[#94A3B8]">
                       No return requests recorded.
                     </td>
                   </tr>
                 ) : (
                   returns?.map((ret) => (
-                    <tr key={ret.id} className="hover:bg-slate-50 dark:hover:bg-slate-800/40">
-                      <td className="py-3 px-4 font-mono font-bold text-slate-900 dark:text-slate-100">
+                    <tr key={ret.id} className="hover:bg-[#F8FAFC] dark:hover:bg-[#172338]/40">
+                      <td className="py-3 px-4 font-mono font-bold text-[#0F172A] dark:text-[#F8FAFC]">
                         {ret.returnNumber}
                       </td>
-                      <td className="py-3 px-4 font-mono text-slate-600 dark:text-slate-300">
+                      <td className="py-3 px-4 font-mono text-[#64748B] dark:text-[#94A3B8]">
                         {ret.originalInvoiceNumber}
                       </td>
-                      <td className="py-3 px-4 text-slate-800 dark:text-slate-200">
+                      <td className="py-3 px-4 text-[#1E293B] dark:text-[#F8FAFC]">
                         {ret.customerName || 'Walk-in'}
                       </td>
                       <td className="py-3 px-4">
                         {ret.items.map((i, idx) => (
                           <div key={idx} className="text-[11px]">
                             <span className="font-semibold">{i.productName}</span> ({i.quantity} pcs)
-                            — <span className="text-slate-400">{i.reason}</span>
+                            — <span className="text-[#94A3B8]">{i.reason}</span>
                             {i.returnToInventory ? (
                               <span className="text-[10px] text-emerald-600 block">
                                 ✓ Inspected for Restock
@@ -234,7 +234,7 @@ export const ReturnsRefundsPage: React.FC = () => {
                           </div>
                         ))}
                       </td>
-                      <td className="py-3 px-4 text-right font-bold text-slate-900 dark:text-slate-100">
+                      <td className="py-3 px-4 text-right font-bold text-[#0F172A] dark:text-[#F8FAFC]">
                         {formatCurrency(ret.totalRefundAmount)} ({ret.refundMethod})
                       </td>
                       <td className="py-3 px-4 text-center">
@@ -273,7 +273,7 @@ export const ReturnsRefundsPage: React.FC = () => {
                           </div>
                         )}
                         {ret.approvedBy && (
-                          <span className="text-[10px] text-slate-400 block">
+                          <span className="text-[10px] text-[#94A3B8] block">
                             By {ret.approvedBy}
                           </span>
                         )}
@@ -317,8 +317,8 @@ export const ReturnsRefundsPage: React.FC = () => {
           </div>
 
           {/* Add Return Items Block */}
-          <div className="p-3 rounded-xl border border-slate-200 dark:border-slate-800 bg-slate-50 dark:bg-slate-900/50 space-y-3">
-            <h4 className="text-xs font-semibold text-slate-800 dark:text-slate-200">
+          <div className="p-3 rounded-xl border border-[#E2E8F0] dark:border-[#263449] bg-[#F5F7FC] dark:bg-[#111C31]/50 space-y-3">
+            <h4 className="text-xs font-semibold text-[#1E293B] dark:text-[#F8FAFC]">
               Add Item to Return
             </h4>
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 text-xs">
@@ -393,18 +393,18 @@ export const ReturnsRefundsPage: React.FC = () => {
 
           {/* Current Return Basket */}
           {returnItems.length > 0 && (
-            <div className="border border-slate-200 dark:border-slate-800 rounded-lg p-3 space-y-2 text-xs">
-              <h5 className="font-semibold text-slate-700 dark:text-slate-300">
+            <div className="border border-[#E2E8F0] dark:border-[#263449] rounded-lg p-3 space-y-2 text-xs">
+              <h5 className="font-semibold text-[#334155] dark:text-[#94A3B8]">
                 Items in Return Request ({returnItems.length})
               </h5>
-              <div className="divide-y divide-slate-100 dark:divide-slate-800">
+              <div className="divide-y divide-[#E2E8F0] dark:divide-[#263449]">
                 {returnItems.map((item, idx) => (
                   <div key={idx} className="py-2 flex justify-between items-center">
                     <div>
-                      <p className="font-semibold text-slate-900 dark:text-slate-100">
+                      <p className="font-semibold text-[#0F172A] dark:text-[#F8FAFC]">
                         {item.productName}
                       </p>
-                      <p className="text-[11px] text-slate-500">
+                      <p className="text-[11px] text-[#64748B]">
                         {item.quantity} × ${item.unitPrice.toFixed(2)} • {item.reason}
                       </p>
                     </div>
@@ -431,7 +431,7 @@ export const ReturnsRefundsPage: React.FC = () => {
             placeholder="e.g. Verified receipt and packaging intact."
           />
 
-          <div className="flex justify-end gap-2 pt-2 border-t border-slate-100 dark:border-slate-800">
+          <div className="flex justify-end gap-2 pt-2 border-t border-[#E2E8F0] dark:border-[#263449]">
             <Button type="button" variant="outline" onClick={() => setCreateModalOpen(false)}>
               Cancel
             </Button>

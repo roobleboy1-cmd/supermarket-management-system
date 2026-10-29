@@ -28,16 +28,16 @@ export const RoleGuard: React.FC<{ children: React.ReactNode }> = ({ children })
 
     return (
       <div className="min-h-[60vh] flex items-center justify-center p-4">
-        <div className="max-w-md w-full bg-white dark:bg-slate-900 border border-slate-200/80 dark:border-slate-800 rounded-3xl p-6 sm:p-8 text-center shadow-xl animate-in zoom-in-95">
+        <div className="max-w-md w-full bg-white dark:bg-[#111C31] border border-[#E2E8F0] dark:border-[#263449] rounded-3xl p-6 sm:p-8 text-center shadow-xl animate-in zoom-in-95">
           <div className="h-16 w-16 mx-auto rounded-2xl bg-amber-500/10 border border-amber-500/30 flex items-center justify-center text-amber-600 dark:text-amber-400 mb-4 shadow-sm">
             <ShieldAlert className="h-8 w-8" />
           </div>
 
-          <h3 className="text-lg font-bold text-slate-900 dark:text-slate-100">
+          <h3 className="text-lg font-bold text-[#0F172A] dark:text-[#F8FAFC]">
             {t('guard.restrictedTitle')}
           </h3>
 
-          <p className="text-xs text-slate-500 dark:text-slate-400 mt-2">
+          <p className="text-xs text-[#64748B] dark:text-[#94A3B8] mt-2">
             {language === 'so' ? 'Adigu waxaad ku jirtaa doorka:' : 'Your assigned staff role:'}
           </p>
 
@@ -46,8 +46,8 @@ export const RoleGuard: React.FC<{ children: React.ReactNode }> = ({ children })
             {user.name} ({user.role})
           </div>
 
-          <div className="text-xs text-slate-600 dark:text-slate-300 leading-relaxed bg-slate-50 dark:bg-slate-800/50 p-4 rounded-2xl border border-slate-200/60 dark:border-slate-800 text-left">
-            <span className="font-bold block text-slate-900 dark:text-slate-100 mb-1">
+          <div className="text-xs text-[#64748B] dark:text-[#94A3B8] leading-relaxed bg-[#F5F7FC] dark:bg-[#172338]/50 p-4 rounded-2xl border border-[#E2E8F0] dark:border-[#263449] text-left">
+            <span className="font-bold block text-[#0F172A] dark:text-[#F8FAFC] mb-1">
               {t('guard.yourScope')}
             </span>
             {roleInfo?.job || 'Shaqooyinka u gaarka ah doorkaaga.'}

@@ -78,7 +78,7 @@ export const InventoryPage: React.FC = () => {
           value={formatCurrency(overview?.totalValuation || 0)}
           description={`${overview?.totalUnits || 0} total units in stock`}
           icon={Boxes}
-          iconColor="text-blue-600 bg-blue-100 dark:bg-blue-950 dark:text-blue-400"
+          iconColor="text-[#3B82F6] bg-blue-100 dark:bg-blue-950 dark:text-[#06B6D4]"
         />
         <StatCard
           title="Retail Potential Value"
@@ -109,14 +109,14 @@ export const InventoryPage: React.FC = () => {
       <Card className="border-blue-200 dark:border-blue-900 bg-gradient-to-r from-blue-50/50 via-white to-indigo-50/40 dark:from-blue-950/20 dark:via-slate-900 dark:to-indigo-950/20">
         <CardHeader className="flex flex-row items-center justify-between pb-2">
           <div className="flex items-center gap-2">
-            <Sparkles className="h-5 w-5 text-blue-600 dark:text-blue-400" />
+            <Sparkles className="h-5 w-5 text-[#3B82F6] dark:text-[#06B6D4]" />
             <CardTitle>Automated Reorder Recommendations</CardTitle>
           </div>
           <Badge variant="primary">Calculated via Lead Time & Sales Velocity</Badge>
         </CardHeader>
         <CardContent>
           {!reorderRecs || reorderRecs.length === 0 ? (
-            <p className="py-4 text-xs text-slate-500">
+            <p className="py-4 text-xs text-[#64748B]">
               All stock levels are currently healthy above minimum replenishment threshold.
             </p>
           ) : (
@@ -124,26 +124,26 @@ export const InventoryPage: React.FC = () => {
               {reorderRecs.map((rec) => (
                 <div
                   key={rec.productId}
-                  className="p-3.5 rounded-xl border border-blue-200 dark:border-blue-900/60 bg-white dark:bg-slate-900/80 shadow-xs flex flex-col justify-between"
+                  className="p-3.5 rounded-xl border border-blue-200 dark:border-blue-900/60 bg-white dark:bg-[#111C31]/80 shadow-xs flex flex-col justify-between"
                 >
                   <div>
                     <div className="flex items-start justify-between">
-                      <span className="text-[10px] font-mono text-slate-400">{rec.sku}</span>
+                      <span className="text-[10px] font-mono text-[#94A3B8]">{rec.sku}</span>
                       <span className="text-[10px] font-bold text-red-600 bg-red-50 dark:bg-red-950 px-1.5 py-0.5 rounded">
                         {rec.currentStock} left (Min: {rec.minStockLevel})
                       </span>
                     </div>
-                    <h4 className="text-xs font-bold text-slate-900 dark:text-slate-100 mt-1 line-clamp-1">
+                    <h4 className="text-xs font-bold text-[#0F172A] dark:text-[#F8FAFC] mt-1 line-clamp-1">
                       {rec.productName}
                     </h4>
-                    <p className="text-[11px] text-slate-500 mt-0.5">
+                    <p className="text-[11px] text-[#64748B] mt-0.5">
                       Supplier: {rec.supplierName}
                     </p>
                   </div>
-                  <div className="mt-3 pt-2.5 border-t border-slate-100 dark:border-slate-800 flex items-center justify-between">
+                  <div className="mt-3 pt-2.5 border-t border-[#E2E8F0] dark:border-[#263449] flex items-center justify-between">
                     <div>
-                      <span className="text-[11px] text-slate-400 block">Suggested Order:</span>
-                      <span className="text-xs font-bold text-blue-600 dark:text-blue-400">
+                      <span className="text-[11px] text-[#94A3B8] block">Suggested Order:</span>
+                      <span className="text-xs font-bold text-[#3B82F6] dark:text-[#06B6D4]">
                         {rec.suggestedReorderQty} units (~${rec.estimatedCost.toFixed(2)})
                       </span>
                     </div>
@@ -165,23 +165,23 @@ export const InventoryPage: React.FC = () => {
         <CardHeader className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 pb-3">
           <div>
             <CardTitle>Single Store Inventory Roster</CardTitle>
-            <p className="text-xs text-slate-500">Live quantity on hand, unit cost valuation and status</p>
+            <p className="text-xs text-[#64748B]">Live quantity on hand, unit cost valuation and status</p>
           </div>
           <div className="flex items-center gap-2">
             <div className="relative w-64">
-              <Search className="absolute left-3 top-2.5 h-3.5 w-3.5 text-slate-400" />
+              <Search className="absolute left-3 top-2.5 h-3.5 w-3.5 text-[#94A3B8]" />
               <input
                 type="text"
                 placeholder="Filter inventory..."
                 value={search}
                 onChange={(e) => setSearch(e.target.value)}
-                className="w-full pl-8 pr-3 py-1.5 text-xs rounded-lg border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900"
+                className="w-full pl-8 pr-3 py-1.5 text-xs rounded-lg border border-[#E2E8F0] dark:border-[#263449] bg-white dark:bg-[#111C31]"
               />
             </div>
             <select
               value={statusFilter}
               onChange={(e) => setStatusFilter(e.target.value)}
-              className="text-xs px-2.5 py-1.5 rounded-lg border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900"
+              className="text-xs px-2.5 py-1.5 rounded-lg border border-[#E2E8F0] dark:border-[#263449] bg-white dark:bg-[#111C31]"
             >
               <option value="all">All Items</option>
               <option value="low_stock">Low Stock Alerts Only</option>
@@ -191,7 +191,7 @@ export const InventoryPage: React.FC = () => {
         <CardContent className="p-0">
           <div className="overflow-x-auto">
             <table className="w-full text-left text-xs">
-              <thead className="bg-slate-50 dark:bg-slate-950/40 text-slate-500 border-b border-slate-200 dark:border-slate-800 uppercase font-semibold text-[11px]">
+              <thead className="bg-[#F5F7FC] dark:bg-[#0B1220]/40 text-[#64748B] border-b border-[#E2E8F0] dark:border-[#263449] uppercase font-semibold text-[11px]">
                 <tr>
                   <th className="py-3 px-4">Item & SKU</th>
                   <th className="py-3 px-4">Category</th>
@@ -202,7 +202,7 @@ export const InventoryPage: React.FC = () => {
                   <th className="py-3 px-4 text-center">Health Status</th>
                 </tr>
               </thead>
-              <tbody className="divide-y divide-slate-100 dark:divide-slate-800">
+              <tbody className="divide-y divide-[#E2E8F0] dark:divide-[#263449]">
                 {(productsData?.items || []).map((item) => {
                   const isOut = item.quantity === 0
                   const isLow = item.quantity <= item.minStockLevel && !isOut
@@ -210,24 +210,24 @@ export const InventoryPage: React.FC = () => {
                   const retailVal = item.quantity * item.sellingPrice
 
                   return (
-                    <tr key={item.id} className="hover:bg-slate-50 dark:hover:bg-slate-800/40">
+                    <tr key={item.id} className="hover:bg-[#F8FAFC] dark:hover:bg-[#172338]/40">
                       <td className="py-3 px-4">
-                        <div className="font-semibold text-slate-900 dark:text-slate-100">{item.name}</div>
-                        <div className="text-[11px] font-mono text-slate-400">{item.sku}</div>
+                        <div className="font-semibold text-[#0F172A] dark:text-[#F8FAFC]">{item.name}</div>
+                        <div className="text-[11px] font-mono text-[#94A3B8]">{item.sku}</div>
                       </td>
-                      <td className="py-3 px-4 text-slate-600 dark:text-slate-300">
+                      <td className="py-3 px-4 text-[#64748B] dark:text-[#94A3B8]">
                         {item.categoryName || 'General'}
                       </td>
                       <td className="py-3 px-4 text-center font-bold">
                         {item.quantity} {item.unit}
                       </td>
-                      <td className="py-3 px-4 text-center text-slate-400 font-mono">
+                      <td className="py-3 px-4 text-center text-[#94A3B8] font-mono">
                         {item.minStockLevel} {item.unit}
                       </td>
                       <td className="py-3 px-4 text-right font-medium">
                         ${costVal.toFixed(2)}
                       </td>
-                      <td className="py-3 px-4 text-right font-bold text-slate-900 dark:text-slate-100">
+                      <td className="py-3 px-4 text-right font-bold text-[#0F172A] dark:text-[#F8FAFC]">
                         ${retailVal.toFixed(2)}
                       </td>
                       <td className="py-3 px-4 text-center">

@@ -30,7 +30,7 @@ export const StatCard: React.FC<StatCardProps> = ({
   return (
     <Card
       className={cn(
-        'relative overflow-hidden group hover:-translate-y-0.5 hover:shadow-md transition-all duration-200 border border-slate-200/80 dark:border-slate-800/80',
+        'relative overflow-hidden group hover:-translate-y-0.5 hover:shadow-md transition-all duration-200 border border-[#E2E8F0] dark:border-[#263449]',
         className
       )}
     >
@@ -39,7 +39,7 @@ export const StatCard: React.FC<StatCardProps> = ({
 
       <CardContent className="p-5 relative z-10">
         <div className="flex items-center justify-between gap-3">
-          <p className="text-xs font-bold uppercase tracking-wider text-slate-500 dark:text-slate-400">
+          <p className="text-xs font-bold uppercase tracking-wider text-[#64748B] dark:text-[#94A3B8]">
             {title}
           </p>
           {Icon && (
@@ -55,7 +55,7 @@ export const StatCard: React.FC<StatCardProps> = ({
         </div>
 
         <div className="mt-3 flex items-baseline justify-between gap-2">
-          <span className="text-2xl sm:text-3xl font-extrabold tracking-tight text-slate-900 dark:text-slate-50">
+          <span className="text-2xl sm:text-3xl font-extrabold tracking-tight text-[#0F172A] dark:text-slate-50">
             {value}
           </span>
           {trend && (
@@ -78,7 +78,7 @@ export const StatCard: React.FC<StatCardProps> = ({
         </div>
 
         {description && (
-          <p className="mt-2 text-xs text-slate-500 dark:text-slate-400 font-medium line-clamp-1">
+          <p className="mt-2 text-xs text-[#64748B] dark:text-[#94A3B8] font-medium line-clamp-1">
             {description}
           </p>
         )}

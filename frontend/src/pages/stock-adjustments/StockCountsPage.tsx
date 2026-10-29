@@ -163,7 +163,7 @@ export const StockCountsPage: React.FC = () => {
             <CardContent className="p-0">
               <div className="overflow-x-auto">
                 <table className="w-full text-left text-xs">
-                  <thead className="bg-slate-50 dark:bg-slate-950/40 text-slate-500 border-b border-slate-200 dark:border-slate-800 uppercase font-semibold text-[11px]">
+                  <thead className="bg-[#F5F7FC] dark:bg-[#0B1220]/40 text-[#64748B] border-b border-[#E2E8F0] dark:border-[#263449] uppercase font-semibold text-[11px]">
                     <tr>
                       <th className="py-3 px-4">Date & Time</th>
                       <th className="py-3 px-4">Product Name</th>
@@ -174,18 +174,18 @@ export const StockCountsPage: React.FC = () => {
                       <th className="py-3 px-4">Notes</th>
                     </tr>
                   </thead>
-                  <tbody className="divide-y divide-slate-100 dark:divide-slate-800">
+                  <tbody className="divide-y divide-[#E2E8F0] dark:divide-[#263449]">
                     {adjustments?.length === 0 ? (
                       <tr>
-                        <td colSpan={7} className="py-12 text-center text-slate-400">
+                        <td colSpan={7} className="py-12 text-center text-[#94A3B8]">
                           No manual stock adjustments recorded yet.
                         </td>
                       </tr>
                     ) : (
                       adjustments?.map((adj) => (
-                        <tr key={adj.id} className="hover:bg-slate-50 dark:hover:bg-slate-800/40">
-                          <td className="py-3 px-4 text-slate-500">{formatDate(adj.createdAt, true)}</td>
-                          <td className="py-3 px-4 font-semibold text-slate-900 dark:text-slate-100">
+                        <tr key={adj.id} className="hover:bg-[#F8FAFC] dark:hover:bg-[#172338]/40">
+                          <td className="py-3 px-4 text-[#64748B]">{formatDate(adj.createdAt, true)}</td>
+                          <td className="py-3 px-4 font-semibold text-[#0F172A] dark:text-[#F8FAFC]">
                             {adj.productName}
                           </td>
                           <td className="py-3 px-4">
@@ -196,11 +196,11 @@ export const StockCountsPage: React.FC = () => {
                           <td className="py-3 px-4 text-center font-bold">
                             {adj.type === 'increase' ? `+${adj.quantity}` : `-${adj.quantity}`}
                           </td>
-                          <td className="py-3 px-4 font-medium text-slate-700 dark:text-slate-300">
+                          <td className="py-3 px-4 font-medium text-[#334155] dark:text-[#94A3B8]">
                             {adj.reason}
                           </td>
-                          <td className="py-3 px-4 text-slate-500">{adj.adjustedBy}</td>
-                          <td className="py-3 px-4 text-slate-400 italic">{adj.notes || '-'}</td>
+                          <td className="py-3 px-4 text-[#64748B]">{adj.adjustedBy}</td>
+                          <td className="py-3 px-4 text-[#94A3B8] italic">{adj.notes || '-'}</td>
                         </tr>
                       ))
                     )}
@@ -226,7 +226,7 @@ export const StockCountsPage: React.FC = () => {
                 <CardHeader className="flex flex-row items-center justify-between pb-2">
                   <div>
                     <CardTitle className="text-sm">{audit.countReference}</CardTitle>
-                    <p className="text-xs text-slate-500">
+                    <p className="text-xs text-[#64748B]">
                       Initiated by {audit.countedBy} on {formatDate(audit.createdAt, true)}
                     </p>
                   </div>
@@ -238,17 +238,17 @@ export const StockCountsPage: React.FC = () => {
                   </Badge>
                 </CardHeader>
                 <CardContent className="space-y-3">
-                  <div className="grid grid-cols-3 gap-2 p-3 rounded-lg bg-slate-50 dark:bg-slate-800/40 text-xs text-center">
+                  <div className="grid grid-cols-3 gap-2 p-3 rounded-lg bg-[#F5F7FC] dark:bg-[#172338]/40 text-xs text-center">
                     <div>
-                      <span className="text-slate-400 block">Total Items</span>
-                      <span className="font-bold text-slate-900 dark:text-slate-100">{audit.totalItems}</span>
+                      <span className="text-[#94A3B8] block">Total Items</span>
+                      <span className="font-bold text-[#0F172A] dark:text-[#F8FAFC]">{audit.totalItems}</span>
                     </div>
                     <div>
-                      <span className="text-slate-400 block">Variances</span>
+                      <span className="text-[#94A3B8] block">Variances</span>
                       <span className="font-bold text-amber-600">{audit.discrepancyCount} Items</span>
                     </div>
                     <div>
-                      <span className="text-slate-400 block">Variance Value</span>
+                      <span className="text-[#94A3B8] block">Variance Value</span>
                       <span
                         className={`font-bold ${
                           audit.totalVarianceValue < 0 ? 'text-red-600' : 'text-emerald-600'
@@ -259,7 +259,7 @@ export const StockCountsPage: React.FC = () => {
                     </div>
                   </div>
 
-                  <p className="text-xs text-slate-500 italic">{audit.notes || 'No notes'}</p>
+                  <p className="text-xs text-[#64748B] italic">{audit.notes || 'No notes'}</p>
 
                   <div className="flex justify-end pt-2">
                     <Button
@@ -333,14 +333,14 @@ export const StockCountsPage: React.FC = () => {
           </Select>
 
           <div>
-            <label className="block text-xs font-semibold text-slate-700 dark:text-slate-300 mb-1">
+            <label className="block text-xs font-semibold text-[#334155] dark:text-[#94A3B8] mb-1">
               Audit Notes
             </label>
             <textarea
               value={adjNotes}
               onChange={(e) => setAdjNotes(e.target.value)}
               rows={2}
-              className="w-full text-xs p-2.5 rounded-lg border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900"
+              className="w-full text-xs p-2.5 rounded-lg border border-[#E2E8F0] dark:border-[#263449] bg-white dark:bg-[#111C31]"
               placeholder="e.g. Broken packaging discovered during shelf stocking..."
             />
           </div>
@@ -364,7 +364,7 @@ export const StockCountsPage: React.FC = () => {
         maxWidth="md"
       >
         <div className="space-y-4">
-          <p className="text-xs text-slate-500 leading-relaxed">
+          <p className="text-xs text-[#64748B] leading-relaxed">
             This creates an active physical count sheet of all {productsData?.items.length || 0} active
             products currently registered in this store. Staff can enter counted stock amounts and
             the backend calculates variances automatically.
@@ -395,9 +395,9 @@ export const StockCountsPage: React.FC = () => {
         maxWidth="4xl"
       >
         <div className="space-y-4">
-          <div className="max-h-96 overflow-auto border border-slate-200 dark:border-slate-800 rounded-lg">
+          <div className="max-h-96 overflow-auto border border-[#E2E8F0] dark:border-[#263449] rounded-lg">
             <table className="w-full text-left text-xs">
-              <thead className="bg-slate-50 dark:bg-slate-950 text-slate-500 uppercase font-semibold text-[11px] sticky top-0">
+              <thead className="bg-[#F5F7FC] dark:bg-[#0B1220] text-[#64748B] uppercase font-semibold text-[11px] sticky top-0">
                 <tr>
                   <th className="py-2.5 px-3">Product Name</th>
                   <th className="py-2.5 px-3">SKU</th>
@@ -406,18 +406,18 @@ export const StockCountsPage: React.FC = () => {
                   <th className="py-2.5 px-3 text-right">Variance</th>
                 </tr>
               </thead>
-              <tbody className="divide-y divide-slate-100 dark:divide-slate-800">
+              <tbody className="divide-y divide-[#E2E8F0] dark:divide-[#263449]">
                 {activeReconcileCount?.items.map((item) => {
                   const currentCounted = countedQuantities[item.productId] ?? item.expectedQty
                   const variance = currentCounted - item.expectedQty
 
                   return (
-                    <tr key={item.productId} className="hover:bg-slate-50 dark:hover:bg-slate-800/40">
-                      <td className="py-2.5 px-3 font-semibold text-slate-900 dark:text-slate-100">
+                    <tr key={item.productId} className="hover:bg-[#F8FAFC] dark:hover:bg-[#172338]/40">
+                      <td className="py-2.5 px-3 font-semibold text-[#0F172A] dark:text-[#F8FAFC]">
                         {item.productName}
                       </td>
-                      <td className="py-2.5 px-3 font-mono text-slate-400">{item.sku}</td>
-                      <td className="py-2.5 px-3 text-center font-bold text-slate-600 dark:text-slate-400">
+                      <td className="py-2.5 px-3 font-mono text-[#94A3B8]">{item.sku}</td>
+                      <td className="py-2.5 px-3 text-center font-bold text-[#64748B] dark:text-[#94A3B8]">
                         {item.expectedQty}
                       </td>
                       <td className="py-2.5 px-3 text-center">
@@ -431,14 +431,14 @@ export const StockCountsPage: React.FC = () => {
                               [item.productId]: isNaN(val) ? 0 : val,
                             })
                           }}
-                          className="w-20 text-center py-1 text-xs font-bold rounded border border-slate-300 dark:border-slate-700 bg-white dark:bg-slate-900"
+                          className="w-20 text-center py-1 text-xs font-bold rounded border border-[#CBD5E1] dark:border-[#263449] bg-white dark:bg-[#111C31]"
                         />
                       </td>
                       <td className="py-2.5 px-3 text-right font-bold">
                         <span
                           className={
                             variance === 0
-                              ? 'text-slate-400'
+                              ? 'text-[#94A3B8]'
                               : variance < 0
                               ? 'text-red-600'
                               : 'text-emerald-600'

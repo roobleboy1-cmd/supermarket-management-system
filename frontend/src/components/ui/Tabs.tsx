@@ -60,7 +60,7 @@ export const TabsTrigger: React.FC<{
         'inline-flex items-center justify-center whitespace-nowrap rounded-lg px-3.5 py-1.5 text-xs font-bold transition-all duration-150 select-none cursor-pointer',
         isActive
           ? 'bg-white dark:bg-[#111C31] text-[#3B82F6] dark:text-[#F8FAFC] shadow-xs border border-[#E2E8F0]/80 dark:border-[#263449]'
-          : 'text-[#64748B] dark:text-[#94A3B8] hover:text-[#0F172A] dark:hover:text-[#F8FAFC] hover:bg-slate-200/50 dark:hover:bg-[#14213D]',
+          : 'text-[#64748B] dark:text-[#94A3B8] hover:text-[#0F172A] dark:hover:text-[#F8FAFC] hover:bg-[#E2E8F0]/50 dark:hover:bg-[#14213D]',
         className
       )}
     >

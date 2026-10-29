@@ -105,13 +105,13 @@ export const CustomersLoyaltyPage: React.FC = () => {
       <Card>
         <CardContent className="p-4">
           <div className="relative">
-            <Search className="absolute left-3 top-2.5 h-4 w-4 text-slate-400" />
+            <Search className="absolute left-3 top-2.5 h-4 w-4 text-[#94A3B8]" />
             <input
               type="text"
               placeholder="Search customers by name, phone (+252), or email..."
               value={search}
               onChange={(e) => setSearch(e.target.value)}
-              className="w-full pl-9 pr-3 py-2 text-xs rounded-lg border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900"
+              className="w-full pl-9 pr-3 py-2 text-xs rounded-lg border border-[#E2E8F0] dark:border-[#263449] bg-white dark:bg-[#111C31]"
             />
           </div>
         </CardContent>
@@ -120,17 +120,17 @@ export const CustomersLoyaltyPage: React.FC = () => {
       {/* Customer Directory Grid */}
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
         {isLoading ? (
-          <p className="col-span-full py-12 text-center text-xs text-slate-400">Loading customers...</p>
+          <p className="col-span-full py-12 text-center text-xs text-[#94A3B8]">Loading customers...</p>
         ) : (
           (customers || []).map((c) => (
             <Card key={c.id} className="hover:border-blue-500 transition-all flex flex-col justify-between">
               <CardHeader className="pb-3">
                 <div className="flex items-start justify-between">
                   <div>
-                    <CardTitle className="text-sm font-bold text-slate-900 dark:text-slate-100">
+                    <CardTitle className="text-sm font-bold text-[#0F172A] dark:text-[#F8FAFC]">
                       {c.name}
                     </CardTitle>
-                    <p className="text-xs text-slate-500 mt-0.5">{c.phone}</p>
+                    <p className="text-xs text-[#64748B] mt-0.5">{c.phone}</p>
                   </div>
                   <Badge
                     variant={
@@ -148,37 +148,37 @@ export const CustomersLoyaltyPage: React.FC = () => {
                   </Badge>
                 </div>
               </CardHeader>
-              <CardContent className="space-y-3 text-xs text-slate-600 dark:text-slate-400">
-                <div className="grid grid-cols-2 gap-2 p-3 rounded-lg bg-slate-50 dark:bg-slate-800/40 text-center">
+              <CardContent className="space-y-3 text-xs text-[#64748B] dark:text-[#94A3B8]">
+                <div className="grid grid-cols-2 gap-2 p-3 rounded-lg bg-[#F5F7FC] dark:bg-[#172338]/40 text-center">
                   <div>
-                    <span className="text-slate-400 block text-[10px]">Points Balance</span>
-                    <span className="font-bold text-sm text-blue-600 dark:text-blue-400">
+                    <span className="text-[#94A3B8] block text-[10px]">Points Balance</span>
+                    <span className="font-bold text-sm text-[#3B82F6] dark:text-[#06B6D4]">
                       {c.loyaltyPoints} pts
                     </span>
-                    <span className="text-[9px] text-slate-400 block">
+                    <span className="text-[9px] text-[#94A3B8] block">
                       ≈ ${(c.loyaltyPoints * 0.01).toFixed(2)}
                     </span>
                   </div>
                   <div>
-                    <span className="text-slate-400 block text-[10px]">Total Store Spent</span>
-                    <span className="font-bold text-sm text-slate-900 dark:text-slate-100">
+                    <span className="text-[#94A3B8] block text-[10px]">Total Store Spent</span>
+                    <span className="font-bold text-sm text-[#0F172A] dark:text-[#F8FAFC]">
                       {formatCurrency(c.totalSpent)}
                     </span>
-                    <span className="text-[9px] text-slate-400 block">{c.totalVisits} checkouts</span>
+                    <span className="text-[9px] text-[#94A3B8] block">{c.totalVisits} checkouts</span>
                   </div>
                 </div>
 
                 {c.address && (
                   <div className="flex items-center gap-2">
-                    <MapPin className="h-3.5 w-3.5 text-slate-400 shrink-0" />
+                    <MapPin className="h-3.5 w-3.5 text-[#94A3B8] shrink-0" />
                     <span className="truncate">{c.address}</span>
                   </div>
                 )}
 
-                <div className="pt-2 border-t border-slate-100 dark:border-slate-800 flex items-center justify-between">
+                <div className="pt-2 border-t border-[#E2E8F0] dark:border-[#263449] flex items-center justify-between">
                   <button
                     onClick={() => setSelectedCustomerForHistory(c)}
-                    className="inline-flex items-center gap-1 text-[11px] font-semibold text-blue-600 hover:underline cursor-pointer"
+                    className="inline-flex items-center gap-1 text-[11px] font-semibold text-[#3B82F6] hover:underline cursor-pointer"
                   >
                     <History className="h-3.5 w-3.5" />
                     Points Ledger
@@ -186,13 +186,13 @@ export const CustomersLoyaltyPage: React.FC = () => {
                   <div className="flex items-center gap-1">
                     <button
                       onClick={() => handleOpenEdit(c)}
-                      className="p-1 rounded text-slate-400 hover:text-blue-600"
+                      className="p-1 rounded text-[#94A3B8] hover:text-[#3B82F6]"
                     >
                       <Edit className="h-3.5 w-3.5" />
                     </button>
                     <button
                       onClick={() => handleDelete(c)}
-                      className="p-1 rounded text-slate-400 hover:text-red-600"
+                      className="p-1 rounded text-[#94A3B8] hover:text-red-600"
                     >
                       <Trash2 className="h-3.5 w-3.5" />
                     </button>
@@ -260,27 +260,27 @@ export const CustomersLoyaltyPage: React.FC = () => {
         <div className="space-y-3">
           <div className="p-3 rounded-xl bg-blue-50 dark:bg-blue-950/40 flex items-center justify-between text-xs">
             <span className="font-semibold text-blue-900 dark:text-blue-300">Available Points:</span>
-            <span className="font-bold text-base text-blue-600 dark:text-blue-400">
+            <span className="font-bold text-base text-[#3B82F6] dark:text-[#06B6D4]">
               {selectedCustomerForHistory?.loyaltyPoints} Points
             </span>
           </div>
 
-          <div className="divide-y divide-slate-100 dark:divide-slate-800 text-xs">
+          <div className="divide-y divide-[#E2E8F0] dark:divide-[#263449] text-xs">
             {loyaltyHistory?.map((lt) => (
               <div key={lt.id} className="py-2.5 flex items-center justify-between">
                 <div>
-                  <p className="font-semibold text-slate-900 dark:text-slate-100">{lt.description}</p>
-                  <p className="text-[11px] text-slate-400">{formatDate(lt.createdAt, true)}</p>
+                  <p className="font-semibold text-[#0F172A] dark:text-[#F8FAFC]">{lt.description}</p>
+                  <p className="text-[11px] text-[#94A3B8]">{formatDate(lt.createdAt, true)}</p>
                 </div>
                 <div className="text-right">
                   <span
                     className={`font-bold ${
-                      lt.type === 'earned' ? 'text-emerald-600' : 'text-blue-600'
+                      lt.type === 'earned' ? 'text-emerald-600' : 'text-[#3B82F6]'
                     }`}
                   >
                     {lt.type === 'earned' ? `+${lt.points}` : `-${lt.points}`} pts
                   </span>
-                  <span className="text-[10px] text-slate-400 block">Bal: {lt.balanceAfter}</span>
+                  <span className="text-[10px] text-[#94A3B8] block">Bal: {lt.balanceAfter}</span>
                 </div>
               </div>
             ))}

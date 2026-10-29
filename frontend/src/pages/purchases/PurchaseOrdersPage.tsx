@@ -193,7 +193,7 @@ export const PurchaseOrdersPage: React.FC = () => {
         <CardContent className="p-0">
           <div className="overflow-x-auto">
             <table className="w-full text-left text-xs">
-              <thead className="bg-slate-50 dark:bg-slate-950/40 text-slate-500 border-b border-slate-200 dark:border-slate-800 uppercase font-semibold text-[11px]">
+              <thead className="bg-[#F5F7FC] dark:bg-[#0B1220]/40 text-[#64748B] border-b border-[#E2E8F0] dark:border-[#263449] uppercase font-semibold text-[11px]">
                 <tr>
                   <th className="py-3 px-4">PO Number</th>
                   <th className="py-3 px-4">Supplier</th>
@@ -204,16 +204,16 @@ export const PurchaseOrdersPage: React.FC = () => {
                   <th className="py-3 px-4 text-right">Actions</th>
                 </tr>
               </thead>
-              <tbody className="divide-y divide-slate-100 dark:divide-slate-800">
+              <tbody className="divide-y divide-[#E2E8F0] dark:divide-[#263449]">
                 {isLoading ? (
                   <tr>
-                    <td colSpan={7} className="py-12 text-center text-slate-400">
+                    <td colSpan={7} className="py-12 text-center text-[#94A3B8]">
                       Loading purchase orders...
                     </td>
                   </tr>
                 ) : purchaseOrders?.length === 0 ? (
                   <tr>
-                    <td colSpan={7} className="py-12 text-center text-slate-400">
+                    <td colSpan={7} className="py-12 text-center text-[#94A3B8]">
                       No purchase orders registered.
                     </td>
                   </tr>
@@ -223,18 +223,18 @@ export const PurchaseOrdersPage: React.FC = () => {
                     const totalReceived = po.items.reduce((s, i) => s + i.quantityReceived, 0)
 
                     return (
-                      <tr key={po.id} className="hover:bg-slate-50 dark:hover:bg-slate-800/40">
-                        <td className="py-3 px-4 font-mono font-bold text-slate-900 dark:text-slate-100">
+                      <tr key={po.id} className="hover:bg-[#F8FAFC] dark:hover:bg-[#172338]/40">
+                        <td className="py-3 px-4 font-mono font-bold text-[#0F172A] dark:text-[#F8FAFC]">
                           {po.poNumber}
                         </td>
-                        <td className="py-3 px-4 font-semibold text-slate-800 dark:text-slate-200">
+                        <td className="py-3 px-4 font-semibold text-[#1E293B] dark:text-[#F8FAFC]">
                           {po.supplierName}
                         </td>
-                        <td className="py-3 px-4 text-slate-500">{formatDate(po.createdAt)}</td>
+                        <td className="py-3 px-4 text-[#64748B]">{formatDate(po.createdAt)}</td>
                         <td className="py-3 px-4 text-center font-bold">
                           {totalReceived} / {totalOrdered}
                         </td>
-                        <td className="py-3 px-4 text-right font-bold text-slate-900 dark:text-slate-100">
+                        <td className="py-3 px-4 text-right font-bold text-[#0F172A] dark:text-[#F8FAFC]">
                           {formatCurrency(po.totalAmount)}
                         </td>
                         <td className="py-3 px-4 text-center">
@@ -320,7 +320,7 @@ export const PurchaseOrdersPage: React.FC = () => {
 
           <div>
             <div className="flex items-center justify-between mb-2">
-              <label className="text-xs font-semibold text-slate-700 dark:text-slate-300">
+              <label className="text-xs font-semibold text-[#334155] dark:text-[#94A3B8]">
                 Purchase Order Line Items
               </label>
               <Button type="button" size="sm" variant="secondary" onClick={handleAddLineItem}>
@@ -328,9 +328,9 @@ export const PurchaseOrdersPage: React.FC = () => {
               </Button>
             </div>
 
-            <div className="space-y-2 max-h-56 overflow-y-auto border border-slate-200 dark:border-slate-800 p-2 rounded-lg">
+            <div className="space-y-2 max-h-56 overflow-y-auto border border-[#E2E8F0] dark:border-[#263449] p-2 rounded-lg">
               {orderItems.length === 0 ? (
-                <p className="py-6 text-center text-xs text-slate-400">
+                <p className="py-6 text-center text-xs text-[#94A3B8]">
                   No items added yet. Click &quot;+ Add Item&quot; to begin.
                 </p>
               ) : (
@@ -339,7 +339,7 @@ export const PurchaseOrdersPage: React.FC = () => {
                     <select
                       value={item.productId}
                       onChange={(e) => handleItemChange(idx, 'productId', e.target.value)}
-                      className="flex-1 p-2 rounded-lg border border-slate-300 dark:border-slate-700 bg-white dark:bg-slate-800"
+                      className="flex-1 p-2 rounded-lg border border-[#CBD5E1] dark:border-[#263449] bg-white dark:bg-[#172338]"
                     >
                       {(productsData?.items || []).map((p) => (
                         <option key={p.id} value={p.id}>
@@ -356,7 +356,7 @@ export const PurchaseOrdersPage: React.FC = () => {
                       onChange={(e) =>
                         handleItemChange(idx, 'quantityOrdered', parseInt(e.target.value, 10) || 1)
                       }
-                      className="w-20 p-2 rounded-lg border border-slate-300 dark:border-slate-700 bg-white dark:bg-slate-800 text-center font-bold"
+                      className="w-20 p-2 rounded-lg border border-[#CBD5E1] dark:border-[#263449] bg-white dark:bg-[#172338] text-center font-bold"
                     />
 
                     <input
@@ -367,17 +367,17 @@ export const PurchaseOrdersPage: React.FC = () => {
                       onChange={(e) =>
                         handleItemChange(idx, 'unitCost', parseFloat(e.target.value) || 0)
                       }
-                      className="w-24 p-2 rounded-lg border border-slate-300 dark:border-slate-700 bg-white dark:bg-slate-800 text-right"
+                      className="w-24 p-2 rounded-lg border border-[#CBD5E1] dark:border-[#263449] bg-white dark:bg-[#172338] text-right"
                     />
 
-                    <span className="w-20 text-right font-bold text-slate-900 dark:text-slate-100">
+                    <span className="w-20 text-right font-bold text-[#0F172A] dark:text-[#F8FAFC]">
                       ${(item.quantityOrdered * item.unitCost).toFixed(2)}
                     </span>
 
                     <button
                       type="button"
                       onClick={() => handleRemoveLineItem(idx)}
-                      className="text-slate-400 hover:text-red-500 p-1"
+                      className="text-[#94A3B8] hover:text-red-500 p-1"
                     >
                       <Trash2 className="h-4 w-4" />
                     </button>
@@ -394,7 +394,7 @@ export const PurchaseOrdersPage: React.FC = () => {
             placeholder="e.g. Urgent weekend delivery required"
           />
 
-          <div className="flex justify-end gap-2 pt-2 border-t border-slate-100 dark:border-slate-800">
+          <div className="flex justify-end gap-2 pt-2 border-t border-[#E2E8F0] dark:border-[#263449]">
             <Button type="button" variant="outline" onClick={() => setCreateModalOpen(false)}>
               Cancel
             </Button>
@@ -414,21 +414,21 @@ export const PurchaseOrdersPage: React.FC = () => {
         maxWidth="lg"
       >
         <div className="space-y-4">
-          <div className="divide-y divide-slate-100 dark:divide-slate-800 max-h-80 overflow-y-auto">
+          <div className="divide-y divide-[#E2E8F0] dark:divide-[#263449] max-h-80 overflow-y-auto">
             {receiveModalPO?.items.map((item) => {
               const remaining = Math.max(0, item.quantityOrdered - item.quantityReceived)
               return (
                 <div key={item.productId} className="py-3 flex items-center justify-between text-xs">
                   <div>
-                    <p className="font-semibold text-slate-900 dark:text-slate-100">
+                    <p className="font-semibold text-[#0F172A] dark:text-[#F8FAFC]">
                       {item.productName}
                     </p>
-                    <p className="text-[11px] text-slate-500">
+                    <p className="text-[11px] text-[#64748B]">
                       Ordered: {item.quantityOrdered} • Previously Received: {item.quantityReceived}
                     </p>
                   </div>
                   <div className="flex items-center gap-2">
-                    <span className="text-slate-400 text-xs">Receive Now:</span>
+                    <span className="text-[#94A3B8] text-xs">Receive Now:</span>
                     <input
                       type="number"
                       min="0"
@@ -440,7 +440,7 @@ export const PurchaseOrdersPage: React.FC = () => {
                           [item.productId]: parseInt(e.target.value, 10) || 0,
                         })
                       }
-                      className="w-20 p-2 text-center font-bold rounded-lg border border-slate-300 dark:border-slate-700 bg-white dark:bg-slate-900"
+                      className="w-20 p-2 text-center font-bold rounded-lg border border-[#CBD5E1] dark:border-[#263449] bg-white dark:bg-[#111C31]"
                     />
                   </div>
                 </div>
@@ -448,7 +448,7 @@ export const PurchaseOrdersPage: React.FC = () => {
             })}
           </div>
 
-          <div className="flex justify-end gap-2 pt-2 border-t border-slate-100 dark:border-slate-800">
+          <div className="flex justify-end gap-2 pt-2 border-t border-[#E2E8F0] dark:border-[#263449]">
             <Button variant="outline" onClick={() => setReceiveModalPO(null)}>
               Cancel
             </Button>

@@ -100,13 +100,13 @@ export const LoginPage: React.FC = () => {
       </div>
 
       <div className="sm:mx-auto sm:w-full sm:max-w-md text-center">
-        <div className="inline-flex h-14 w-14 items-center justify-center rounded-2xl bg-gradient-to-tr from-indigo-600 via-blue-600 to-cyan-500 text-white shadow-lg shadow-indigo-500/30 mb-3">
+        <div className="inline-flex h-14 w-14 items-center justify-center rounded-2xl bg-gradient-to-tr from-[#3B82F6] via-[#8B5CF6] to-[#06B6D4] text-white shadow-lg shadow-indigo-500/30 mb-3">
           <Store className="h-7 w-7" />
         </div>
-        <h2 className="text-3xl font-extrabold tracking-tight bg-clip-text text-transparent bg-gradient-to-r from-indigo-600 via-blue-600 to-cyan-600 dark:from-indigo-400 dark:via-blue-400 dark:to-cyan-400">
+        <h2 className="text-3xl font-extrabold tracking-tight bg-clip-text text-transparent bg-gradient-to-r from-[#3B82F6] via-[#8B5CF6] to-[#06B6D4] dark:from-indigo-400 dark:via-blue-400 dark:to-cyan-400">
           SomSupermarket
         </h2>
-        <p className="mt-1 text-xs text-slate-500 dark:text-slate-400 font-medium">
+        <p className="mt-1 text-xs text-[#64748B] dark:text-[#94A3B8] font-medium">
           {language === 'so'
             ? 'Nidaamka Maamulka Dukaanka Dhexe — Albaabka Shaqaalaha'
             : 'Single Supermarket Management System — Staff Portal'}
@@ -195,7 +195,7 @@ export const LoginPage: React.FC = () => {
                 onClick={() => handleQuickLogin('fadumo.mgr@supermarket.so', 'Manager')}
                 className="p-2 text-left rounded-xl border border-[#E2E8F0] dark:border-[#263449] hover:border-blue-500 dark:hover:border-blue-500 bg-[#F8FAFC] dark:bg-[#172338] text-[#0F172A] dark:text-[#F8FAFC] transition-all hover:scale-[1.02] cursor-pointer"
               >
-                <div className="font-extrabold text-blue-600 dark:text-blue-400">Manager</div>
+                <div className="font-extrabold text-[#3B82F6] dark:text-[#06B6D4]">Manager</div>
                 <div className="text-[10px] text-[#64748B] dark:text-[#94A3B8]">Fadumo Warsame</div>
               </button>
               <button
