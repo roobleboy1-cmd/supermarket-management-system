@@ -237,8 +237,6 @@ export const LoginPage: React.FC = () => {
         <p className="mt-4 text-center text-xs text-[#64748B] dark:text-[#94A3B8] font-medium">
           SomSupermarket Management System • Production Grade
         </p>
-          SomSupermarket Management System • Production Grade
-        </p>
       </div>
     </div>
   )
