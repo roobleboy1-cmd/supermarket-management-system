@@ -2,67 +2,60 @@
 
 @layer base {
   :root {
-    --background: 210 20% 98%;
-    --foreground: 222 47% 11%;
-    --card: 0 0% 100%;
-    --card-foreground: 222 47% 11%;
-    --popover: 0 0% 100%;
-    --popover-foreground: 222 47% 11%;
-    --primary: 238 82% 59%; /* Radiant Indigo-Blue #4F46E5 */
-    --primary-hover: 239 84% 67%; /* #6366F1 */
-    --primary-foreground: 210 40% 98%;
-    --secondary: 215 25% 93%;
-    --secondary-foreground: 222 47% 11%;
-    --muted: 215 20% 95%;
-    --muted-foreground: 215 16% 47%;
-    --accent: 210 40% 96%;
-    --accent-foreground: 222 47% 11%;
-    --destructive: 0 84% 60%;
-    --destructive-foreground: 210 40% 98%;
-    --border: 214 32% 91%;
-    --input: 214 32% 91%;
-    --ring: 238 82% 59%;
-    --radius: 0.75rem;
+    --bg-page: #F5F7FC;
+    --bg-sidebar: #FFFFFF;
+    --bg-card: #FFFFFF;
+    --bg-elevated: #F8FAFC;
+    --border-color: #E2E8F0;
+    --text-primary: #0F172A;
+    --text-secondary: #64748B;
+
+    --brand-navy: #0B1220;
+    --brand-dark-blue: #14213D;
+    --brand-primary: #3B82F6;
+    --brand-violet: #8B5CF6;
+    --brand-cyan: #06B6D4;
+    --brand-success: #10B981;
+    --brand-warning: #F59E0B;
+    --brand-error: #EF4444;
   }
 
   .dark {
-    --background: 224 71% 4%; /* Deep Obsidian Navy #080C15 */
-    --foreground: 210 40% 98%;
-    --card: 222 47% 8%; /* Rich Charcoal #0E1526 */
-    --card-foreground: 210 40% 98%;
-    --popover: 222 47% 8%;
-    --popover-foreground: 210 40% 98%;
-    --primary: 239 84% 67%; /* Vibrant Electric Indigo #6366F1 */
-    --primary-hover: 238 82% 59%;
-    --primary-foreground: 222 47% 11%;
-    --secondary: 217 33% 15%;
-    --secondary-foreground: 210 40% 98%;
-    --muted: 217 33% 13%;
-    --muted-foreground: 215 20% 65%;
-    --accent: 217 33% 15%;
-    --accent-foreground: 210 40% 98%;
-    --destructive: 0 72% 51%;
-    --destructive-foreground: 210 40% 98%;
-    --border: 217 33% 16%;
-    --input: 217 33% 16%;
-    --ring: 239 84% 67%;
+    --bg-page: #0B1220;
+    --bg-sidebar: #0F172A;
+    --bg-card: #111C31;
+    --bg-elevated: #172338;
+    --border-color: #263449;
+    --text-primary: #F8FAFC;
+    --text-secondary: #94A3B8;
+
+    --brand-navy: #0B1220;
+    --brand-dark-blue: #14213D;
+    --brand-primary: #3B82F6;
+    --brand-violet: #8B5CF6;
+    --brand-cyan: #06B6D4;
+    --brand-success: #10B981;
+    --brand-warning: #F59E0B;
+    --brand-error: #EF4444;
   }
 }
 
 body {
   margin: 0;
   min-height: 100vh;
+  background-color: var(--bg-page);
+  color: var(--text-primary);
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Inter", "Helvetica Neue", Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
-/* Smooth theme transition */
+/* Global smooth transition for theme switching */
 html {
-  transition: background-color 0.25s ease, color 0.25s ease;
+  transition: background-color 0.2s ease, color 0.2s ease;
 }
 
-/* Custom Scrollbar for modern supermarket UI */
+/* Custom Scrollbar */
 ::-webkit-scrollbar {
   width: 6px;
   height: 6px;
@@ -71,32 +64,42 @@ html {
   background: transparent;
 }
 ::-webkit-scrollbar-thumb {
-  background: rgba(148, 163, 184, 0.35);
+  background: rgba(148, 163, 184, 0.3);
   border-radius: 9999px;
 }
 ::-webkit-scrollbar-thumb:hover {
-  background: rgba(99, 102, 241, 0.6);
+  background: rgba(59, 130, 246, 0.6);
 }
 
-/* Glassmorphism utility classes */
-.glass-panel {
-  background: rgba(255, 255, 255, 0.85);
+/* Glassmorphism helpers matching exact theme tokens */
+.glass-header {
+  background: rgba(255, 255, 255, 0.88);
   backdrop-filter: blur(16px);
   -webkit-backdrop-filter: blur(16px);
+  border-bottom: 1px solid var(--border-color);
 }
-.dark .glass-panel {
-  background: rgba(15, 23, 42, 0.85);
+.dark .glass-header {
+  background: rgba(11, 18, 32, 0.88);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border-bottom: 1px solid var(--border-color);
 }
 
-/* Modern Glow Effects */
-.glow-primary {
-  box-shadow: 0 0 25px -5px rgba(99, 102, 241, 0.35);
+/* Ambient glow utilities */
+.glow-blue {
+  box-shadow: 0 0 25px -4px rgba(59, 130, 246, 0.35);
+}
+.glow-violet {
+  box-shadow: 0 0 25px -4px rgba(139, 92, 246, 0.35);
+}
+.glow-cyan {
+  box-shadow: 0 0 25px -4px rgba(6, 182, 212, 0.35);
 }
 .glow-emerald {
-  box-shadow: 0 0 25px -5px rgba(16, 185, 129, 0.35);
+  box-shadow: 0 0 25px -4px rgba(16, 185, 129, 0.35);
 }
 
-/* Thermal printer print formatting */
+/* Print Styles */
 @media print {
   body * {
     visibility: hidden;

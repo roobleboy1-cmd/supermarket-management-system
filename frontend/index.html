@@ -4,7 +4,28 @@
     <meta charset="UTF-8" />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>frontend</title>
+    <title>SomSupermarket — Management System</title>
+    <script>
+      // Anti-flash inline script for instant theme application
+      (function() {
+        try {
+          var saved = localStorage.getItem('supermarket_theme_preference');
+          var isDark = false;
+          if (saved === 'dark') {
+            isDark = true;
+          } else if (saved === 'light') {
+            isDark = false;
+          } else {
+            isDark = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
+          }
+          if (isDark) {
+            document.documentElement.classList.add('dark');
+          } else {
+            document.documentElement.classList.remove('dark');
+          }
+        } catch (e) {}
+      })();
+    </script>
   </head>
   <body>
     <div id="root"></div>

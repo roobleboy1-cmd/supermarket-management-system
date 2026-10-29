@@ -34,7 +34,7 @@ export const TabsList: React.FC<React.HTMLAttributes<HTMLDivElement>> = ({ class
   return (
     <div
       className={cn(
-        'inline-flex h-10 items-center justify-start rounded-lg bg-slate-100 dark:bg-slate-800 p-1 text-slate-500 dark:text-slate-400 gap-1 overflow-x-auto max-w-full',
+        'inline-flex h-11 items-center justify-start rounded-xl bg-[#F8FAFC] dark:bg-[#172338] border border-[#E2E8F0] dark:border-[#263449] p-1 text-[#64748B] dark:text-[#94A3B8] gap-1 overflow-x-auto max-w-full',
         className
       )}
       {...props}
@@ -57,10 +57,10 @@ export const TabsTrigger: React.FC<{
       type="button"
       onClick={() => context.setActiveTab(value)}
       className={cn(
-        'inline-flex items-center justify-center whitespace-nowrap rounded-md px-3 py-1.5 text-xs font-medium transition-all focus:outline-none cursor-pointer',
+        'inline-flex items-center justify-center whitespace-nowrap rounded-lg px-3.5 py-1.5 text-xs font-bold transition-all duration-150 select-none cursor-pointer',
         isActive
-          ? 'bg-white dark:bg-slate-900 text-blue-600 dark:text-blue-400 shadow-xs font-semibold'
-          : 'text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-slate-200',
+          ? 'bg-white dark:bg-[#111C31] text-[#3B82F6] dark:text-[#F8FAFC] shadow-xs border border-[#E2E8F0]/80 dark:border-[#263449]'
+          : 'text-[#64748B] dark:text-[#94A3B8] hover:text-[#0F172A] dark:hover:text-[#F8FAFC] hover:bg-slate-200/50 dark:hover:bg-[#14213D]',
         className
       )}
     >
@@ -79,5 +79,9 @@ export const TabsContent: React.FC<{
 
   if (context.activeTab !== value) return null
 
-  return <div className={cn('mt-4 focus:outline-none animate-in fade-in-50 duration-150', className)}>{children}</div>
+  return (
+    <div className={cn('mt-4 animate-in fade-in duration-150 focus:outline-none', className)}>
+      {children}
+    </div>
+  )
 }

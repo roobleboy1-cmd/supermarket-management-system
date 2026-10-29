@@ -5,7 +5,7 @@ export const Card: React.FC<React.HTMLAttributes<HTMLDivElement>> = ({ className
   return (
     <div
       className={cn(
-        'rounded-2xl border border-slate-200/80 dark:border-slate-800/80 bg-white dark:bg-slate-900 shadow-xs transition-all duration-200 hover:border-slate-300 dark:hover:border-slate-700/80',
+        'rounded-2xl border border-[#E2E8F0] dark:border-[#263449] bg-white dark:bg-[#111C31] shadow-xs transition-all duration-200 hover:border-slate-300 dark:hover:border-[#384b66]',
         className
       )}
       {...props}
@@ -21,7 +21,7 @@ export const CardTitle: React.FC<React.HTMLAttributes<HTMLHeadingElement>> = ({ 
   return (
     <h3
       className={cn(
-        'text-base font-bold text-slate-900 dark:text-slate-100 tracking-tight leading-tight',
+        'text-base font-bold text-[#0F172A] dark:text-[#F8FAFC] tracking-tight leading-tight',
         className
       )}
       {...props}
@@ -30,7 +30,7 @@ export const CardTitle: React.FC<React.HTMLAttributes<HTMLHeadingElement>> = ({ 
 }
 
 export const CardDescription: React.FC<React.HTMLAttributes<HTMLParagraphElement>> = ({ className, ...props }) => {
-  return <p className={cn('text-xs text-slate-500 dark:text-slate-400 font-medium', className)} {...props} />
+  return <p className={cn('text-xs text-[#64748B] dark:text-[#94A3B8] font-medium', className)} {...props} />
 }
 
 export const CardContent: React.FC<React.HTMLAttributes<HTMLDivElement>> = ({ className, ...props }) => {
@@ -38,5 +38,5 @@ export const CardContent: React.FC<React.HTMLAttributes<HTMLDivElement>> = ({ cl
 }
 
 export const CardFooter: React.FC<React.HTMLAttributes<HTMLDivElement>> = ({ className, ...props }) => {
-  return <div className={cn('flex items-center p-5 pt-0', className)} {...props} />
+  return <div className={cn('flex items-center p-5 pt-0 border-t border-[#E2E8F0] dark:border-[#263449]', className)} {...props} />
 }
