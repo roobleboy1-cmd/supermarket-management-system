@@ -61,14 +61,14 @@ export const ActivityLogsPage: React.FC = () => {
                 placeholder="Raadi staff, action, or record..."
                 value={search}
                 onChange={(e) => setSearch(e.target.value)}
-                className="w-full pl-9 pr-3 py-2 text-xs rounded-lg border border-[#E2E8F0] dark:border-[#263449] bg-white dark:bg-[#111C31]"
+                className="w-full pl-9 pr-3 py-2 text-xs rounded-lg border border-[#E2E8F0] dark:border-[#374151] bg-white dark:bg-[#1F2937]"
               />
             </div>
             <div>
               <select
                 value={selectedActor}
                 onChange={(e) => setSelectedActor(e.target.value)}
-                className="w-full text-xs px-3 py-2 rounded-lg border border-[#E2E8F0] dark:border-[#263449] bg-white dark:bg-[#111C31]"
+                className="w-full text-xs px-3 py-2 rounded-lg border border-[#E2E8F0] dark:border-[#374151] bg-white dark:bg-[#1F2937]"
               >
                 <option value="all">Dhammaan Shaqaalaha (All Users)</option>
                 {uniqueActors.map((actor) => (
@@ -82,7 +82,7 @@ export const ActivityLogsPage: React.FC = () => {
               <select
                 value={selectedRole}
                 onChange={(e) => setSelectedRole(e.target.value)}
-                className="w-full text-xs px-3 py-2 rounded-lg border border-[#E2E8F0] dark:border-[#263449] bg-white dark:bg-[#111C31]"
+                className="w-full text-xs px-3 py-2 rounded-lg border border-[#E2E8F0] dark:border-[#374151] bg-white dark:bg-[#1F2937]"
               >
                 <option value="all">Dhammaan Doorarka (All Roles)</option>
                 <option value="Super Admin">Super Admin</option>
@@ -97,7 +97,7 @@ export const ActivityLogsPage: React.FC = () => {
               <select
                 value={selectedModule}
                 onChange={(e) => setSelectedModule(e.target.value)}
-                className="w-full text-xs px-3 py-2 rounded-lg border border-[#E2E8F0] dark:border-[#263449] bg-white dark:bg-[#111C31]"
+                className="w-full text-xs px-3 py-2 rounded-lg border border-[#E2E8F0] dark:border-[#374151] bg-white dark:bg-[#1F2937]"
               >
                 <option value="all">Dhammaan Qaybaha (All Modules)</option>
                 <option value="POS">Point of Sale (POS)</option>
@@ -118,7 +118,7 @@ export const ActivityLogsPage: React.FC = () => {
       <Card>
         <div className="overflow-x-auto">
           <table className="w-full text-left text-xs">
-            <thead className="bg-[#F5F7FC] dark:bg-[#0B1220]/40 text-[#64748B] border-b border-[#E2E8F0] dark:border-[#263449] uppercase font-semibold text-[11px]">
+            <thead className="bg-[#F8FAFC] dark:bg-[#111827]/40 text-[#64748B] border-b border-[#E2E8F0] dark:border-[#374151] uppercase font-semibold text-[11px]">
               <tr>
                 <th className="py-3 px-4">Timestamp</th>
                 <th className="py-3 px-4">Staff Actor</th>
@@ -128,7 +128,7 @@ export const ActivityLogsPage: React.FC = () => {
                 <th className="py-3 px-4">Details & Target Record</th>
               </tr>
             </thead>
-            <tbody className="divide-y divide-[#E2E8F0] dark:divide-[#263449]">
+            <tbody className="divide-y divide-[#E2E8F0] dark:divide-[#374151]">
               {isLoading ? (
                 <tr>
                   <td colSpan={6} className="py-12 text-center text-[#94A3B8]">
@@ -143,11 +143,11 @@ export const ActivityLogsPage: React.FC = () => {
                 </tr>
               ) : (
                 filtered.map((log) => (
-                  <tr key={log.id} className="hover:bg-[#F8FAFC] dark:hover:bg-[#172338]/40">
+                  <tr key={log.id} className="hover:bg-[#F8FAFC] dark:hover:bg-[#374151]/40">
                     <td className="py-3 px-4 text-[#64748B] whitespace-nowrap">
                       {formatDate(log.timestamp, true)}
                     </td>
-                    <td className="py-3 px-4 font-semibold text-[#0F172A] dark:text-[#F8FAFC]">
+                    <td className="py-3 px-4 font-semibold text-[#111827] dark:text-[#F9FAFB]">
                       {log.actorName}
                     </td>
                     <td className="py-3 px-4">
@@ -155,13 +155,13 @@ export const ActivityLogsPage: React.FC = () => {
                         {log.role}
                       </Badge>
                     </td>
-                    <td className="py-3 px-4 font-medium text-[#3B82F6] dark:text-[#06B6D4]">
+                    <td className="py-3 px-4 font-medium text-[#16A34A] dark:text-[#84CC16]">
                       {log.module}
                     </td>
-                    <td className="py-3 px-4 font-mono font-bold text-[#1E293B] dark:text-[#F8FAFC]">
+                    <td className="py-3 px-4 font-mono font-bold text-[#1E293B] dark:text-[#F9FAFB]">
                       {log.action}
                     </td>
-                    <td className="py-3 px-4 text-[#64748B] dark:text-[#94A3B8]">
+                    <td className="py-3 px-4 text-[#64748B] dark:text-[#9CA3AF]">
                       {log.details}
                     </td>
                   </tr>

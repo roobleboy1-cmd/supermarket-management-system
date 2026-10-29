@@ -31,7 +31,7 @@ export const Switch: React.FC<SwitchProps> = ({
         <div
           className={cn(
             'w-10 h-6 rounded-full transition-colors duration-200 ease-in-out',
-            checked ? 'bg-gradient-to-r from-[#3B82F6] to-[#8B5CF6]' : 'bg-[#CBD5E1] dark:bg-[#263449]'
+            checked ? 'bg-gradient-to-r from-[#16A34A] to-[#84CC16]' : 'bg-[#CBD5E1] dark:bg-[#374151]'
           )}
         />
         <div
@@ -43,8 +43,8 @@ export const Switch: React.FC<SwitchProps> = ({
       </div>
       {(label || description) && (
         <div className="text-left">
-          {label && <span className="text-sm font-medium text-[#0F172A] dark:text-[#F8FAFC] block">{label}</span>}
-          {description && <span className="text-xs text-[#64748B] dark:text-[#94A3B8] block">{description}</span>}
+          {label && <span className="text-sm font-medium text-[#111827] dark:text-[#F9FAFB] block">{label}</span>}
+          {description && <span className="text-xs text-[#64748B] dark:text-[#9CA3AF] block">{description}</span>}
         </div>
       )}
     </label>

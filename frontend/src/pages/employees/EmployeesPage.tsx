@@ -118,7 +118,7 @@ export const EmployeesPage: React.FC = () => {
           <Card>
             <div className="overflow-x-auto">
               <table className="w-full text-left text-xs">
-                <thead className="bg-[#F8FAFC] dark:bg-[#172338] text-[#64748B] border-b border-[#E2E8F0] dark:border-[#263449] uppercase font-semibold text-[11px]">
+                <thead className="bg-[#F8FAFC] dark:bg-[#374151] text-[#64748B] border-b border-[#E2E8F0] dark:border-[#374151] uppercase font-semibold text-[11px]">
                   <tr>
                     <th className="py-3 px-4">Employee</th>
                     <th className="py-3 px-4">Role</th>
@@ -128,7 +128,7 @@ export const EmployeesPage: React.FC = () => {
                     <th className="py-3 px-4 text-right">Actions</th>
                   </tr>
                 </thead>
-                <tbody className="divide-y divide-[#E2E8F0] dark:divide-[#263449]">
+                <tbody className="divide-y divide-[#E2E8F0] dark:divide-[#374151]">
                   {isLoading ? (
                     <tr>
                       <td colSpan={6} className="py-12 text-center text-[#94A3B8]">
@@ -137,9 +137,9 @@ export const EmployeesPage: React.FC = () => {
                     </tr>
                   ) : (
                     employees?.map((emp) => (
-                      <tr key={emp.id} className="hover:bg-[#F8FAFC] dark:hover:bg-[#172338]/40">
+                      <tr key={emp.id} className="hover:bg-[#F8FAFC] dark:hover:bg-[#374151]/40">
                         <td className="py-3 px-4">
-                          <div className="font-semibold text-[#0F172A] dark:text-[#F8FAFC] flex items-center gap-2">
+                          <div className="font-semibold text-[#111827] dark:text-[#F9FAFB] flex items-center gap-2">
                             <span className="flex h-7 w-7 items-center justify-center rounded-full bg-blue-100 text-blue-700 dark:bg-blue-950 dark:text-blue-300 font-bold text-[10px]">
                               {emp.name.slice(0, 2).toUpperCase()}
                             </span>
@@ -163,7 +163,7 @@ export const EmployeesPage: React.FC = () => {
                             {emp.role}
                           </Badge>
                         </td>
-                        <td className="py-3 px-4 font-mono text-[#64748B] dark:text-[#94A3B8]">
+                        <td className="py-3 px-4 font-mono text-[#64748B] dark:text-[#9CA3AF]">
                           {emp.phone || '-'}
                         </td>
                         <td className="py-3 px-4 text-[#64748B]">
@@ -219,7 +219,7 @@ export const EmployeesPage: React.FC = () => {
             <CardContent className="p-0">
               <div className="overflow-x-auto">
                 <table className="w-full text-left text-xs">
-                  <thead className="bg-[#F8FAFC] dark:bg-[#172338] text-[#64748B] border-b border-[#E2E8F0] dark:border-[#263449] uppercase font-semibold text-[11px]">
+                  <thead className="bg-[#F8FAFC] dark:bg-[#374151] text-[#64748B] border-b border-[#E2E8F0] dark:border-[#374151] uppercase font-semibold text-[11px]">
                     <tr>
                       <th className="py-3 px-4">Permission Capability</th>
                       {ROLES.map((r) => (
@@ -229,7 +229,7 @@ export const EmployeesPage: React.FC = () => {
                       ))}
                     </tr>
                   </thead>
-                  <tbody className="divide-y divide-[#E2E8F0] dark:divide-[#263449]">
+                  <tbody className="divide-y divide-[#E2E8F0] dark:divide-[#374151]">
                     {[
                       { label: 'Access POS & Checkout', key: 'canAccessPos' },
                       { label: 'Manage Products & Pricing', key: 'canManageProducts' },
@@ -243,8 +243,8 @@ export const EmployeesPage: React.FC = () => {
                       { label: 'Manage Employees & Access', key: 'canManageEmployees' },
                       { label: 'Update Store Configuration', key: 'canManageSettings' },
                     ].map((row) => (
-                      <tr key={row.key} className="hover:bg-[#F8FAFC] dark:hover:bg-[#172338]/40">
-                        <td className="py-2.5 px-4 font-semibold text-[#1E293B] dark:text-[#F8FAFC]">
+                      <tr key={row.key} className="hover:bg-[#F8FAFC] dark:hover:bg-[#374151]/40">
+                        <td className="py-2.5 px-4 font-semibold text-[#1E293B] dark:text-[#F9FAFB]">
                           {row.label}
                         </td>
                         {ROLES.map((r) => {
@@ -327,7 +327,7 @@ export const EmployeesPage: React.FC = () => {
             <option value="suspended">Suspended</option>
           </Select>
 
-          <div className="flex justify-end gap-2 pt-2 border-t border-[#E2E8F0] dark:border-[#263449]">
+          <div className="flex justify-end gap-2 pt-2 border-t border-[#E2E8F0] dark:border-[#374151]">
             <Button type="button" variant="outline" onClick={() => setModalOpen(false)}>
               Cancel
             </Button>

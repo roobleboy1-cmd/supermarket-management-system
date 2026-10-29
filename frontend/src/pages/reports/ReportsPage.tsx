@@ -74,22 +74,22 @@ export const ReportsPage: React.FC = () => {
       <Card>
         <CardContent className="p-4 flex flex-col sm:flex-row items-center justify-between gap-3">
           <div className="flex items-center gap-2">
-            <Calendar className="h-4 w-4 text-[#3B82F6]" />
-            <span className="text-xs font-semibold text-[#334155] dark:text-[#94A3B8]">
+            <Calendar className="h-4 w-4 text-[#16A34A]" />
+            <span className="text-xs font-semibold text-[#334155] dark:text-[#9CA3AF]">
               Active Reporting Period:
             </span>
             <Badge variant="primary">{pnl?.period || 'THIS MONTH'}</Badge>
           </div>
 
-          <div className="inline-flex rounded-lg border border-[#E2E8F0] dark:border-[#263449] p-0.5 text-xs">
+          <div className="inline-flex rounded-lg border border-[#E2E8F0] dark:border-[#374151] p-0.5 text-xs">
             {(['today', 'this_week', 'this_month', 'this_year'] as const).map((r) => (
               <button
                 key={r}
                 onClick={() => setPeriodRange(r)}
                 className={`px-3 py-1.5 rounded-md font-medium transition cursor-pointer ${
                   periodRange === r
-                    ? 'bg-[#3B82F6] text-white font-bold shadow-xs'
-                    : 'text-[#64748B] dark:text-[#94A3B8] hover:text-[#0F172A]'
+                    ? 'bg-[#16A34A] text-white font-bold shadow-xs'
+                    : 'text-[#64748B] dark:text-[#9CA3AF] hover:text-[#111827]'
                 }`}
               >
                 {r.replace('_', ' ').toUpperCase()}
@@ -106,14 +106,14 @@ export const ReportsPage: React.FC = () => {
           value={formatCurrency(pnl?.salesRevenue || 0)}
           description={`${pnl?.transactionCount || 0} checkout transactions`}
           icon={DollarSign}
-          iconColor="text-[#3B82F6] bg-blue-100 dark:bg-blue-950 dark:text-[#06B6D4]"
+          iconColor="text-[#16A34A] bg-blue-100 dark:bg-blue-950 dark:text-[#84CC16]"
         />
         <StatCard
           title="Cost of Goods Sold (COGS)"
           value={formatCurrency(pnl?.costOfGoodsSold || 0)}
           description="Wholesale merchandise cost"
           icon={FileSpreadsheet}
-          iconColor="text-[#64748B] bg-[#F1F5F9] dark:bg-[#172338] dark:text-[#94A3B8]"
+          iconColor="text-[#64748B] bg-[#F1F5F9] dark:bg-[#374151] dark:text-[#9CA3AF]"
         />
         <StatCard
           title="Gross Operating Profit"
@@ -142,15 +142,15 @@ export const ReportsPage: React.FC = () => {
 
       {/* Documented Formula Banner */}
       <div className="p-4 rounded-xl bg-blue-50 dark:bg-blue-950/40 border border-blue-200 dark:border-blue-900 flex items-start gap-3">
-        <HelpCircle className="h-5 w-5 text-[#3B82F6] shrink-0 mt-0.5" />
+        <HelpCircle className="h-5 w-5 text-[#16A34A] shrink-0 mt-0.5" />
         <div className="text-xs">
           <p className="font-bold text-blue-900 dark:text-blue-300">
             Documented Accounting Formula:
           </p>
-          <code className="text-[#1E293B] dark:text-[#F8FAFC] font-mono font-semibold block mt-1">
+          <code className="text-[#1E293B] dark:text-[#F9FAFB] font-mono font-semibold block mt-1">
             Net Operating Result = (Sales Revenue - Cost of Goods Sold) - Recorded Operating Expenses
           </code>
-          <p className="text-[#64748B] dark:text-[#94A3B8] mt-1">
+          <p className="text-[#64748B] dark:text-[#9CA3AF] mt-1">
             Current Calculation: (${pnl?.salesRevenue.toFixed(2)} - ${pnl?.costOfGoodsSold.toFixed(2)}) - ${pnl?.recordedOperatingExpenses.toFixed(2)} ={' '}
             <strong className="text-blue-700 dark:text-blue-300">
               ${pnl?.netOperatingResult.toFixed(2)}
@@ -166,15 +166,15 @@ export const ReportsPage: React.FC = () => {
         </CardHeader>
         <CardContent className="p-0 overflow-x-auto">
           <table className="w-full text-left text-xs">
-            <tbody className="divide-y divide-[#E2E8F0] dark:divide-[#263449]">
-              <tr className="bg-[#F5F7FC] dark:bg-[#111C31]/60 font-bold text-[#1E293B] dark:text-[#F8FAFC]">
+            <tbody className="divide-y divide-[#E2E8F0] dark:divide-[#374151]">
+              <tr className="bg-[#F8FAFC] dark:bg-[#1F2937]/60 font-bold text-[#1E293B] dark:text-[#F9FAFB]">
                 <td className="py-3 px-6">1. REVENUE FROM SALES</td>
                 <td className="py-3 px-6 text-right font-mono">
                   {formatCurrency(pnl?.salesRevenue || 0)}
                 </td>
               </tr>
               <tr>
-                <td className="py-2.5 px-6 pl-12 text-[#64748B] dark:text-[#94A3B8]">
+                <td className="py-2.5 px-6 pl-12 text-[#64748B] dark:text-[#9CA3AF]">
                   Gross Merchandise Checkout Volume
                 </td>
                 <td className="py-2.5 px-6 text-right font-mono">
@@ -182,7 +182,7 @@ export const ReportsPage: React.FC = () => {
                 </td>
               </tr>
               <tr>
-                <td className="py-2.5 px-6 pl-12 text-[#64748B] dark:text-[#94A3B8]">
+                <td className="py-2.5 px-6 pl-12 text-[#64748B] dark:text-[#9CA3AF]">
                   Discounts Given to Customers
                 </td>
                 <td className="py-2.5 px-6 text-right font-mono text-emerald-600">
@@ -190,7 +190,7 @@ export const ReportsPage: React.FC = () => {
                 </td>
               </tr>
               <tr>
-                <td className="py-2.5 px-6 pl-12 text-[#64748B] dark:text-[#94A3B8]">
+                <td className="py-2.5 px-6 pl-12 text-[#64748B] dark:text-[#9CA3AF]">
                   Approved Sales Returns / Refunds
                 </td>
                 <td className="py-2.5 px-6 text-right font-mono text-red-600">
@@ -198,7 +198,7 @@ export const ReportsPage: React.FC = () => {
                 </td>
               </tr>
 
-              <tr className="bg-[#F5F7FC] dark:bg-[#111C31]/60 font-bold text-[#1E293B] dark:text-[#F8FAFC]">
+              <tr className="bg-[#F8FAFC] dark:bg-[#1F2937]/60 font-bold text-[#1E293B] dark:text-[#F9FAFB]">
                 <td className="py-3 px-6">2. COST OF GOODS SOLD (COGS)</td>
                 <td className="py-3 px-6 text-right font-mono text-red-600">
                   -{formatCurrency(pnl?.costOfGoodsSold || 0)}
@@ -212,14 +212,14 @@ export const ReportsPage: React.FC = () => {
                 </td>
               </tr>
 
-              <tr className="bg-[#F5F7FC] dark:bg-[#111C31]/60 font-bold text-[#1E293B] dark:text-[#F8FAFC]">
+              <tr className="bg-[#F8FAFC] dark:bg-[#1F2937]/60 font-bold text-[#1E293B] dark:text-[#F9FAFB]">
                 <td className="py-3 px-6">4. RECORDED OPERATING EXPENSES</td>
                 <td className="py-3 px-6 text-right font-mono text-red-600">
                   -{formatCurrency(pnl?.recordedOperatingExpenses || 0)}
                 </td>
               </tr>
 
-              <tr className="bg-[#3B82F6] text-white font-bold text-sm">
+              <tr className="bg-[#16A34A] text-white font-bold text-sm">
                 <td className="py-4 px-6">5. NET OPERATING RESULT (BOTTOM LINE)</td>
                 <td className="py-4 px-6 text-right font-mono text-base">
                   {formatCurrency(pnl?.netOperatingResult || 0)}

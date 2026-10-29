@@ -39,7 +39,7 @@ import { dashboardService } from '@/services/api/dashboardService'
 import { useLanguageStore } from '@/stores/languageStore'
 import { formatCurrency, formatDate } from '@/utils/formatters'
 
-const PALETTE = ['#6366F1', '#10B981', '#F59E0B', '#8B5CF6', '#06B6D4', '#EC4899', '#3B82F6']
+const PALETTE = ['#16A34A', '#84CC16', '#F97316', '#166534', '#06B6D4', '#EAB308', '#10B981']
 
 export const DashboardPage: React.FC = () => {
   const [chartPeriod, setChartPeriod] = React.useState<'7d' | '30d' | '90d'>('7d')
@@ -131,7 +131,7 @@ export const DashboardPage: React.FC = () => {
               }
               trend={{ value: '+14.2% vs shalay', isPositive: true }}
               icon={DollarSign}
-              iconColor="bg-gradient-to-br from-[#3B82F6] to-[#8B5CF6] text-white shadow-md shadow-indigo-500/25"
+              iconColor="bg-gradient-to-br from-[#16A34A] to-[#166534] text-white shadow-md shadow-green-600/25"
             />
             <StatCard
               title={t('dash.grossProfit')}
@@ -143,7 +143,7 @@ export const DashboardPage: React.FC = () => {
               }
               trend={{ value: '~32% Margin', isPositive: true }}
               icon={TrendingUp}
-              iconColor="bg-gradient-to-br from-emerald-500 to-teal-600 text-white shadow-md shadow-emerald-500/25"
+              iconColor="bg-gradient-to-br from-[#84CC16] to-[#65A30D] text-white shadow-md shadow-lime-500/25"
             />
             <StatCard
               title={t('dash.inventoryVal')}
@@ -154,7 +154,7 @@ export const DashboardPage: React.FC = () => {
                   : `${stats?.totalProducts || 0} Products in ${stats?.totalCategories || 0} Categories`
               }
               icon={Boxes}
-              iconColor="bg-gradient-to-br from-violet-500 to-purple-600 text-white shadow-md shadow-violet-500/25"
+              iconColor="bg-gradient-to-br from-[#F97316] to-[#EA580C] text-white shadow-md shadow-orange-500/25"
             />
             <StatCard
               title={t('dash.activeShift')}
@@ -177,8 +177,8 @@ export const DashboardPage: React.FC = () => {
               icon={Clock}
               iconColor={
                 stats?.currentShiftActive
-                  ? 'bg-gradient-to-br from-emerald-500 to-teal-600 text-white shadow-md shadow-emerald-500/25'
-                  : 'bg-gradient-to-br from-amber-500 to-orange-600 text-white shadow-md shadow-amber-500/25'
+                  ? 'bg-gradient-to-br from-[#16A34A] to-[#15803D] text-white shadow-md shadow-green-600/25'
+                  : 'bg-gradient-to-br from-[#F97316] to-[#C2410C] text-white shadow-md shadow-orange-500/25'
               }
             />
           </>
@@ -231,10 +231,10 @@ export const DashboardPage: React.FC = () => {
 
         <Link
           to="/returns?status=pending_approval"
-          className="group flex items-center justify-between p-4 rounded-2xl border border-indigo-200/80 dark:border-indigo-900/50 bg-gradient-to-r from-indigo-50/70 to-blue-50/40 dark:from-indigo-950/20 dark:to-blue-950/10 hover:border-indigo-400 dark:hover:border-indigo-700 transition-all duration-200 shadow-2xs hover:shadow-xs"
+          className="group flex items-center justify-between p-4 rounded-2xl border border-green-200/80 dark:border-indigo-900/50 bg-gradient-to-r from-indigo-50/70 to-blue-50/40 dark:from-indigo-950/20 dark:to-blue-950/10 hover:border-indigo-400 dark:hover:border-indigo-700 transition-all duration-200 shadow-2xs hover:shadow-xs"
         >
           <div className="flex items-center gap-3">
-            <div className="p-3 rounded-xl bg-indigo-500/15 text-[#3B82F6] dark:text-[#06B6D4] shrink-0 group-hover:scale-105 transition-transform">
+            <div className="p-3 rounded-xl bg-indigo-500/15 text-[#16A34A] dark:text-[#84CC16] shrink-0 group-hover:scale-105 transition-transform">
               <RotateCcw className="h-5 w-5" />
             </div>
             <div>
@@ -247,7 +247,7 @@ export const DashboardPage: React.FC = () => {
               </p>
             </div>
           </div>
-          <ArrowUpRight className="h-4 w-4 text-[#3B82F6] group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" />
+          <ArrowUpRight className="h-4 w-4 text-[#16A34A] group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" />
         </Link>
       </div>
 
@@ -258,21 +258,21 @@ export const DashboardPage: React.FC = () => {
           <CardHeader className="flex flex-row items-center justify-between pb-2">
             <div>
               <CardTitle>{t('dash.salesTrend')}</CardTitle>
-              <p className="text-xs text-[#64748B] dark:text-[#94A3B8] mt-0.5">
+              <p className="text-xs text-[#64748B] dark:text-[#9CA3AF] mt-0.5">
                 {language === 'so'
                   ? 'Iibka dukaanka oo toos looga diiwaangeliyay nidaamka'
                   : 'Real-time transaction revenue & gross margins aggregated'}
               </p>
             </div>
-            <div className="inline-flex rounded-xl border border-[#E2E8F0]/80 dark:border-[#263449] p-1 bg-[#F5F7FC] dark:bg-[#111C31] text-xs">
+            <div className="inline-flex rounded-xl border border-[#E2E8F0] dark:border-[#374151] p-1 bg-[#F8FAFC] dark:bg-[#111827] text-xs">
               {(['7d', '30d', '90d'] as const).map((period) => (
                 <button
                   key={period}
                   onClick={() => setChartPeriod(period)}
                   className={`px-3 py-1 rounded-lg font-bold text-xs transition-all duration-150 cursor-pointer ${
                     chartPeriod === period
-                      ? 'bg-gradient-to-r from-[#3B82F6] to-[#8B5CF6] text-white shadow-2xs'
-                      : 'text-[#64748B] dark:text-[#94A3B8] hover:text-[#0F172A] dark:hover:text-slate-200'
+                      ? 'bg-gradient-to-r from-[#16A34A] to-[#15803D] text-white shadow-2xs'
+                      : 'text-[#64748B] dark:text-[#9CA3AF] hover:text-[#111827] dark:hover:text-[#F9FAFB]'
                   }`}
                 >
                   {period === '7d'
@@ -302,26 +302,26 @@ export const DashboardPage: React.FC = () => {
                   >
                     <defs>
                       <linearGradient id="colorRevenue" x1="0" y1="0" x2="0" y2="1">
-                        <stop offset="5%" stopColor="#6366F1" stopOpacity={0.4} />
-                        <stop offset="95%" stopColor="#6366F1" stopOpacity={0.0} />
+                        <stop offset="5%" stopColor="#16A34A" stopOpacity={0.4} />
+                        <stop offset="95%" stopColor="#16A34A" stopOpacity={0.0} />
                       </linearGradient>
                       <linearGradient id="colorProfit" x1="0" y1="0" x2="0" y2="1">
-                        <stop offset="5%" stopColor="#10B981" stopOpacity={0.35} />
-                        <stop offset="95%" stopColor="#10B981" stopOpacity={0.0} />
+                        <stop offset="5%" stopColor="#84CC16" stopOpacity={0.35} />
+                        <stop offset="95%" stopColor="#84CC16" stopOpacity={0.0} />
                       </linearGradient>
                     </defs>
                     <CartesianGrid
                       strokeDasharray="3 3"
                       className="stroke-slate-200/80 dark:stroke-slate-800/80"
                     />
-                    <XAxis dataKey="date" className="text-xs" stroke="#94A3B8" />
-                    <YAxis className="text-xs" stroke="#94A3B8" />
+                    <XAxis dataKey="date" className="text-xs" stroke="#9CA3AF" />
+                    <YAxis className="text-xs" stroke="#9CA3AF" />
                     <Tooltip
                       contentStyle={{
-                        backgroundColor: '#0F172A',
-                        borderColor: '#334155',
+                        backgroundColor: '#1F2937',
+                        borderColor: '#374151',
                         borderRadius: '1rem',
-                        color: '#F8FAFC',
+                        color: '#F9FAFB',
                         fontSize: '12px',
                         fontWeight: 600,
                         boxShadow: '0 10px 25px -5px rgba(0,0,0,0.3)',
@@ -332,7 +332,7 @@ export const DashboardPage: React.FC = () => {
                       type="monotone"
                       dataKey="revenue"
                       name={language === 'so' ? 'Iibka Guud' : 'Sales Revenue'}
-                      stroke="#6366F1"
+                      stroke="#16A34A"
                       strokeWidth={2.5}
                       fillOpacity={1}
                       fill="url(#colorRevenue)"
@@ -357,7 +357,7 @@ export const DashboardPage: React.FC = () => {
         <Card>
           <CardHeader>
             <CardTitle>{t('dash.salesByMethod')}</CardTitle>
-            <p className="text-xs text-[#64748B] dark:text-[#94A3B8] mt-0.5">
+            <p className="text-xs text-[#64748B] dark:text-[#9CA3AF] mt-0.5">
               EVC Plus, eDahab, ZAAD, Card & Cash
             </p>
           </CardHeader>
@@ -382,10 +382,10 @@ export const DashboardPage: React.FC = () => {
                   <Tooltip
                     formatter={(val: any) => [`$${val}`, 'Amount']}
                     contentStyle={{
-                      backgroundColor: '#0F172A',
-                      borderColor: '#334155',
+                      backgroundColor: '#1F2937',
+                      borderColor: '#374151',
                       borderRadius: '0.75rem',
-                      color: '#F8FAFC',
+                      color: '#F9FAFB',
                       fontSize: '11px',
                       fontWeight: 600,
                     }}
@@ -401,12 +401,12 @@ export const DashboardPage: React.FC = () => {
                       className="w-2.5 h-2.5 rounded-full shrink-0"
                       style={{ backgroundColor: PALETTE[idx % PALETTE.length] }}
                     />
-                    <span className="text-[#334155] dark:text-[#94A3B8] font-semibold">
+                    <span className="text-[#334155] dark:text-[#9CA3AF] font-semibold">
                       {item.method}
                     </span>
                   </div>
                   <div className="flex items-center gap-2">
-                    <span className="font-extrabold text-[#0F172A] dark:text-[#F8FAFC]">
+                    <span className="font-extrabold text-[#111827] dark:text-[#F9FAFB]">
                       ${item.total.toFixed(2)}
                     </span>
                     <span className="text-[#94A3B8] text-[11px] font-bold">
@@ -427,28 +427,28 @@ export const DashboardPage: React.FC = () => {
           <CardHeader className="flex flex-row items-center justify-between">
             <div>
               <CardTitle>{t('dash.recentSales')}</CardTitle>
-              <p className="text-xs text-[#64748B] dark:text-[#94A3B8] mt-0.5">
+              <p className="text-xs text-[#64748B] dark:text-[#9CA3AF] mt-0.5">
                 {language === 'so' ? 'Rasiidhadhkii ugu dambeeyay ee dukaanka' : 'Latest completed checkout receipts'}
               </p>
             </div>
             <Link
               to="/sales"
-              className="text-xs font-bold text-[#3B82F6] dark:text-[#06B6D4] hover:underline inline-flex items-center gap-1"
+              className="text-xs font-bold text-[#16A34A] dark:text-[#84CC16] hover:underline inline-flex items-center gap-1"
             >
               {t('action.viewAll')}
               <ArrowUpRight className="h-3.5 w-3.5" />
             </Link>
           </CardHeader>
           <CardContent>
-            <div className="divide-y divide-[#E2E8F0] dark:divide-[#263449]/80">
+            <div className="divide-y divide-[#E2E8F0] dark:divide-[#374151]/80">
               {(recentSales || []).map((sale) => (
                 <div key={sale.id} className="py-3 flex items-center justify-between">
                   <div className="flex items-center gap-3">
-                    <div className="p-2.5 rounded-xl bg-indigo-50 dark:bg-indigo-950/60 text-[#3B82F6] dark:text-[#06B6D4] shrink-0">
+                    <div className="p-2.5 rounded-xl bg-indigo-50 dark:bg-indigo-950/60 text-[#16A34A] dark:text-[#84CC16] shrink-0">
                       <Receipt className="h-4 w-4" />
                     </div>
                     <div>
-                      <p className="text-xs font-bold text-[#0F172A] dark:text-[#F8FAFC] font-mono">
+                      <p className="text-xs font-bold text-[#111827] dark:text-[#F9FAFB] font-mono">
                         {sale.invoiceNumber}
                       </p>
                       <p className="text-[11px] text-[#64748B] font-medium">
@@ -457,7 +457,7 @@ export const DashboardPage: React.FC = () => {
                     </div>
                   </div>
                   <div className="text-right">
-                    <p className="text-xs font-extrabold text-[#0F172A] dark:text-[#F8FAFC]">
+                    <p className="text-xs font-extrabold text-[#111827] dark:text-[#F9FAFB]">
                       ${sale.total.toFixed(2)}
                     </p>
                     <Badge variant="success" size="sm" dot className="mt-0.5">
@@ -475,33 +475,33 @@ export const DashboardPage: React.FC = () => {
           <CardHeader className="flex flex-row items-center justify-between">
             <div>
               <CardTitle>{t('dash.topProducts')}</CardTitle>
-              <p className="text-xs text-[#64748B] dark:text-[#94A3B8] mt-0.5">
+              <p className="text-xs text-[#64748B] dark:text-[#9CA3AF] mt-0.5">
                 {language === 'so' ? 'Alaabta tirada ugu badan laga iibsaday' : 'Highest volume sold items'}
               </p>
             </div>
             <Link
               to="/products"
-              className="text-xs font-bold text-[#3B82F6] dark:text-[#06B6D4] hover:underline inline-flex items-center gap-1"
+              className="text-xs font-bold text-[#16A34A] dark:text-[#84CC16] hover:underline inline-flex items-center gap-1"
             >
               {t('nav.products')}
               <ArrowUpRight className="h-3.5 w-3.5" />
             </Link>
           </CardHeader>
           <CardContent>
-            <div className="divide-y divide-[#E2E8F0] dark:divide-[#263449]/80">
+            <div className="divide-y divide-[#E2E8F0] dark:divide-[#374151]/80">
               {(topProducts || []).map((prod: any, idx: number) => (
                 <div key={prod.id} className="py-3 flex items-center justify-between">
                   <div className="flex items-center gap-3">
-                    <span className="flex h-7 w-7 items-center justify-center rounded-xl bg-gradient-to-tr from-[#3B82F6] to-[#8B5CF6] text-white text-xs font-extrabold shadow-2xs shrink-0">
+                    <span className="flex h-7 w-7 items-center justify-center rounded-xl bg-gradient-to-tr from-[#16A34A] to-[#166534] text-white text-xs font-extrabold shadow-2xs shrink-0">
                       #{idx + 1}
                     </span>
                     <div>
-                      <p className="text-xs font-bold text-[#0F172A] dark:text-[#F8FAFC]">{prod.name}</p>
+                      <p className="text-xs font-bold text-[#111827] dark:text-[#F9FAFB]">{prod.name}</p>
                       <p className="text-[11px] text-[#64748B] font-medium">{prod.category}</p>
                     </div>
                   </div>
                   <div className="text-right">
-                    <p className="text-xs font-extrabold text-[#0F172A] dark:text-[#F8FAFC]">
+                    <p className="text-xs font-extrabold text-[#111827] dark:text-[#F9FAFB]">
                       {prod.unitsSold} {language === 'so' ? 'xabbad' : 'sold'}
                     </p>
                     <p className="text-[11px] font-bold text-emerald-600 dark:text-emerald-400 mt-0.5">

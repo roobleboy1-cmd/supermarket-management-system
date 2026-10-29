@@ -58,39 +58,39 @@ export const ForgotPasswordPage: React.FC = () => {
   }
 
   return (
-    <div className="min-h-screen flex flex-col justify-center py-12 sm:px-6 lg:px-8 bg-[#F5F7FC] dark:bg-[#0B1220] transition-colors relative">
+    <div className="min-h-screen flex flex-col justify-center py-12 sm:px-6 lg:px-8 bg-[#F8FAFC] dark:bg-[#111827] transition-colors relative">
       {/* Top right quick controls */}
       <div className="absolute top-4 right-4 sm:top-6 sm:right-6 flex items-center gap-2">
         <button
           onClick={toggleLanguage}
-          className="flex items-center gap-1.5 px-3 py-1.5 rounded-xl border border-[#E2E8F0] dark:border-[#263449] bg-white/80 dark:bg-[#111C31]/80 hover:bg-[#F1F5F9] dark:hover:bg-[#172338] text-xs font-bold text-[#0F172A] dark:text-[#F8FAFC] shadow-xs transition cursor-pointer"
+          className="flex items-center gap-1.5 px-3 py-1.5 rounded-xl border border-[#E2E8F0] dark:border-[#374151] bg-white/80 dark:bg-[#1F2937]/80 hover:bg-[#F1F5F9] dark:hover:bg-[#374151] text-xs font-bold text-[#111827] dark:text-[#F9FAFB] shadow-xs transition cursor-pointer"
           title="Toggle Language / Beddel Luuqadda"
         >
-          <Globe className="h-3.5 w-3.5 text-[#3B82F6] dark:text-[#06B6D4]" />
+          <Globe className="h-3.5 w-3.5 text-[#16A34A] dark:text-[#84CC16]" />
           <span>{language === 'so' ? '🇸🇴 SO' : '🇬🇧 EN'}</span>
         </button>
 
         <button
           onClick={toggleTheme}
-          className="p-2 rounded-xl border border-[#E2E8F0] dark:border-[#263449] bg-white/80 dark:bg-[#111C31]/80 hover:bg-[#F1F5F9] dark:hover:bg-[#172338] text-[#0F172A] dark:text-[#F8FAFC] shadow-xs transition cursor-pointer"
+          className="p-2 rounded-xl border border-[#E2E8F0] dark:border-[#374151] bg-white/80 dark:bg-[#1F2937]/80 hover:bg-[#F1F5F9] dark:hover:bg-[#374151] text-[#111827] dark:text-[#F9FAFB] shadow-xs transition cursor-pointer"
           title="Toggle Dark/Light Mode"
         >
           {resolvedTheme === 'dark' ? (
             <Sun className="h-4 w-4 text-amber-400" />
           ) : (
-            <Moon className="h-4 w-4 text-[#3B82F6]" />
+            <Moon className="h-4 w-4 text-[#16A34A]" />
           )}
         </button>
       </div>
 
       <div className="sm:mx-auto sm:w-full sm:max-w-md text-center">
-        <div className="inline-flex h-14 w-14 items-center justify-center rounded-2xl bg-gradient-to-tr from-[#3B82F6] via-[#8B5CF6] to-[#06B6D4] text-white shadow-lg shadow-blue-500/25 mb-3">
+        <div className="inline-flex h-14 w-14 items-center justify-center rounded-2xl bg-gradient-to-tr from-[#16A34A] via-[#15803D] to-[#84CC16] text-white shadow-lg shadow-green-600/25 mb-3">
           <Store className="h-7 w-7" />
         </div>
-        <h2 className="text-3xl font-extrabold tracking-tight bg-clip-text text-transparent bg-gradient-to-r from-[#3B82F6] via-[#8B5CF6] to-[#06B6D4]">
+        <h2 className="text-3xl font-extrabold tracking-tight bg-clip-text text-transparent bg-gradient-to-r from-[#16A34A] via-[#15803D] to-[#84CC16]">
           {language === 'so' ? 'Dib u deji Furaha' : 'Reset Your Password'}
         </h2>
-        <p className="mt-1 text-xs text-[#64748B] dark:text-[#94A3B8]">
+        <p className="mt-1 text-xs text-[#64748B] dark:text-[#9CA3AF]">
           {language === 'so'
             ? 'Geli emailkaaga shaqaalaha si laguu soo diro tilmaamaha soo celinta'
             : 'Enter your registered staff email to receive recovery instructions'}
@@ -98,22 +98,22 @@ export const ForgotPasswordPage: React.FC = () => {
       </div>
 
       <div className="mt-8 sm:mx-auto sm:w-full sm:max-w-md px-4 sm:px-0">
-        <div className="bg-white dark:bg-[#111C31] py-8 px-6 sm:px-10 shadow-xl shadow-black/5 dark:shadow-black/25 rounded-3xl border border-[#E2E8F0] dark:border-[#263449]">
+        <div className="bg-white dark:bg-[#1F2937] py-8 px-6 sm:px-10 shadow-xl shadow-black/5 dark:shadow-black/25 rounded-3xl border border-[#E2E8F0] dark:border-[#374151]">
           {successMsg ? (
             <div className="text-center py-4">
               <div className="inline-flex items-center justify-center h-12 w-12 rounded-full bg-emerald-100 dark:bg-emerald-950/60 text-emerald-600 dark:text-emerald-400 mb-3 border border-emerald-500/30">
                 <CheckCircle2 className="h-6 w-6" />
               </div>
-              <h3 className="text-base font-bold text-[#0F172A] dark:text-[#F8FAFC]">
+              <h3 className="text-base font-bold text-[#111827] dark:text-[#F9FAFB]">
                 {language === 'so' ? 'Tilmaamihii Waa La Diray' : 'Instructions Dispatched'}
               </h3>
-              <p className="mt-2 text-xs text-[#64748B] dark:text-[#94A3B8] leading-relaxed">
+              <p className="mt-2 text-xs text-[#64748B] dark:text-[#9CA3AF] leading-relaxed">
                 {successMsg}
               </p>
-              <div className="mt-6 pt-4 border-t border-[#E2E8F0] dark:border-[#263449]">
+              <div className="mt-6 pt-4 border-t border-[#E2E8F0] dark:border-[#374151]">
                 <Link
                   to="/login"
-                  className="inline-flex items-center text-xs font-semibold text-[#3B82F6] dark:text-[#06B6D4] hover:underline"
+                  className="inline-flex items-center text-xs font-semibold text-[#16A34A] dark:text-[#84CC16] hover:underline"
                 >
                   <ArrowLeft className="mr-1.5 h-3.5 w-3.5" />
                   {language === 'so' ? 'Ku laabo Gelitaanka' : 'Return to Login'}
@@ -157,10 +157,10 @@ export const ForgotPasswordPage: React.FC = () => {
                 {language === 'so' ? 'Dir Xiriiriyaha Furaha' : 'Send Reset Link'}
               </Button>
 
-              <div className="text-center pt-3 border-t border-[#E2E8F0] dark:border-[#263449]">
+              <div className="text-center pt-3 border-t border-[#E2E8F0] dark:border-[#374151]">
                 <Link
                   to="/login"
-                  className="inline-flex items-center text-xs font-medium text-[#64748B] dark:text-[#94A3B8] hover:text-[#3B82F6] dark:hover:text-[#06B6D4] transition"
+                  className="inline-flex items-center text-xs font-medium text-[#64748B] dark:text-[#9CA3AF] hover:text-[#16A34A] dark:hover:text-[#06B6D4] transition"
                 >
                   <ArrowLeft className="mr-1.5 h-3.5 w-3.5" />
                   {language === 'so' ? 'Ku noqo Gelitaanka' : 'Back to Login'}

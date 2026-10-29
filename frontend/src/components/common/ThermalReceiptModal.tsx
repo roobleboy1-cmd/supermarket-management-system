@@ -24,26 +24,26 @@ export const ThermalReceiptModal: React.FC<ThermalReceiptModalProps> = ({ sale, 
   return (
     <div className="fixed inset-0 z-50 flex items-center justify-center p-4">
       {/* Backdrop */}
-      <div className="fixed inset-0 bg-[#0B1220]/75 backdrop-blur-sm" onClick={onClose} />
+      <div className="fixed inset-0 bg-[#111827]/75 backdrop-blur-sm" onClick={onClose} />
 
-      <div className="relative w-full max-w-lg rounded-2xl bg-white dark:bg-[#111C31] border border-[#E2E8F0] dark:border-[#263449] shadow-2xl p-6 z-10 flex flex-col max-h-[95vh]">
+      <div className="relative w-full max-w-lg rounded-2xl bg-white dark:bg-[#1F2937] border border-[#E2E8F0] dark:border-[#374151] shadow-2xl p-6 z-10 flex flex-col max-h-[95vh]">
         {/* Modal Controls */}
-        <div className="flex items-center justify-between pb-4 border-b border-[#E2E8F0] dark:border-[#263449]">
+        <div className="flex items-center justify-between pb-4 border-b border-[#E2E8F0] dark:border-[#374151]">
           <div>
-            <h3 className="text-base font-bold text-[#0F172A] dark:text-[#F8FAFC]">
+            <h3 className="text-base font-bold text-[#111827] dark:text-[#F9FAFB]">
               Thermal Receipt Print Preview
             </h3>
-            <p className="text-xs text-[#64748B] dark:text-[#94A3B8]">Invoice: {sale.invoiceNumber}</p>
+            <p className="text-xs text-[#64748B] dark:text-[#9CA3AF]">Invoice: {sale.invoiceNumber}</p>
           </div>
 
           <div className="flex items-center gap-2">
-            <div className="inline-flex rounded-xl border border-[#E2E8F0] dark:border-[#263449] p-0.5 text-xs bg-[#F8FAFC] dark:bg-[#172338]">
+            <div className="inline-flex rounded-xl border border-[#E2E8F0] dark:border-[#374151] p-0.5 text-xs bg-[#F8FAFC] dark:bg-[#374151]">
               <button
                 onClick={() => setPaperWidth('58mm')}
                 className={`px-2.5 py-1 rounded-lg font-medium transition ${
                   paperWidth === '58mm'
-                    ? 'bg-gradient-to-r from-[#3B82F6] to-[#8B5CF6] text-white shadow-sm'
-                    : 'text-[#64748B] dark:text-[#94A3B8] hover:text-[#0F172A] dark:hover:text-[#F8FAFC]'
+                    ? 'bg-gradient-to-r from-[#16A34A] to-[#166534] text-white shadow-sm'
+                    : 'text-[#64748B] dark:text-[#9CA3AF] hover:text-[#111827] dark:hover:text-[#F8FAFC]'
                 }`}
               >
                 58 mm
@@ -52,8 +52,8 @@ export const ThermalReceiptModal: React.FC<ThermalReceiptModalProps> = ({ sale, 
                 onClick={() => setPaperWidth('80mm')}
                 className={`px-2.5 py-1 rounded-lg font-medium transition ${
                   paperWidth === '80mm'
-                    ? 'bg-gradient-to-r from-[#3B82F6] to-[#8B5CF6] text-white shadow-sm'
-                    : 'text-[#64748B] dark:text-[#94A3B8] hover:text-[#0F172A] dark:hover:text-[#F8FAFC]'
+                    ? 'bg-gradient-to-r from-[#16A34A] to-[#166534] text-white shadow-sm'
+                    : 'text-[#64748B] dark:text-[#9CA3AF] hover:text-[#111827] dark:hover:text-[#F8FAFC]'
                 }`}
               >
                 80 mm
@@ -62,7 +62,7 @@ export const ThermalReceiptModal: React.FC<ThermalReceiptModalProps> = ({ sale, 
 
             <button
               onClick={onClose}
-              className="p-1.5 rounded-lg text-[#64748B] hover:text-[#0F172A] dark:text-[#94A3B8] dark:hover:text-[#F8FAFC] hover:bg-[#F1F5F9] dark:hover:bg-[#172338]"
+              className="p-1.5 rounded-lg text-[#64748B] hover:text-[#111827] dark:text-[#9CA3AF] dark:hover:text-[#F8FAFC] hover:bg-[#F1F5F9] dark:hover:bg-[#374151]"
             >
               <X className="h-5 w-5" />
             </button>
@@ -70,9 +70,9 @@ export const ThermalReceiptModal: React.FC<ThermalReceiptModalProps> = ({ sale, 
         </div>
 
         {/* Scrollable Receipt Body */}
-        <div className="overflow-y-auto py-4 flex justify-center bg-[#F1F5F9] dark:bg-[#0B1220] rounded-xl my-3 p-4 border border-[#E2E8F0] dark:border-[#263449]">
+        <div className="overflow-y-auto py-4 flex justify-center bg-[#F1F5F9] dark:bg-[#111827] rounded-xl my-3 p-4 border border-[#E2E8F0] dark:border-[#374151]">
           <div
-            className={`printable-receipt-area bg-white text-[#0F172A] p-4 font-mono text-[11px] leading-relaxed shadow-md border border-[#E2E8F0] ${
+            className={`printable-receipt-area bg-white text-[#111827] p-4 font-mono text-[11px] leading-relaxed shadow-md border border-[#E2E8F0] ${
               paperWidth === '58mm' ? 'w-[240px]' : 'w-[320px]'
             }`}
           >
@@ -183,7 +183,7 @@ export const ThermalReceiptModal: React.FC<ThermalReceiptModalProps> = ({ sale, 
 
             {/* Barcode representation */}
             <div className="pt-3 text-center">
-              <div className="inline-block tracking-widest font-mono text-[11px] border border-slate-800 px-3 py-1 bg-[#F5F7FC] font-bold">
+              <div className="inline-block tracking-widest font-mono text-[11px] border border-slate-800 px-3 py-1 bg-[#F8FAFC] font-bold">
                 *{sale.invoiceNumber}*
               </div>
               <p className="mt-2 text-[9px] text-[#64748B] whitespace-pre-line leading-tight">

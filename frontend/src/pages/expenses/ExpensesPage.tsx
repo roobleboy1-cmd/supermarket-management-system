@@ -134,7 +134,7 @@ export const ExpensesPage: React.FC = () => {
           value="Tracked in P&L"
           description="Deducted from store gross profit"
           icon={Calendar}
-          iconColor="text-[#3B82F6] bg-blue-100 dark:bg-blue-950 dark:text-[#06B6D4]"
+          iconColor="text-[#16A34A] bg-blue-100 dark:bg-blue-950 dark:text-[#84CC16]"
         />
       </div>
 
@@ -146,7 +146,7 @@ export const ExpensesPage: React.FC = () => {
             <select
               value={filterCategory}
               onChange={(e) => setFilterCategory(e.target.value)}
-              className="w-full text-xs px-3 py-1.5 rounded-lg border border-[#E2E8F0] dark:border-[#263449] bg-white dark:bg-[#172338]"
+              className="w-full text-xs px-3 py-1.5 rounded-lg border border-[#E2E8F0] dark:border-[#374151] bg-white dark:bg-[#374151]"
             >
               <option value="all">All Expense Categories</option>
               {CATEGORIES.map((c) => (
@@ -160,7 +160,7 @@ export const ExpensesPage: React.FC = () => {
         <CardContent className="p-0">
           <div className="overflow-x-auto">
             <table className="w-full text-left text-xs">
-              <thead className="bg-[#F8FAFC] dark:bg-[#172338] text-[#64748B] border-b border-[#E2E8F0] dark:border-[#263449] uppercase font-semibold text-[11px]">
+              <thead className="bg-[#F8FAFC] dark:bg-[#374151] text-[#64748B] border-b border-[#E2E8F0] dark:border-[#374151] uppercase font-semibold text-[11px]">
                 <tr>
                   <th className="py-3 px-4">Expense Ref</th>
                   <th className="py-3 px-4">Title & Details</th>
@@ -171,7 +171,7 @@ export const ExpensesPage: React.FC = () => {
                   <th className="py-3 px-4 text-right">Actions</th>
                 </tr>
               </thead>
-              <tbody className="divide-y divide-[#E2E8F0] dark:divide-[#263449]">
+              <tbody className="divide-y divide-[#E2E8F0] dark:divide-[#374151]">
                 {isLoading ? (
                   <tr>
                     <td colSpan={7} className="py-12 text-center text-[#94A3B8]">
@@ -186,12 +186,12 @@ export const ExpensesPage: React.FC = () => {
                   </tr>
                 ) : (
                   expenses?.map((exp) => (
-                    <tr key={exp.id} className="hover:bg-[#F8FAFC] dark:hover:bg-[#172338]">
-                      <td className="py-3 px-4 font-mono font-bold text-[#0F172A] dark:text-[#F8FAFC]">
+                    <tr key={exp.id} className="hover:bg-[#F8FAFC] dark:hover:bg-[#374151]">
+                      <td className="py-3 px-4 font-mono font-bold text-[#111827] dark:text-[#F9FAFB]">
                         {exp.expenseNumber}
                       </td>
                       <td className="py-3 px-4">
-                        <div className="font-semibold text-[#0F172A] dark:text-[#F8FAFC]">
+                        <div className="font-semibold text-[#111827] dark:text-[#F9FAFB]">
                           {exp.title}
                         </div>
                         {exp.receiptReference && (
@@ -206,10 +206,10 @@ export const ExpensesPage: React.FC = () => {
                         </Badge>
                       </td>
                       <td className="py-3 px-4 text-[#64748B]">{formatDate(exp.expenseDate)}</td>
-                      <td className="py-3 px-4 font-medium text-[#1E293B] dark:text-[#F8FAFC]">
+                      <td className="py-3 px-4 font-medium text-[#1E293B] dark:text-[#F9FAFB]">
                         {exp.paidTo}
                       </td>
-                      <td className="py-3 px-4 text-right font-bold text-[#0F172A] dark:text-[#F8FAFC]">
+                      <td className="py-3 px-4 text-right font-bold text-[#111827] dark:text-[#F9FAFB]">
                         {formatCurrency(exp.amount)} ({exp.paymentMethod})
                       </td>
                       <td className="py-3 px-4 text-right">
@@ -313,7 +313,7 @@ export const ExpensesPage: React.FC = () => {
             placeholder="e.g. 150 Litres backup power for central freezer room"
           />
 
-          <div className="flex justify-end gap-2 pt-2 border-t border-[#E2E8F0] dark:border-[#263449]">
+          <div className="flex justify-end gap-2 pt-2 border-t border-[#E2E8F0] dark:border-[#374151]">
             <Button type="button" variant="outline" onClick={() => setModalOpen(false)}>
               Cancel
             </Button>

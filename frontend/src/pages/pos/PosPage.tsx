@@ -265,13 +265,13 @@ export const PosPage: React.FC = () => {
   return (
     <div className="h-[calc(100vh-6rem)] flex flex-col lg:flex-row gap-4 overflow-hidden select-none">
       {/* Mobile Tab Switcher */}
-      <div className="flex lg:hidden border-b border-[#E2E8F0] dark:border-[#263449] bg-white dark:bg-[#111C31] rounded-t-2xl overflow-hidden shrink-0">
+      <div className="flex lg:hidden border-b border-[#E2E8F0] dark:border-[#374151] bg-white dark:bg-[#1F2937] rounded-t-2xl overflow-hidden shrink-0">
         <button
           onClick={() => setMobileView('products')}
           className={`flex-1 px-4 py-3 text-xs font-bold flex items-center justify-center gap-2 transition cursor-pointer ${
             mobileView === 'products'
-              ? 'bg-gradient-to-r from-[#3B82F6] to-[#8B5CF6] text-white shadow-xs'
-              : 'text-[#64748B] dark:text-[#94A3B8] hover:bg-[#F1F5F9] dark:hover:bg-[#172338]'
+              ? 'bg-gradient-to-r from-[#16A34A] to-[#166534] text-white shadow-xs'
+              : 'text-[#64748B] dark:text-[#9CA3AF] hover:bg-[#F1F5F9] dark:hover:bg-[#374151]'
           }`}
         >
           <Layers className="h-4 w-4" />
@@ -281,8 +281,8 @@ export const PosPage: React.FC = () => {
           onClick={() => setMobileView('cart')}
           className={`flex-1 px-4 py-3 text-xs font-bold flex items-center justify-center gap-2 transition relative cursor-pointer ${
             mobileView === 'cart'
-              ? 'bg-gradient-to-r from-[#3B82F6] to-[#8B5CF6] text-white shadow-xs'
-              : 'text-[#64748B] dark:text-[#94A3B8] hover:bg-[#F1F5F9] dark:hover:bg-[#172338]'
+              ? 'bg-gradient-to-r from-[#16A34A] to-[#166534] text-white shadow-xs'
+              : 'text-[#64748B] dark:text-[#9CA3AF] hover:bg-[#F1F5F9] dark:hover:bg-[#374151]'
           }`}
         >
           <ShoppingCart className="h-4 w-4" />
@@ -291,7 +291,7 @@ export const PosPage: React.FC = () => {
             <span
               className={`text-[10px] px-1.5 py-0.5 rounded-full font-extrabold ${
                 mobileView === 'cart'
-                  ? 'bg-white text-[#3B82F6]'
+                  ? 'bg-white text-[#16A34A]'
                   : 'bg-indigo-600 text-white'
               }`}
             >
@@ -302,21 +302,21 @@ export const PosPage: React.FC = () => {
       </div>
 
       {/* LEFT: Product Catalog & Touch Selector */}
-      <div className={`flex-1 flex flex-col min-w-0 bg-white dark:bg-[#111C31] border border-[#E2E8F0]/80 dark:border-[#263449]/80 rounded-2xl shadow-xs overflow-hidden ${mobileView !== 'products' ? 'hidden lg:flex' : ''}`}>
+      <div className={`flex-1 flex flex-col min-w-0 bg-white dark:bg-[#1F2937] border border-[#E2E8F0]/80 dark:border-[#374151] rounded-2xl shadow-xs overflow-hidden ${mobileView !== 'products' ? 'hidden lg:flex' : ''}`}>
         {/* Top Scan & Search Bar */}
-        <div className="p-4 border-b border-[#E2E8F0]/80 dark:border-[#263449]/80 bg-[#F5F7FC]/70 dark:bg-[#0B1220]/40 space-y-3">
+        <div className="p-4 border-b border-[#E2E8F0]/80 dark:border-[#374151] bg-[#F8FAFC]/70 dark:bg-[#111827]/40 space-y-3">
           <div className="flex flex-col sm:flex-row gap-2.5">
             {/* Barcode Quick Scanner Input */}
             <form onSubmit={handleBarcodeSubmit} className="flex-1 flex gap-2">
               <div className="relative flex-1">
-                <Barcode className="absolute left-3 top-2.5 h-4 w-4 text-[#3B82F6] dark:text-[#06B6D4]" />
+                <Barcode className="absolute left-3 top-2.5 h-4 w-4 text-[#16A34A] dark:text-[#84CC16]" />
                 <input
                   ref={barcodeInputRef}
                   type="text"
                   placeholder={t('pos.scanBarcode')}
                   value={barcodeInput}
                   onChange={(e) => setBarcodeInput(e.target.value)}
-                  className="w-full pl-9 pr-3 py-2 text-sm rounded-xl border border-indigo-200 dark:border-indigo-900/60 bg-white dark:bg-[#111C31] text-[#0F172A] dark:text-[#F8FAFC] placeholder:text-[#94A3B8] focus:outline-none focus:ring-2 focus:ring-[#3B82F6] font-mono"
+                  className="w-full pl-9 pr-3 py-2 text-sm rounded-xl border border-green-200 dark:border-green-900/60 bg-white dark:bg-[#1F2937] text-[#111827] dark:text-[#F9FAFB] placeholder:text-[#94A3B8] focus:outline-none focus:ring-2 focus:ring-[#16A34A] font-mono"
                 />
               </div>
               <Button type="submit" variant="primary" size="sm">
@@ -332,7 +332,7 @@ export const PosPage: React.FC = () => {
                 placeholder={t('pos.searchProduct')}
                 value={searchTerm}
                 onChange={(e) => setSearchTerm(e.target.value)}
-                className="w-full pl-9 pr-3 py-2 text-sm rounded-xl border border-[#E2E8F0] dark:border-[#263449] bg-white dark:bg-[#111C31] text-[#0F172A] dark:text-[#F8FAFC] placeholder:text-[#94A3B8] focus:outline-none focus:ring-2 focus:ring-[#3B82F6]"
+                className="w-full pl-9 pr-3 py-2 text-sm rounded-xl border border-[#E2E8F0] dark:border-[#374151] bg-white dark:bg-[#1F2937] text-[#111827] dark:text-[#F9FAFB] placeholder:text-[#94A3B8] focus:outline-none focus:ring-2 focus:ring-[#16A34A]"
               />
             </div>
           </div>
@@ -343,8 +343,8 @@ export const PosPage: React.FC = () => {
               onClick={() => setSelectedCategory('all')}
               className={`px-3 py-1.5 rounded-xl text-xs font-bold whitespace-nowrap transition cursor-pointer ${
                 selectedCategory === 'all'
-                  ? 'bg-gradient-to-r from-[#3B82F6] to-[#8B5CF6] text-white shadow-xs'
-                  : 'bg-[#F1F5F9] dark:bg-[#172338] text-[#64748B] dark:text-[#94A3B8] hover:bg-[#E2E8F0] dark:hover:bg-[#172338]'
+                  ? 'bg-gradient-to-r from-[#16A34A] to-[#166534] text-white shadow-xs'
+                  : 'bg-[#F1F5F9] dark:bg-[#374151] text-[#64748B] dark:text-[#9CA3AF] hover:bg-[#E2E8F0] dark:hover:bg-[#374151]'
               }`}
             >
               {language === 'so' ? 'Dhammaan Alaabta' : 'All Products'}
@@ -355,8 +355,8 @@ export const PosPage: React.FC = () => {
                 onClick={() => setSelectedCategory(cat.id)}
                 className={`px-3 py-1.5 rounded-xl text-xs font-bold whitespace-nowrap transition cursor-pointer ${
                   selectedCategory === cat.id
-                    ? 'bg-gradient-to-r from-[#3B82F6] to-[#8B5CF6] text-white shadow-xs'
-                    : 'bg-[#F1F5F9] dark:bg-[#172338] text-[#64748B] dark:text-[#94A3B8] hover:bg-[#E2E8F0] dark:hover:bg-[#172338]'
+                    ? 'bg-gradient-to-r from-[#16A34A] to-[#166534] text-white shadow-xs'
+                    : 'bg-[#F1F5F9] dark:bg-[#374151] text-[#64748B] dark:text-[#9CA3AF] hover:bg-[#E2E8F0] dark:hover:bg-[#374151]'
                 }`}
               >
                 {cat.name}
@@ -385,8 +385,8 @@ export const PosPage: React.FC = () => {
                   }}
                   className={`group flex flex-col justify-between p-3 rounded-xl border text-left transition duration-150 active:scale-98 cursor-pointer ${
                     inStock
-                      ? 'bg-white dark:bg-[#111C31] border-[#E2E8F0] dark:border-[#263449] hover:border-blue-500 hover:shadow-md'
-                      : 'bg-[#F5F7FC] dark:bg-[#111C31]/40 border-[#E2E8F0] dark:border-[#263449] opacity-60 pointer-events-none'
+                      ? 'bg-white dark:bg-[#1F2937] border-[#E2E8F0] dark:border-[#374151] hover:border-[#16A34A] hover:shadow-md'
+                      : 'bg-[#F8FAFC] dark:bg-[#1F2937]/40 border-[#E2E8F0] dark:border-[#374151] opacity-60 pointer-events-none'
                   }`}
                 >
                   <div>
@@ -400,12 +400,12 @@ export const PosPage: React.FC = () => {
                         </span>
                       )}
                     </div>
-                    <h4 className="text-xs font-semibold text-[#0F172A] dark:text-[#F8FAFC] line-clamp-2 leading-snug">
+                    <h4 className="text-xs font-semibold text-[#111827] dark:text-[#F9FAFB] line-clamp-2 leading-snug">
                       {product.name}
                     </h4>
                   </div>
-                  <div className="mt-3 pt-2 border-t border-[#E2E8F0] dark:border-[#263449]/60 flex items-center justify-between">
-                    <span className="text-sm font-bold text-[#3B82F6] dark:text-[#06B6D4]">
+                  <div className="mt-3 pt-2 border-t border-[#E2E8F0] dark:border-[#374151] flex items-center justify-between">
+                    <span className="text-sm font-bold text-[#16A34A] dark:text-[#84CC16]">
                       ${product.sellingPrice.toFixed(2)}
                     </span>
                     <span className="text-[10px] text-[#94A3B8]">
@@ -420,12 +420,12 @@ export const PosPage: React.FC = () => {
       </div>
 
       {/* RIGHT: Active Cart, Totals & Checkout */}
-      <div className={`w-full lg:w-96 flex flex-col bg-white dark:bg-[#111C31] border border-[#E2E8F0] dark:border-[#263449] rounded-2xl shadow-md overflow-hidden shrink-0 ${mobileView !== 'cart' ? 'hidden lg:flex' : ''}`}>
+      <div className={`w-full lg:w-96 flex flex-col bg-white dark:bg-[#1F2937] border border-[#E2E8F0] dark:border-[#374151] rounded-2xl shadow-md overflow-hidden shrink-0 ${mobileView !== 'cart' ? 'hidden lg:flex' : ''}`}>
         {/* Cart Top Bar */}
-        <div className="p-4 border-b border-[#E2E8F0] dark:border-[#263449] bg-[#F5F7FC]/50 dark:bg-[#0B1220]/40 flex items-center justify-between">
+        <div className="p-4 border-b border-[#E2E8F0] dark:border-[#374151] bg-[#F8FAFC]/50 dark:bg-[#111827]/40 flex items-center justify-between">
           <div className="flex items-center gap-2">
-            <ShoppingCart className="h-5 w-5 text-[#3B82F6]" />
-            <h3 className="text-sm font-bold text-[#0F172A] dark:text-[#F8FAFC]">
+            <ShoppingCart className="h-5 w-5 text-[#16A34A]" />
+            <h3 className="text-sm font-bold text-[#111827] dark:text-[#F9FAFB]">
               Active Cart ({getTotalItemCount()})
             </h3>
           </div>
@@ -440,7 +440,7 @@ export const PosPage: React.FC = () => {
                   setHeldSalesModalOpen(true)
                 }
               }}
-              className="p-1.5 rounded-lg text-[#64748B] dark:text-[#94A3B8] hover:bg-[#E2E8F0] dark:hover:bg-[#172338] transition text-xs font-medium inline-flex items-center gap-1"
+              className="p-1.5 rounded-lg text-[#64748B] dark:text-[#9CA3AF] hover:bg-[#E2E8F0] dark:hover:bg-[#374151] transition text-xs font-medium inline-flex items-center gap-1"
               title="Hold Sale / Resume"
             >
               <PauseCircle className="h-4 w-4 text-amber-500" />
@@ -469,12 +469,12 @@ export const PosPage: React.FC = () => {
         </div>
 
         {/* Customer Attachment Bar */}
-        <div className="px-4 py-2 border-b border-[#E2E8F0] dark:border-[#263449] flex items-center justify-between text-xs">
+        <div className="px-4 py-2 border-b border-[#E2E8F0] dark:border-[#374151] flex items-center justify-between text-xs">
           {customer ? (
             <div className="flex items-center justify-between w-full">
               <div className="flex items-center gap-1.5">
-                <User className="h-3.5 w-3.5 text-[#3B82F6]" />
-                <span className="font-semibold text-[#1E293B] dark:text-[#F8FAFC]">{customer.name}</span>
+                <User className="h-3.5 w-3.5 text-[#16A34A]" />
+                <span className="font-semibold text-[#1E293B] dark:text-[#F9FAFB]">{customer.name}</span>
                 <span className="text-[10px] text-amber-600 font-bold">({customer.loyaltyPoints} pts)</span>
               </div>
               <button
@@ -487,7 +487,7 @@ export const PosPage: React.FC = () => {
           ) : (
             <button
               onClick={() => setCustomerModalOpen(true)}
-              className="flex items-center gap-1.5 text-[#64748B] hover:text-[#3B82F6] font-medium cursor-pointer"
+              className="flex items-center gap-1.5 text-[#64748B] hover:text-[#16A34A] font-medium cursor-pointer"
             >
               <User className="h-3.5 w-3.5" />
               <span>Attach Customer / Loyalty Member</span>
@@ -496,7 +496,7 @@ export const PosPage: React.FC = () => {
         </div>
 
         {/* Cart Items List */}
-        <div className="flex-1 overflow-y-auto divide-y divide-[#E2E8F0] dark:divide-[#263449] p-3 space-y-1">
+        <div className="flex-1 overflow-y-auto divide-y divide-[#E2E8F0] dark:divide-[#374151] p-3 space-y-1">
           {items.length === 0 ? (
             <div className="py-16 text-center text-[#94A3B8]">
               <ShoppingCart className="h-8 w-8 mx-auto mb-2 opacity-30" />
@@ -506,7 +506,7 @@ export const PosPage: React.FC = () => {
             items.map((item) => (
               <div key={item.id} className="py-2.5 flex items-center justify-between text-xs">
                 <div className="flex-1 pr-2">
-                  <p className="font-semibold text-[#0F172A] dark:text-[#F8FAFC] line-clamp-1">
+                  <p className="font-semibold text-[#111827] dark:text-[#F9FAFB] line-clamp-1">
                     {item.name}
                   </p>
                   <p className="text-[11px] text-[#94A3B8]">
@@ -516,23 +516,23 @@ export const PosPage: React.FC = () => {
 
                 <div className="flex items-center gap-2">
                   {/* Quantity editor */}
-                  <div className="flex items-center border border-[#E2E8F0] dark:border-[#263449] rounded-lg overflow-hidden">
+                  <div className="flex items-center border border-[#E2E8F0] dark:border-[#374151] rounded-lg overflow-hidden">
                     <button
                       onClick={() => updateQuantity(item.productId, item.quantity - 1)}
-                      className="p-1 hover:bg-[#F1F5F9] dark:hover:bg-[#172338]"
+                      className="p-1 hover:bg-[#F1F5F9] dark:hover:bg-[#374151]"
                     >
                       <Minus className="h-3 w-3" />
                     </button>
                     <span className="w-7 text-center font-bold text-xs">{item.quantity}</span>
                     <button
                       onClick={() => updateQuantity(item.productId, item.quantity + 1)}
-                      className="p-1 hover:bg-[#F1F5F9] dark:hover:bg-[#172338]"
+                      className="p-1 hover:bg-[#F1F5F9] dark:hover:bg-[#374151]"
                     >
                       <Plus className="h-3 w-3" />
                     </button>
                   </div>
 
-                  <span className="w-16 text-right font-bold text-[#0F172A] dark:text-[#F8FAFC]">
+                  <span className="w-16 text-right font-bold text-[#111827] dark:text-[#F9FAFB]">
                     ${item.total.toFixed(2)}
                   </span>
 
@@ -549,7 +549,7 @@ export const PosPage: React.FC = () => {
         </div>
 
         {/* Discounts & Coupon Input */}
-        <div className="p-3 border-t border-[#E2E8F0] dark:border-[#263449] bg-[#F5F7FC]/50 dark:bg-[#0B1220]/20">
+        <div className="p-3 border-t border-[#E2E8F0] dark:border-[#374151] bg-[#F8FAFC]/50 dark:bg-[#111827]/20">
           {couponCode ? (
             <div className="flex items-center justify-between bg-emerald-50 dark:bg-emerald-950/40 border border-emerald-200 dark:border-emerald-800 px-2.5 py-1.5 rounded-lg text-xs">
               <div className="flex items-center gap-1.5 text-emerald-800 dark:text-emerald-300 font-semibold">
@@ -567,7 +567,7 @@ export const PosPage: React.FC = () => {
                 placeholder="Promo/Coupon code..."
                 value={couponInput}
                 onChange={(e) => setCouponInput(e.target.value.toUpperCase())}
-                className="flex-1 px-2.5 py-1 text-xs rounded-lg border border-[#E2E8F0] dark:border-[#263449] bg-white dark:bg-[#111C31] uppercase font-mono"
+                className="flex-1 px-2.5 py-1 text-xs rounded-lg border border-[#E2E8F0] dark:border-[#374151] bg-white dark:bg-[#1F2937] uppercase font-mono"
               />
               <Button
                 variant="outline"
@@ -582,10 +582,10 @@ export const PosPage: React.FC = () => {
         </div>
 
         {/* Cart Totals Summary */}
-        <div className="p-4 border-t border-[#E2E8F0]/80 dark:border-[#263449] space-y-2 text-xs bg-white dark:bg-[#111C31]">
-          <div className="flex justify-between text-[#64748B] dark:text-[#94A3B8] font-medium">
+        <div className="p-4 border-t border-[#E2E8F0]/80 dark:border-[#374151] space-y-2 text-xs bg-white dark:bg-[#1F2937]">
+          <div className="flex justify-between text-[#64748B] dark:text-[#9CA3AF] font-medium">
             <span>{t('pos.subtotal')}</span>
-            <span className="font-semibold text-[#0F172A] dark:text-[#F8FAFC]">${subtotal.toFixed(2)}</span>
+            <span className="font-semibold text-[#111827] dark:text-[#F9FAFB]">${subtotal.toFixed(2)}</span>
           </div>
           {discountAmount > 0 && (
             <div className="flex justify-between text-emerald-600 dark:text-emerald-400 font-bold">
@@ -593,13 +593,13 @@ export const PosPage: React.FC = () => {
               <span>-${discountAmount.toFixed(2)}</span>
             </div>
           )}
-          <div className="flex justify-between text-[#64748B] dark:text-[#94A3B8] font-medium">
+          <div className="flex justify-between text-[#64748B] dark:text-[#9CA3AF] font-medium">
             <span>{t('pos.tax')} (5% VAT)</span>
-            <span className="font-semibold text-[#0F172A] dark:text-[#F8FAFC]">${taxAmount.toFixed(2)}</span>
+            <span className="font-semibold text-[#111827] dark:text-[#F9FAFB]">${taxAmount.toFixed(2)}</span>
           </div>
-          <div className="flex justify-between items-baseline pt-2.5 border-t border-[#E2E8F0]/80 dark:border-[#263449] font-bold">
-            <span className="text-sm font-extrabold text-[#0F172A] dark:text-[#F8FAFC]">{t('pos.total')}</span>
-            <span className="text-2xl font-black bg-clip-text text-transparent bg-gradient-to-r from-[#3B82F6] to-[#8B5CF6] dark:from-indigo-400 dark:to-cyan-400">
+          <div className="flex justify-between items-baseline pt-2.5 border-t border-[#E2E8F0]/80 dark:border-[#374151] font-bold">
+            <span className="text-sm font-extrabold text-[#111827] dark:text-[#F9FAFB]">{t('pos.total')}</span>
+            <span className="text-2xl font-black bg-clip-text text-transparent bg-gradient-to-r from-[#16A34A] to-[#166534] dark:from-indigo-400 dark:to-cyan-400">
               ${total.toFixed(2)}
             </span>
           </div>
@@ -627,7 +627,7 @@ export const PosPage: React.FC = () => {
         <div className="space-y-5">
           {/* Payment Method Selector */}
           <div>
-            <label className="block text-xs font-semibold text-[#334155] dark:text-[#94A3B8] mb-2">
+            <label className="block text-xs font-semibold text-[#334155] dark:text-[#9CA3AF] mb-2">
               Select Primary Payment Method
             </label>
             <div className="grid grid-cols-3 sm:grid-cols-4 gap-2">
@@ -642,8 +642,8 @@ export const PosPage: React.FC = () => {
                     }}
                     className={`p-3 rounded-xl border text-center transition cursor-pointer ${
                       selectedPaymentMethod === m && !isSplitMode
-                        ? 'border-blue-600 bg-blue-50 dark:bg-blue-950/60 text-[#3B82F6] dark:text-[#06B6D4] font-bold ring-2 ring-blue-500/30'
-                        : 'border-[#E2E8F0] dark:border-[#263449] hover:border-[#CBD5E1] text-[#334155] dark:text-[#94A3B8]'
+                        ? 'border-blue-600 bg-blue-50 dark:bg-blue-950/60 text-[#16A34A] dark:text-[#84CC16] font-bold ring-2 ring-blue-500/30'
+                        : 'border-[#E2E8F0] dark:border-[#374151] hover:border-[#CBD5E1] text-[#334155] dark:text-[#9CA3AF]'
                     }`}
                   >
                     <div className="flex justify-center mb-1">
@@ -664,7 +664,7 @@ export const PosPage: React.FC = () => {
 
           {/* Cash Received & Change Calculations (if Cash selected) */}
           {selectedPaymentMethod === 'Cash' && !isSplitMode && (
-            <div className="p-4 rounded-xl bg-[#F5F7FC] dark:bg-[#172338]/40 border border-[#E2E8F0] dark:border-[#263449] space-y-3">
+            <div className="p-4 rounded-xl bg-[#F8FAFC] dark:bg-[#374151]/40 border border-[#E2E8F0] dark:border-[#374151] space-y-3">
               <div className="flex items-center gap-3">
                 <div className="flex-1">
                   <Input
@@ -683,7 +683,7 @@ export const PosPage: React.FC = () => {
                       key={amt}
                       type="button"
                       onClick={() => setCashReceived(amt.toString())}
-                      className="px-2.5 py-2 text-xs font-semibold rounded-lg border border-[#CBD5E1] dark:border-[#263449] hover:bg-[#E2E8F0] dark:hover:bg-[#172338]"
+                      className="px-2.5 py-2 text-xs font-semibold rounded-lg border border-[#CBD5E1] dark:border-[#374151] hover:bg-[#E2E8F0] dark:hover:bg-[#374151]"
                     >
                       ${amt}
                     </button>
@@ -691,7 +691,7 @@ export const PosPage: React.FC = () => {
                 </div>
               </div>
 
-              <div className="flex items-center justify-between pt-2 border-t border-[#E2E8F0] dark:border-[#263449]">
+              <div className="flex items-center justify-between pt-2 border-t border-[#E2E8F0] dark:border-[#374151]">
                 <span className="text-xs text-[#64748B] font-medium">Change to return customer:</span>
                 <span
                   className={`text-base font-bold ${
@@ -707,12 +707,12 @@ export const PosPage: React.FC = () => {
           {/* Mobile Money Notice for Somali Gateways */}
           {['EVC Plus', 'eDahab', 'ZAAD'].includes(selectedPaymentMethod) && (
             <div className="p-4 rounded-xl bg-blue-50 dark:bg-blue-950/40 border border-blue-200 dark:border-blue-800 flex items-start gap-3">
-              <Smartphone className="h-5 w-5 text-[#3B82F6] shrink-0 mt-0.5" />
+              <Smartphone className="h-5 w-5 text-[#16A34A] shrink-0 mt-0.5" />
               <div className="text-xs">
                 <p className="font-semibold text-blue-900 dark:text-blue-300">
                   {selectedPaymentMethod} Mobile Checkout
                 </p>
-                <p className="text-[#64748B] dark:text-[#94A3B8] mt-0.5">
+                <p className="text-[#64748B] dark:text-[#9CA3AF] mt-0.5">
                   Merchant account will prompt customer on registered merchant USSD/API. Enter phone or reference if prompted.
                 </p>
               </div>
@@ -724,21 +724,21 @@ export const PosPage: React.FC = () => {
             <button
               type="button"
               onClick={() => setIsSplitMode(!isSplitMode)}
-              className="text-xs font-semibold text-[#3B82F6] hover:underline"
+              className="text-xs font-semibold text-[#16A34A] hover:underline"
             >
               {isSplitMode ? '← Back to Single Payment' : '+ Split across multiple payment methods'}
             </button>
 
             {isSplitMode && (
-              <div className="mt-3 p-4 rounded-xl border border-[#E2E8F0] dark:border-[#263449] bg-[#F5F7FC] dark:bg-[#111C31] space-y-3">
-                <h4 className="text-xs font-semibold text-[#1E293B] dark:text-[#F8FAFC]">
+              <div className="mt-3 p-4 rounded-xl border border-[#E2E8F0] dark:border-[#374151] bg-[#F8FAFC] dark:bg-[#1F2937] space-y-3">
+                <h4 className="text-xs font-semibold text-[#1E293B] dark:text-[#F9FAFB]">
                   Configure Split Tenders
                 </h4>
                 <div className="flex gap-2">
                   <select
                     value={splitMethod}
                     onChange={(e) => setSplitMethod(e.target.value as PaymentMethod)}
-                    className="text-xs px-2.5 py-1.5 rounded-lg border border-[#CBD5E1] dark:border-[#263449] bg-white dark:bg-[#172338]"
+                    className="text-xs px-2.5 py-1.5 rounded-lg border border-[#CBD5E1] dark:border-[#374151] bg-white dark:bg-[#374151]"
                   >
                     {['Cash', 'EVC Plus', 'eDahab', 'ZAAD', 'Card'].map((m) => (
                       <option key={m} value={m}>
@@ -752,7 +752,7 @@ export const PosPage: React.FC = () => {
                     placeholder="Amount..."
                     value={splitAmount}
                     onChange={(e) => setSplitAmount(e.target.value)}
-                    className="text-xs px-2.5 py-1.5 rounded-lg border border-[#CBD5E1] dark:border-[#263449] bg-white dark:bg-[#172338] flex-1"
+                    className="text-xs px-2.5 py-1.5 rounded-lg border border-[#CBD5E1] dark:border-[#374151] bg-white dark:bg-[#374151] flex-1"
                   />
                   <Button size="sm" variant="secondary" onClick={handleAddSplit}>
                     Add
@@ -760,7 +760,7 @@ export const PosPage: React.FC = () => {
                 </div>
 
                 {splitPayments.length > 0 && (
-                  <div className="divide-y divide-[#E2E8F0] dark:divide-[#263449] text-xs">
+                  <div className="divide-y divide-[#E2E8F0] dark:divide-[#374151] text-xs">
                     {splitPayments.map((p, idx) => (
                       <div key={idx} className="py-1.5 flex justify-between">
                         <span>{p.method}</span>
@@ -774,7 +774,7 @@ export const PosPage: React.FC = () => {
           </div>
 
           {/* Final Actions */}
-          <div className="flex items-center justify-end gap-3 pt-3 border-t border-[#E2E8F0] dark:border-[#263449]">
+          <div className="flex items-center justify-end gap-3 pt-3 border-t border-[#E2E8F0] dark:border-[#374151]">
             <Button
               variant="outline"
               onClick={() => setCheckoutModalOpen(false)}
@@ -807,7 +807,7 @@ export const PosPage: React.FC = () => {
             placeholder="Search by customer name or phone number..."
             leftIcon={<Search className="h-4 w-4" />}
           />
-          <div className="divide-y divide-[#E2E8F0] dark:divide-[#263449] max-h-60 overflow-y-auto">
+          <div className="divide-y divide-[#E2E8F0] dark:divide-[#374151] max-h-60 overflow-y-auto">
             {(customers || []).map((c) => (
               <div
                 key={c.id}
@@ -815,10 +815,10 @@ export const PosPage: React.FC = () => {
                   setCustomer(c)
                   setCustomerModalOpen(false)
                 }}
-                className="py-2.5 flex items-center justify-between hover:bg-[#F8FAFC] dark:hover:bg-[#172338] px-2 rounded-lg cursor-pointer transition text-xs"
+                className="py-2.5 flex items-center justify-between hover:bg-[#F8FAFC] dark:hover:bg-[#374151] px-2 rounded-lg cursor-pointer transition text-xs"
               >
                 <div>
-                  <p className="font-semibold text-[#0F172A] dark:text-[#F8FAFC]">{c.name}</p>
+                  <p className="font-semibold text-[#111827] dark:text-[#F9FAFB]">{c.name}</p>
                   <p className="text-[11px] text-[#64748B]">{c.phone}</p>
                 </div>
                 <div className="text-right">
@@ -845,10 +845,10 @@ export const PosPage: React.FC = () => {
             suspendedSales.map((h) => (
               <div
                 key={h.id}
-                className="p-3 rounded-xl border border-[#E2E8F0] dark:border-[#263449] flex items-center justify-between text-xs"
+                className="p-3 rounded-xl border border-[#E2E8F0] dark:border-[#374151] flex items-center justify-between text-xs"
               >
                 <div>
-                  <p className="font-bold text-[#0F172A] dark:text-[#F8FAFC]">{h.holdReference}</p>
+                  <p className="font-bold text-[#111827] dark:text-[#F9FAFB]">{h.holdReference}</p>
                   <p className="text-[11px] text-[#64748B]">
                     {h.items.length} items • ${h.total.toFixed(2)}
                   </p>

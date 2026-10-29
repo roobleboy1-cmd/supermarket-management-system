@@ -109,12 +109,12 @@ export const BatchesExpiryPage: React.FC = () => {
 
       {/* FEFO Policy Reminder Banner */}
       <div className="p-4 rounded-xl bg-blue-50 dark:bg-blue-950/40 border border-blue-200 dark:border-blue-900 flex items-start gap-3">
-        <PackageCheck className="h-5 w-5 text-[#3B82F6] shrink-0 mt-0.5" />
+        <PackageCheck className="h-5 w-5 text-[#16A34A] shrink-0 mt-0.5" />
         <div className="text-xs">
           <p className="font-bold text-blue-900 dark:text-blue-300">
             Strict Single-Store FEFO Stock Allocation
           </p>
-          <p className="text-[#64748B] dark:text-[#94A3B8] mt-0.5 leading-relaxed">
+          <p className="text-[#64748B] dark:text-[#9CA3AF] mt-0.5 leading-relaxed">
             The Point of Sale automatically prevents the checkout of condemned or expired batches.
             Near-expiry batches (&lt;30 days) are prioritized for front-shelf sale or promotional discounts.
           </p>
@@ -128,7 +128,7 @@ export const BatchesExpiryPage: React.FC = () => {
           className={`p-4 rounded-xl border text-left transition cursor-pointer ${
             filter === 'expired'
               ? 'border-red-500 bg-red-50 dark:bg-red-950/40 ring-2 ring-red-500/20'
-              : 'border-[#E2E8F0] dark:border-[#263449] bg-white dark:bg-[#111C31] hover:border-red-300'
+              : 'border-[#E2E8F0] dark:border-[#374151] bg-white dark:bg-[#1F2937] hover:border-red-300'
           }`}
         >
           <div className="flex items-center justify-between">
@@ -137,7 +137,7 @@ export const BatchesExpiryPage: React.FC = () => {
             </span>
             <ShieldAlert className="h-4 w-4 text-red-600" />
           </div>
-          <p className="text-2xl font-bold text-[#0F172A] dark:text-[#F8FAFC] mt-1">{expiredCount}</p>
+          <p className="text-2xl font-bold text-[#111827] dark:text-[#F9FAFB] mt-1">{expiredCount}</p>
           <p className="text-xs text-[#64748B] mt-0.5">Sale prohibited by backend</p>
         </button>
 
@@ -146,7 +146,7 @@ export const BatchesExpiryPage: React.FC = () => {
           className={`p-4 rounded-xl border text-left transition cursor-pointer ${
             filter === 'near_expiry'
               ? 'border-amber-500 bg-amber-50 dark:bg-amber-950/40 ring-2 ring-amber-500/20'
-              : 'border-[#E2E8F0] dark:border-[#263449] bg-white dark:bg-[#111C31] hover:border-amber-300'
+              : 'border-[#E2E8F0] dark:border-[#374151] bg-white dark:bg-[#1F2937] hover:border-amber-300'
           }`}
         >
           <div className="flex items-center justify-between">
@@ -155,7 +155,7 @@ export const BatchesExpiryPage: React.FC = () => {
             </span>
             <AlertTriangle className="h-4 w-4 text-amber-600" />
           </div>
-          <p className="text-2xl font-bold text-[#0F172A] dark:text-[#F8FAFC] mt-1">{nearExpiryCount}</p>
+          <p className="text-2xl font-bold text-[#111827] dark:text-[#F9FAFB] mt-1">{nearExpiryCount}</p>
           <p className="text-xs text-[#64748B] mt-0.5">FEFO front-shelf prioritization</p>
         </button>
 
@@ -164,7 +164,7 @@ export const BatchesExpiryPage: React.FC = () => {
           className={`p-4 rounded-xl border text-left transition cursor-pointer ${
             filter === 'active'
               ? 'border-emerald-500 bg-emerald-50 dark:bg-emerald-950/40 ring-2 ring-emerald-500/20'
-              : 'border-[#E2E8F0] dark:border-[#263449] bg-white dark:bg-[#111C31] hover:border-emerald-300'
+              : 'border-[#E2E8F0] dark:border-[#374151] bg-white dark:bg-[#1F2937] hover:border-emerald-300'
           }`}
         >
           <div className="flex items-center justify-between">
@@ -173,7 +173,7 @@ export const BatchesExpiryPage: React.FC = () => {
             </span>
             <CheckCircle2 className="h-4 w-4 text-emerald-600" />
           </div>
-          <p className="text-2xl font-bold text-[#0F172A] dark:text-[#F8FAFC] mt-1">{activeCount}</p>
+          <p className="text-2xl font-bold text-[#111827] dark:text-[#F9FAFB] mt-1">{activeCount}</p>
           <p className="text-xs text-[#64748B] mt-0.5">Long shelf life remaining</p>
         </button>
       </div>
@@ -209,7 +209,7 @@ export const BatchesExpiryPage: React.FC = () => {
         <CardContent className="p-0">
           <div className="overflow-x-auto">
             <table className="w-full text-left text-xs">
-              <thead className="bg-[#F5F7FC] dark:bg-[#0B1220]/40 text-[#64748B] border-b border-[#E2E8F0] dark:border-[#263449] uppercase font-semibold text-[11px]">
+              <thead className="bg-[#F8FAFC] dark:bg-[#111827]/40 text-[#64748B] border-b border-[#E2E8F0] dark:border-[#374151] uppercase font-semibold text-[11px]">
                 <tr>
                   <th className="py-3 px-4">Batch / Lot No</th>
                   <th className="py-3 px-4">Product Name</th>
@@ -220,7 +220,7 @@ export const BatchesExpiryPage: React.FC = () => {
                   <th className="py-3 px-4 text-right">Action</th>
                 </tr>
               </thead>
-              <tbody className="divide-y divide-[#E2E8F0] dark:divide-[#263449]">
+              <tbody className="divide-y divide-[#E2E8F0] dark:divide-[#374151]">
                 {isLoading ? (
                   <tr>
                     <td colSpan={7} className="py-12 text-center text-[#94A3B8]">
@@ -235,11 +235,11 @@ export const BatchesExpiryPage: React.FC = () => {
                   </tr>
                 ) : (
                   filteredBatches.map((b) => (
-                    <tr key={b.id} className="hover:bg-[#F8FAFC] dark:hover:bg-[#172338]/40">
-                      <td className="py-3 px-4 font-mono font-bold text-[#0F172A] dark:text-[#F8FAFC]">
+                    <tr key={b.id} className="hover:bg-[#F8FAFC] dark:hover:bg-[#374151]/40">
+                      <td className="py-3 px-4 font-mono font-bold text-[#111827] dark:text-[#F9FAFB]">
                         {b.batchNumber}
                       </td>
-                      <td className="py-3 px-4 font-semibold text-[#1E293B] dark:text-[#F8FAFC]">
+                      <td className="py-3 px-4 font-semibold text-[#1E293B] dark:text-[#F9FAFB]">
                         {b.productName}
                       </td>
                       <td className="py-3 px-4 text-[#64748B]">
@@ -252,14 +252,14 @@ export const BatchesExpiryPage: React.FC = () => {
                               ? 'text-red-600 font-bold'
                               : b.status === 'near_expiry'
                               ? 'text-amber-600 font-bold'
-                              : 'text-[#334155] dark:text-[#94A3B8]'
+                              : 'text-[#334155] dark:text-[#9CA3AF]'
                           }
                         >
                           {formatDate(b.expiryDate)}
                         </span>
                       </td>
                       <td className="py-3 px-4 text-center">
-                        <span className="font-bold text-[#0F172A] dark:text-[#F8FAFC]">
+                        <span className="font-bold text-[#111827] dark:text-[#F9FAFB]">
                           {b.currentQuantity}
                         </span>{' '}
                         <span className="text-[#94A3B8]">/ {b.initialQuantity}</span>
@@ -402,14 +402,14 @@ export const BatchesExpiryPage: React.FC = () => {
           </div>
 
           <div>
-            <label className="block text-xs font-semibold mb-1 text-[#334155] dark:text-[#94A3B8]">
+            <label className="block text-xs font-semibold mb-1 text-[#334155] dark:text-[#9CA3AF]">
               Disposal Reason / Protocol
             </label>
             <textarea
               value={disposalReason}
               onChange={(e) => setDisposalReason(e.target.value)}
               rows={3}
-              className="w-full p-2.5 rounded-lg border border-[#E2E8F0] dark:border-[#263449] bg-white dark:bg-[#111C31] text-xs"
+              className="w-full p-2.5 rounded-lg border border-[#E2E8F0] dark:border-[#374151] bg-white dark:bg-[#1F2937] text-xs"
             />
           </div>
 

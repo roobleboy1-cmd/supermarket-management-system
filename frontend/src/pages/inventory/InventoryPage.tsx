@@ -78,7 +78,7 @@ export const InventoryPage: React.FC = () => {
           value={formatCurrency(overview?.totalValuation || 0)}
           description={`${overview?.totalUnits || 0} total units in stock`}
           icon={Boxes}
-          iconColor="text-[#3B82F6] bg-blue-100 dark:bg-blue-950 dark:text-[#06B6D4]"
+          iconColor="text-[#16A34A] bg-blue-100 dark:bg-blue-950 dark:text-[#84CC16]"
         />
         <StatCard
           title="Retail Potential Value"
@@ -109,7 +109,7 @@ export const InventoryPage: React.FC = () => {
       <Card className="border-blue-200 dark:border-blue-900 bg-gradient-to-r from-blue-50/50 via-white to-indigo-50/40 dark:from-blue-950/20 dark:via-slate-900 dark:to-indigo-950/20">
         <CardHeader className="flex flex-row items-center justify-between pb-2">
           <div className="flex items-center gap-2">
-            <Sparkles className="h-5 w-5 text-[#3B82F6] dark:text-[#06B6D4]" />
+            <Sparkles className="h-5 w-5 text-[#16A34A] dark:text-[#84CC16]" />
             <CardTitle>Automated Reorder Recommendations</CardTitle>
           </div>
           <Badge variant="primary">Calculated via Lead Time & Sales Velocity</Badge>
@@ -124,7 +124,7 @@ export const InventoryPage: React.FC = () => {
               {reorderRecs.map((rec) => (
                 <div
                   key={rec.productId}
-                  className="p-3.5 rounded-xl border border-blue-200 dark:border-blue-900/60 bg-white dark:bg-[#111C31]/80 shadow-xs flex flex-col justify-between"
+                  className="p-3.5 rounded-xl border border-blue-200 dark:border-blue-900/60 bg-white dark:bg-[#1F2937]/80 shadow-xs flex flex-col justify-between"
                 >
                   <div>
                     <div className="flex items-start justify-between">
@@ -133,17 +133,17 @@ export const InventoryPage: React.FC = () => {
                         {rec.currentStock} left (Min: {rec.minStockLevel})
                       </span>
                     </div>
-                    <h4 className="text-xs font-bold text-[#0F172A] dark:text-[#F8FAFC] mt-1 line-clamp-1">
+                    <h4 className="text-xs font-bold text-[#111827] dark:text-[#F9FAFB] mt-1 line-clamp-1">
                       {rec.productName}
                     </h4>
                     <p className="text-[11px] text-[#64748B] mt-0.5">
                       Supplier: {rec.supplierName}
                     </p>
                   </div>
-                  <div className="mt-3 pt-2.5 border-t border-[#E2E8F0] dark:border-[#263449] flex items-center justify-between">
+                  <div className="mt-3 pt-2.5 border-t border-[#E2E8F0] dark:border-[#374151] flex items-center justify-between">
                     <div>
                       <span className="text-[11px] text-[#94A3B8] block">Suggested Order:</span>
-                      <span className="text-xs font-bold text-[#3B82F6] dark:text-[#06B6D4]">
+                      <span className="text-xs font-bold text-[#16A34A] dark:text-[#84CC16]">
                         {rec.suggestedReorderQty} units (~${rec.estimatedCost.toFixed(2)})
                       </span>
                     </div>
@@ -175,13 +175,13 @@ export const InventoryPage: React.FC = () => {
                 placeholder="Filter inventory..."
                 value={search}
                 onChange={(e) => setSearch(e.target.value)}
-                className="w-full pl-8 pr-3 py-1.5 text-xs rounded-lg border border-[#E2E8F0] dark:border-[#263449] bg-white dark:bg-[#111C31]"
+                className="w-full pl-8 pr-3 py-1.5 text-xs rounded-lg border border-[#E2E8F0] dark:border-[#374151] bg-white dark:bg-[#1F2937]"
               />
             </div>
             <select
               value={statusFilter}
               onChange={(e) => setStatusFilter(e.target.value)}
-              className="text-xs px-2.5 py-1.5 rounded-lg border border-[#E2E8F0] dark:border-[#263449] bg-white dark:bg-[#111C31]"
+              className="text-xs px-2.5 py-1.5 rounded-lg border border-[#E2E8F0] dark:border-[#374151] bg-white dark:bg-[#1F2937]"
             >
               <option value="all">All Items</option>
               <option value="low_stock">Low Stock Alerts Only</option>
@@ -191,7 +191,7 @@ export const InventoryPage: React.FC = () => {
         <CardContent className="p-0">
           <div className="overflow-x-auto">
             <table className="w-full text-left text-xs">
-              <thead className="bg-[#F5F7FC] dark:bg-[#0B1220]/40 text-[#64748B] border-b border-[#E2E8F0] dark:border-[#263449] uppercase font-semibold text-[11px]">
+              <thead className="bg-[#F8FAFC] dark:bg-[#111827]/40 text-[#64748B] border-b border-[#E2E8F0] dark:border-[#374151] uppercase font-semibold text-[11px]">
                 <tr>
                   <th className="py-3 px-4">Item & SKU</th>
                   <th className="py-3 px-4">Category</th>
@@ -202,7 +202,7 @@ export const InventoryPage: React.FC = () => {
                   <th className="py-3 px-4 text-center">Health Status</th>
                 </tr>
               </thead>
-              <tbody className="divide-y divide-[#E2E8F0] dark:divide-[#263449]">
+              <tbody className="divide-y divide-[#E2E8F0] dark:divide-[#374151]">
                 {(productsData?.items || []).map((item) => {
                   const isOut = item.quantity === 0
                   const isLow = item.quantity <= item.minStockLevel && !isOut
@@ -210,12 +210,12 @@ export const InventoryPage: React.FC = () => {
                   const retailVal = item.quantity * item.sellingPrice
 
                   return (
-                    <tr key={item.id} className="hover:bg-[#F8FAFC] dark:hover:bg-[#172338]/40">
+                    <tr key={item.id} className="hover:bg-[#F8FAFC] dark:hover:bg-[#374151]/40">
                       <td className="py-3 px-4">
-                        <div className="font-semibold text-[#0F172A] dark:text-[#F8FAFC]">{item.name}</div>
+                        <div className="font-semibold text-[#111827] dark:text-[#F9FAFB]">{item.name}</div>
                         <div className="text-[11px] font-mono text-[#94A3B8]">{item.sku}</div>
                       </td>
-                      <td className="py-3 px-4 text-[#64748B] dark:text-[#94A3B8]">
+                      <td className="py-3 px-4 text-[#64748B] dark:text-[#9CA3AF]">
                         {item.categoryName || 'General'}
                       </td>
                       <td className="py-3 px-4 text-center font-bold">
@@ -227,7 +227,7 @@ export const InventoryPage: React.FC = () => {
                       <td className="py-3 px-4 text-right font-medium">
                         ${costVal.toFixed(2)}
                       </td>
-                      <td className="py-3 px-4 text-right font-bold text-[#0F172A] dark:text-[#F8FAFC]">
+                      <td className="py-3 px-4 text-right font-bold text-[#111827] dark:text-[#F9FAFB]">
                         ${retailVal.toFixed(2)}
                       </td>
                       <td className="py-3 px-4 text-center">

@@ -209,14 +209,14 @@ export const Sidebar: React.FC<{
     <div className="flex-1 overflow-y-auto px-3 py-4 space-y-6">
       {/* Role notice banner if restricted role */}
       {currentRole !== 'Super Admin' && (!collapsed || isMobileView) && (
-        <div className="px-3 py-2.5 rounded-2xl bg-gradient-to-r from-indigo-50/90 to-blue-50/90 dark:from-indigo-950/40 dark:to-blue-950/40 border border-indigo-200/80 dark:border-indigo-800/60 mb-2">
+        <div className="px-3 py-2.5 rounded-2xl bg-gradient-to-r from-indigo-50/90 to-blue-50/90 dark:from-indigo-950/40 dark:to-blue-950/40 border border-green-200/80 dark:border-indigo-800/60 mb-2">
           <div className="flex items-center gap-1.5 text-[11px] font-bold text-indigo-700 dark:text-indigo-300">
             <UserCheck className="h-3.5 w-3.5" />
             <span>
               {language === 'so' ? `Shaqadaada: ${roleDesc?.title}` : `Role: ${currentRole}`}
             </span>
           </div>
-          <p className="text-[10px] text-[#64748B] dark:text-[#94A3B8] mt-0.5 line-clamp-2 leading-tight">
+          <p className="text-[10px] text-[#64748B] dark:text-[#9CA3AF] mt-0.5 line-clamp-2 leading-tight">
             {language === 'so'
               ? 'Waxaa laguu soo saaray kaliya qaybaha aad awoodda u leedahay.'
               : 'Only workspace modules assigned to your role are visible.'}
@@ -258,15 +258,15 @@ export const Sidebar: React.FC<{
                   className={cn(
                     'group flex items-center gap-3 rounded-xl px-3 py-2.5 text-xs font-semibold transition-all duration-150',
                     isActive
-                      ? 'bg-gradient-to-r from-indigo-600 via-blue-600 to-indigo-700 text-white shadow-sm shadow-indigo-500/25 font-bold'
-                      : 'text-[#64748B] dark:text-[#94A3B8] hover:bg-indigo-50/70 dark:hover:bg-[#172338]/70 hover:text-indigo-600 dark:hover:text-indigo-400',
+                      ? 'bg-gradient-to-r from-[#16A34A] via-[#15803D] to-[#166534] text-white shadow-sm shadow-green-600/25 font-bold'
+                      : 'text-[#64748B] dark:text-[#9CA3AF] hover:bg-green-50/80 dark:hover:bg-[#374151]/80 hover:text-[#16A34A] dark:hover:text-[#84CC16]',
                     collapsed && !isMobileView && 'justify-center px-2'
                   )}
                 >
                   <Icon
                     className={cn(
                       'h-4 w-4 shrink-0 transition-transform duration-200 group-hover:scale-110',
-                      isActive ? 'text-white' : 'text-[#94A3B8] group-hover:text-indigo-600 dark:group-hover:text-indigo-400'
+                      isActive ? 'text-white' : 'text-[#9CA3AF] group-hover:text-[#16A34A] dark:group-hover:text-[#84CC16]'
                     )}
                   />
                   {(!collapsed || isMobileView) && <span className="truncate flex-1">{label}</span>}
@@ -280,14 +280,14 @@ export const Sidebar: React.FC<{
   )
 
   const renderUserFooter = (isMobileView: boolean = false) => (
-    <div className="p-3 border-t border-[#E2E8F0] dark:border-[#263449] bg-[#F5F7FC]/50 dark:bg-[#111C31]/40">
+    <div className="p-3 border-t border-[#E2E8F0] dark:border-[#374151] bg-[#F8FAFC]/50 dark:bg-[#1F2937]/40">
       <div className={cn('flex items-center gap-2.5', collapsed && !isMobileView && 'justify-center')}>
-        <div className="flex h-9 w-9 shrink-0 items-center justify-center rounded-xl bg-gradient-to-tr from-[#3B82F6] to-[#8B5CF6] text-white font-extrabold text-xs shadow-xs">
+        <div className="flex h-9 w-9 shrink-0 items-center justify-center rounded-xl bg-gradient-to-tr from-[#16A34A] to-[#84CC16] text-white font-extrabold text-xs shadow-xs">
           {user?.name ? user.name.slice(0, 2).toUpperCase() : 'AD'}
         </div>
         {(!collapsed || isMobileView) && (
           <div className="flex flex-col truncate flex-1 min-w-0">
-            <span className="text-xs font-bold text-[#0F172A] dark:text-[#F8FAFC] truncate">
+            <span className="text-xs font-bold text-[#111827] dark:text-[#F9FAFB] truncate">
               {user?.name || 'Administrator'}
             </span>
             <div className="flex items-center gap-1 mt-0.5">
@@ -311,22 +311,22 @@ export const Sidebar: React.FC<{
       {/* DESKTOP SIDEBAR (Visible on md and larger) */}
       <aside
         className={cn(
-          'hidden md:flex flex-col border-r border-[#E2E8F0] dark:border-[#263449] bg-white dark:bg-[#0B1220] transition-all duration-300 z-30 select-none shrink-0 h-screen sticky top-0 shadow-xs',
+          'hidden md:flex flex-col border-r border-[#E2E8F0] dark:border-[#374151] bg-white dark:bg-[#111827] transition-all duration-300 z-30 select-none shrink-0 h-screen sticky top-0 shadow-xs',
           collapsed ? 'w-20' : 'w-64'
         )}
       >
         {/* Brand Header */}
-        <div className="h-16 flex items-center justify-between px-4 border-b border-[#E2E8F0] dark:border-[#263449]">
+        <div className="h-16 flex items-center justify-between px-4 border-b border-[#E2E8F0] dark:border-[#374151]">
           <div className="flex items-center gap-3 overflow-hidden">
-            <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-gradient-to-tr from-[#3B82F6] via-[#8B5CF6] to-[#06B6D4] text-white shadow-md shadow-indigo-500/25">
+            <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-gradient-to-tr from-[#16A34A] via-[#15803D] to-[#84CC16] text-white shadow-md shadow-green-600/25">
               <Store className="h-5 w-5" />
             </div>
             {!collapsed && (
               <div className="flex flex-col truncate">
-                <span className="text-sm font-extrabold tracking-tight bg-clip-text text-transparent bg-gradient-to-r from-indigo-600 via-blue-600 to-cyan-600 dark:from-indigo-400 dark:via-blue-400 dark:to-cyan-400 truncate">
+                <span className="text-sm font-extrabold tracking-tight bg-clip-text text-transparent bg-gradient-to-r from-[#16A34A] via-[#166534] to-[#84CC16] dark:from-[#16A34A] dark:via-[#84CC16] dark:to-[#84CC16] truncate">
                   {t('app.name')}
                 </span>
-                <span className="text-[10px] font-bold text-[#94A3B8] dark:text-[#64748B] truncate tracking-wide">
+                <span className="text-[10px] font-bold text-[#64748B] dark:text-[#9CA3AF] truncate tracking-wide">
                   {t('app.singleStore')}
                 </span>
               </div>
@@ -334,7 +334,7 @@ export const Sidebar: React.FC<{
           </div>
           <button
             onClick={onToggleCollapse}
-            className="rounded-xl p-1.5 text-[#94A3B8] hover:text-[#334155] dark:hover:text-slate-200 hover:bg-[#F1F5F9] dark:hover:bg-[#172338] transition"
+            className="rounded-xl p-1.5 text-[#64748B] hover:text-[#111827] dark:hover:text-[#F9FAFB] hover:bg-[#F1F5F9] dark:hover:bg-[#374151] transition"
             title={collapsed ? 'Expand sidebar' : 'Collapse sidebar'}
           >
             {collapsed ? <ChevronRight className="h-4 w-4" /> : <ChevronLeft className="h-4 w-4" />}
@@ -350,28 +350,28 @@ export const Sidebar: React.FC<{
         <div className="fixed inset-0 z-50 md:hidden flex">
           {/* Backdrop overlay */}
           <div
-            className="fixed inset-0 bg-slate-950/60 backdrop-blur-sm transition-opacity animate-in fade-in"
+            className="fixed inset-0 bg-[#111827]/70 backdrop-blur-sm transition-opacity animate-in fade-in"
             onClick={onCloseMobile}
           />
           {/* Drawer content */}
-          <div className="relative flex flex-col w-72 max-w-[85vw] bg-white dark:bg-[#0B1220] border-r border-[#E2E8F0] dark:border-[#263449] shadow-2xl z-10 animate-in slide-in-from-left duration-200">
-            <div className="h-16 flex items-center justify-between px-4 border-b border-[#E2E8F0] dark:border-[#263449]">
+          <div className="relative flex flex-col w-72 max-w-[85vw] bg-white dark:bg-[#111827] border-r border-[#E2E8F0] dark:border-[#374151] shadow-2xl z-10 animate-in slide-in-from-left duration-200">
+            <div className="h-16 flex items-center justify-between px-4 border-b border-[#E2E8F0] dark:border-[#374151]">
               <div className="flex items-center gap-3">
-                <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-gradient-to-tr from-[#3B82F6] via-[#8B5CF6] to-[#06B6D4] text-white shadow-md shadow-indigo-500/25">
+                <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-gradient-to-tr from-[#16A34A] via-[#15803D] to-[#84CC16] text-white shadow-md shadow-green-600/25">
                   <Store className="h-5 w-5" />
                 </div>
                 <div className="flex flex-col">
-                  <span className="text-sm font-extrabold tracking-tight bg-clip-text text-transparent bg-gradient-to-r from-[#3B82F6] to-[#8B5CF6] dark:from-indigo-400 dark:to-cyan-400">
+                  <span className="text-sm font-extrabold tracking-tight bg-clip-text text-transparent bg-gradient-to-r from-[#16A34A] via-[#166534] to-[#84CC16] dark:from-[#16A34A] dark:to-[#84CC16]">
                     {t('app.name')}
                   </span>
-                  <span className="text-[10px] font-bold text-[#94A3B8] dark:text-[#64748B]">
+                  <span className="text-[10px] font-bold text-[#64748B] dark:text-[#9CA3AF]">
                     {t('app.singleStore')}
                   </span>
                 </div>
               </div>
               <button
                 onClick={onCloseMobile}
-                className="p-1.5 rounded-xl text-[#94A3B8] hover:text-[#334155] dark:hover:text-slate-200"
+                className="p-1.5 rounded-xl text-[#64748B] hover:text-[#111827] dark:hover:text-[#F9FAFB]"
               >
                 <X className="h-5 w-5" />
               </button>

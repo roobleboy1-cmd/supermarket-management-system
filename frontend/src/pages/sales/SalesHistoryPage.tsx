@@ -78,14 +78,14 @@ export const SalesHistoryPage: React.FC = () => {
                 placeholder="Search invoice number, cashier, customer phone..."
                 value={search}
                 onChange={(e) => setSearch(e.target.value)}
-                className="w-full pl-9 pr-3 py-2 text-xs rounded-lg border border-[#E2E8F0] dark:border-[#263449] bg-white dark:bg-[#111C31]"
+                className="w-full pl-9 pr-3 py-2 text-xs rounded-lg border border-[#E2E8F0] dark:border-[#374151] bg-white dark:bg-[#1F2937]"
               />
             </div>
             <div className="w-full sm:w-48">
               <select
                 value={paymentMethod}
                 onChange={(e) => setPaymentMethod(e.target.value)}
-                className="w-full text-xs px-3 py-2 rounded-lg border border-[#E2E8F0] dark:border-[#263449] bg-white dark:bg-[#111C31]"
+                className="w-full text-xs px-3 py-2 rounded-lg border border-[#E2E8F0] dark:border-[#374151] bg-white dark:bg-[#1F2937]"
               >
                 <option value="all">All Payment Methods</option>
                 <option value="Cash">Cash</option>
@@ -103,7 +103,7 @@ export const SalesHistoryPage: React.FC = () => {
       <Card>
         <div className="overflow-x-auto">
           <table className="w-full text-left text-xs">
-            <thead className="bg-[#F5F7FC] dark:bg-[#0B1220]/40 text-[#64748B] border-b border-[#E2E8F0] dark:border-[#263449] uppercase font-semibold text-[11px]">
+            <thead className="bg-[#F8FAFC] dark:bg-[#111827]/40 text-[#64748B] border-b border-[#E2E8F0] dark:border-[#374151] uppercase font-semibold text-[11px]">
               <tr>
                 <th className="py-3 px-4">Invoice No</th>
                 <th className="py-3 px-4">Date & Time</th>
@@ -115,7 +115,7 @@ export const SalesHistoryPage: React.FC = () => {
                 <th className="py-3 px-4 text-right">Actions</th>
               </tr>
             </thead>
-            <tbody className="divide-y divide-[#E2E8F0] dark:divide-[#263449]">
+            <tbody className="divide-y divide-[#E2E8F0] dark:divide-[#374151]">
               {isLoading ? (
                 <tr>
                   <td colSpan={8} className="py-12 text-center text-[#94A3B8]">
@@ -130,20 +130,20 @@ export const SalesHistoryPage: React.FC = () => {
                 </tr>
               ) : (
                 salesData?.items.map((sale) => (
-                  <tr key={sale.id} className="hover:bg-[#F8FAFC] dark:hover:bg-[#172338]/40">
-                    <td className="py-3 px-4 font-mono font-bold text-[#0F172A] dark:text-[#F8FAFC]">
+                  <tr key={sale.id} className="hover:bg-[#F8FAFC] dark:hover:bg-[#374151]/40">
+                    <td className="py-3 px-4 font-mono font-bold text-[#111827] dark:text-[#F9FAFB]">
                       {sale.invoiceNumber}
                     </td>
                     <td className="py-3 px-4 text-[#64748B]">
                       {formatDate(sale.createdAt, true)}
                     </td>
-                    <td className="py-3 px-4 font-medium text-[#1E293B] dark:text-[#F8FAFC]">
+                    <td className="py-3 px-4 font-medium text-[#1E293B] dark:text-[#F9FAFB]">
                       {sale.cashierName}
                     </td>
                     <td className="py-3 px-4">
                       {sale.customerName ? (
                         <div>
-                          <div className="font-semibold text-[#0F172A] dark:text-[#F8FAFC]">
+                          <div className="font-semibold text-[#111827] dark:text-[#F9FAFB]">
                             {sale.customerName}
                           </div>
                           <div className="text-[10px] text-[#94A3B8]">{sale.customerPhone}</div>
@@ -161,7 +161,7 @@ export const SalesHistoryPage: React.FC = () => {
                         ))}
                       </div>
                     </td>
-                    <td className="py-3 px-4 text-right font-bold text-[#0F172A] dark:text-[#F8FAFC]">
+                    <td className="py-3 px-4 text-right font-bold text-[#111827] dark:text-[#F9FAFB]">
                       {formatCurrency(sale.total)}
                     </td>
                     <td className="py-3 px-4 text-center">
@@ -176,14 +176,14 @@ export const SalesHistoryPage: React.FC = () => {
                       <div className="inline-flex items-center gap-1.5">
                         <button
                           onClick={() => setSelectedSaleForReceipt(sale)}
-                          className="p-1.5 rounded-lg text-[#94A3B8] hover:text-[#3B82F6] hover:bg-[#F1F5F9] dark:hover:bg-[#172338]"
+                          className="p-1.5 rounded-lg text-[#94A3B8] hover:text-[#16A34A] hover:bg-[#F1F5F9] dark:hover:bg-[#374151]"
                           title="Reprint Receipt (58mm/80mm)"
                         >
                           <Printer className="h-4 w-4" />
                         </button>
                         <button
                           onClick={() => setSelectedSaleForDetails(sale)}
-                          className="p-1.5 rounded-lg text-[#94A3B8] hover:text-[#3B82F6] hover:bg-[#F1F5F9] dark:hover:bg-[#172338]"
+                          className="p-1.5 rounded-lg text-[#94A3B8] hover:text-[#16A34A] hover:bg-[#F1F5F9] dark:hover:bg-[#374151]"
                           title="View Itemized Breakdown"
                         >
                           <Eye className="h-4 w-4" />
@@ -194,7 +194,7 @@ export const SalesHistoryPage: React.FC = () => {
                               setSaleToVoid(sale)
                               setVoidDialogOpen(true)
                             }}
-                            className="p-1.5 rounded-lg text-[#94A3B8] hover:text-red-600 hover:bg-[#F1F5F9] dark:hover:bg-[#172338]"
+                            className="p-1.5 rounded-lg text-[#94A3B8] hover:text-red-600 hover:bg-[#F1F5F9] dark:hover:bg-[#374151]"
                             title="Authorized Void Sale"
                           >
                             <Ban className="h-4 w-4" />
@@ -219,22 +219,22 @@ export const SalesHistoryPage: React.FC = () => {
       >
         {selectedSaleForDetails && (
           <div className="space-y-4 text-xs">
-            <div className="grid grid-cols-2 sm:grid-cols-4 gap-2 p-3 rounded-xl bg-[#F5F7FC] dark:bg-[#172338]/40">
+            <div className="grid grid-cols-2 sm:grid-cols-4 gap-2 p-3 rounded-xl bg-[#F8FAFC] dark:bg-[#374151]/40">
               <div>
                 <span className="text-[#94A3B8] block">Cashier</span>
-                <span className="font-bold text-[#0F172A] dark:text-[#F8FAFC]">
+                <span className="font-bold text-[#111827] dark:text-[#F9FAFB]">
                   {selectedSaleForDetails.cashierName}
                 </span>
               </div>
               <div>
                 <span className="text-[#94A3B8] block">Date</span>
-                <span className="font-bold text-[#0F172A] dark:text-[#F8FAFC]">
+                <span className="font-bold text-[#111827] dark:text-[#F9FAFB]">
                   {formatDate(selectedSaleForDetails.createdAt, true)}
                 </span>
               </div>
               <div>
                 <span className="text-[#94A3B8] block">Customer</span>
-                <span className="font-bold text-[#0F172A] dark:text-[#F8FAFC]">
+                <span className="font-bold text-[#111827] dark:text-[#F9FAFB]">
                   {selectedSaleForDetails.customerName || 'Walk-in'}
                 </span>
               </div>
@@ -246,9 +246,9 @@ export const SalesHistoryPage: React.FC = () => {
               </div>
             </div>
 
-            <div className="border border-[#E2E8F0] dark:border-[#263449] rounded-lg overflow-x-auto">
+            <div className="border border-[#E2E8F0] dark:border-[#374151] rounded-lg overflow-x-auto">
               <table className="w-full text-left">
-                <thead className="bg-[#F5F7FC] dark:bg-[#111C31] text-[#64748B] uppercase text-[10px]">
+                <thead className="bg-[#F8FAFC] dark:bg-[#1F2937] text-[#64748B] uppercase text-[10px]">
                   <tr>
                     <th className="p-2">Item</th>
                     <th className="p-2 text-center">Qty</th>
@@ -256,10 +256,10 @@ export const SalesHistoryPage: React.FC = () => {
                     <th className="p-2 text-right">Total</th>
                   </tr>
                 </thead>
-                <tbody className="divide-y divide-[#E2E8F0] dark:divide-[#263449]">
+                <tbody className="divide-y divide-[#E2E8F0] dark:divide-[#374151]">
                   {selectedSaleForDetails.items.map((i, idx) => (
                     <tr key={idx}>
-                      <td className="p-2 font-semibold text-[#0F172A] dark:text-[#F8FAFC]">
+                      <td className="p-2 font-semibold text-[#111827] dark:text-[#F9FAFB]">
                         {i.name}
                       </td>
                       <td className="p-2 text-center">{i.quantity}</td>
@@ -271,7 +271,7 @@ export const SalesHistoryPage: React.FC = () => {
               </table>
             </div>
 
-            <div className="p-3 rounded-lg bg-[#F5F7FC] dark:bg-[#172338]/40 space-y-1">
+            <div className="p-3 rounded-lg bg-[#F8FAFC] dark:bg-[#374151]/40 space-y-1">
               <div className="flex justify-between">
                 <span>Subtotal:</span>
                 <span>${selectedSaleForDetails.subtotal.toFixed(2)}</span>
@@ -282,7 +282,7 @@ export const SalesHistoryPage: React.FC = () => {
                   <span>-${selectedSaleForDetails.discountAmount.toFixed(2)}</span>
                 </div>
               )}
-              <div className="flex justify-between font-bold text-sm border-t border-[#E2E8F0] dark:border-[#263449] pt-1">
+              <div className="flex justify-between font-bold text-sm border-t border-[#E2E8F0] dark:border-[#374151] pt-1">
                 <span>Total:</span>
                 <span>${selectedSaleForDetails.total.toFixed(2)}</span>
               </div>
@@ -305,7 +305,7 @@ export const SalesHistoryPage: React.FC = () => {
           </div>
 
           <div>
-            <label className="block text-xs font-semibold mb-1 text-[#334155] dark:text-[#94A3B8]">
+            <label className="block text-xs font-semibold mb-1 text-[#334155] dark:text-[#9CA3AF]">
               Reason for Voiding
             </label>
             <textarea
@@ -313,7 +313,7 @@ export const SalesHistoryPage: React.FC = () => {
               value={voidReason}
               onChange={(e) => setVoidReason(e.target.value)}
               rows={3}
-              className="w-full p-2.5 rounded-lg border border-[#E2E8F0] dark:border-[#263449] bg-white dark:bg-[#111C31]"
+              className="w-full p-2.5 rounded-lg border border-[#E2E8F0] dark:border-[#374151] bg-white dark:bg-[#1F2937]"
               placeholder="e.g. Duplicate scan / customer cancelled payment after tender..."
             />
           </div>

@@ -123,7 +123,7 @@ export const StoreSettingsPage: React.FC = () => {
         <Card>
           <CardHeader>
             <div className="flex items-center gap-2">
-              <Store className="h-5 w-5 text-[#3B82F6]" />
+              <Store className="h-5 w-5 text-[#16A34A]" />
               <CardTitle>Supermarket Identity & Contact Info</CardTitle>
             </div>
           </CardHeader>
@@ -228,7 +228,7 @@ export const StoreSettingsPage: React.FC = () => {
         <Card>
           <CardHeader>
             <div className="flex items-center gap-2">
-              <Printer className="h-5 w-5 text-[#3B82F6]" />
+              <Printer className="h-5 w-5 text-[#16A34A]" />
               <CardTitle>Thermal Receipt & Printer Configuration</CardTitle>
             </div>
           </CardHeader>
@@ -246,26 +246,26 @@ export const StoreSettingsPage: React.FC = () => {
               </div>
 
               <div className="md:col-span-2">
-                <label className="block text-xs font-semibold text-[#334155] dark:text-[#94A3B8] mb-1">
+                <label className="block text-xs font-semibold text-[#334155] dark:text-[#9CA3AF] mb-1">
                   Receipt Header Message
                 </label>
                 <textarea
                   rows={2}
                   value={receiptHeader}
                   onChange={(e) => setReceiptHeader(e.target.value)}
-                  className="w-full text-xs p-3 rounded-lg border border-[#E2E8F0] dark:border-[#263449] bg-white dark:bg-[#172338] font-mono"
+                  className="w-full text-xs p-3 rounded-lg border border-[#E2E8F0] dark:border-[#374151] bg-white dark:bg-[#374151] font-mono"
                 />
               </div>
 
               <div className="md:col-span-2">
-                <label className="block text-xs font-semibold text-[#334155] dark:text-[#94A3B8] mb-1">
+                <label className="block text-xs font-semibold text-[#334155] dark:text-[#9CA3AF] mb-1">
                   Receipt Footer Policy Message
                 </label>
                 <textarea
                   rows={2}
                   value={receiptFooter}
                   onChange={(e) => setReceiptFooter(e.target.value)}
-                  className="w-full text-xs p-3 rounded-lg border border-[#E2E8F0] dark:border-[#263449] bg-white dark:bg-[#172338] font-mono"
+                  className="w-full text-xs p-3 rounded-lg border border-[#E2E8F0] dark:border-[#374151] bg-white dark:bg-[#374151] font-mono"
                 />
               </div>
             </div>
@@ -289,13 +289,13 @@ export const StoreSettingsPage: React.FC = () => {
                     className={`p-3 rounded-xl border flex items-center justify-between text-xs transition cursor-pointer ${
                       isEnabled
                         ? 'border-blue-500 bg-blue-50/60 dark:bg-blue-950/40 text-blue-900 dark:text-blue-300 font-bold'
-                        : 'border-[#E2E8F0] dark:border-[#263449] text-[#64748B]'
+                        : 'border-[#E2E8F0] dark:border-[#374151] text-[#64748B]'
                     }`}
                   >
                     <span>{method}</span>
                     <span
                       className={`h-4 w-4 rounded-full flex items-center justify-center text-[10px] ${
-                        isEnabled ? 'bg-[#3B82F6] text-white' : 'border border-[#CBD5E1]'
+                        isEnabled ? 'bg-[#16A34A] text-white' : 'border border-[#CBD5E1]'
                       }`}
                     >
                       {isEnabled && '✓'}

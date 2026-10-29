@@ -23,23 +23,23 @@ export const StatCard: React.FC<StatCardProps> = ({
   description,
   trend,
   icon: Icon,
-  iconColor = 'bg-gradient-to-br from-indigo-500 to-blue-600 text-white shadow-md shadow-indigo-500/25',
+  iconColor = 'bg-gradient-to-br from-[#16A34A] to-[#166534] text-white shadow-md shadow-green-600/25',
   gradient,
   className,
 }) => {
   return (
     <Card
       className={cn(
-        'relative overflow-hidden group hover:-translate-y-0.5 hover:shadow-md transition-all duration-200 border border-[#E2E8F0] dark:border-[#263449]',
+        'relative overflow-hidden group hover:-translate-y-0.5 hover:shadow-md transition-all duration-200 border border-[#E2E8F0] dark:border-[#374151]',
         className
       )}
     >
-      {/* Optional decorative ambient glow on hover */}
-      <div className="absolute -top-12 -right-12 w-28 h-28 bg-indigo-500/5 dark:bg-indigo-500/10 rounded-full blur-2xl group-hover:scale-150 transition-transform duration-500 pointer-events-none" />
+      {/* Decorative ambient glow on hover */}
+      <div className="absolute -top-12 -right-12 w-28 h-28 bg-green-500/5 dark:bg-green-500/10 rounded-full blur-2xl group-hover:scale-150 transition-transform duration-500 pointer-events-none" />
 
       <CardContent className="p-5 relative z-10">
         <div className="flex items-center justify-between gap-3">
-          <p className="text-xs font-bold uppercase tracking-wider text-[#64748B] dark:text-[#94A3B8]">
+          <p className="text-xs font-bold uppercase tracking-wider text-[#64748B] dark:text-[#9CA3AF]">
             {title}
           </p>
           {Icon && (
@@ -55,7 +55,7 @@ export const StatCard: React.FC<StatCardProps> = ({
         </div>
 
         <div className="mt-3 flex items-baseline justify-between gap-2">
-          <span className="text-2xl sm:text-3xl font-extrabold tracking-tight text-[#0F172A] dark:text-slate-50">
+          <span className="text-2xl sm:text-3xl font-extrabold tracking-tight text-[#111827] dark:text-[#F9FAFB]">
             {value}
           </span>
           {trend && (
@@ -78,7 +78,7 @@ export const StatCard: React.FC<StatCardProps> = ({
         </div>
 
         {description && (
-          <p className="mt-2 text-xs text-[#64748B] dark:text-[#94A3B8] font-medium line-clamp-1">
+          <p className="mt-2 text-xs text-[#64748B] dark:text-[#9CA3AF] font-medium line-clamp-1">
             {description}
           </p>
         )}

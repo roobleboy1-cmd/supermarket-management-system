@@ -2,39 +2,37 @@
 
 @layer base {
   :root {
-    --bg-page: #F5F7FC;
+    --bg-page: #F8FAFC;
     --bg-sidebar: #FFFFFF;
     --bg-card: #FFFFFF;
-    --bg-elevated: #F8FAFC;
+    --bg-elevated: #F1F5F9;
     --border-color: #E2E8F0;
-    --text-primary: #0F172A;
+    --text-primary: #111827;
     --text-secondary: #64748B;
 
-    --brand-navy: #0B1220;
-    --brand-dark-blue: #14213D;
-    --brand-primary: #3B82F6;
-    --brand-violet: #8B5CF6;
-    --brand-cyan: #06B6D4;
-    --brand-success: #10B981;
+    --brand-primary: #16A34A;
+    --brand-dark-green: #166534;
+    --brand-lime: #84CC16;
+    --brand-orange: #F97316;
+    --brand-success: #16A34A;
     --brand-warning: #F59E0B;
     --brand-error: #EF4444;
   }
 
   .dark {
-    --bg-page: #0B1220;
-    --bg-sidebar: #0F172A;
-    --bg-card: #111C31;
-    --bg-elevated: #172338;
-    --border-color: #263449;
-    --text-primary: #F8FAFC;
-    --text-secondary: #94A3B8;
+    --bg-page: #111827;
+    --bg-sidebar: #1F2937;
+    --bg-card: #1F2937;
+    --bg-elevated: #374151;
+    --border-color: #374151;
+    --text-primary: #F9FAFB;
+    --text-secondary: #9CA3AF;
 
-    --brand-navy: #0B1220;
-    --brand-dark-blue: #14213D;
-    --brand-primary: #3B82F6;
-    --brand-violet: #8B5CF6;
-    --brand-cyan: #06B6D4;
-    --brand-success: #10B981;
+    --brand-primary: #16A34A;
+    --brand-dark-green: #166534;
+    --brand-lime: #84CC16;
+    --brand-orange: #F97316;
+    --brand-success: #16A34A;
     --brand-warning: #F59E0B;
     --brand-error: #EF4444;
   }
@@ -64,39 +62,36 @@ html {
   background: transparent;
 }
 ::-webkit-scrollbar-thumb {
-  background: rgba(148, 163, 184, 0.3);
+  background: rgba(100, 116, 139, 0.3);
   border-radius: 9999px;
 }
 ::-webkit-scrollbar-thumb:hover {
-  background: rgba(59, 130, 246, 0.6);
+  background: rgba(22, 163, 74, 0.6);
 }
 
-/* Glassmorphism helpers matching exact theme tokens */
+/* Glassmorphism helpers matching supermarket theme tokens */
 .glass-header {
-  background: rgba(255, 255, 255, 0.88);
+  background: rgba(255, 255, 255, 0.92);
   backdrop-filter: blur(16px);
   -webkit-backdrop-filter: blur(16px);
   border-bottom: 1px solid var(--border-color);
 }
 .dark .glass-header {
-  background: rgba(11, 18, 32, 0.88);
+  background: rgba(31, 41, 55, 0.92);
   backdrop-filter: blur(16px);
   -webkit-backdrop-filter: blur(16px);
   border-bottom: 1px solid var(--border-color);
 }
 
-/* Ambient glow utilities */
-.glow-blue {
-  box-shadow: 0 0 25px -4px rgba(59, 130, 246, 0.35);
+/* Supermarket brand glow utilities */
+.glow-green {
+  box-shadow: 0 0 25px -4px rgba(22, 163, 74, 0.35);
 }
-.glow-violet {
-  box-shadow: 0 0 25px -4px rgba(139, 92, 246, 0.35);
+.glow-lime {
+  box-shadow: 0 0 25px -4px rgba(132, 204, 22, 0.35);
 }
-.glow-cyan {
-  box-shadow: 0 0 25px -4px rgba(6, 182, 212, 0.35);
-}
-.glow-emerald {
-  box-shadow: 0 0 25px -4px rgba(16, 185, 129, 0.35);
+.glow-orange {
+  box-shadow: 0 0 25px -4px rgba(249, 115, 22, 0.35);
 }
 
 /* Print Styles */

@@ -125,11 +125,11 @@ export const SuppliersPage: React.FC = () => {
           <p className="col-span-full py-12 text-center text-xs text-[#94A3B8]">Loading vendors...</p>
         ) : (
           (suppliers || []).map((sup) => (
-            <Card key={sup.id} className="hover:border-blue-500 transition-all flex flex-col justify-between">
+            <Card key={sup.id} className="hover:border-[#16A34A] transition-all flex flex-col justify-between">
               <CardHeader className="pb-3">
                 <div className="flex items-start justify-between">
                   <div>
-                    <CardTitle className="text-sm font-bold text-[#0F172A] dark:text-[#F8FAFC]">
+                    <CardTitle className="text-sm font-bold text-[#111827] dark:text-[#F9FAFB]">
                       {sup.name}
                     </CardTitle>
                     <p className="text-xs text-[#64748B] mt-0.5">Contact: {sup.contactPerson}</p>
@@ -139,7 +139,7 @@ export const SuppliersPage: React.FC = () => {
                   </Badge>
                 </div>
               </CardHeader>
-              <CardContent className="space-y-2.5 text-xs text-[#64748B] dark:text-[#94A3B8]">
+              <CardContent className="space-y-2.5 text-xs text-[#64748B] dark:text-[#9CA3AF]">
                 <div className="flex items-center gap-2">
                   <Phone className="h-3.5 w-3.5 text-[#94A3B8]" />
                   <span>{sup.phone}</span>
@@ -153,17 +153,17 @@ export const SuppliersPage: React.FC = () => {
                   <span className="truncate">{sup.address}</span>
                 </div>
 
-                <div className="pt-3 border-t border-[#E2E8F0] dark:border-[#263449] flex items-center justify-between">
+                <div className="pt-3 border-t border-[#E2E8F0] dark:border-[#374151] flex items-center justify-between">
                   <div>
                     <span className="text-[10px] text-[#94A3B8] block">Terms: {sup.paymentTerms}</span>
-                    <span className="text-xs font-bold text-[#0F172A] dark:text-[#F8FAFC]">
+                    <span className="text-xs font-bold text-[#111827] dark:text-[#F9FAFB]">
                       Balance: {formatCurrency(sup.currentBalance)}
                     </span>
                   </div>
                   <div className="flex items-center gap-1">
                     <button
                       onClick={() => handleOpenEdit(sup)}
-                      className="p-1 rounded text-[#94A3B8] hover:text-[#3B82F6]"
+                      className="p-1 rounded text-[#94A3B8] hover:text-[#16A34A]"
                     >
                       <Edit className="h-3.5 w-3.5" />
                     </button>

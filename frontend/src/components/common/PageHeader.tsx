@@ -30,21 +30,21 @@ export const PageHeader: React.FC<PageHeaderProps> = ({
               <React.Fragment key={crumb.label}>
                 {idx > 0 && <span className="opacity-40">/</span>}
                 {crumb.href ? (
-                  <a href={crumb.href} className="hover:text-indigo-600 dark:hover:text-indigo-400 transition font-medium">
+                  <a href={crumb.href} className="hover:text-[#16A34A] dark:hover:text-indigo-400 transition font-medium">
                     {crumb.label}
                   </a>
                 ) : (
-                  <span className="text-[#64748B] dark:text-[#94A3B8] font-semibold">{crumb.label}</span>
+                  <span className="text-[#64748B] dark:text-[#9CA3AF] font-semibold">{crumb.label}</span>
                 )}
               </React.Fragment>
             ))}
           </nav>
         )}
-        <h1 className="text-2xl sm:text-3xl font-extrabold tracking-tight text-[#0F172A] dark:text-slate-50">
+        <h1 className="text-2xl sm:text-3xl font-extrabold tracking-tight text-[#111827] dark:text-slate-50">
           {title}
         </h1>
         {description && (
-          <p className="text-xs sm:text-sm text-[#64748B] dark:text-[#94A3B8] mt-1 font-medium max-w-3xl">
+          <p className="text-xs sm:text-sm text-[#64748B] dark:text-[#9CA3AF] mt-1 font-medium max-w-3xl">
             {description}
           </p>
         )}

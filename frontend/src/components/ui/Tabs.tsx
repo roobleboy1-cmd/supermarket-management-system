@@ -34,7 +34,7 @@ export const TabsList: React.FC<React.HTMLAttributes<HTMLDivElement>> = ({ class
   return (
     <div
       className={cn(
-        'inline-flex h-11 items-center justify-start rounded-xl bg-[#F8FAFC] dark:bg-[#172338] border border-[#E2E8F0] dark:border-[#263449] p-1 text-[#64748B] dark:text-[#94A3B8] gap-1 overflow-x-auto max-w-full',
+        'inline-flex h-11 items-center justify-start rounded-xl bg-[#F1F5F9] dark:bg-[#374151] border border-[#E2E8F0] dark:border-[#4B5563] p-1 text-[#64748B] dark:text-[#9CA3AF] gap-1 overflow-x-auto max-w-full',
         className
       )}
       {...props}
@@ -59,8 +59,8 @@ export const TabsTrigger: React.FC<{
       className={cn(
         'inline-flex items-center justify-center whitespace-nowrap rounded-lg px-3.5 py-1.5 text-xs font-bold transition-all duration-150 select-none cursor-pointer',
         isActive
-          ? 'bg-white dark:bg-[#111C31] text-[#3B82F6] dark:text-[#F8FAFC] shadow-xs border border-[#E2E8F0]/80 dark:border-[#263449]'
-          : 'text-[#64748B] dark:text-[#94A3B8] hover:text-[#0F172A] dark:hover:text-[#F8FAFC] hover:bg-[#E2E8F0]/50 dark:hover:bg-[#14213D]',
+          ? 'bg-white dark:bg-[#1F2937] text-[#16A34A] dark:text-[#84CC16] shadow-xs border border-[#E2E8F0] dark:border-[#4B5563]'
+          : 'text-[#64748B] dark:text-[#9CA3AF] hover:text-[#111827] dark:hover:text-[#F9FAFB] hover:bg-white/60 dark:hover:bg-[#1F2937]/60',
         className
       )}
     >

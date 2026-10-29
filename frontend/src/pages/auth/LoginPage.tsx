@@ -74,39 +74,39 @@ export const LoginPage: React.FC = () => {
   }
 
   return (
-    <div className="min-h-screen flex flex-col justify-center py-12 sm:px-6 lg:px-8 bg-[#F5F7FC] dark:bg-[#0B1220] transition-colors relative">
+    <div className="min-h-screen flex flex-col justify-center py-12 sm:px-6 lg:px-8 bg-[#F8FAFC] dark:bg-[#111827] transition-colors relative">
       {/* Top right quick controls for language and theme */}
       <div className="absolute top-4 right-4 sm:top-6 sm:right-6 flex items-center gap-2">
         <button
           onClick={toggleLanguage}
-          className="flex items-center gap-1.5 px-3 py-1.5 rounded-xl border border-[#E2E8F0] dark:border-[#263449] bg-white/80 dark:bg-[#111C31]/80 hover:bg-[#F1F5F9] dark:hover:bg-[#172338] text-xs font-bold text-[#0F172A] dark:text-[#F8FAFC] shadow-xs transition cursor-pointer"
+          className="flex items-center gap-1.5 px-3 py-1.5 rounded-xl border border-[#E2E8F0] dark:border-[#374151] bg-white/80 dark:bg-[#1F2937]/80 hover:bg-[#F1F5F9] dark:hover:bg-[#374151] text-xs font-bold text-[#111827] dark:text-[#F9FAFB] shadow-xs transition cursor-pointer"
           title="Toggle Language / Beddel Luuqadda"
         >
-          <Globe className="h-3.5 w-3.5 text-[#3B82F6] dark:text-[#06B6D4]" />
+          <Globe className="h-3.5 w-3.5 text-[#16A34A] dark:text-[#84CC16]" />
           <span>{language === 'so' ? '🇸🇴 SO' : '🇬🇧 EN'}</span>
         </button>
 
         <button
           onClick={toggleTheme}
-          className="p-2 rounded-xl border border-[#E2E8F0] dark:border-[#263449] bg-white/80 dark:bg-[#111C31]/80 hover:bg-[#F1F5F9] dark:hover:bg-[#172338] text-[#0F172A] dark:text-[#F8FAFC] shadow-xs transition cursor-pointer"
+          className="p-2 rounded-xl border border-[#E2E8F0] dark:border-[#374151] bg-white/80 dark:bg-[#1F2937]/80 hover:bg-[#F1F5F9] dark:hover:bg-[#374151] text-[#111827] dark:text-[#F9FAFB] shadow-xs transition cursor-pointer"
           title="Toggle Dark/Light Mode"
         >
           {resolvedTheme === 'dark' ? (
             <Sun className="h-4 w-4 text-amber-400" />
           ) : (
-            <Moon className="h-4 w-4 text-[#3B82F6]" />
+            <Moon className="h-4 w-4 text-[#16A34A]" />
           )}
         </button>
       </div>
 
       <div className="sm:mx-auto sm:w-full sm:max-w-md text-center">
-        <div className="inline-flex h-14 w-14 items-center justify-center rounded-2xl bg-gradient-to-tr from-[#3B82F6] via-[#8B5CF6] to-[#06B6D4] text-white shadow-lg shadow-indigo-500/30 mb-3">
+        <div className="inline-flex h-14 w-14 items-center justify-center rounded-2xl bg-gradient-to-tr from-[#16A34A] via-[#15803D] to-[#84CC16] text-white shadow-lg shadow-green-600/25 mb-3">
           <Store className="h-7 w-7" />
         </div>
-        <h2 className="text-3xl font-extrabold tracking-tight bg-clip-text text-transparent bg-gradient-to-r from-[#3B82F6] via-[#8B5CF6] to-[#06B6D4] dark:from-indigo-400 dark:via-blue-400 dark:to-cyan-400">
+        <h2 className="text-3xl font-extrabold tracking-tight bg-clip-text text-transparent bg-gradient-to-r from-[#16A34A] via-[#15803D] to-[#84CC16] dark:from-indigo-400 dark:via-blue-400 dark:to-cyan-400">
           SomSupermarket
         </h2>
-        <p className="mt-1 text-xs text-[#64748B] dark:text-[#94A3B8] font-medium">
+        <p className="mt-1 text-xs text-[#64748B] dark:text-[#9CA3AF] font-medium">
           {language === 'so'
             ? 'Nidaamka Maamulka Dukaanka Dhexe — Albaabka Shaqaalaha'
             : 'Single Supermarket Management System — Staff Portal'}
@@ -114,7 +114,7 @@ export const LoginPage: React.FC = () => {
       </div>
 
       <div className="mt-8 sm:mx-auto sm:w-full sm:max-w-md px-4 sm:px-0">
-        <div className="bg-white dark:bg-[#111C31] py-8 px-6 sm:px-10 shadow-xl shadow-black/5 dark:shadow-black/25 rounded-3xl border border-[#E2E8F0] dark:border-[#263449]">
+        <div className="bg-white dark:bg-[#1F2937] py-8 px-6 sm:px-10 shadow-xl shadow-black/5 dark:shadow-black/25 rounded-3xl border border-[#E2E8F0] dark:border-[#374151]">
           {expired && (
             <div className="mb-4 p-3 rounded-xl bg-amber-500/10 border border-amber-500/30 text-xs text-amber-600 dark:text-amber-400 font-medium">
               {language === 'so'
@@ -150,12 +150,12 @@ export const LoginPage: React.FC = () => {
 
             <div>
               <div className="flex items-center justify-between mb-1">
-                <label className="block text-xs font-bold text-[#0F172A] dark:text-[#F8FAFC]">
+                <label className="block text-xs font-bold text-[#111827] dark:text-[#F9FAFB]">
                   {language === 'so' ? 'Furaha Sirta ah' : 'Password'}
                 </label>
                 <Link
                   to="/forgot-password"
-                  className="text-xs font-semibold text-[#3B82F6] dark:text-[#06B6D4] hover:underline"
+                  className="text-xs font-semibold text-[#16A34A] dark:text-[#84CC16] hover:underline"
                 >
                   {language === 'so' ? 'Ma ilowday furaha?' : 'Forgot Password?'}
                 </Link>
@@ -177,64 +177,64 @@ export const LoginPage: React.FC = () => {
           </form>
 
           {/* Quick Demo Role Switcher */}
-          <div className="mt-6 pt-6 border-t border-[#E2E8F0] dark:border-[#263449]">
-            <p className="text-[10px] font-extrabold text-[#64748B] dark:text-[#94A3B8] uppercase tracking-widest text-center mb-3">
+          <div className="mt-6 pt-6 border-t border-[#E2E8F0] dark:border-[#374151]">
+            <p className="text-[10px] font-extrabold text-[#64748B] dark:text-[#9CA3AF] uppercase tracking-widest text-center mb-3">
               {language === 'so' ? '1-Guji ku tijaabi Doorarka (Roles)' : 'One-Click Role Demonstration'}
             </p>
             <div className="grid grid-cols-2 sm:grid-cols-3 gap-2 text-xs">
               <button
                 type="button"
                 onClick={() => handleQuickLogin('admin@supermarket.so', 'Super Admin')}
-                className="p-2 text-left rounded-xl border border-[#E2E8F0] dark:border-[#263449] hover:border-purple-500 dark:hover:border-purple-500 bg-[#F8FAFC] dark:bg-[#172338] text-[#0F172A] dark:text-[#F8FAFC] transition-all hover:scale-[1.02] cursor-pointer"
+                className="p-2 text-left rounded-xl border border-[#E2E8F0] dark:border-[#374151] hover:border-purple-500 dark:hover:border-purple-500 bg-[#F8FAFC] dark:bg-[#374151] text-[#111827] dark:text-[#F9FAFB] transition-all hover:scale-[1.02] cursor-pointer"
               >
                 <div className="font-extrabold text-purple-600 dark:text-purple-400">Super Admin</div>
-                <div className="text-[10px] text-[#64748B] dark:text-[#94A3B8]">Ahmed Noor</div>
+                <div className="text-[10px] text-[#64748B] dark:text-[#9CA3AF]">Ahmed Noor</div>
               </button>
               <button
                 type="button"
                 onClick={() => handleQuickLogin('fadumo.mgr@supermarket.so', 'Manager')}
-                className="p-2 text-left rounded-xl border border-[#E2E8F0] dark:border-[#263449] hover:border-blue-500 dark:hover:border-blue-500 bg-[#F8FAFC] dark:bg-[#172338] text-[#0F172A] dark:text-[#F8FAFC] transition-all hover:scale-[1.02] cursor-pointer"
+                className="p-2 text-left rounded-xl border border-[#E2E8F0] dark:border-[#374151] hover:border-[#16A34A] dark:hover:border-[#16A34A] bg-[#F8FAFC] dark:bg-[#374151] text-[#111827] dark:text-[#F9FAFB] transition-all hover:scale-[1.02] cursor-pointer"
               >
-                <div className="font-extrabold text-[#3B82F6] dark:text-[#06B6D4]">Manager</div>
-                <div className="text-[10px] text-[#64748B] dark:text-[#94A3B8]">Fadumo Warsame</div>
+                <div className="font-extrabold text-[#16A34A] dark:text-[#84CC16]">Manager</div>
+                <div className="text-[10px] text-[#64748B] dark:text-[#9CA3AF]">Fadumo Warsame</div>
               </button>
               <button
                 type="button"
                 onClick={() => handleQuickLogin('hassan.cashier@supermarket.so', 'Cashier')}
-                className="p-2 text-left rounded-xl border border-[#E2E8F0] dark:border-[#263449] hover:border-emerald-500 dark:hover:border-emerald-500 bg-[#F8FAFC] dark:bg-[#172338] text-[#0F172A] dark:text-[#F8FAFC] transition-all hover:scale-[1.02] cursor-pointer"
+                className="p-2 text-left rounded-xl border border-[#E2E8F0] dark:border-[#374151] hover:border-emerald-500 dark:hover:border-emerald-500 bg-[#F8FAFC] dark:bg-[#374151] text-[#111827] dark:text-[#F9FAFB] transition-all hover:scale-[1.02] cursor-pointer"
               >
                 <div className="font-extrabold text-emerald-600 dark:text-emerald-400">Cashier</div>
-                <div className="text-[10px] text-[#64748B] dark:text-[#94A3B8]">Hassan Ali</div>
+                <div className="text-[10px] text-[#64748B] dark:text-[#9CA3AF]">Hassan Ali</div>
               </button>
               <button
                 type="button"
                 onClick={() => handleQuickLogin('khadija.inv@supermarket.so', 'Inventory Manager')}
-                className="p-2 text-left rounded-xl border border-[#E2E8F0] dark:border-[#263449] hover:border-amber-500 dark:hover:border-amber-500 bg-[#F8FAFC] dark:bg-[#172338] text-[#0F172A] dark:text-[#F8FAFC] transition-all hover:scale-[1.02] cursor-pointer"
+                className="p-2 text-left rounded-xl border border-[#E2E8F0] dark:border-[#374151] hover:border-amber-500 dark:hover:border-amber-500 bg-[#F8FAFC] dark:bg-[#374151] text-[#111827] dark:text-[#F9FAFB] transition-all hover:scale-[1.02] cursor-pointer"
               >
                 <div className="font-extrabold text-amber-600 dark:text-amber-400">Inventory Mgr</div>
-                <div className="text-[10px] text-[#64748B] dark:text-[#94A3B8]">Khadija Osman</div>
+                <div className="text-[10px] text-[#64748B] dark:text-[#9CA3AF]">Khadija Osman</div>
               </button>
               <button
                 type="button"
                 onClick={() => handleQuickLogin('jama.acc@supermarket.so', 'Accountant')}
-                className="p-2 text-left rounded-xl border border-[#E2E8F0] dark:border-[#263449] hover:border-cyan-500 dark:hover:border-cyan-500 bg-[#F8FAFC] dark:bg-[#172338] text-[#0F172A] dark:text-[#F8FAFC] transition-all hover:scale-[1.02] cursor-pointer"
+                className="p-2 text-left rounded-xl border border-[#E2E8F0] dark:border-[#374151] hover:border-cyan-500 dark:hover:border-cyan-500 bg-[#F8FAFC] dark:bg-[#374151] text-[#111827] dark:text-[#F9FAFB] transition-all hover:scale-[1.02] cursor-pointer"
               >
                 <div className="font-extrabold text-cyan-600 dark:text-cyan-400">Accountant</div>
-                <div className="text-[10px] text-[#64748B] dark:text-[#94A3B8]">Mohamed Jama</div>
+                <div className="text-[10px] text-[#64748B] dark:text-[#9CA3AF]">Mohamed Jama</div>
               </button>
               <button
                 type="button"
                 onClick={() => handleQuickLogin('sahra.audit@supermarket.so', 'Auditor')}
-                className="p-2 text-left rounded-xl border border-[#E2E8F0] dark:border-[#263449] hover:border-rose-500 dark:hover:border-rose-500 bg-[#F8FAFC] dark:bg-[#172338] text-[#0F172A] dark:text-[#F8FAFC] transition-all hover:scale-[1.02] cursor-pointer"
+                className="p-2 text-left rounded-xl border border-[#E2E8F0] dark:border-[#374151] hover:border-rose-500 dark:hover:border-rose-500 bg-[#F8FAFC] dark:bg-[#374151] text-[#111827] dark:text-[#F9FAFB] transition-all hover:scale-[1.02] cursor-pointer"
               >
                 <div className="font-extrabold text-rose-600 dark:text-rose-400">Auditor</div>
-                <div className="text-[10px] text-[#64748B] dark:text-[#94A3B8]">Sahra Abdi</div>
+                <div className="text-[10px] text-[#64748B] dark:text-[#9CA3AF]">Sahra Abdi</div>
               </button>
             </div>
           </div>
         </div>
 
-        <p className="mt-4 text-center text-xs text-[#64748B] dark:text-[#94A3B8] font-medium">
+        <p className="mt-4 text-center text-xs text-[#64748B] dark:text-[#9CA3AF] font-medium">
           SomSupermarket Management System • Production Grade
         </p>
       </div>

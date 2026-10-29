@@ -249,14 +249,14 @@ export const CommandPalette: React.FC<CommandPaletteProps> = ({ open, onClose })
     <div className="fixed inset-0 z-50 flex items-start justify-center pt-20 p-4">
       {/* Backdrop */}
       <div
-        className="fixed inset-0 bg-[#0B1220]/50 backdrop-blur-xs transition-opacity"
+        className="fixed inset-0 bg-[#111827]/50 backdrop-blur-xs transition-opacity"
         onClick={onClose}
       />
 
       {/* Modal Dialog */}
-      <div className="relative w-full max-w-lg rounded-2xl bg-white dark:bg-[#111C31] shadow-2xl border border-[#E2E8F0] dark:border-[#263449] overflow-hidden animate-in zoom-in-95 duration-100">
+      <div className="relative w-full max-w-lg rounded-2xl bg-white dark:bg-[#1F2937] shadow-2xl border border-[#E2E8F0] dark:border-[#374151] overflow-hidden animate-in zoom-in-95 duration-100">
         {/* Search Input Bar */}
-        <div className="flex items-center px-4 border-b border-[#E2E8F0] dark:border-[#263449]">
+        <div className="flex items-center px-4 border-b border-[#E2E8F0] dark:border-[#374151]">
           <Search className="h-4 w-4 text-[#94A3B8] shrink-0 mr-2" />
           <input
             type="text"
@@ -264,9 +264,9 @@ export const CommandPalette: React.FC<CommandPaletteProps> = ({ open, onClose })
             value={query}
             onChange={(e) => setQuery(e.target.value)}
             autoFocus
-            className="w-full py-3.5 text-sm bg-transparent border-0 focus:outline-none text-[#0F172A] dark:text-[#F8FAFC] placeholder:text-[#94A3B8]"
+            className="w-full py-3.5 text-sm bg-transparent border-0 focus:outline-none text-[#111827] dark:text-[#F9FAFB] placeholder:text-[#94A3B8]"
           />
-          <kbd className="hidden sm:inline-block rounded-md bg-[#F1F5F9] dark:bg-[#172338] px-2 py-0.5 text-[10px] font-mono text-[#64748B] font-bold">
+          <kbd className="hidden sm:inline-block rounded-md bg-[#F1F5F9] dark:bg-[#374151] px-2 py-0.5 text-[10px] font-mono text-[#64748B] font-bold">
             ESC
           </kbd>
         </div>
@@ -293,7 +293,7 @@ export const CommandPalette: React.FC<CommandPaletteProps> = ({ open, onClose })
                         <button
                           key={item.name}
                           onClick={() => handleSelect(item.path)}
-                          className="w-full flex items-center gap-3 px-3 py-2 rounded-xl text-xs font-semibold text-[#334155] dark:text-[#94A3B8] hover:bg-indigo-50 dark:hover:bg-[#172338] hover:text-indigo-600 dark:hover:text-indigo-400 transition text-left cursor-pointer"
+                          className="w-full flex items-center gap-3 px-3 py-2 rounded-xl text-xs font-semibold text-[#334155] dark:text-[#9CA3AF] hover:bg-indigo-50 dark:hover:bg-[#374151] hover:text-[#16A34A] dark:hover:text-indigo-400 transition text-left cursor-pointer"
                         >
                           <Icon className="h-4 w-4 text-indigo-500 shrink-0" />
                           <span>{item.name}</span>
@@ -318,7 +318,7 @@ export const CommandPalette: React.FC<CommandPaletteProps> = ({ open, onClose })
                         <button
                           key={item.name}
                           onClick={() => handleSelect(item.path)}
-                          className="w-full flex items-center gap-3 px-3 py-2 rounded-xl text-xs font-semibold text-[#334155] dark:text-[#94A3B8] hover:bg-[#F1F5F9] dark:hover:bg-[#172338] transition text-left cursor-pointer"
+                          className="w-full flex items-center gap-3 px-3 py-2 rounded-xl text-xs font-semibold text-[#334155] dark:text-[#9CA3AF] hover:bg-[#F1F5F9] dark:hover:bg-[#374151] transition text-left cursor-pointer"
                         >
                           <Icon className="h-4 w-4 text-[#94A3B8] shrink-0" />
                           <span>{item.name}</span>

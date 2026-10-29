@@ -174,17 +174,17 @@ export const CategoriesBrandsPage: React.FC = () => {
 
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
             {(categories || []).map((cat) => (
-              <Card key={cat.id} className="hover:border-blue-500 transition-all">
+              <Card key={cat.id} className="hover:border-[#16A34A] transition-all">
                 <CardContent className="p-5 flex flex-col justify-between h-full">
                   <div>
                     <div className="flex items-center justify-between mb-2">
-                      <span className="text-xs font-mono font-bold px-2 py-0.5 rounded bg-blue-50 dark:bg-blue-950/60 text-[#3B82F6] dark:text-[#06B6D4]">
+                      <span className="text-xs font-mono font-bold px-2 py-0.5 rounded bg-blue-50 dark:bg-blue-950/60 text-[#16A34A] dark:text-[#84CC16]">
                         {cat.code}
                       </span>
                       <div className="flex items-center gap-1">
                         <button
                           onClick={() => handleOpenCategoryEdit(cat)}
-                          className="p-1 rounded text-[#94A3B8] hover:text-[#3B82F6]"
+                          className="p-1 rounded text-[#94A3B8] hover:text-[#16A34A]"
                         >
                           <Edit className="h-3.5 w-3.5" />
                         </button>
@@ -196,14 +196,14 @@ export const CategoriesBrandsPage: React.FC = () => {
                         </button>
                       </div>
                     </div>
-                    <h3 className="text-sm font-bold text-[#0F172A] dark:text-[#F8FAFC]">{cat.name}</h3>
-                    <p className="text-xs text-[#64748B] dark:text-[#94A3B8] mt-1 line-clamp-2">
+                    <h3 className="text-sm font-bold text-[#111827] dark:text-[#F9FAFB]">{cat.name}</h3>
+                    <p className="text-xs text-[#64748B] dark:text-[#9CA3AF] mt-1 line-clamp-2">
                       {cat.description || 'No description provided'}
                     </p>
                   </div>
-                  <div className="mt-4 pt-3 border-t border-[#E2E8F0] dark:border-[#263449] flex items-center justify-between text-xs text-[#94A3B8]">
-                    <span className="flex items-center gap-1 font-medium text-[#334155] dark:text-[#94A3B8]">
-                      <Boxes className="h-3.5 w-3.5 text-[#3B82F6]" />
+                  <div className="mt-4 pt-3 border-t border-[#E2E8F0] dark:border-[#374151] flex items-center justify-between text-xs text-[#94A3B8]">
+                    <span className="flex items-center gap-1 font-medium text-[#334155] dark:text-[#9CA3AF]">
+                      <Boxes className="h-3.5 w-3.5 text-[#16A34A]" />
                       {cat.productCount} Products
                     </span>
                   </div>
@@ -224,7 +224,7 @@ export const CategoriesBrandsPage: React.FC = () => {
 
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
             {(brands || []).map((br) => (
-              <Card key={br.id} className="hover:border-blue-500 transition-all">
+              <Card key={br.id} className="hover:border-[#16A34A] transition-all">
                 <CardContent className="p-5 flex flex-col justify-between h-full">
                   <div>
                     <div className="flex items-center justify-between mb-2">
@@ -234,7 +234,7 @@ export const CategoriesBrandsPage: React.FC = () => {
                       <div className="flex items-center gap-1">
                         <button
                           onClick={() => handleOpenBrandEdit(br)}
-                          className="p-1 rounded text-[#94A3B8] hover:text-[#3B82F6]"
+                          className="p-1 rounded text-[#94A3B8] hover:text-[#16A34A]"
                         >
                           <Edit className="h-3.5 w-3.5" />
                         </button>
@@ -246,13 +246,13 @@ export const CategoriesBrandsPage: React.FC = () => {
                         </button>
                       </div>
                     </div>
-                    <h3 className="text-sm font-bold text-[#0F172A] dark:text-[#F8FAFC]">{br.name}</h3>
-                    <p className="text-xs text-[#64748B] dark:text-[#94A3B8] mt-1 line-clamp-2">
+                    <h3 className="text-sm font-bold text-[#111827] dark:text-[#F9FAFB]">{br.name}</h3>
+                    <p className="text-xs text-[#64748B] dark:text-[#9CA3AF] mt-1 line-clamp-2">
                       {br.description || 'Manufacturer & product line'}
                     </p>
                   </div>
-                  <div className="mt-4 pt-3 border-t border-[#E2E8F0] dark:border-[#263449] flex items-center justify-between text-xs text-[#94A3B8]">
-                    <span className="flex items-center gap-1 font-medium text-[#334155] dark:text-[#94A3B8]">
+                  <div className="mt-4 pt-3 border-t border-[#E2E8F0] dark:border-[#374151] flex items-center justify-between text-xs text-[#94A3B8]">
+                    <span className="flex items-center gap-1 font-medium text-[#334155] dark:text-[#9CA3AF]">
                       <Tag className="h-3.5 w-3.5 text-emerald-600" />
                       {br.productCount} Linked Items
                     </span>
@@ -287,14 +287,14 @@ export const CategoriesBrandsPage: React.FC = () => {
             placeholder="e.g. PROD"
           />
           <div>
-            <label className="block text-xs font-semibold text-[#334155] dark:text-[#94A3B8] mb-1.5">
+            <label className="block text-xs font-semibold text-[#334155] dark:text-[#9CA3AF] mb-1.5">
               Description (Optional)
             </label>
             <textarea
               value={catDesc}
               onChange={(e) => setCatDesc(e.target.value)}
               rows={3}
-              className="w-full text-xs p-3 rounded-lg border border-[#E2E8F0] dark:border-[#263449] bg-white dark:bg-[#111C31]"
+              className="w-full text-xs p-3 rounded-lg border border-[#E2E8F0] dark:border-[#374151] bg-white dark:bg-[#1F2937]"
               placeholder="Merchandise aisle details..."
             />
           </div>
@@ -332,14 +332,14 @@ export const CategoriesBrandsPage: React.FC = () => {
             placeholder="e.g. ALM"
           />
           <div>
-            <label className="block text-xs font-semibold text-[#334155] dark:text-[#94A3B8] mb-1.5">
+            <label className="block text-xs font-semibold text-[#334155] dark:text-[#9CA3AF] mb-1.5">
               Description (Optional)
             </label>
             <textarea
               value={brandDesc}
               onChange={(e) => setBrandDesc(e.target.value)}
               rows={3}
-              className="w-full text-xs p-3 rounded-lg border border-[#E2E8F0] dark:border-[#263449] bg-white dark:bg-[#111C31]"
+              className="w-full text-xs p-3 rounded-lg border border-[#E2E8F0] dark:border-[#374151] bg-white dark:bg-[#1F2937]"
               placeholder="Brand provenance & manufacturer details..."
             />
           </div>

@@ -2,7 +2,7 @@ import * as React from 'react'
 import { cn } from '@/utils/cn'
 
 export interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
-  variant?: 'primary' | 'secondary' | 'outline' | 'danger' | 'ghost' | 'success'
+  variant?: 'primary' | 'secondary' | 'outline' | 'danger' | 'ghost' | 'success' | 'orange'
   size?: 'sm' | 'md' | 'lg' | 'icon'
   isLoading?: boolean
 }
@@ -14,17 +14,19 @@ export const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
 
     const variants = {
       primary:
-        'bg-gradient-to-r from-[#3B82F6] via-[#2563EB] to-[#8B5CF6] hover:from-[#2563EB] hover:to-[#7C3AED] text-white focus:ring-[#3B82F6] shadow-sm shadow-blue-500/25 active:scale-[0.98]',
+        'bg-gradient-to-r from-[#16A34A] via-[#15803D] to-[#166534] hover:from-[#15803D] hover:to-[#14532D] text-white focus:ring-[#16A34A] shadow-sm shadow-green-600/25 active:scale-[0.98]',
       secondary:
-        'bg-[#F8FAFC] dark:bg-[#172338] hover:bg-[#E2E8F0] dark:hover:bg-[#20304c] text-[#0F172A] dark:text-[#F8FAFC] border border-[#E2E8F0] dark:border-[#263449] focus:ring-slate-400 active:scale-[0.98]',
+        'bg-[#F8FAFC] dark:bg-[#374151] hover:bg-[#E2E8F0] dark:hover:bg-[#4B5563] text-[#111827] dark:text-[#F9FAFB] border border-[#E2E8F0] dark:border-[#374151] focus:ring-[#16A34A] active:scale-[0.98]',
       outline:
-        'border border-[#E2E8F0] dark:border-[#263449] bg-white dark:bg-[#111C31] hover:bg-[#F8FAFC] dark:hover:bg-[#172338] text-[#0F172A] dark:text-[#F8FAFC] focus:ring-[#3B82F6] active:scale-[0.98] shadow-2xs',
+        'border border-[#E2E8F0] dark:border-[#374151] bg-white dark:bg-[#1F2937] hover:bg-[#F8FAFC] dark:hover:bg-[#374151] text-[#111827] dark:text-[#F9FAFB] focus:ring-[#16A34A] active:scale-[0.98] shadow-2xs',
       danger:
         'bg-gradient-to-r from-[#EF4444] to-[#F43F5E] hover:from-[#DC2626] hover:to-[#E11D48] text-white focus:ring-[#EF4444] shadow-sm shadow-red-500/20 active:scale-[0.98]',
       ghost:
-        'hover:bg-[#F8FAFC] dark:hover:bg-[#172338] text-[#0F172A] dark:text-[#F8FAFC] focus:ring-[#3B82F6] active:scale-[0.98]',
+        'hover:bg-[#F8FAFC] dark:hover:bg-[#374151] text-[#111827] dark:text-[#F9FAFB] focus:ring-[#16A34A] active:scale-[0.98]',
       success:
-        'bg-gradient-to-r from-[#10B981] to-[#06B6D4] hover:from-[#059669] hover:to-[#0891B2] text-white focus:ring-[#10B981] shadow-sm shadow-emerald-500/25 active:scale-[0.98]',
+        'bg-gradient-to-r from-[#16A34A] to-[#84CC16] hover:from-[#15803D] hover:to-[#65A30D] text-white focus:ring-[#16A34A] shadow-sm shadow-green-500/25 active:scale-[0.98]',
+      orange:
+        'bg-gradient-to-r from-[#F97316] to-[#EA580C] hover:from-[#EA580C] hover:to-[#C2410C] text-white focus:ring-[#F97316] shadow-sm shadow-orange-500/25 active:scale-[0.98]',
     }
 
     const sizes = {

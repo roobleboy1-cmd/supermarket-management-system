@@ -193,7 +193,7 @@ export const PurchaseOrdersPage: React.FC = () => {
         <CardContent className="p-0">
           <div className="overflow-x-auto">
             <table className="w-full text-left text-xs">
-              <thead className="bg-[#F5F7FC] dark:bg-[#0B1220]/40 text-[#64748B] border-b border-[#E2E8F0] dark:border-[#263449] uppercase font-semibold text-[11px]">
+              <thead className="bg-[#F8FAFC] dark:bg-[#111827]/40 text-[#64748B] border-b border-[#E2E8F0] dark:border-[#374151] uppercase font-semibold text-[11px]">
                 <tr>
                   <th className="py-3 px-4">PO Number</th>
                   <th className="py-3 px-4">Supplier</th>
@@ -204,7 +204,7 @@ export const PurchaseOrdersPage: React.FC = () => {
                   <th className="py-3 px-4 text-right">Actions</th>
                 </tr>
               </thead>
-              <tbody className="divide-y divide-[#E2E8F0] dark:divide-[#263449]">
+              <tbody className="divide-y divide-[#E2E8F0] dark:divide-[#374151]">
                 {isLoading ? (
                   <tr>
                     <td colSpan={7} className="py-12 text-center text-[#94A3B8]">
@@ -223,18 +223,18 @@ export const PurchaseOrdersPage: React.FC = () => {
                     const totalReceived = po.items.reduce((s, i) => s + i.quantityReceived, 0)
 
                     return (
-                      <tr key={po.id} className="hover:bg-[#F8FAFC] dark:hover:bg-[#172338]/40">
-                        <td className="py-3 px-4 font-mono font-bold text-[#0F172A] dark:text-[#F8FAFC]">
+                      <tr key={po.id} className="hover:bg-[#F8FAFC] dark:hover:bg-[#374151]/40">
+                        <td className="py-3 px-4 font-mono font-bold text-[#111827] dark:text-[#F9FAFB]">
                           {po.poNumber}
                         </td>
-                        <td className="py-3 px-4 font-semibold text-[#1E293B] dark:text-[#F8FAFC]">
+                        <td className="py-3 px-4 font-semibold text-[#1E293B] dark:text-[#F9FAFB]">
                           {po.supplierName}
                         </td>
                         <td className="py-3 px-4 text-[#64748B]">{formatDate(po.createdAt)}</td>
                         <td className="py-3 px-4 text-center font-bold">
                           {totalReceived} / {totalOrdered}
                         </td>
-                        <td className="py-3 px-4 text-right font-bold text-[#0F172A] dark:text-[#F8FAFC]">
+                        <td className="py-3 px-4 text-right font-bold text-[#111827] dark:text-[#F9FAFB]">
                           {formatCurrency(po.totalAmount)}
                         </td>
                         <td className="py-3 px-4 text-center">
@@ -320,7 +320,7 @@ export const PurchaseOrdersPage: React.FC = () => {
 
           <div>
             <div className="flex items-center justify-between mb-2">
-              <label className="text-xs font-semibold text-[#334155] dark:text-[#94A3B8]">
+              <label className="text-xs font-semibold text-[#334155] dark:text-[#9CA3AF]">
                 Purchase Order Line Items
               </label>
               <Button type="button" size="sm" variant="secondary" onClick={handleAddLineItem}>
@@ -328,7 +328,7 @@ export const PurchaseOrdersPage: React.FC = () => {
               </Button>
             </div>
 
-            <div className="space-y-2 max-h-56 overflow-y-auto border border-[#E2E8F0] dark:border-[#263449] p-2 rounded-lg">
+            <div className="space-y-2 max-h-56 overflow-y-auto border border-[#E2E8F0] dark:border-[#374151] p-2 rounded-lg">
               {orderItems.length === 0 ? (
                 <p className="py-6 text-center text-xs text-[#94A3B8]">
                   No items added yet. Click &quot;+ Add Item&quot; to begin.
@@ -339,7 +339,7 @@ export const PurchaseOrdersPage: React.FC = () => {
                     <select
                       value={item.productId}
                       onChange={(e) => handleItemChange(idx, 'productId', e.target.value)}
-                      className="flex-1 p-2 rounded-lg border border-[#CBD5E1] dark:border-[#263449] bg-white dark:bg-[#172338]"
+                      className="flex-1 p-2 rounded-lg border border-[#CBD5E1] dark:border-[#374151] bg-white dark:bg-[#374151]"
                     >
                       {(productsData?.items || []).map((p) => (
                         <option key={p.id} value={p.id}>
@@ -356,7 +356,7 @@ export const PurchaseOrdersPage: React.FC = () => {
                       onChange={(e) =>
                         handleItemChange(idx, 'quantityOrdered', parseInt(e.target.value, 10) || 1)
                       }
-                      className="w-20 p-2 rounded-lg border border-[#CBD5E1] dark:border-[#263449] bg-white dark:bg-[#172338] text-center font-bold"
+                      className="w-20 p-2 rounded-lg border border-[#CBD5E1] dark:border-[#374151] bg-white dark:bg-[#374151] text-center font-bold"
                     />
 
                     <input
@@ -367,10 +367,10 @@ export const PurchaseOrdersPage: React.FC = () => {
                       onChange={(e) =>
                         handleItemChange(idx, 'unitCost', parseFloat(e.target.value) || 0)
                       }
-                      className="w-24 p-2 rounded-lg border border-[#CBD5E1] dark:border-[#263449] bg-white dark:bg-[#172338] text-right"
+                      className="w-24 p-2 rounded-lg border border-[#CBD5E1] dark:border-[#374151] bg-white dark:bg-[#374151] text-right"
                     />
 
-                    <span className="w-20 text-right font-bold text-[#0F172A] dark:text-[#F8FAFC]">
+                    <span className="w-20 text-right font-bold text-[#111827] dark:text-[#F9FAFB]">
                       ${(item.quantityOrdered * item.unitCost).toFixed(2)}
                     </span>
 
@@ -394,7 +394,7 @@ export const PurchaseOrdersPage: React.FC = () => {
             placeholder="e.g. Urgent weekend delivery required"
           />
 
-          <div className="flex justify-end gap-2 pt-2 border-t border-[#E2E8F0] dark:border-[#263449]">
+          <div className="flex justify-end gap-2 pt-2 border-t border-[#E2E8F0] dark:border-[#374151]">
             <Button type="button" variant="outline" onClick={() => setCreateModalOpen(false)}>
               Cancel
             </Button>
@@ -414,13 +414,13 @@ export const PurchaseOrdersPage: React.FC = () => {
         maxWidth="lg"
       >
         <div className="space-y-4">
-          <div className="divide-y divide-[#E2E8F0] dark:divide-[#263449] max-h-80 overflow-y-auto">
+          <div className="divide-y divide-[#E2E8F0] dark:divide-[#374151] max-h-80 overflow-y-auto">
             {receiveModalPO?.items.map((item) => {
               const remaining = Math.max(0, item.quantityOrdered - item.quantityReceived)
               return (
                 <div key={item.productId} className="py-3 flex items-center justify-between text-xs">
                   <div>
-                    <p className="font-semibold text-[#0F172A] dark:text-[#F8FAFC]">
+                    <p className="font-semibold text-[#111827] dark:text-[#F9FAFB]">
                       {item.productName}
                     </p>
                     <p className="text-[11px] text-[#64748B]">
@@ -440,7 +440,7 @@ export const PurchaseOrdersPage: React.FC = () => {
                           [item.productId]: parseInt(e.target.value, 10) || 0,
                         })
                       }
-                      className="w-20 p-2 text-center font-bold rounded-lg border border-[#CBD5E1] dark:border-[#263449] bg-white dark:bg-[#111C31]"
+                      className="w-20 p-2 text-center font-bold rounded-lg border border-[#CBD5E1] dark:border-[#374151] bg-white dark:bg-[#1F2937]"
                     />
                   </div>
                 </div>
@@ -448,7 +448,7 @@ export const PurchaseOrdersPage: React.FC = () => {
             })}
           </div>
 
-          <div className="flex justify-end gap-2 pt-2 border-t border-[#E2E8F0] dark:border-[#263449]">
+          <div className="flex justify-end gap-2 pt-2 border-t border-[#E2E8F0] dark:border-[#374151]">
             <Button variant="outline" onClick={() => setReceiveModalPO(null)}>
               Cancel
             </Button>

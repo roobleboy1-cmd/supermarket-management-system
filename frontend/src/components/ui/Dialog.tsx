@@ -48,32 +48,32 @@ export const Dialog: React.FC<DialogProps> = ({
     <div className="fixed inset-0 z-50 flex items-center justify-center p-4">
       {/* Backdrop */}
       <div
-        className="fixed inset-0 bg-[#0B1220]/70 backdrop-blur-sm transition-opacity animate-in fade-in"
+        className="fixed inset-0 bg-[#111827]/70 backdrop-blur-sm transition-opacity animate-in fade-in"
         onClick={onClose}
       />
       {/* Dialog Window */}
       <div
         className={cn(
-          'relative w-full rounded-2xl bg-white dark:bg-[#111C31] border border-[#E2E8F0] dark:border-[#263449] shadow-2xl p-6 overflow-hidden z-10 max-h-[90vh] flex flex-col animate-in zoom-in-95 duration-150',
+          'relative w-full rounded-2xl bg-white dark:bg-[#1F2937] border border-[#E2E8F0] dark:border-[#374151] shadow-2xl p-6 overflow-hidden z-10 max-h-[90vh] flex flex-col animate-in zoom-in-95 duration-150',
           maxW[maxWidth]
         )}
       >
-        <div className="flex items-start justify-between pb-3 border-b border-[#E2E8F0] dark:border-[#263449]">
+        <div className="flex items-start justify-between pb-3 border-b border-[#E2E8F0] dark:border-[#374151]">
           <div>
             {title && (
-              <h2 className="text-lg font-bold text-[#0F172A] dark:text-[#F8FAFC]">
+              <h2 className="text-lg font-bold text-[#111827] dark:text-[#F9FAFB]">
                 {title}
               </h2>
             )}
             {description && (
-              <p className="text-xs text-[#64748B] dark:text-[#94A3B8] mt-0.5">
+              <p className="text-xs text-[#64748B] dark:text-[#9CA3AF] mt-0.5">
                 {description}
               </p>
             )}
           </div>
           <button
             onClick={onClose}
-            className="rounded-xl p-1.5 text-[#64748B] dark:text-[#94A3B8] hover:text-[#0F172A] dark:hover:text-[#F8FAFC] hover:bg-[#F8FAFC] dark:hover:bg-[#172338] transition cursor-pointer"
+            className="rounded-xl p-1.5 text-[#64748B] dark:text-[#9CA3AF] hover:text-[#111827] dark:hover:text-[#F9FAFB] hover:bg-[#F8FAFC] dark:hover:bg-[#374151] transition cursor-pointer"
           >
             <X className="h-5 w-5" />
           </button>
