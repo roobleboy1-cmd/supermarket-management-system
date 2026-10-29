@@ -146,7 +146,7 @@ export const ExpensesPage: React.FC = () => {
             <select
               value={filterCategory}
               onChange={(e) => setFilterCategory(e.target.value)}
-              className="w-full text-xs px-3 py-1.5 rounded-lg border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900"
+              className="w-full text-xs px-3 py-1.5 rounded-lg border border-[#E2E8F0] dark:border-[#263449] bg-white dark:bg-[#172338]"
             >
               <option value="all">All Expense Categories</option>
               {CATEGORIES.map((c) => (
@@ -160,7 +160,7 @@ export const ExpensesPage: React.FC = () => {
         <CardContent className="p-0">
           <div className="overflow-x-auto">
             <table className="w-full text-left text-xs">
-              <thead className="bg-slate-50 dark:bg-slate-950/40 text-slate-500 border-b border-slate-200 dark:border-slate-800 uppercase font-semibold text-[11px]">
+              <thead className="bg-[#F8FAFC] dark:bg-[#172338] text-[#64748B] border-b border-[#E2E8F0] dark:border-[#263449] uppercase font-semibold text-[11px]">
                 <tr>
                   <th className="py-3 px-4">Expense Ref</th>
                   <th className="py-3 px-4">Title & Details</th>
@@ -171,31 +171,31 @@ export const ExpensesPage: React.FC = () => {
                   <th className="py-3 px-4 text-right">Actions</th>
                 </tr>
               </thead>
-              <tbody className="divide-y divide-slate-100 dark:divide-slate-800">
+              <tbody className="divide-y divide-[#E2E8F0] dark:divide-[#263449]">
                 {isLoading ? (
                   <tr>
-                    <td colSpan={7} className="py-12 text-center text-slate-400">
+                    <td colSpan={7} className="py-12 text-center text-[#94A3B8]">
                       Loading expenses...
                     </td>
                   </tr>
                 ) : expenses?.length === 0 ? (
                   <tr>
-                    <td colSpan={7} className="py-12 text-center text-slate-400">
+                    <td colSpan={7} className="py-12 text-center text-[#94A3B8]">
                       No operating expenses registered for this selection.
                     </td>
                   </tr>
                 ) : (
                   expenses?.map((exp) => (
-                    <tr key={exp.id} className="hover:bg-slate-50 dark:hover:bg-slate-800/40">
-                      <td className="py-3 px-4 font-mono font-bold text-slate-900 dark:text-slate-100">
+                    <tr key={exp.id} className="hover:bg-[#F8FAFC] dark:hover:bg-[#172338]">
+                      <td className="py-3 px-4 font-mono font-bold text-[#0F172A] dark:text-[#F8FAFC]">
                         {exp.expenseNumber}
                       </td>
                       <td className="py-3 px-4">
-                        <div className="font-semibold text-slate-900 dark:text-slate-100">
+                        <div className="font-semibold text-[#0F172A] dark:text-[#F8FAFC]">
                           {exp.title}
                         </div>
                         {exp.receiptReference && (
-                          <div className="text-[10px] text-slate-400 font-mono">
+                          <div className="text-[10px] text-[#94A3B8] font-mono">
                             Ref: {exp.receiptReference}
                           </div>
                         )}
@@ -205,17 +205,17 @@ export const ExpensesPage: React.FC = () => {
                           {exp.category}
                         </Badge>
                       </td>
-                      <td className="py-3 px-4 text-slate-500">{formatDate(exp.expenseDate)}</td>
+                      <td className="py-3 px-4 text-[#64748B]">{formatDate(exp.expenseDate)}</td>
                       <td className="py-3 px-4 font-medium text-slate-800 dark:text-slate-200">
                         {exp.paidTo}
                       </td>
-                      <td className="py-3 px-4 text-right font-bold text-slate-900 dark:text-slate-100">
+                      <td className="py-3 px-4 text-right font-bold text-[#0F172A] dark:text-[#F8FAFC]">
                         {formatCurrency(exp.amount)} ({exp.paymentMethod})
                       </td>
                       <td className="py-3 px-4 text-right">
                         <button
                           onClick={() => handleDeleteExpense(exp)}
-                          className="p-1 rounded text-slate-400 hover:text-red-600"
+                          className="p-1 rounded text-[#94A3B8] hover:text-red-600"
                         >
                           <Trash2 className="h-4 w-4" />
                         </button>

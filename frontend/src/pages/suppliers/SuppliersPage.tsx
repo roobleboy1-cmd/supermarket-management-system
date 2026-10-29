@@ -122,54 +122,54 @@ export const SuppliersPage: React.FC = () => {
 
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
         {isLoading ? (
-          <p className="col-span-full py-12 text-center text-xs text-slate-400">Loading vendors...</p>
+          <p className="col-span-full py-12 text-center text-xs text-[#94A3B8]">Loading vendors...</p>
         ) : (
           (suppliers || []).map((sup) => (
             <Card key={sup.id} className="hover:border-blue-500 transition-all flex flex-col justify-between">
               <CardHeader className="pb-3">
                 <div className="flex items-start justify-between">
                   <div>
-                    <CardTitle className="text-sm font-bold text-slate-900 dark:text-slate-100">
+                    <CardTitle className="text-sm font-bold text-[#0F172A] dark:text-[#F8FAFC]">
                       {sup.name}
                     </CardTitle>
-                    <p className="text-xs text-slate-500 mt-0.5">Contact: {sup.contactPerson}</p>
+                    <p className="text-xs text-[#64748B] mt-0.5">Contact: {sup.contactPerson}</p>
                   </div>
                   <Badge variant={sup.status === 'active' ? 'success' : 'secondary'} size="sm">
                     {sup.status}
                   </Badge>
                 </div>
               </CardHeader>
-              <CardContent className="space-y-2.5 text-xs text-slate-600 dark:text-slate-400">
+              <CardContent className="space-y-2.5 text-xs text-[#64748B] dark:text-[#94A3B8]">
                 <div className="flex items-center gap-2">
-                  <Phone className="h-3.5 w-3.5 text-slate-400" />
+                  <Phone className="h-3.5 w-3.5 text-[#94A3B8]" />
                   <span>{sup.phone}</span>
                 </div>
                 <div className="flex items-center gap-2">
-                  <Mail className="h-3.5 w-3.5 text-slate-400" />
+                  <Mail className="h-3.5 w-3.5 text-[#94A3B8]" />
                   <span className="truncate">{sup.email}</span>
                 </div>
                 <div className="flex items-center gap-2">
-                  <MapPin className="h-3.5 w-3.5 text-slate-400 shrink-0" />
+                  <MapPin className="h-3.5 w-3.5 text-[#94A3B8] shrink-0" />
                   <span className="truncate">{sup.address}</span>
                 </div>
 
-                <div className="pt-3 border-t border-slate-100 dark:border-slate-800 flex items-center justify-between">
+                <div className="pt-3 border-t border-[#E2E8F0] dark:border-[#263449] flex items-center justify-between">
                   <div>
-                    <span className="text-[10px] text-slate-400 block">Terms: {sup.paymentTerms}</span>
-                    <span className="text-xs font-bold text-slate-900 dark:text-slate-100">
+                    <span className="text-[10px] text-[#94A3B8] block">Terms: {sup.paymentTerms}</span>
+                    <span className="text-xs font-bold text-[#0F172A] dark:text-[#F8FAFC]">
                       Balance: {formatCurrency(sup.currentBalance)}
                     </span>
                   </div>
                   <div className="flex items-center gap-1">
                     <button
                       onClick={() => handleOpenEdit(sup)}
-                      className="p-1 rounded text-slate-400 hover:text-blue-600"
+                      className="p-1 rounded text-[#94A3B8] hover:text-blue-600"
                     >
                       <Edit className="h-3.5 w-3.5" />
                     </button>
                     <button
                       onClick={() => handleDelete(sup)}
-                      className="p-1 rounded text-slate-400 hover:text-red-600"
+                      className="p-1 rounded text-[#94A3B8] hover:text-red-600"
                     >
                       <Trash2 className="h-3.5 w-3.5" />
                     </button>

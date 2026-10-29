@@ -118,7 +118,7 @@ export const EmployeesPage: React.FC = () => {
           <Card>
             <div className="overflow-x-auto">
               <table className="w-full text-left text-xs">
-                <thead className="bg-slate-50 dark:bg-slate-950/40 text-slate-500 border-b border-slate-200 dark:border-slate-800 uppercase font-semibold text-[11px]">
+                <thead className="bg-[#F8FAFC] dark:bg-[#172338] text-[#64748B] border-b border-[#E2E8F0] dark:border-[#263449] uppercase font-semibold text-[11px]">
                   <tr>
                     <th className="py-3 px-4">Employee</th>
                     <th className="py-3 px-4">Role</th>
@@ -219,7 +219,7 @@ export const EmployeesPage: React.FC = () => {
             <CardContent className="p-0">
               <div className="overflow-x-auto">
                 <table className="w-full text-left text-xs">
-                  <thead className="bg-slate-50 dark:bg-slate-950/40 text-slate-500 border-b border-slate-200 dark:border-slate-800 uppercase font-semibold text-[11px]">
+                  <thead className="bg-[#F8FAFC] dark:bg-[#172338] text-[#64748B] border-b border-[#E2E8F0] dark:border-[#263449] uppercase font-semibold text-[11px]">
                     <tr>
                       <th className="py-3 px-4">Permission Capability</th>
                       {ROLES.map((r) => (

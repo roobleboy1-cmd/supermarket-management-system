@@ -246,26 +246,26 @@ export const StoreSettingsPage: React.FC = () => {
               </div>
 
               <div className="md:col-span-2">
-                <label className="block text-xs font-semibold text-slate-700 dark:text-slate-300 mb-1">
+                <label className="block text-xs font-semibold text-[#334155] dark:text-[#94A3B8] mb-1">
                   Receipt Header Message
                 </label>
                 <textarea
                   rows={2}
                   value={receiptHeader}
                   onChange={(e) => setReceiptHeader(e.target.value)}
-                  className="w-full text-xs p-3 rounded-lg border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 font-mono"
+                  className="w-full text-xs p-3 rounded-lg border border-[#E2E8F0] dark:border-[#263449] bg-white dark:bg-[#172338] font-mono"
                 />
               </div>
 
               <div className="md:col-span-2">
-                <label className="block text-xs font-semibold text-slate-700 dark:text-slate-300 mb-1">
+                <label className="block text-xs font-semibold text-[#334155] dark:text-[#94A3B8] mb-1">
                   Receipt Footer Policy Message
                 </label>
                 <textarea
                   rows={2}
                   value={receiptFooter}
                   onChange={(e) => setReceiptFooter(e.target.value)}
-                  className="w-full text-xs p-3 rounded-lg border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 font-mono"
+                  className="w-full text-xs p-3 rounded-lg border border-[#E2E8F0] dark:border-[#263449] bg-white dark:bg-[#172338] font-mono"
                 />
               </div>
             </div>
