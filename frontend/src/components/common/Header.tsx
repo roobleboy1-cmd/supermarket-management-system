@@ -144,11 +144,11 @@ export const Header: React.FC<{
         {/* DIRECT DARK / LIGHT MODE BUTTON */}
         <button
           onClick={() => {
+            const willBeDark = resolvedTheme !== 'dark'
             toggleTheme()
-            const isNowDark = resolvedTheme === 'light'
             success(
-              isNowDark ? '🌙 Dark Mode' : '☀️ Light Mode',
-              isNowDark
+              willBeDark ? '🌙 Dark Mode' : '☀️ Light Mode',
+              willBeDark
                 ? (language === 'so' ? 'Muuqaalka madowga ayaa la shiday' : 'Switched to modern dark mode')
                 : (language === 'so' ? 'Muuqaalka iftiinka ayaa la shiday' : 'Switched to clean light mode')
             )
