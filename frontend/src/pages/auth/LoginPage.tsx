@@ -1,9 +1,11 @@
 import * as React from 'react'
 import { Link, useNavigate, useSearchParams } from 'react-router-dom'
-import { Store, Lock, Mail, ArrowRight, ShieldCheck, UserCheck } from 'lucide-react'
+import { Store, Lock, Mail, ArrowRight, ShieldCheck, UserCheck, Sun, Moon, Globe } from 'lucide-react'
 import { Input } from '@/components/ui/Input'
 import { Button } from '@/components/ui/Button'
 import { useAuthStore } from '@/stores/authStore'
+import { useThemeStore } from '@/stores/themeStore'
+import { useLanguageStore } from '@/stores/languageStore'
 import { useToast } from '@/components/ui/Toast'
 import type { Role } from '@/types'
 
@@ -14,6 +16,8 @@ export const LoginPage: React.FC = () => {
   const [errorMsg, setErrorMsg] = React.useState<string | null>(null)
 
   const { login } = useAuthStore()
+  const { resolvedTheme, toggleTheme } = useThemeStore()
+  const { language, toggleLanguage, t } = useLanguageStore()
   const { success, error } = useToast()
   const navigate = useNavigate()
   const [searchParams] = useSearchParams()
@@ -28,8 +32,15 @@ export const LoginPage: React.FC = () => {
 
     try {
       const user = await login({ email, password })
-      success(`Welcome back, ${user.name}!`, `Logged in as ${user.role}`)
-      navigate('/')
+      success(
+        language === 'so' ? `Kusoo dhowaaw, ${user.name}!` : `Welcome back, ${user.name}!`,
+        language === 'so' ? `Waxaad ku gashay: ${user.role}` : `Logged in as ${user.role}`
+      )
+      if (user.role === 'Cashier') {
+        navigate('/pos')
+      } else {
+        navigate('/')
+      }
     } catch (err: any) {
       const msg = err.message || 'Invalid email or password'
       setErrorMsg(msg)
@@ -46,7 +57,10 @@ export const LoginPage: React.FC = () => {
     setErrorMsg(null)
     try {
       const user = await login({ email: demoEmail, password: 'Supermarket@2026' })
-      success(`Logged in as ${roleName}`, `Welcome ${user.name}`)
+      success(
+        language === 'so' ? `Waxaad ku gashay ${roleName}` : `Logged in as ${roleName}`,
+        language === 'so' ? `Kusoo dhowaaw ${user.name}` : `Welcome ${user.name}`
+      )
       if (roleName === 'Cashier') {
         navigate('/pos')
       } else {
@@ -60,42 +74,72 @@ export const LoginPage: React.FC = () => {
   }
 
   return (
-    <div className="min-h-screen flex flex-col justify-center py-12 sm:px-6 lg:px-8 bg-slate-50 dark:bg-slate-950 transition-colors">
+    <div className="min-h-screen flex flex-col justify-center py-12 sm:px-6 lg:px-8 bg-slate-50/70 dark:bg-slate-950 transition-colors relative">
+      {/* Top right quick controls for language and theme */}
+      <div className="absolute top-4 right-4 sm:top-6 sm:right-6 flex items-center gap-2">
+        <button
+          onClick={toggleLanguage}
+          className="flex items-center gap-1.5 px-3 py-1.5 rounded-xl border border-slate-200 dark:border-slate-800 bg-white/80 dark:bg-slate-900/80 hover:bg-slate-100 dark:hover:bg-slate-800 text-xs font-bold text-slate-700 dark:text-slate-200 shadow-xs transition cursor-pointer"
+          title="Toggle Language / Beddel Luuqadda"
+        >
+          <Globe className="h-3.5 w-3.5 text-indigo-600 dark:text-indigo-400" />
+          <span>{language === 'so' ? '🇸🇴 SO' : '🇬🇧 EN'}</span>
+        </button>
+
+        <button
+          onClick={toggleTheme}
+          className="p-2 rounded-xl border border-slate-200 dark:border-slate-800 bg-white/80 dark:bg-slate-900/80 hover:bg-slate-100 dark:hover:bg-slate-800 text-slate-700 dark:text-slate-200 shadow-xs transition cursor-pointer"
+          title="Toggle Dark/Light Mode"
+        >
+          {resolvedTheme === 'dark' ? (
+            <Sun className="h-4 w-4 text-amber-400" />
+          ) : (
+            <Moon className="h-4 w-4 text-indigo-600" />
+          )}
+        </button>
+      </div>
+
       <div className="sm:mx-auto sm:w-full sm:max-w-md text-center">
-        <div className="inline-flex h-12 w-12 items-center justify-center rounded-2xl bg-blue-600 text-white shadow-lg mb-3">
-          <Store className="h-6 w-6" />
+        <div className="inline-flex h-14 w-14 items-center justify-center rounded-2xl bg-gradient-to-tr from-indigo-600 via-blue-600 to-cyan-500 text-white shadow-lg shadow-indigo-500/30 mb-3">
+          <Store className="h-7 w-7" />
         </div>
-        <h2 className="text-2xl font-bold tracking-tight text-slate-900 dark:text-slate-100">
-          SomSupermarket Central
+        <h2 className="text-3xl font-extrabold tracking-tight bg-clip-text text-transparent bg-gradient-to-r from-indigo-600 via-blue-600 to-cyan-600 dark:from-indigo-400 dark:via-blue-400 dark:to-cyan-400">
+          SomSupermarket
         </h2>
-        <p className="mt-1 text-xs text-slate-500 dark:text-slate-400">
-          Single Supermarket Management System — Staff Portal
+        <p className="mt-1 text-xs text-slate-500 dark:text-slate-400 font-medium">
+          {language === 'so'
+            ? 'Nidaamka Maamulka Dukaanka Dhexe — Albaabka Shaqaalaha'
+            : 'Single Supermarket Management System — Staff Portal'}
         </p>
       </div>
 
       <div className="mt-8 sm:mx-auto sm:w-full sm:max-w-md px-4 sm:px-0">
-        <div className="bg-white dark:bg-slate-900 py-8 px-6 sm:px-10 shadow-xl rounded-2xl border border-slate-200 dark:border-slate-800">
+        <div className="bg-white dark:bg-slate-900 py-8 px-6 sm:px-10 shadow-xl shadow-slate-200/50 dark:shadow-none rounded-3xl border border-slate-200/80 dark:border-slate-800">
           {expired && (
-            <div className="mb-4 p-3 rounded-lg bg-amber-50 dark:bg-amber-950/40 border border-amber-200 dark:border-amber-800 text-xs text-amber-800 dark:text-amber-300">
-              Your session has expired. Please log in again to continue.
+            <div className="mb-4 p-3 rounded-xl bg-amber-50 dark:bg-amber-950/40 border border-amber-200 dark:border-amber-800 text-xs text-amber-800 dark:text-amber-300 font-medium">
+              {language === 'so'
+                ? 'Wakhtigii gelitaanka wuu dhacay. Fadlan dib u gal.'
+                : 'Your session has expired. Please log in again to continue.'}
             </div>
           )}
 
           {resetSuccess && (
-            <div className="mb-4 p-3 rounded-lg bg-emerald-50 dark:bg-emerald-950/40 border border-emerald-200 dark:border-emerald-800 text-xs text-emerald-800 dark:text-emerald-300">
-              Password has been successfully updated! Please log in with your new password.
+            <div className="mb-4 p-3 rounded-xl bg-emerald-50 dark:bg-emerald-950/40 border border-emerald-200 dark:border-emerald-800 text-xs text-emerald-800 dark:text-emerald-300 font-medium">
+              {language === 'so'
+                ? 'Furaha sirta ah si guul leh ayaa loo beddelay!'
+                : 'Password has been successfully updated! Please log in.'}
             </div>
           )}
 
           {errorMsg && (
-            <div className="mb-4 p-3 rounded-lg bg-red-50 dark:bg-red-950/40 border border-red-200 dark:border-red-800 text-xs text-red-700 dark:text-red-300">
+            <div className="mb-4 p-3 rounded-xl bg-rose-50 dark:bg-rose-950/40 border border-rose-200 dark:border-rose-800 text-xs text-rose-700 dark:text-rose-300 font-medium">
               {errorMsg}
             </div>
           )}
 
           <form onSubmit={handleSubmit} className="space-y-4">
             <Input
-              label="Staff Email Address"
+              label={language === 'so' ? 'Email-ka Shaqaalaha' : 'Staff Email Address'}
               type="email"
               required
               leftIcon={<Mail className="h-4 w-4" />}
@@ -106,14 +150,14 @@ export const LoginPage: React.FC = () => {
 
             <div>
               <div className="flex items-center justify-between mb-1">
-                <label className="block text-xs font-semibold text-slate-700 dark:text-slate-300">
-                  Password
+                <label className="block text-xs font-bold text-slate-700 dark:text-slate-300">
+                  {language === 'so' ? 'Furaha Sirta ah' : 'Password'}
                 </label>
                 <Link
                   to="/forgot-password"
-                  className="text-xs font-medium text-blue-600 dark:text-blue-400 hover:underline"
+                  className="text-xs font-semibold text-indigo-600 dark:text-indigo-400 hover:underline"
                 >
-                  Forgot Password?
+                  {language === 'so' ? 'Ma ilowday furaha?' : 'Forgot Password?'}
                 </Link>
               </div>
               <Input
@@ -127,71 +171,71 @@ export const LoginPage: React.FC = () => {
             </div>
 
             <Button type="submit" variant="primary" className="w-full mt-2" isLoading={loading}>
-              Sign In to Store Portal
+              {language === 'so' ? 'Gal Nidaamka' : 'Sign In to Store Portal'}
               <ArrowRight className="ml-2 h-4 w-4" />
             </Button>
           </form>
 
           {/* Quick Demo Role Switcher */}
           <div className="mt-6 pt-6 border-t border-slate-100 dark:border-slate-800">
-            <p className="text-[11px] font-semibold text-slate-400 uppercase tracking-wider text-center mb-3">
-              One-Click Role Demonstration
+            <p className="text-[10px] font-extrabold text-slate-400 dark:text-slate-500 uppercase tracking-widest text-center mb-3">
+              {language === 'so' ? '1-Guji ku tijaabi Doorarka (Roles)' : 'One-Click Role Demonstration'}
             </p>
             <div className="grid grid-cols-2 sm:grid-cols-3 gap-2 text-xs">
               <button
                 type="button"
                 onClick={() => handleQuickLogin('admin@supermarket.so', 'Super Admin')}
-                className="p-2 text-left rounded-lg border border-slate-200 dark:border-slate-800 hover:border-blue-500 dark:hover:border-blue-500 bg-slate-50 dark:bg-slate-800/40 text-slate-700 dark:text-slate-300 transition"
+                className="p-2 text-left rounded-xl border border-slate-200/80 dark:border-slate-800 hover:border-purple-500 dark:hover:border-purple-500 bg-slate-50 dark:bg-slate-800/40 text-slate-700 dark:text-slate-300 transition-all hover:scale-[1.02] cursor-pointer"
               >
-                <div className="font-semibold text-purple-600 dark:text-purple-400">Super Admin</div>
-                <div className="text-[10px] text-slate-400">All access</div>
+                <div className="font-extrabold text-purple-600 dark:text-purple-400">Super Admin</div>
+                <div className="text-[10px] text-slate-400">Ahmed Noor</div>
               </button>
               <button
                 type="button"
                 onClick={() => handleQuickLogin('fadumo.mgr@supermarket.so', 'Manager')}
-                className="p-2 text-left rounded-lg border border-slate-200 dark:border-slate-800 hover:border-blue-500 dark:hover:border-blue-500 bg-slate-50 dark:bg-slate-800/40 text-slate-700 dark:text-slate-300 transition"
+                className="p-2 text-left rounded-xl border border-slate-200/80 dark:border-slate-800 hover:border-blue-500 dark:hover:border-blue-500 bg-slate-50 dark:bg-slate-800/40 text-slate-700 dark:text-slate-300 transition-all hover:scale-[1.02] cursor-pointer"
               >
-                <div className="font-semibold text-blue-600 dark:text-blue-400">Manager</div>
-                <div className="text-[10px] text-slate-400">Ops & Approvals</div>
+                <div className="font-extrabold text-blue-600 dark:text-blue-400">Manager</div>
+                <div className="text-[10px] text-slate-400">Fadumo Warsame</div>
               </button>
               <button
                 type="button"
                 onClick={() => handleQuickLogin('hassan.cashier@supermarket.so', 'Cashier')}
-                className="p-2 text-left rounded-lg border border-slate-200 dark:border-slate-800 hover:border-blue-500 dark:hover:border-blue-500 bg-slate-50 dark:bg-slate-800/40 text-slate-700 dark:text-slate-300 transition"
+                className="p-2 text-left rounded-xl border border-slate-200/80 dark:border-slate-800 hover:border-emerald-500 dark:hover:border-emerald-500 bg-slate-50 dark:bg-slate-800/40 text-slate-700 dark:text-slate-300 transition-all hover:scale-[1.02] cursor-pointer"
               >
-                <div className="font-semibold text-emerald-600 dark:text-emerald-400">Cashier</div>
-                <div className="text-[10px] text-slate-400">POS checkout</div>
+                <div className="font-extrabold text-emerald-600 dark:text-emerald-400">Cashier</div>
+                <div className="text-[10px] text-slate-400">Hassan Ali</div>
               </button>
               <button
                 type="button"
                 onClick={() => handleQuickLogin('khadija.inv@supermarket.so', 'Inventory Manager')}
-                className="p-2 text-left rounded-lg border border-slate-200 dark:border-slate-800 hover:border-blue-500 dark:hover:border-blue-500 bg-slate-50 dark:bg-slate-800/40 text-slate-700 dark:text-slate-300 transition"
+                className="p-2 text-left rounded-xl border border-slate-200/80 dark:border-slate-800 hover:border-amber-500 dark:hover:border-amber-500 bg-slate-50 dark:bg-slate-800/40 text-slate-700 dark:text-slate-300 transition-all hover:scale-[1.02] cursor-pointer"
               >
-                <div className="font-semibold text-amber-600 dark:text-amber-400">Inventory Mgr</div>
-                <div className="text-[10px] text-slate-400">Stock & Batches</div>
+                <div className="font-extrabold text-amber-600 dark:text-amber-400">Inventory Mgr</div>
+                <div className="text-[10px] text-slate-400">Khadija Osman</div>
               </button>
               <button
                 type="button"
                 onClick={() => handleQuickLogin('jama.acc@supermarket.so', 'Accountant')}
-                className="p-2 text-left rounded-lg border border-slate-200 dark:border-slate-800 hover:border-blue-500 dark:hover:border-blue-500 bg-slate-50 dark:bg-slate-800/40 text-slate-700 dark:text-slate-300 transition"
+                className="p-2 text-left rounded-xl border border-slate-200/80 dark:border-slate-800 hover:border-cyan-500 dark:hover:border-cyan-500 bg-slate-50 dark:bg-slate-800/40 text-slate-700 dark:text-slate-300 transition-all hover:scale-[1.02] cursor-pointer"
               >
-                <div className="font-semibold text-cyan-600 dark:text-cyan-400">Accountant</div>
-                <div className="text-[10px] text-slate-400">Finance & P&L</div>
+                <div className="font-extrabold text-cyan-600 dark:text-cyan-400">Accountant</div>
+                <div className="text-[10px] text-slate-400">Mohamed Jama</div>
               </button>
               <button
                 type="button"
                 onClick={() => handleQuickLogin('sahra.audit@supermarket.so', 'Auditor')}
-                className="p-2 text-left rounded-lg border border-slate-200 dark:border-slate-800 hover:border-blue-500 dark:hover:border-blue-500 bg-slate-50 dark:bg-slate-800/40 text-slate-700 dark:text-slate-300 transition"
+                className="p-2 text-left rounded-xl border border-slate-200/80 dark:border-slate-800 hover:border-rose-500 dark:hover:border-rose-500 bg-slate-50 dark:bg-slate-800/40 text-slate-700 dark:text-slate-300 transition-all hover:scale-[1.02] cursor-pointer"
               >
-                <div className="font-semibold text-rose-600 dark:text-rose-400">Auditor</div>
-                <div className="text-[10px] text-slate-400">Audit trail & Logs</div>
+                <div className="font-extrabold text-rose-600 dark:text-rose-400">Auditor</div>
+                <div className="text-[10px] text-slate-400">Sahra Abdi</div>
               </button>
             </div>
           </div>
         </div>
 
-        <p className="mt-4 text-center text-xs text-slate-400">
-          Single Supermarket Management System • Production Grade
+        <p className="mt-4 text-center text-xs text-slate-400 font-medium">
+          SomSupermarket Management System • Production Grade
         </p>
       </div>
     </div>

@@ -15,11 +15,13 @@ import {
   Menu,
   ChevronDown,
   UserCheck,
-  Shield,
   Check,
+  Globe,
+  Sparkles,
 } from 'lucide-react'
 import { useAuthStore } from '@/stores/authStore'
 import { useThemeStore } from '@/stores/themeStore'
+import { useLanguageStore } from '@/stores/languageStore'
 import { useOfflineStore } from '@/stores/offlineStore'
 import { useToast } from '@/components/ui/Toast'
 import { localStore } from '@/services/dataStore'
@@ -45,15 +47,16 @@ export const Header: React.FC<{
   onToggleMobileMenu: () => void
 }> = ({ onOpenCommandPalette, onToggleMobileMenu }) => {
   const { user, logout, switchRoleUser } = useAuthStore()
-  const { theme, setTheme } = useThemeStore()
+  const { theme, resolvedTheme, setTheme, toggleTheme } = useThemeStore()
+  const { language, setLanguage, toggleLanguage, t } = useLanguageStore()
   const { isOnline, queuedTransactions, isSyncing, syncTransactions } = useOfflineStore()
   const { success } = useToast()
   const navigate = useNavigate()
   const location = useLocation()
 
   const [profileOpen, setProfileOpen] = React.useState(false)
-  const [themeMenuOpen, setThemeMenuOpen] = React.useState(false)
   const [roleSwitcherOpen, setRoleSwitcherOpen] = React.useState(false)
+  const [langMenuOpen, setLangMenuOpen] = React.useState(false)
 
   const unreadNotificationsCount = localStore.notifications.filter((n) => !n.read).length
   const currentShift = localStore.currentShift
@@ -71,24 +74,36 @@ export const Header: React.FC<{
     setRoleSwitcherOpen(false)
     if (newUser) {
       success(
-        `Doorka: ${targetRole}`,
-        `${newUser.name} — Hadda waxa kuu muuqanaya kaliya shaqada ${targetRole}!`
+        language === 'so' ? `Doorka: ${targetRole}` : `Role: ${targetRole}`,
+        language === 'so'
+          ? `${newUser.name} — Hadda waxa kuu muuqanaya kaliya shaqada ${targetRole}!`
+          : `${newUser.name} — Screen updated to only display ${targetRole} operations!`
       )
 
-      // If the current path is not allowed for the new role, automatically navigate to their home
       if (!isPathAllowedForRole(targetRole, location.pathname)) {
         navigate(ROLE_DEFAULT_REDIRECT[targetRole] || '/')
       }
     }
   }
 
+  const handleToggleLang = () => {
+    toggleLanguage()
+    const nextLang = language === 'so' ? 'en' : 'so'
+    success(
+      nextLang === 'so' ? 'Luuqadda: Soomaali 🇸🇴' : 'Language: English 🇬🇧',
+      nextLang === 'so'
+        ? 'Nidaamka oo dhan waxa loo rogay Af-Soomaali'
+        : 'All supermarket modules switched to English'
+    )
+  }
+
   return (
-    <header className="h-16 border-b border-slate-200 dark:border-slate-800 bg-white/80 dark:bg-slate-950/80 backdrop-blur-md sticky top-0 z-20 px-3 sm:px-6 flex items-center justify-between gap-2 sm:gap-4">
+    <header className="h-16 border-b border-slate-200/80 dark:border-slate-800/80 bg-white/85 dark:bg-slate-950/85 backdrop-blur-xl sticky top-0 z-20 px-3 sm:px-6 flex items-center justify-between gap-2 sm:gap-4 transition-colors">
       {/* Left: Mobile Hamburger Toggle Button + Search Bar */}
       <div className="flex items-center gap-2 flex-1 max-w-md">
         <button
           onClick={onToggleMobileMenu}
-          className="p-2 rounded-lg text-slate-500 hover:text-slate-800 dark:text-slate-400 dark:hover:text-slate-100 hover:bg-slate-100 dark:hover:bg-slate-800 md:hidden shrink-0 transition"
+          className="p-2 rounded-xl text-slate-500 hover:text-slate-800 dark:text-slate-400 dark:hover:text-slate-100 hover:bg-slate-100 dark:hover:bg-slate-800 md:hidden shrink-0 transition"
           title="Open Navigation Menu"
         >
           <Menu className="h-5 w-5" />
@@ -97,30 +112,70 @@ export const Header: React.FC<{
         {/* Global Search Bar & Command Palette Button */}
         <button
           onClick={onOpenCommandPalette}
-          className="w-full flex items-center justify-between rounded-lg border border-slate-200 dark:border-slate-800 bg-slate-50 dark:bg-slate-900/50 px-3 py-1.5 sm:py-2 text-xs text-slate-400 hover:text-slate-600 dark:hover:text-slate-300 hover:border-slate-300 dark:hover:border-slate-700 transition"
+          className="w-full flex items-center justify-between rounded-xl border border-slate-200/80 dark:border-slate-800 bg-slate-50/70 dark:bg-slate-900/60 px-3.5 py-2 text-xs text-slate-400 hover:text-slate-600 dark:hover:text-slate-300 hover:border-indigo-400/50 dark:hover:border-indigo-500/50 hover:bg-white dark:hover:bg-slate-900 transition-all duration-150 shadow-2xs"
         >
-          <div className="flex items-center gap-2 truncate">
-            <Search className="h-4 w-4 text-slate-400 shrink-0" />
-            <span className="truncate hidden sm:inline">Search products, invoices, customers...</span>
-            <span className="truncate sm:hidden">Search...</span>
+          <div className="flex items-center gap-2.5 truncate">
+            <Search className="h-4 w-4 text-indigo-500 shrink-0" />
+            <span className="truncate hidden sm:inline">{t('header.search')}</span>
+            <span className="truncate sm:hidden">{t('header.searchShort')}</span>
           </div>
-          <kbd className="hidden sm:inline-flex items-center gap-1 rounded bg-slate-200 dark:bg-slate-800 px-1.5 py-0.5 text-[10px] font-mono text-slate-600 dark:text-slate-400">
+          <kbd className="hidden sm:inline-flex items-center gap-1 rounded-md bg-slate-200/80 dark:bg-slate-800 px-1.5 py-0.5 text-[10px] font-mono font-semibold text-slate-600 dark:text-slate-400 border border-slate-300/60 dark:border-slate-700/60">
             <Command className="h-3 w-3" /> K
           </kbd>
         </button>
       </div>
 
       {/* Right Controls */}
-      <div className="flex items-center gap-1.5 sm:gap-2.5">
-        {/* Role Switcher Pill (Shows who is working & lets manager switch test roles instantly) */}
+      <div className="flex items-center gap-1 sm:gap-2">
+        {/* TRANSLATION BUTTON (🇸🇴 SO / 🇬🇧 EN) */}
+        <div className="relative">
+          <button
+            onClick={handleToggleLang}
+            className="flex items-center gap-1.5 px-2.5 py-1.5 rounded-xl border border-slate-200/80 dark:border-slate-800 bg-white/80 dark:bg-slate-900/80 hover:bg-indigo-50/80 dark:hover:bg-slate-800 text-slate-700 dark:text-slate-200 hover:border-indigo-300 dark:hover:border-indigo-700 transition font-bold text-xs shadow-2xs cursor-pointer group"
+            title={language === 'so' ? 'U Beddel English' : 'Switch to Somali'}
+          >
+            <Globe className="h-3.5 w-3.5 text-indigo-600 dark:text-indigo-400 group-hover:rotate-45 transition-transform duration-300" />
+            <span className="text-[11px] font-bold">
+              {language === 'so' ? '🇸🇴 SO' : '🇬🇧 EN'}
+            </span>
+          </button>
+        </div>
+
+        {/* DIRECT DARK / LIGHT MODE BUTTON */}
+        <button
+          onClick={() => {
+            toggleTheme()
+            const isNowDark = resolvedTheme === 'light'
+            success(
+              isNowDark ? '🌙 Dark Mode' : '☀️ Light Mode',
+              isNowDark
+                ? (language === 'so' ? 'Muuqaalka madowga ayaa la shiday' : 'Switched to luxury dark mode')
+                : (language === 'so' ? 'Muuqaalka cadceedda ayaa la shiday' : 'Switched to clean light mode')
+            )
+          }}
+          className="p-2 rounded-xl border border-slate-200/80 dark:border-slate-800 bg-white/80 dark:bg-slate-900/80 hover:bg-slate-100 dark:hover:bg-slate-800 transition text-slate-700 dark:text-slate-200 shadow-2xs group cursor-pointer hover:border-amber-300 dark:hover:border-indigo-500/50"
+          title={
+            resolvedTheme === 'dark'
+              ? (language === 'so' ? 'Shid Iftiinka (Light Mode)' : 'Switch to Light Mode')
+              : (language === 'so' ? 'Shid Madowga (Dark Mode)' : 'Switch to Dark Mode')
+          }
+        >
+          {resolvedTheme === 'dark' ? (
+            <Sun className="h-4 w-4 text-amber-400 group-hover:rotate-90 transition-transform duration-300" />
+          ) : (
+            <Moon className="h-4 w-4 text-indigo-600 group-hover:-rotate-20 transition-transform duration-300" />
+          )}
+        </button>
+
+        {/* Role Switcher Pill */}
         <div className="relative">
           <button
             onClick={() => setRoleSwitcherOpen(!roleSwitcherOpen)}
-            className="flex items-center gap-1.5 px-2.5 py-1.5 rounded-xl border border-blue-200 dark:border-blue-900 bg-blue-50/80 dark:bg-blue-950/40 text-blue-700 dark:text-blue-300 hover:bg-blue-100 dark:hover:bg-blue-900/60 transition text-xs font-semibold"
-            title="Eeg shaqada doorka kale / Switch Role"
+            className="flex items-center gap-1.5 px-2.5 py-1.5 rounded-xl border border-indigo-200/80 dark:border-indigo-900/60 bg-gradient-to-r from-indigo-50/80 to-blue-50/80 dark:from-indigo-950/40 dark:to-blue-950/40 text-indigo-700 dark:text-indigo-300 hover:border-indigo-300 dark:hover:border-indigo-700 transition text-xs font-semibold shadow-2xs cursor-pointer"
+            title={language === 'so' ? 'Eeg shaqada doorka kale' : 'Switch role demo'}
           >
-            <UserCheck className="h-3.5 w-3.5 shrink-0" />
-            <span className="hidden lg:inline truncate max-w-[120px]">
+            <UserCheck className="h-3.5 w-3.5 shrink-0 text-indigo-600 dark:text-indigo-400" />
+            <span className="hidden xl:inline truncate max-w-[100px]">
               {user?.name?.split(' ')[0] || 'User'}:
             </span>
             <span className="font-bold truncate max-w-[90px] sm:max-w-none">
@@ -130,19 +185,24 @@ export const Header: React.FC<{
           </button>
 
           {roleSwitcherOpen && (
-            <div
-              className="absolute right-0 mt-2 w-72 rounded-2xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 p-2 shadow-2xl z-50 animate-in zoom-in-95 text-xs"
-            >
+            <div className="absolute right-0 mt-2 w-80 rounded-2xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 p-2.5 shadow-2xl z-50 animate-in zoom-in-95 text-xs">
               <div className="px-3 py-2 border-b border-slate-100 dark:border-slate-800">
-                <p className="font-bold text-slate-900 dark:text-slate-100 text-xs">
-                  Shaqooyinka Supermarket-ka (Roles)
-                </p>
+                <div className="flex items-center justify-between">
+                  <p className="font-bold text-slate-900 dark:text-slate-100 text-xs">
+                    {language === 'so' ? 'Shaqooyinka Supermarket-ka' : 'Supermarket Roles (RBAC)'}
+                  </p>
+                  <span className="text-[10px] font-bold px-1.5 py-0.5 rounded-full bg-indigo-100 dark:bg-indigo-950 text-indigo-700 dark:text-indigo-300">
+                    6 Staff
+                  </span>
+                </div>
                 <p className="text-[10px] text-slate-500 dark:text-slate-400 mt-0.5">
-                  Dooro qofka aad doonaysid inaad shaqadiisa aragto:
+                  {language === 'so'
+                    ? 'Doorka aad dooratid shaqadiisa bas ayaa kuu soo baxaysa:'
+                    : 'Select any role to view their restricted workspace:'}
                 </p>
               </div>
 
-              <div className="py-1 space-y-1">
+              <div className="py-1.5 space-y-1 max-h-80 overflow-y-auto">
                 {AVAILABLE_ROLES.map(({ role }) => {
                   const isCurrent = currentRole === role
                   const info = ROLE_DESCRIPTIONS_SO[role]
@@ -153,33 +213,33 @@ export const Header: React.FC<{
                       key={role}
                       onClick={() => handleSwitchRole(role)}
                       className={cn(
-                        'w-full text-left p-2 rounded-xl transition flex items-start justify-between gap-2',
+                        'w-full text-left p-2.5 rounded-xl transition-all duration-150 flex items-start justify-between gap-2.5',
                         isCurrent
-                          ? 'bg-blue-50 dark:bg-blue-950/60 border border-blue-200 dark:border-blue-800'
-                          : 'hover:bg-slate-50 dark:hover:bg-slate-800/60'
+                          ? 'bg-gradient-to-r from-indigo-50 to-blue-50 dark:from-indigo-950/60 dark:to-blue-950/60 border border-indigo-200 dark:border-indigo-800/80 shadow-2xs'
+                          : 'hover:bg-slate-50 dark:hover:bg-slate-800/70 border border-transparent'
                       )}
                     >
                       <div className="min-w-0">
                         <div className="flex items-center gap-1.5">
-                          <span className="font-bold text-slate-900 dark:text-slate-100">
+                          <span className="font-bold text-slate-900 dark:text-slate-100 text-xs">
                             {role}
                           </span>
                           {isCurrent && (
-                            <span className="text-[9px] font-bold px-1 rounded bg-blue-600 text-white">
+                            <span className="text-[9px] font-bold px-1.5 py-0.2 rounded-full bg-indigo-600 text-white">
                               Active
                             </span>
                           )}
                         </div>
-                        <p className="text-[11px] text-slate-600 dark:text-slate-300 font-medium truncate">
-                          {matchedUser?.name || 'Shaqaale'}
+                        <p className="text-[11px] text-slate-700 dark:text-slate-300 font-semibold truncate mt-0.5">
+                          {matchedUser?.name || 'Staff Member'}
                         </p>
-                        <p className="text-[10px] text-slate-400 line-clamp-1 mt-0.5">
+                        <p className="text-[10px] text-slate-500 dark:text-slate-400 line-clamp-1 mt-0.5">
                           {info.job}
                         </p>
                       </div>
 
                       {isCurrent && (
-                        <Check className="h-4 w-4 text-blue-600 dark:text-blue-400 shrink-0 mt-0.5" />
+                        <Check className="h-4 w-4 text-indigo-600 dark:text-indigo-400 shrink-0 mt-1" />
                       )}
                     </button>
                   )
@@ -190,12 +250,11 @@ export const Header: React.FC<{
         </div>
 
         {/* Offline / Online Sync Indicator */}
-        <div className="flex items-center">
+        <div className="hidden sm:flex items-center">
           {isOnline ? (
-            <div className="inline-flex items-center gap-1 sm:gap-1.5 px-2 sm:px-2.5 py-1 rounded-full text-[10px] sm:text-[11px] font-medium bg-emerald-50 text-emerald-700 dark:bg-emerald-950/50 dark:text-emerald-400 border border-emerald-200 dark:border-emerald-800">
+            <div className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full text-[11px] font-semibold bg-emerald-50 text-emerald-700 dark:bg-emerald-950/60 dark:text-emerald-400 border border-emerald-200/80 dark:border-emerald-800">
               <span className="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse" />
-              <Wifi className="h-3 w-3 hidden sm:inline" />
-              <span className="hidden sm:inline">Online</span>
+              <span>{t('header.online')}</span>
               {queuedTransactions.length > 0 && (
                 <button
                   onClick={() => syncTransactions()}
@@ -203,15 +262,15 @@ export const Header: React.FC<{
                   className="ml-1 inline-flex items-center gap-1 font-bold underline hover:opacity-80"
                 >
                   <RefreshCw className={cn('h-3 w-3', isSyncing && 'animate-spin')} />
-                  Sync ({queuedTransactions.length})
+                  {t('header.sync')} ({queuedTransactions.length})
                 </button>
               )}
             </div>
           ) : (
-            <div className="inline-flex items-center gap-1.5 px-2 sm:px-2.5 py-1 rounded-full text-[10px] sm:text-[11px] font-medium bg-amber-50 text-amber-700 dark:bg-amber-950/50 dark:text-amber-400 border border-amber-200 dark:border-amber-800">
+            <div className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full text-[11px] font-semibold bg-amber-50 text-amber-700 dark:bg-amber-950/60 dark:text-amber-400 border border-amber-200/80 dark:border-amber-800">
               <span className="w-1.5 h-1.5 rounded-full bg-amber-500" />
               <WifiOff className="h-3 w-3" />
-              <span className="hidden sm:inline">Offline</span> ({queuedTransactions.length})
+              <span>{t('header.offline')}</span> ({queuedTransactions.length})
             </div>
           )}
         </div>
@@ -220,10 +279,12 @@ export const Header: React.FC<{
         {['Super Admin', 'Manager', 'Cashier', 'Accountant'].includes(currentRole) && (
           <Link
             to="/shifts"
-            className="hidden xl:inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full text-[11px] font-medium bg-blue-50 text-blue-700 dark:bg-blue-950/50 dark:text-blue-400 border border-blue-200 dark:border-blue-800 hover:bg-blue-100 transition"
+            className="hidden 2xl:inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full text-[11px] font-semibold bg-indigo-50 text-indigo-700 dark:bg-indigo-950/60 dark:text-indigo-300 border border-indigo-200/80 dark:border-indigo-800 hover:bg-indigo-100 transition"
           >
-            <span className="w-1.5 h-1.5 rounded-full bg-blue-500" />
-            <span>Shift: {currentShift?.status === 'open' ? 'Active' : 'Closed'}</span>
+            <span className="w-1.5 h-1.5 rounded-full bg-indigo-500 animate-pulse" />
+            <span>
+              {currentShift?.status === 'open' ? t('header.shiftActive') : t('header.shiftClosed')}
+            </span>
           </Link>
         )}
 
@@ -231,70 +292,34 @@ export const Header: React.FC<{
         {['Super Admin', 'Manager', 'Cashier'].includes(currentRole) && (
           <Link
             to="/pos"
-            className="hidden sm:inline-flex items-center gap-1.5 px-2.5 sm:px-3 py-1.5 rounded-lg text-xs font-semibold bg-blue-600 hover:bg-blue-700 text-white shadow-xs transition"
+            className="hidden sm:inline-flex items-center gap-1.5 px-3 py-1.5 rounded-xl text-xs font-bold bg-gradient-to-r from-emerald-600 to-teal-600 hover:from-emerald-500 hover:to-teal-500 text-white shadow-xs shadow-emerald-500/20 active:scale-[0.98] transition-all"
           >
             <ShoppingCart className="h-3.5 w-3.5" />
-            <span className="hidden md:inline">Open POS</span>
+            <span className="hidden md:inline">{t('header.openPos')}</span>
           </Link>
         )}
 
         {/* Notifications Icon */}
         <Link
           to="/notifications"
-          className="relative p-1.5 sm:p-2 rounded-lg text-slate-500 hover:text-slate-800 dark:text-slate-400 dark:hover:text-slate-100 hover:bg-slate-100 dark:hover:bg-slate-800 transition"
-          title="Notifications"
+          className="relative p-2 rounded-xl text-slate-500 hover:text-slate-800 dark:text-slate-400 dark:hover:text-slate-100 hover:bg-slate-100 dark:hover:bg-slate-800 transition"
+          title={t('nav.notifications')}
         >
           <Bell className="h-4 w-4" />
           {unreadNotificationsCount > 0 && (
-            <span className="absolute top-1 right-1 flex h-3.5 w-3.5 sm:h-4 sm:w-4 items-center justify-center rounded-full bg-red-600 text-[9px] sm:text-[10px] font-bold text-white ring-2 ring-white dark:ring-slate-950">
+            <span className="absolute top-1 right-1 flex h-4 w-4 items-center justify-center rounded-full bg-rose-600 text-[10px] font-bold text-white ring-2 ring-white dark:ring-slate-950 animate-pulse">
               {unreadNotificationsCount}
             </span>
           )}
         </Link>
 
-        {/* Theme Toggle Dropdown */}
-        <div className="relative">
-          <button
-            onClick={() => setThemeMenuOpen(!themeMenuOpen)}
-            className="p-1.5 sm:p-2 rounded-lg text-slate-500 hover:text-slate-800 dark:text-slate-400 dark:hover:text-slate-100 hover:bg-slate-100 dark:hover:bg-slate-800 transition"
-            title="Theme Selection"
-          >
-            {theme === 'dark' ? <Moon className="h-4 w-4" /> : theme === 'light' ? <Sun className="h-4 w-4" /> : <Laptop className="h-4 w-4" />}
-          </button>
-          {themeMenuOpen && (
-            <div
-              className="absolute right-0 mt-2 w-36 rounded-xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 py-1 shadow-lg z-50 text-xs animate-in zoom-in-95"
-              onClick={() => setThemeMenuOpen(false)}
-            >
-              <button
-                onClick={() => setTheme('light')}
-                className="flex w-full items-center gap-2 px-3 py-2 text-left text-slate-700 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-800"
-              >
-                <Sun className="h-3.5 w-3.5 text-amber-500" /> Light
-              </button>
-              <button
-                onClick={() => setTheme('dark')}
-                className="flex w-full items-center gap-2 px-3 py-2 text-left text-slate-700 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-800"
-              >
-                <Moon className="h-3.5 w-3.5 text-blue-400" /> Dark
-              </button>
-              <button
-                onClick={() => setTheme('system')}
-                className="flex w-full items-center gap-2 px-3 py-2 text-left text-slate-700 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-800"
-              >
-                <Laptop className="h-3.5 w-3.5 text-slate-400" /> System
-              </button>
-            </div>
-          )}
-        </div>
-
         {/* User Profile Menu */}
         <div className="relative">
           <button
             onClick={() => setProfileOpen(!profileOpen)}
-            className="flex items-center gap-2 p-0.5 rounded-full hover:ring-2 hover:ring-blue-500/50 transition cursor-pointer"
+            className="flex items-center gap-2 p-0.5 rounded-xl hover:ring-2 hover:ring-indigo-500/40 transition cursor-pointer"
           >
-            <div className="flex h-7 w-7 sm:h-8 sm:w-8 items-center justify-center rounded-xl bg-blue-600 text-white font-bold text-xs shadow-xs">
+            <div className="flex h-8 w-8 items-center justify-center rounded-xl bg-gradient-to-tr from-indigo-600 to-blue-600 text-white font-extrabold text-xs shadow-xs">
               {user?.name ? user.name.slice(0, 2).toUpperCase() : 'AD'}
             </div>
           </button>
@@ -303,41 +328,47 @@ export const Header: React.FC<{
               className="absolute right-0 mt-2 w-64 rounded-2xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 py-2 shadow-2xl z-50 text-xs animate-in zoom-in-95"
               onClick={() => setProfileOpen(false)}
             >
-              <div className="px-4 py-2.5 border-b border-slate-100 dark:border-slate-800">
-                <p className="font-bold text-slate-900 dark:text-slate-100 truncate">{user?.name || 'Administrator'}</p>
-                <p className="text-[11px] text-slate-500 dark:text-slate-400 truncate">{user?.email || 'admin@supermarket.so'}</p>
-                <div className="mt-1.5 flex items-center gap-1.5">
-                  <span className={cn('px-2 py-0.5 rounded text-[10px] font-bold border', currentRoleInfo?.bgBadge)}>
+              <div className="px-4 py-3 border-b border-slate-100 dark:border-slate-800">
+                <p className="font-bold text-slate-900 dark:text-slate-100 truncate text-sm">
+                  {user?.name || 'Administrator'}
+                </p>
+                <p className="text-[11px] text-slate-500 dark:text-slate-400 truncate mt-0.5">
+                  {user?.email || 'admin@supermarket.so'}
+                </p>
+                <div className="mt-2 flex items-center gap-1.5">
+                  <span
+                    className={cn(
+                      'px-2 py-0.5 rounded-full text-[10px] font-bold border',
+                      currentRoleInfo?.bgBadge
+                    )}
+                  >
                     {currentRole}
                   </span>
                 </div>
-                <p className="text-[10px] text-slate-400 mt-1 leading-snug">
-                  {currentRoleInfo?.job}
-                </p>
               </div>
 
               {currentRole === 'Super Admin' && (
                 <Link
                   to="/settings"
-                  className="flex items-center gap-2 px-4 py-2 text-slate-700 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-800"
+                  className="flex items-center gap-2 px-4 py-2.5 text-slate-700 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-800 font-medium"
                 >
-                  Store Settings
+                  {t('header.storeSettings')}
                 </Link>
               )}
 
               <Link
                 to="/activity-logs"
-                className="flex items-center gap-2 px-4 py-2 text-slate-700 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-800"
+                className="flex items-center gap-2 px-4 py-2.5 text-slate-700 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-800 font-medium"
               >
-                Activity Logs
+                {t('header.activityLogs')}
               </Link>
 
               <div className="border-t border-slate-100 dark:border-slate-800 my-1" />
               <button
                 onClick={handleLogout}
-                className="flex w-full items-center gap-2 px-4 py-2 text-left text-red-600 hover:bg-red-50 dark:hover:bg-red-950/40"
+                className="flex w-full items-center gap-2 px-4 py-2 text-left text-rose-600 hover:bg-rose-50 dark:hover:bg-rose-950/40 font-semibold"
               >
-                <LogOut className="h-3.5 w-3.5" /> Sign Out
+                <LogOut className="h-3.5 w-3.5" /> {t('header.signOut')}
               </button>
             </div>
           )}

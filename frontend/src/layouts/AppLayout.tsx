@@ -17,7 +17,7 @@ export const AppLayout: React.FC = () => {
   }, [initOffline])
 
   return (
-    <div className="min-h-screen bg-slate-50 dark:bg-slate-950 text-slate-900 dark:text-slate-100 flex transition-colors">
+    <div className="min-h-screen bg-slate-50/70 dark:bg-slate-950 text-slate-900 dark:text-slate-100 flex transition-colors selection:bg-indigo-500 selection:text-white">
       {/* Sidebar */}
       <Sidebar
         collapsed={sidebarCollapsed}

@@ -32,6 +32,7 @@ import { usePosCartStore } from '@/stores/posCartStore'
 import { useAuthStore } from '@/stores/authStore'
 import { useOfflineStore } from '@/stores/offlineStore'
 import { useToast } from '@/components/ui/Toast'
+import { useLanguageStore } from '@/stores/languageStore'
 import { productService } from '@/services/api/productService'
 import { categoryBrandService } from '@/services/api/categoryBrandService'
 import { customerService } from '@/services/api/customerService'
@@ -45,6 +46,7 @@ export const PosPage: React.FC = () => {
   const { user } = useAuthStore()
   const { isOnline, addOfflineSale } = useOfflineStore()
   const { success, error, warning } = useToast()
+  const { t, language } = useLanguageStore()
 
   const {
     items,
@@ -266,31 +268,33 @@ export const PosPage: React.FC = () => {
       <div className="flex lg:hidden border-b border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 rounded-t-2xl overflow-hidden shrink-0">
         <button
           onClick={() => setMobileView('products')}
-          className={`flex-1 px-4 py-2.5 text-sm font-semibold flex items-center justify-center gap-2 transition ${
+          className={`flex-1 px-4 py-3 text-xs font-bold flex items-center justify-center gap-2 transition cursor-pointer ${
             mobileView === 'products'
-              ? 'bg-blue-600 text-white'
+              ? 'bg-gradient-to-r from-indigo-600 to-blue-600 text-white shadow-xs'
               : 'text-slate-600 dark:text-slate-400 hover:bg-slate-100 dark:hover:bg-slate-800'
           }`}
         >
           <Layers className="h-4 w-4" />
-          Products
+          {t('nav.products')}
         </button>
         <button
           onClick={() => setMobileView('cart')}
-          className={`flex-1 px-4 py-2.5 text-sm font-semibold flex items-center justify-center gap-2 transition relative ${
+          className={`flex-1 px-4 py-3 text-xs font-bold flex items-center justify-center gap-2 transition relative cursor-pointer ${
             mobileView === 'cart'
-              ? 'bg-blue-600 text-white'
+              ? 'bg-gradient-to-r from-indigo-600 to-blue-600 text-white shadow-xs'
               : 'text-slate-600 dark:text-slate-400 hover:bg-slate-100 dark:hover:bg-slate-800'
           }`}
         >
           <ShoppingCart className="h-4 w-4" />
-          Cart
+          {t('pos.cart')}
           {getTotalItemCount() > 0 && (
-            <span className={`text-[10px] px-1.5 py-0.5 rounded-full font-bold ${
-              mobileView === 'cart'
-                ? 'bg-white text-blue-600'
-                : 'bg-blue-600 text-white'
-            }`}>
+            <span
+              className={`text-[10px] px-1.5 py-0.5 rounded-full font-extrabold ${
+                mobileView === 'cart'
+                  ? 'bg-white text-indigo-600'
+                  : 'bg-indigo-600 text-white'
+              }`}
+            >
               {getTotalItemCount()}
             </span>
           )}
@@ -298,21 +302,21 @@ export const PosPage: React.FC = () => {
       </div>
 
       {/* LEFT: Product Catalog & Touch Selector */}
-      <div className={`flex-1 flex flex-col min-w-0 bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-2xl shadow-xs overflow-hidden ${mobileView !== 'products' ? 'hidden lg:flex' : ''}`}>
+      <div className={`flex-1 flex flex-col min-w-0 bg-white dark:bg-slate-900 border border-slate-200/80 dark:border-slate-800/80 rounded-2xl shadow-xs overflow-hidden ${mobileView !== 'products' ? 'hidden lg:flex' : ''}`}>
         {/* Top Scan & Search Bar */}
-        <div className="p-4 border-b border-slate-200 dark:border-slate-800 bg-slate-50/50 dark:bg-slate-950/40 space-y-3">
-          <div className="flex flex-col sm:flex-row gap-2">
+        <div className="p-4 border-b border-slate-200/80 dark:border-slate-800/80 bg-slate-50/70 dark:bg-slate-950/40 space-y-3">
+          <div className="flex flex-col sm:flex-row gap-2.5">
             {/* Barcode Quick Scanner Input */}
             <form onSubmit={handleBarcodeSubmit} className="flex-1 flex gap-2">
               <div className="relative flex-1">
-                <Barcode className="absolute left-3 top-2.5 h-4 w-4 text-blue-600" />
+                <Barcode className="absolute left-3 top-2.5 h-4 w-4 text-indigo-600 dark:text-indigo-400" />
                 <input
                   ref={barcodeInputRef}
                   type="text"
-                  placeholder="Scan or enter barcode (F2)..."
+                  placeholder={t('pos.scanBarcode')}
                   value={barcodeInput}
                   onChange={(e) => setBarcodeInput(e.target.value)}
-                  className="w-full pl-9 pr-3 py-2 text-sm rounded-lg border border-blue-300 dark:border-blue-900 bg-white dark:bg-slate-900 text-slate-900 dark:text-slate-100 placeholder:text-slate-400 focus:outline-none focus:ring-2 focus:ring-blue-500 font-mono"
+                  className="w-full pl-9 pr-3 py-2 text-sm rounded-xl border border-indigo-200 dark:border-indigo-900/60 bg-white dark:bg-slate-900 text-slate-900 dark:text-slate-100 placeholder:text-slate-400 focus:outline-none focus:ring-2 focus:ring-indigo-500 font-mono"
                 />
               </div>
               <Button type="submit" variant="primary" size="sm">
@@ -325,10 +329,10 @@ export const PosPage: React.FC = () => {
               <Search className="absolute left-3 top-2.5 h-4 w-4 text-slate-400" />
               <input
                 type="text"
-                placeholder="Search name, SKU..."
+                placeholder={t('pos.searchProduct')}
                 value={searchTerm}
                 onChange={(e) => setSearchTerm(e.target.value)}
-                className="w-full pl-9 pr-3 py-2 text-sm rounded-lg border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 text-slate-900 dark:text-slate-100 placeholder:text-slate-400 focus:outline-none focus:ring-2 focus:ring-blue-500"
+                className="w-full pl-9 pr-3 py-2 text-sm rounded-xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 text-slate-900 dark:text-slate-100 placeholder:text-slate-400 focus:outline-none focus:ring-2 focus:ring-indigo-500"
               />
             </div>
           </div>
@@ -337,22 +341,22 @@ export const PosPage: React.FC = () => {
           <div className="flex items-center gap-1.5 overflow-x-auto pb-1 scrollbar-none">
             <button
               onClick={() => setSelectedCategory('all')}
-              className={`px-3 py-1.5 rounded-lg text-xs font-semibold whitespace-nowrap transition cursor-pointer ${
+              className={`px-3 py-1.5 rounded-xl text-xs font-bold whitespace-nowrap transition cursor-pointer ${
                 selectedCategory === 'all'
-                  ? 'bg-blue-600 text-white shadow-xs'
-                  : 'bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-400 hover:bg-slate-200'
+                  ? 'bg-gradient-to-r from-indigo-600 to-blue-600 text-white shadow-xs'
+                  : 'bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-400 hover:bg-slate-200 dark:hover:bg-slate-700'
               }`}
             >
-              All Products
+              {language === 'so' ? 'Dhammaan Alaabta' : 'All Products'}
             </button>
             {(categories || []).map((cat) => (
               <button
                 key={cat.id}
                 onClick={() => setSelectedCategory(cat.id)}
-                className={`px-3 py-1.5 rounded-lg text-xs font-semibold whitespace-nowrap transition cursor-pointer ${
+                className={`px-3 py-1.5 rounded-xl text-xs font-bold whitespace-nowrap transition cursor-pointer ${
                   selectedCategory === cat.id
-                    ? 'bg-blue-600 text-white shadow-xs'
-                    : 'bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-400 hover:bg-slate-200'
+                    ? 'bg-gradient-to-r from-indigo-600 to-blue-600 text-white shadow-xs'
+                    : 'bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-400 hover:bg-slate-200 dark:hover:bg-slate-700'
                 }`}
               >
                 {cat.name}
@@ -578,34 +582,36 @@ export const PosPage: React.FC = () => {
         </div>
 
         {/* Cart Totals Summary */}
-        <div className="p-4 border-t border-slate-200 dark:border-slate-800 space-y-1.5 text-xs bg-white dark:bg-slate-900">
-          <div className="flex justify-between text-slate-500 dark:text-slate-400">
-            <span>Subtotal</span>
-            <span>${subtotal.toFixed(2)}</span>
+        <div className="p-4 border-t border-slate-200/80 dark:border-slate-800 space-y-2 text-xs bg-white dark:bg-slate-900">
+          <div className="flex justify-between text-slate-500 dark:text-slate-400 font-medium">
+            <span>{t('pos.subtotal')}</span>
+            <span className="font-semibold text-slate-900 dark:text-slate-100">${subtotal.toFixed(2)}</span>
           </div>
           {discountAmount > 0 && (
-            <div className="flex justify-between text-emerald-600 font-semibold">
-              <span>Discounts Applied</span>
+            <div className="flex justify-between text-emerald-600 dark:text-emerald-400 font-bold">
+              <span>{t('pos.discount')}</span>
               <span>-${discountAmount.toFixed(2)}</span>
             </div>
           )}
-          <div className="flex justify-between text-slate-500 dark:text-slate-400">
-            <span>Tax (5% VAT)</span>
-            <span>${taxAmount.toFixed(2)}</span>
+          <div className="flex justify-between text-slate-500 dark:text-slate-400 font-medium">
+            <span>{t('pos.tax')} (5% VAT)</span>
+            <span className="font-semibold text-slate-900 dark:text-slate-100">${taxAmount.toFixed(2)}</span>
           </div>
-          <div className="flex justify-between items-baseline pt-2 border-t border-slate-200 dark:border-slate-800 font-bold">
-            <span className="text-sm text-slate-900 dark:text-slate-100">Total Due</span>
-            <span className="text-xl text-blue-600 dark:text-blue-400">${total.toFixed(2)}</span>
+          <div className="flex justify-between items-baseline pt-2.5 border-t border-slate-200/80 dark:border-slate-800 font-bold">
+            <span className="text-sm font-extrabold text-slate-900 dark:text-slate-100">{t('pos.total')}</span>
+            <span className="text-2xl font-black bg-clip-text text-transparent bg-gradient-to-r from-indigo-600 to-blue-600 dark:from-indigo-400 dark:to-cyan-400">
+              ${total.toFixed(2)}
+            </span>
           </div>
 
           <Button
-            variant="primary"
-            className="w-full h-12 text-base font-bold shadow-md mt-2"
+            variant="success"
+            className="w-full h-12 text-base font-extrabold shadow-md shadow-emerald-500/25 mt-3 gap-2"
             disabled={items.length === 0}
             onClick={() => setCheckoutModalOpen(true)}
           >
-            <CreditCard className="h-5 w-5 mr-2" />
-            Proceed to Payment (F4)
+            <CreditCard className="h-5 w-5" />
+            {t('pos.payNow')} (F4)
           </Button>
         </div>
       </div>

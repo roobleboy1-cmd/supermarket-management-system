@@ -8,8 +8,8 @@
     --card-foreground: 222 47% 11%;
     --popover: 0 0% 100%;
     --popover-foreground: 222 47% 11%;
-    --primary: 221 83% 53%; /* Classic Vibrant Blue #2563EB */
-    --primary-hover: 224 76% 48%; /* #1D4ED8 */
+    --primary: 238 82% 59%; /* Radiant Indigo-Blue #4F46E5 */
+    --primary-hover: 239 84% 67%; /* #6366F1 */
     --primary-foreground: 210 40% 98%;
     --secondary: 215 25% 93%;
     --secondary-foreground: 222 47% 11%;
@@ -21,45 +21,48 @@
     --destructive-foreground: 210 40% 98%;
     --border: 214 32% 91%;
     --input: 214 32% 91%;
-    --ring: 221 83% 53%;
-    --radius: 0.5rem;
-    --navy-surface: 222 47% 11%;
+    --ring: 238 82% 59%;
+    --radius: 0.75rem;
   }
 
   .dark {
-    --background: 224 71% 4%; /* Dark Navy #090D16 */
+    --background: 224 71% 4%; /* Deep Obsidian Navy #080C15 */
     --foreground: 210 40% 98%;
-    --card: 222 47% 9%; /* Charcoal Navy #0F172A */
+    --card: 222 47% 8%; /* Rich Charcoal #0E1526 */
     --card-foreground: 210 40% 98%;
-    --popover: 222 47% 9%;
+    --popover: 222 47% 8%;
     --popover-foreground: 210 40% 98%;
-    --primary: 217 91% 60%; /* Accessible bright blue #3B82F6 */
-    --primary-hover: 221 83% 53%;
+    --primary: 239 84% 67%; /* Vibrant Electric Indigo #6366F1 */
+    --primary-hover: 238 82% 59%;
     --primary-foreground: 222 47% 11%;
-    --secondary: 217 33% 17%;
+    --secondary: 217 33% 15%;
     --secondary-foreground: 210 40% 98%;
-    --muted: 217 33% 15%;
+    --muted: 217 33% 13%;
     --muted-foreground: 215 20% 65%;
-    --accent: 217 33% 17%;
+    --accent: 217 33% 15%;
     --accent-foreground: 210 40% 98%;
     --destructive: 0 72% 51%;
     --destructive-foreground: 210 40% 98%;
-    --border: 217 33% 18%;
-    --input: 217 33% 18%;
-    --ring: 217 91% 60%;
-    --navy-surface: 224 71% 7%;
+    --border: 217 33% 16%;
+    --input: 217 33% 16%;
+    --ring: 239 84% 67%;
   }
 }
 
 body {
   margin: 0;
   min-height: 100vh;
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Inter", "Helvetica Neue", Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
-/* Custom Scrollbar for enterprise tables & POS */
+/* Smooth theme transition */
+html {
+  transition: background-color 0.25s ease, color 0.25s ease;
+}
+
+/* Custom Scrollbar for modern supermarket UI */
 ::-webkit-scrollbar {
   width: 6px;
   height: 6px;
@@ -68,11 +71,29 @@ body {
   background: transparent;
 }
 ::-webkit-scrollbar-thumb {
-  background: rgba(148, 163, 184, 0.4);
-  border-radius: 4px;
+  background: rgba(148, 163, 184, 0.35);
+  border-radius: 9999px;
 }
 ::-webkit-scrollbar-thumb:hover {
-  background: rgba(148, 163, 184, 0.7);
+  background: rgba(99, 102, 241, 0.6);
+}
+
+/* Glassmorphism utility classes */
+.glass-panel {
+  background: rgba(255, 255, 255, 0.85);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+}
+.dark .glass-panel {
+  background: rgba(15, 23, 42, 0.85);
+}
+
+/* Modern Glow Effects */
+.glow-primary {
+  box-shadow: 0 0 25px -5px rgba(99, 102, 241, 0.35);
+}
+.glow-emerald {
+  box-shadow: 0 0 25px -5px rgba(16, 185, 129, 0.35);
 }
 
 /* Thermal printer print formatting */

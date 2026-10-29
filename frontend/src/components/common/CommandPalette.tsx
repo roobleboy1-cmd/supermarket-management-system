@@ -26,6 +26,7 @@ import {
 } from 'lucide-react'
 import type { Role } from '@/types'
 import { useAuthStore } from '@/stores/authStore'
+import { useLanguageStore } from '@/stores/languageStore'
 
 interface CommandPaletteProps {
   open: boolean
@@ -208,6 +209,7 @@ export const CommandPalette: React.FC<CommandPaletteProps> = ({ open, onClose })
   const [query, setQuery] = React.useState('')
   const navigate = useNavigate()
   const { user } = useAuthStore()
+  const { language } = useLanguageStore()
 
   React.useEffect(() => {
     const handleKeyDown = (e: KeyboardEvent) => {
@@ -258,13 +260,13 @@ export const CommandPalette: React.FC<CommandPaletteProps> = ({ open, onClose })
           <Search className="h-4 w-4 text-slate-400 shrink-0 mr-2" />
           <input
             type="text"
-            placeholder="Raadi shaqo, bog ama ficil..."
+            placeholder={language === 'so' ? 'Raadi shaqo, bog ama ficil...' : 'Search page, task, or action...'}
             value={query}
             onChange={(e) => setQuery(e.target.value)}
             autoFocus
             className="w-full py-3.5 text-sm bg-transparent border-0 focus:outline-none text-slate-900 dark:text-slate-100 placeholder:text-slate-400"
           />
-          <kbd className="hidden sm:inline-block rounded bg-slate-100 dark:bg-slate-800 px-1.5 py-0.5 text-[10px] font-mono text-slate-500">
+          <kbd className="hidden sm:inline-block rounded-md bg-slate-100 dark:bg-slate-800 px-2 py-0.5 text-[10px] font-mono text-slate-500 font-bold">
             ESC
           </kbd>
         </div>
@@ -273,14 +275,16 @@ export const CommandPalette: React.FC<CommandPaletteProps> = ({ open, onClose })
         <div className="max-h-80 overflow-y-auto p-2 space-y-4">
           {filteredItems.length === 0 ? (
             <div className="py-8 text-center text-xs text-slate-400">
-              Wax natiijo ah lama helin &quot;{query}&quot; doorkaaga {currentRole}.
+              {language === 'so'
+                ? `Wax natiijo ah lama helin "${query}" doorkaaga ${currentRole}.`
+                : `No results found for "${query}" matching role ${currentRole}.`}
             </div>
           ) : (
             <>
               {actions.length > 0 && (
                 <div>
                   <h4 className="px-2 text-[10px] font-bold uppercase tracking-wider text-slate-400 mb-1">
-                    Ficillo Degdeg Ah (Actions)
+                    {language === 'so' ? 'Ficillo Degdeg Ah (Actions)' : 'Quick Actions'}
                   </h4>
                   <div className="space-y-0.5">
                     {actions.map((item) => {
@@ -289,9 +293,9 @@ export const CommandPalette: React.FC<CommandPaletteProps> = ({ open, onClose })
                         <button
                           key={item.name}
                           onClick={() => handleSelect(item.path)}
-                          className="w-full flex items-center gap-3 px-3 py-2 rounded-lg text-xs font-medium text-slate-700 dark:text-slate-300 hover:bg-blue-50 dark:hover:bg-slate-800 hover:text-blue-600 dark:hover:text-blue-400 transition text-left"
+                          className="w-full flex items-center gap-3 px-3 py-2 rounded-xl text-xs font-semibold text-slate-700 dark:text-slate-300 hover:bg-indigo-50 dark:hover:bg-slate-800 hover:text-indigo-600 dark:hover:text-indigo-400 transition text-left cursor-pointer"
                         >
-                          <Icon className="h-4 w-4 text-blue-500 shrink-0" />
+                          <Icon className="h-4 w-4 text-indigo-500 shrink-0" />
                           <span>{item.name}</span>
                         </button>
                       )
@@ -303,7 +307,9 @@ export const CommandPalette: React.FC<CommandPaletteProps> = ({ open, onClose })
               {pages.length > 0 && (
                 <div>
                   <h4 className="px-2 text-[10px] font-bold uppercase tracking-wider text-slate-400 mb-1">
-                    Boggaga Laguu Oggol Yahay ({currentRole})
+                    {language === 'so'
+                      ? `Boggaga Laguu Oggol Yahay (${currentRole})`
+                      : `Permitted Pages (${currentRole})`}
                   </h4>
                   <div className="space-y-0.5">
                     {pages.map((item) => {
@@ -312,7 +318,7 @@ export const CommandPalette: React.FC<CommandPaletteProps> = ({ open, onClose })
                         <button
                           key={item.name}
                           onClick={() => handleSelect(item.path)}
-                          className="w-full flex items-center gap-3 px-3 py-2 rounded-lg text-xs font-medium text-slate-700 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-800 transition text-left"
+                          className="w-full flex items-center gap-3 px-3 py-2 rounded-xl text-xs font-semibold text-slate-700 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-800 transition text-left cursor-pointer"
                         >
                           <Icon className="h-4 w-4 text-slate-400 shrink-0" />
                           <span>{item.name}</span>

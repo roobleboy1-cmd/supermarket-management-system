@@ -6,6 +6,7 @@ interface ThemeState {
   theme: Theme
   resolvedTheme: 'light' | 'dark'
   setTheme: (theme: Theme) => void
+  toggleTheme: () => void
 }
 
 function getSystemTheme(): 'light' | 'dark' {
@@ -24,9 +25,9 @@ function applyThemeToDOM(resolved: 'light' | 'dark') {
 
 const STORAGE_KEY = 'supermarket_theme_preference'
 
-export const useThemeStore = create<ThemeState>((set) => {
+export const useThemeStore = create<ThemeState>((set, get) => {
   const savedTheme = (typeof localStorage !== 'undefined' ? localStorage.getItem(STORAGE_KEY) : null) as Theme | null
-  const initialTheme: Theme = savedTheme || 'system'
+  const initialTheme: Theme = savedTheme || 'light'
   const initialResolved = initialTheme === 'system' ? getSystemTheme() : initialTheme
 
   // Initial apply
@@ -43,6 +44,14 @@ export const useThemeStore = create<ThemeState>((set) => {
       localStorage.setItem(STORAGE_KEY, theme)
       applyThemeToDOM(resolved)
       set({ theme, resolvedTheme: resolved })
+    },
+
+    toggleTheme: () => {
+      const currentResolved = get().resolvedTheme
+      const nextTheme = currentResolved === 'dark' ? 'light' : 'dark'
+      localStorage.setItem(STORAGE_KEY, nextTheme)
+      applyThemeToDOM(nextTheme)
+      set({ theme: nextTheme, resolvedTheme: nextTheme })
     },
   }
 })
